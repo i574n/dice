@@ -14,7 +14,7 @@
     state_core.use_core_database database global_state
 
     leptos.div [
-        $'"class=\\\"flex flex-1\\\""'
+        "class=\"flex flex-1\""
         leptos.attr_fn "class:dark" \ () =>
             leptos.signal_get_untracked global_state.core_state .dark_mode
             |> leptos.signal_get

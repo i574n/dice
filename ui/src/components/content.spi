@@ -85,7 +85,7 @@
         |> ignore
 
     leptos.div [
-        $'"class=\\\"flex flex-1 max-[100px]:[overflow-x:auto]\\\""'
+        "class=\"flex flex-1 max-[100px]:[overflow-x:auto]\""
     ] \ () =>
         leptos.div [
             $'"class=\\\"flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] \
@@ -94,12 +94,12 @@
         ] \ () =>
             :>[
                 leptos.main [
-                    $'"class=\\\"flex flex-1 flex-col [overflow:hidden]\\\""'
+                    "class=\"flex flex-1 flex-col [overflow:hidden]\""
                 ] \ () =>
                     :< menu_tabs
                     := wrap fragment =
                         leptos.div [
-                            $'"class=\\\"flex flex-1 flex-col [overflow-y:auto]\\\""'
+                            "class=\"flex flex-1 flex-col [overflow-y:auto]\""
                         ] \ () =>
                             fragment
                         |> leptos.element_to_view
@@ -116,7 +116,7 @@
                 |> leptos.element_to_view
 
                 leptos.div [
-                    $'"class=\\\"flex\\\""'
+                    "class=\"flex\""
                 ] \ () =>
                     menu_tabs.render tab
                 |> leptos.element_to_view

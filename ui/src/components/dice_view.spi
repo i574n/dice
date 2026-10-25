@@ -121,11 +121,11 @@
             }
             \ () => :>[
                 leptos.div [
-                    $'"class=\\\"flex flex-col p-[10px] gap-[11px]\\\""'
+                    "class=\"flex flex-col p-[10px] gap-[11px]\""
                 ] \ () =>
                     :>[
                         leptos.div [
-                            $'"class=\\\"flex [flex-direction:column] [gap:2px] [align-items:flex-start]\\\""'
+                            "class=\"flex [flex-direction:column] [gap:2px] [align-items:flex-start]\""
                         ] \ () =>
                             :>[
                                 "Account" |> leptos.text_view
@@ -149,7 +149,7 @@
                         |> leptos.element_to_view
 
                         leptos.div [
-                            $'"class=\\\"flex [flex-direction:column] [gap:2px] [align-items:flex-start]\\\""'
+                            "class=\"flex [flex-direction:column] [gap:2px] [align-items:flex-start]\""
                         ] \ () =>
                             :>[
                                 "Max" |> leptos.text_view
@@ -181,7 +181,7 @@
                         |> leptos.element_to_view
 
                         leptos.div [
-                            $'"class=\\\"flex\\\""'
+                            "class=\"flex\""
                         ] \ () =>
                             :>[
                                 ui.loading_button.render
@@ -318,7 +318,7 @@
                                                 rpc_responses |> am'.from_vec |> am'.index (i |> convert.i32)
 
                                             leptos.tr [
-                                                $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
+                                                "class=\"odd:bg-gray-50 dark:odd:bg-gray-800/50\""
                                             ] \ () =>
                                                 :>[
                                                     leptos.td [

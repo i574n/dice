@@ -27,7 +27,7 @@
                 class ++# " hover:bg-gray-200"
             [
                 leptos.on_click on_click
-                $'"aria-label=\\\"Settings\\\""'
+                "aria-label=\"Settings\""
             ]
         |> leptos.element_to_view
 
@@ -43,7 +43,7 @@
                     ? settings_visible |> leptos.signal_get
                     ?>
                         leptos.div [
-                            $'"class=\\\"px-[12px] py-[10px]\\\""'
+                            "class=\"px-[12px] py-[10px]\""
                         ] \ () =>
                             :>[
                                 ui.divider.render \ () =>

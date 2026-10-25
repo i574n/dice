@@ -20,7 +20,7 @@
             |> leptos.text_fragment
         \ () =>
             leptos.div [
-                $'"class=\\\"flex flex-1 flex-col\\\""'
+                "class=\"flex flex-1 flex-col\""
             ] \ () => :>[
                 ui.grid_pair.render
                     \ props => { props ?|
@@ -50,55 +50,55 @@
     ] \ () =>
         :>[
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Account" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Block Timestamp" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Predecessor" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Receiver" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Action" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Deposit" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Fee" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Block Height" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 (array transactions : array _)
                 |> arraym.exists' \ { txn } =>
@@ -112,25 +112,25 @@
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Outcome Status" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Hash" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Block Hash" |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.th [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white\""
             ] \ () =>
                 "Receipt ID" |> leptos.text_fragment
             |> leptos.element_to_view
@@ -141,18 +141,18 @@
     leptos.log "transaction.tr_render (1)"
 
     leptos.tr [
-        $'"class=\\\"odd:bg-gray-50 dark:odd:bg-gray-800/50\\\""'
+        "class=\"odd:bg-gray-50 dark:odd:bg-gray-800/50\""
     ] \ () =>
         :>[
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                 account
                 |> leptos.text_fragment
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                 txn.block_timestamp
                 |> sm'.from_std_string
@@ -163,7 +163,7 @@
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                 txn.predecessor_account_id
                 |> to_string
@@ -171,7 +171,7 @@
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                 txn.receiver_account_id
                 |> to_string
@@ -179,7 +179,7 @@
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                 txn.actions
                 |> am'.to_vec
@@ -191,7 +191,7 @@
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                 txn.actions_agg.deposit
                 |> sm'.obj_to_string
@@ -199,7 +199,7 @@
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                 txn.outcomes_agg.transaction_fee
                 |> sm'.obj_to_string
@@ -207,7 +207,7 @@
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                 txn.block.block_height
                 |> sm'.obj_to_string
@@ -215,7 +215,7 @@
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500 [overflow:auto]\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500 [overflow:auto]\""
             ] \ () =>
                 ?= txn.logs ?|
                 | ;[] => "" |> leptos.text_fragment
@@ -233,7 +233,7 @@
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                 txn.outcomes.status
                 |> sm'.obj_to_string
@@ -241,7 +241,7 @@
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                 txn.transaction_hash
                 |> to_string
@@ -249,7 +249,7 @@
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                     txn.included_in_block_hash
                     |> to_string
@@ -257,7 +257,7 @@
             |> leptos.element_to_view
 
             leptos.td [
-                $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\\\""'
+                "class=\"whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500\""
             ] \ () =>
                     txn.receipt_id
                     |> to_string
@@ -272,7 +272,7 @@
     := global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
 
     leptos.div [
-        $'"class=\\\"flex flex-1 flex-col overflow-x-auto\\\""'
+        "class=\"flex flex-1 flex-col overflow-x-auto\""
     ] \ () => :>[
         ui.divider.render \ () =>
             "Transaction " ++# sm'.obj_to_string (index + 1i64)
@@ -280,7 +280,7 @@
         |> leptos.element_to_view
 
         leptos.div [
-            $'"class=\\\"grid flex-1 divide-y-[1px] divide-gray-500/[.10]\\\""'
+            "class=\"grid flex-1 divide-y-[1px] divide-gray-500/[.10]\""
         ] \ () =>
             :>[
                 ui.grid_pair.render

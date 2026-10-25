@@ -72,7 +72,7 @@
             \ () => " pr-[7px] pl-[5px]"
             [
                 leptos.on_click on_click
-                $'"aria-label=\\\"Delete\\\""'
+                "aria-label=\"Delete\""
             ]
 
     := add_button () =
@@ -100,7 +100,7 @@
             \ () => " bg-gray-300 hover:bg-gray-200"
             [
                 leptos.on_click on_click
-                $'"aria-label=\\\"Add\\\""'
+                "aria-label=\"Add\""
             ]
 
     :>[
@@ -112,7 +112,7 @@
             }
             \ () =>
                 leptos.div [
-                    $'"class=\\\"flex flex-1 flex-col p-[8px] gap-[8px]\\\""'
+                    "class=\"flex flex-1 flex-col p-[8px] gap-[8px]\""
                 ] \ () =>
                     leptos.for
                         accounts_data
@@ -122,7 +122,7 @@
                         \ pair =>
                             := (_, i), account = pair
                             leptos.div [
-                                $'"class=\\\"flex gap-[8px] [align-items:center]\\\""'
+                                "class=\"flex gap-[8px] [align-items:center]\""
                             ] \ () =>
                                 := i = ~~ i
                                 :>[
@@ -194,7 +194,7 @@
             }
             \ () =>
                 leptos.div [
-                    $'"class=\\\"flex flex-1 flex-col p-[11px] gap-[11px]\\\""'
+                    "class=\"flex flex-1 flex-col p-[11px] gap-[11px]\""
                 ] \ () =>
                     :>[
                         ui.grid_pair.render

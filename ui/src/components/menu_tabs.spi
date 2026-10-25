@@ -39,19 +39,19 @@
     :~ url = leptos.use_url ()
     :>[
         leptos.div [
-            $'"class=\\\"hidden\\\""'
+            "class=\"hidden\""
         ] \ () =>
             :>[
                 leptos.label [
-                    $'"for=\\\"Tab\\\""'
-                    $'"class=\\\"sr-only\\\""'
+                    "for=\"Tab\""
+                    "class=\"sr-only\""
                 ] \ () =>
                     "Tab" |> leptos.text_fragment
                 |> leptos.element_to_view
 
                 leptos.select [
-                    $'"id=\\\"Tab\\\""'
-                    $'"class=\\\"w-full rounded-md border-gray-200\\\""'
+                    "id=\"Tab\""
+                    "class=\"w-full rounded-md border-gray-200\""
                 ] \ () =>
                     tabs ()
                     |> listm.map \ tab' =>
@@ -64,15 +64,15 @@
             ]
 
         leptos.div [
-            $'"class=\\\"flex flex-1 [overflow-x:auto] [overflow-y:hidden]\\\""'
+            "class=\"flex flex-1 [overflow-x:auto] [overflow-y:hidden]\""
         ] \ () =>
             leptos.div [
-                $'"class=\\\"flex flex-1 border-t border-gray-200\\\""'
+                "class=\"flex flex-1 border-t border-gray-200\""
             ] \ () =>
                 leptos.nav [
                     $'"class=\\\"-mb-px flex [flex-flow:wrap] [flex-grow:1] [flex-shrink:0] gap-[3px] \
                         [overflow-wrap:anywhere]\\\""'
-                    $'"aria-label=\\\"Tabs\\\""'
+                    "aria-label=\"Tabs\""
                 ] \ () =>
                     tabs ()
                     |> listm.map \ tab' =>
