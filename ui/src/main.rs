@@ -26,16 +26,20 @@ enum US0 {
     US0_Some(web_sys::HtmlElement),
     US0_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US1 {
     US1_Details,
     US1_Table,
 }
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 struct Heap0 { l0: Vec<(bool, std::string::String)>, l1: Option<std::string::String>, l2: i32, l3: i32, l4: US1 }
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 struct Heap1 { l0: leptos::prelude::ArcRwSignal<bool>, l1: leptos::prelude::ArcRwSignal<bool>, l2: leptos::prelude::ArcRwSignal<std::string::String>, l3: leptos::prelude::ArcRwSignal<Rc<Heap0>> }
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 struct Heap2 { l0: leptos::prelude::ArcRwSignal<Rc<Heap1>>, l1: leptos::prelude::ArcRwSignal<std::collections::HashMap<std::string::String, leptos::prelude::ArcRwSignal<bool>>> }
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 struct Heap3 { l0: bool, l1: bool, l2: std::string::String, l3: Rc<Heap0> }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US2 {
     US2_Some(Rc<Heap3>),
     US2_None,
@@ -45,7 +49,7 @@ enum US3 {
     US3_Some(std::sync::Arc<rexie::Rexie>),
     US3_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US4 {
     US4_Some(Option<Rc<Heap3>>),
     US4_None,
@@ -60,12 +64,12 @@ enum US6 {
     US6_Some(serde_json::Value),
     US6_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US7 {
     US7_Ok(Option<Option<Rc<Heap3>>>),
     US7_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US8 {
     US8_Some(US2),
     US8_None,
@@ -90,7 +94,7 @@ enum US12 {
     US12_Ok(Option<std::string::String>),
     US12_Error(wasm_bindgen::JsValue),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US14 {
     US14_Some(std::string::String),
     US14_None,
@@ -100,26 +104,26 @@ enum US13 {
     US13_Ok(US14),
     US13_Error(wasm_bindgen::JsValue),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US15 {
     US15_Some(US14),
     US15_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US16 {
     US16_Some(leptos::prelude::ArcRwSignal<bool>),
     US16_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US17 {
     US17_Some(bool),
     US17_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US19 {
     US19_Dice_,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US18 {
     US18_Blank,
     US18_Dice(US19),
@@ -127,17 +131,17 @@ enum US18 {
     US18_Transactions,
     US18_Settings,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 enum US20 {
     US20_Ok(leptos_router::location::Url),
     US20_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US21 {
     US21_Some(US18),
     US21_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US22 {
     US22_Get,
     US22_Post,
@@ -145,201 +149,204 @@ enum US22 {
 struct Mut0 { l0: u64 }
 struct Mut1 { l0: Rc<str> }
 struct Mut2 { l0: i32 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum UH0 {
     UH0_Nil,
     UH0_Cons(Vec<(Rc<str>, US22, Rc<str>, bool, bool)>, Rc<UH0>),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum UH1 {
     UH1_Nil,
     UH1_Cons(Vec<Rc<str>>, Rc<UH1>),
 }
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 struct Heap4 { l0: std::string::String }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US23 {
     US23_Ok(Vec<Option<Rc<Heap4>>>),
     US23_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US24 {
     US24_Some(Rc<Heap4>),
     US24_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US25 {
     US25_Some(Result<Vec<Option<Rc<Heap4>>>, std::string::String>),
     US25_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US27 {
     US27_Ok(Vec<US24>),
     US27_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US26 {
     US26_Some(US27),
     US26_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US30 {
     US30_Some(Rc<str>),
     US30_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US29 {
     US29_Ok(US30),
     US29_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US28 {
     US28_Some(US29),
     US28_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US31 {
     US31_Some(US24),
     US31_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US32 {
     US32_Ok(Option<Rc<str>>),
     US32_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US33 {
     US33_Ok,
     US33_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US35 {
     US35_Ok(Rc<RefCell<Vec<US24>>>),
     US35_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US34 {
     US34_Some(US35),
     US34_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US36 {
     US36_Some(Result<Vec<Option<Rc<str>>>, std::string::String>),
     US36_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US38 {
     US38_Ok(Vec<Option<Rc<str>>>),
     US38_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US37 {
     US37_Some(US38),
     US37_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US40 {
     US40_Ok(Vec<US30>),
     US40_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US39 {
     US39_Some(US40),
     US39_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US41 {
     US41_Some(US30),
     US41_None,
 }
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 struct Heap5 { l0: std::string::String, l1: std::string::String, l2: std::string::String, l3: std::string::String, l4: std::string::String, l5: std::string::String, l6: u32, l7: Rc<RefCell<Vec<(std::string::String, Option<std::string::String>)>>>, l8: f64, l9: bool, l10: f64, l11: Rc<RefCell<Vec<std::string::String>>> }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US42 {
     US42_Ok(Option<Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, u32, Rc<RefCell<Vec<(std::string::String, Option<std::string::String>)>>>, f64, bool, f64, Rc<RefCell<Vec<std::string::String>>>)>>>>),
     US42_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US44 {
     US44_Some(Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, u32, Rc<RefCell<Vec<(std::string::String, Option<std::string::String>)>>>, f64, bool, f64, Rc<RefCell<Vec<std::string::String>>>)>>>),
     US44_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US43 {
     US43_Ok(US44),
     US43_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US46 {
     US46_Some(Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>),
     US46_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US45 {
     US45_Ok(US46),
     US45_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US48 {
     US48_Some(Vec<(Rc<str>, usize, Rc<Heap5>)>),
     US48_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US47 {
     US47_Ok(US48),
     US47_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US49 {
     US49_Ok(Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>),
     US49_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum UH2 {
     UH2_Nil,
     UH2_Cons(Result<Option<Vec<(Rc<str>, usize, Rc<Heap5>)>>, std::string::String>, Rc<UH2>),
 }
 struct Mut3 { l0: i32, l1: Rc<UH2> }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US50 {
     US50_Ok(Vec<(Rc<str>, usize, Rc<Heap5>)>),
     US50_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US51 {
     US51_Ok(Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>),
     US51_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US52 {
     US52_Ok(Option<Rc<RefCell<Vec<(Rc<str>, usize, Rc<Heap5>)>>>>),
     US52_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US54 {
     US54_Some(Rc<RefCell<Vec<(Rc<str>, US22, Rc<str>, bool, bool)>>>),
     US54_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US53 {
     US53_Ok(US54),
     US53_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US55 {
     US55_Ok(Option<Rc<RefCell<Vec<(Rc<str>, US22, Rc<str>, bool, bool)>>>>),
     US55_Error(std::string::String),
 }
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 struct Heap6 { l0: i32 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US56 {
     US56_Some(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>),
     US56_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US57 {
     US57_Ok(US14),
     US57_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US58 {
     US58_Ok(US56),
     US58_Error(std::string::String),
@@ -349,37 +356,37 @@ enum US59 {
     US59_Ok(crate::model::near::rpc::RpcResponse),
     US59_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US60 {
     US60_Ok(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>),
     US60_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US61 {
     US61_Some(US58),
     US61_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 enum US62 {
     US62_Ok(Option<(std::string::String, Option<(Rc<RefCell<Vec<(std::string::String, Rc<RefCell<Vec<std::collections::HashMap<std::string::String, (std::string::String, Option<std::string::String>, Option<f64>, Option<std::string::String>)>>>>, std::string::String, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<std::string::String>>>, std::string::String, std::string::String, std::string::String, std::string::String)>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String, u64, Rc<RefCell<Vec<std::string::String>>>, Rc<RefCell<Vec<(std::string::String, std::string::String, std::string::String)>>>, u8, Rc<RefCell<Vec<std::string::String>>>, std::collections::HashMap<std::string::String, std::string::String>, Option<std::string::String>, Rc<RefCell<Vec<(std::string::String, std::string::String)>>>)>>>)>, Option<(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String)>, Option<std::string::String>)>),
     US62_Error(std::string::String),
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US63 {
     US63_Some(std::string::String, std::string::String, Option<(Option<std::string::String>, Option<std::string::String>)>, i32, std::string::String, std::string::String),
     US63_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 enum US64 {
     US64_Some(leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper::SendWrapper<US30>>),
     US64_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 enum US65 {
     US65_Some(leptos::prelude::ArcMemo<leptos::__reexports::send_wrapper::SendWrapper<Vec<(i32, leptos::prelude::ReadSignal<std::string::String>)>>>),
     US65_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize)]
 enum US66 {
     US66_Some(Vec<(i32, leptos::prelude::ReadSignal<std::string::String>)>),
     US66_None,
@@ -389,13 +396,13 @@ enum US67 {
     US67_Some(chrono::DateTime<chrono::Utc>),
     US67_None,
 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US68 {
     US68_Ok(Rc<str>),
     US68_Error(Rc<str>),
 }
 struct Mut4 { l0: i32, l1: US30 }
-#[derive(Clone)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize, borsh::BorshSerialize, borsh::BorshDeserialize)]
 enum US69 {
     US69_Ok(std::string::String),
     US69_Error(std::string::String),
@@ -16091,3 +16098,5 @@ fn main() { #[cfg(target_arch = "wasm32")] { spiral_main(); return; }
     let main = std::thread::Builder::new().stack_size(1 << 30).spawn(spiral_main).unwrap();
     std::process::exit(match main.join() { Ok(code) => code, Err(_) => 1 });
 }
+
+pub mod model;

@@ -244,37 +244,33 @@ test roll_within_bounds_2 =
         }
         """
     := quiet () : () = set_trace_level Info
-    !!!!Export(
-        "dice_contract_new",
+    export
+        "dice_contract_new"
         ((\ () => := () = quiet () ;; := x = new () ;; x.version, x.seeds) : () -> u32 * near.vector u8)
-    )
-    !!!!Export(
-        "dice_contract_contribute_seed",
+    export
+        "dice_contract_contribute_seed"
         (
             \ (seeds, seed) =>
                 := () = quiet ()
                 contribute_seed seeds seed
             : rust.ref (rust.mut' (near.vector u8)) * am'.vec u8 -> ()
         )
-    )
-    !!!!Export(
-        "dice_contract_generate_random_number",
+    export
+        "dice_contract_generate_random_number"
         (
             \ (seeds, key, proof, max) =>
                 := () = quiet ()
                 generate_random_number seeds key proof max
             : rust.ref (rust.mut' (near.vector u8)) * sm'.std_string * sm'.std_string * u64 -> u64
         )
-    )
-    !!!!Export(
-        "dice_contract_roll_within_bounds",
+    export
+        "dice_contract_roll_within_bounds"
         (
             \ (max, rolls) =>
                 := () = quiet ()
                 roll_within_bounds max rolls
             : u64 * am'.vec u8 -> optionm'.option' u64
         )
-    )
 
 
 := main () =

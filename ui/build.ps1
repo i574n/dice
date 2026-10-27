@@ -41,7 +41,7 @@ if (!$rustBindgen) { throw "RUST-FAILED dice/ui / no wasm-bindgen version in ../
 $trunkDir = "$targetDir/trunk"
 Remove-Item $trunkDir -Recurse -Force -ErrorAction Ignore
 { trunk build $($fast ? $() : '--release') $($fast ? $() : '--minify') --dist="$trunkDir" --public-url="./" --no-sri } `
-    | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = $rustBindgen }
+    | Invoke-Block -EnvironmentVariables @{ "TRUNK_TOOLS_WASM_BINDGEN" = $rustBindgen; "NO_COLOR" = $($env:NO_COLOR ? 'true' : 'false') }
 $rustWasm = Get-ChildItem $trunkDir -Filter "$projectName-*_bg.wasm" -ErrorAction Ignore | Select-Object -First 1
 if (!$rustWasm -or !(Test-Path "$trunkDir/index.html")) {
     throw "RUST-FAILED dice/ui / trunk bundle: no $projectName wasm in $trunkDir"
