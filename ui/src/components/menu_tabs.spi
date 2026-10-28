@@ -1,4 +1,5 @@
 :< leptos
+:< sm'_operators
 
 :| dice =
     | Dice'
@@ -82,7 +83,7 @@
                             href =
                                 \ () =>
                                     := url = url |> leptos.signal_get
-                                    $'!url + "\#/" + !id + ""'
+                                    url ++# "#/" ++# id
                             icon =
                                 ?= tab' ?|
                                 | Dice _ => svg.dice.render class [] |> leptos.element_to_fragment
