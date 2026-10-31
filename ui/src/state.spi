@@ -1,0 +1,19 @@
+:< rust.rust_operators
+
+
+:| view_type =
+    | Details
+    | Table
+
+:== account = sm'.std_string
+
+:== state_data =
+    heap {
+        accounts : am'.vec (pair bool account)
+        account : optionm'.option' account
+        max : i32
+        transactions_pages : i32
+        transactions_view_type : view_type
+    }
+
+:== global_state = state_core.global_state state_data

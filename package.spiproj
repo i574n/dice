@@ -1,0 +1,9 @@
+packageDir: deps/polyglot/deps/spiral/lib
+packages:
+    |core-
+    spiral-
+modules:
+    lib/
+        dice
+    contract/
+        dice_contract

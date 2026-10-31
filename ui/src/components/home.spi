@@ -1,0 +1,21 @@
+:< rust.rust_operators
+:< sm'_operators
+:< leptos
+
+:= render { router } =
+    := router : i32 = router
+    print_static "<home.render>"
+    leptos.log ("home.render () / router: " ++# sm'.obj_to_string router)
+
+    := global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
+
+    := database = state_core.use_database ()
+
+    state_core.use_core_database database global_state
+
+    leptos.div [
+        "class=\"flex flex-1\""
+        leptos.attr_fn "class:dark" \ () =>
+            leptos.signal_get_untracked global_state.core_state .dark_mode
+            |> leptos.signal_get
+    ] (content.render >> leptos.element_to_fragment)

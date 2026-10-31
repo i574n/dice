@@ -1,0 +1,12 @@
+:< rust.rust_operators
+:< leptos
+
+:= render () =
+    print_static "<lists_view.render>"
+    leptos.log "lists_view.render ()"
+
+    := global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
+
+    :>[
+        "???" |> leptos.text_view
+    ]

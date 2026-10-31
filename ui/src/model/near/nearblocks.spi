@@ -1,0 +1,162 @@
+:< rust.rust_operators
+
+
+:! block' = $'crate::model::near::nearblocks::Block'
+
+:! action' = $'crate::model::near::nearblocks::Action'
+
+:! actions_agg' = $'crate::model::near::nearblocks::ActionsAgg'
+
+:! outcomes' = $'crate::model::near::nearblocks::Outcomes'
+
+:! outcomes_agg' = $'crate::model::near::nearblocks::OutcomesAgg'
+
+:! txn' = $'crate::model::near::nearblocks::Txn'
+
+:! root' = $'crate::model::near::nearblocks::Root'
+
+
+:== block =
+    {
+        block_height : u32
+    }
+
+:== action =
+    {
+        action : sm'.std_string
+        method : optionm'.option' sm'.std_string
+    }
+
+:== actions_agg =
+    {
+        deposit : f64
+    }
+
+:== outcomes =
+    {
+        status : bool
+    }
+
+:== outcomes_agg =
+    {
+        transaction_fee : f64
+    }
+
+:== txn =
+    {
+        receipt_id : sm'.std_string
+        predecessor_account_id : sm'.std_string
+        receiver_account_id : sm'.std_string
+        transaction_hash : sm'.std_string
+        included_in_block_hash : sm'.std_string
+        block_timestamp : sm'.std_string
+        block : block
+        actions : array_base action
+        actions_agg : actions_agg
+        outcomes : outcomes
+        outcomes_agg : outcomes_agg
+        logs : array_base sm'.std_string
+    }
+
+:== root =
+    {
+        txns : array_base txn
+    }
+
+:= block_box ({ block_height } : block) : block' =
+    !\($'"crate::model::near::nearblocks::Block { block_height: !block_height }"')
+
+:= action_box ({ action method } : action) : action' =
+    !\($'"crate::model::near::nearblocks::Action { action: !action, method: !method }"')
+
+:= actions_agg_box ({ deposit } : actions_agg) : actions_agg' =
+    !\($'"crate::model::near::nearblocks::ActionsAgg { deposit: !deposit }"')
+
+:= outcomes_box ({ status } : outcomes) : outcomes' =
+    !\($'"crate::model::near::nearblocks::Outcomes { status: !status }"')
+
+:= outcomes_agg_box ({ transaction_fee } : outcomes_agg) : outcomes_agg' =
+    !\($'"crate::model::near::nearblocks::OutcomesAgg { transaction_fee: !transaction_fee }"')
+
+:= txn_box
+    ({ receipt_id predecessor_account_id receiver_account_id transaction_hash included_in_block_hash block_timestamp block actions actions_agg outcomes outcomes_agg logs } : txn)
+    : txn'
+    =
+    := block = block |> block_box
+    := actions = actions |> am'.map_base action_box
+    := actions_agg = actions_agg |> actions_agg_box
+    := outcomes = outcomes |> outcomes_box
+    := outcomes_agg = outcomes_agg |> outcomes_agg_box
+    := logs = logs |> am'.to_vec |> optionm'.some'
+    !\($'"crate::model::near::nearblocks::Txn { receipt_id: !receipt_id, predecessor_account_id: \
+        !predecessor_account_id, receiver_account_id: !receiver_account_id, transaction_hash: !transaction_hash, \
+        included_in_block_hash: !included_in_block_hash, block_timestamp: !block_timestamp, block: !block, actions: \
+        !actions, actions_agg: !actions_agg, outcomes: !outcomes, outcomes_agg: !outcomes_agg, logs: !logs }"')
+
+:= root_box ({ txns } : root) : root' =
+    := txns = txns |> am'.map_base txn_box
+    !\($'"crate::model::near::nearblocks::Root { txns: !txns }"')
+
+:= block_unbox (x : block') : block =
+    := block_height = !\\(x, $'"$0.block_height"')
+    { block_height }
+
+:= action_unbox (x : action') : action =
+    := action = !\\(x, $'"$0.action"')
+    := method = !\\(x, $'"$0.method"')
+    { action; method }
+
+:= actions_agg_unbox (x : actions_agg') : actions_agg =
+    := deposit = !\\(x, $'"$0.deposit"')
+    { deposit }
+
+:= outcomes_unbox (x : outcomes') : outcomes =
+    := status = !\\(x, $'"$0.status"')
+    { status }
+
+:= outcomes_agg_unbox (x : outcomes_agg') : outcomes_agg =
+    := transaction_fee = !\\(x, $'"$0.transaction_fee"')
+    { transaction_fee }
+
+:= txn_unbox (x : txn') : txn =
+    := receipt_id = !\\(x, $'"$0.receipt_id"')
+    := predecessor_account_id = !\\(x, $'"$0.predecessor_account_id"')
+    := receiver_account_id = !\\(x, $'"$0.receiver_account_id"')
+    := transaction_hash = !\\(x, $'"$0.transaction_hash"')
+    := included_in_block_hash = !\\(x, $'"$0.included_in_block_hash"')
+    := block_timestamp = !\\(x, $'"$0.block_timestamp"')
+    := block = !\\(x, $'"$0.block"') |> block_unbox
+    := actions =
+        !\\(x, $'"$0.actions"')
+        |> am'.vec_map' action_unbox
+        |> am'.from_vec
+        |> \ (array x : array _) => ~~ x
+    := actions_agg = !\\(x, $'"$0.actions_agg"') |> actions_agg_unbox
+    := outcomes = !\\(x, $'"$0.outcomes"') |> outcomes_unbox
+    := outcomes_agg = !\\(x, $'"$0.outcomes_agg"') |> outcomes_agg_unbox
+    := logs =
+        !\\(x, $'"$0.logs"')
+        |> optionm'.map (am'.from_vec >> \ (array x : array _) => x)
+        |> optionm'.default_value' (;[] |> am'.base)
+    {
+        receipt_id
+        predecessor_account_id
+        receiver_account_id
+        transaction_hash
+        included_in_block_hash
+        block_timestamp
+        block
+        actions
+        actions_agg
+        outcomes
+        outcomes_agg
+        logs
+    }
+
+:= root_unbox (x : root') : root =
+    := txns =
+        !\\(x, $'"$0.txns"')
+        |> am'.vec_map' txn_unbox
+        |> am'.from_vec
+        |> \ (array x : array _) => ~~ x
+    { txns }

@@ -1,0 +1,232 @@
+:< rust.rust_operators
+:< sm'_operators
+:< leptos
+
+:== account_transaction =
+    {
+        account : string;
+        i : convert.unativeint;
+        txn : heap model.near.nearblocks.txn
+    }
+
+:< leptos
+
+:= render (global_state : state.global_state) =
+    print_static "<use_transactions.render>"
+    leptos.log "use_transactions.render (1)"
+
+    := accounts = leptos.new_arc_memo \ () =>
+        := data =
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_get_untracked
+
+        data.accounts
+        |> am'.vec_map from_pair
+        |> am'.vec_filter fst
+        |> am'.vec_map snd
+        |> am'.vec_map sm'.from_std_string
+        |> leptos.log_format \ log => "use_transactions.render (2) / accounts new_arc_memo / result: " ++# log
+
+    := accounts_metadata_requests = leptos.new_arc_memo \ () =>
+        accounts
+        |> leptos.signal_get
+        |> am'.vec_map' \ account =>
+            := request : networking.request =
+                {
+                    url = "https://api3.nearblocks.io/v1/account/" ++# account
+                    request_type = networking.Get
+                    body = ""
+                    json = !-
+                    auto_refresh = !+
+                }
+            request
+        |> am'.from_vec
+        |> \ x => x : array _
+        |> leptos.log_format \ log => "use_transactions.render (3) / accounts_metadata new_arc_memo / result: " ++# log
+
+
+
+    := accounts_txns_requests = leptos.new_arc_memo \ () =>
+        := data =
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_get_untracked
+
+        accounts
+        |> leptos.signal_get
+        |> am'.vec_map' \ account =>
+            := per_page = 25i32
+            := requests =
+                ~~
+                    arraym.init data.transactions_pages id
+                    |> \ (array x) => x
+                    |> am'.to_vec
+                |> am'.vec_map' \ i =>
+                    := page = i + 1
+                    {
+                        url =
+                            "https://api3.nearblocks.io/v1/account/" ++# account
+                            ++# "/txns?&order=desc&page=" ++# sm'.obj_to_string page
+                            ++# "&per_page=" ++# sm'.obj_to_string per_page
+                        request_type = networking.Get
+                        body = ""
+                        json = !-
+                        auto_refresh = !+
+                    } : networking.request
+            account, requests
+        |> leptos.log_format \ log => "use_transactions.render (4) / accounts_requests new_arc_memo / result: " ++# log
+
+    := txns_requests = leptos.new_arc_memo \ () =>
+        accounts_txns_requests
+        |> leptos.signal_get
+        |> am'.vec_map' snd
+        |> am'.vec_collect id
+        |> leptos.log_format \ log => "use_transactions.render (5) / txns_requests new_arc_memo / result: " ++# log
+
+    := txns_accounts = leptos.new_arc_memo \ () =>
+        accounts_txns_requests
+        |> leptos.signal_get
+        |> am'.vec_map' \ account, x =>
+            x
+            |> am'.vec_map' \ _ => account
+        |> am'.vec_collect id
+        |> am'.from_vec
+        |> leptos.log_format \ log => "use_transactions.render (6) / urls_accounts new_arc_memo / result: " ++# log
+
+    := root :
+        leptos.arc_memo (am'.vec (
+            resultm.result'
+                (optionm'.option' model.near.nearblocks.root)
+                sm'.std_string
+            )
+        )
+        =
+        state_core.use_requests txns_requests model.near.nearblocks.root_unbox
+        |> leptos.log_format \ log => "use_transactions.render (7) / root func0 / result: " ++# log
+
+    := txns :
+        leptos.arc_memo (
+            resultm.result'
+                (optionm'.option' (array_base account_transaction))
+                sm'.std_string
+        )
+        =
+        leptos.new_arc_memo \ () =>
+            := root =
+                root
+                |> leptos.signal_get
+                |> am'.vec_map' resultm.unbox
+                |> am'.vec_map' (resultm.map optionm'.unbox)
+
+            := root_log = root |> sm'.format_ellipsis
+            leptos.log ("transactions.render (8) / txns move / root: " ++# root_log)
+
+            := loading =
+                root
+                |> am'.vec_filter \|
+                    | Ok (None) => !+
+                    | _ => !-
+                |> am'.from_vec
+                |> \ x => length x = length (root |> am'.from_vec : array _)
+
+            ? loading
+            ?> Ok None
+            |:
+                := urls_accounts = txns_accounts |> leptos.signal_get
+
+                root
+                |> am'.vec_mapi \ (i : i32) x =>
+                    := account = index urls_accounts i
+                    x
+                    |> resultm.map \ result =>
+                        result
+                        |> optionm.map \ result =>
+                            (array result.txns : array _)
+                            |> iter.enumerate
+                            |> \ (array x : array _) => x
+                            |> am'.to_vec
+                            |> am'.vec_map' \ i', x' => { account i = i |> convert.convert; txn = heap x' }
+                |> am'.vec_map' (resultm.map optionm'.box)
+                |> am'.vec_map' resultm.box
+                |> am'.vec_collect_option
+                |> resultm.map (am'.vec_sort_by_key \ { txn } => txn.block_timestamp)
+                |> resultm.map (am'.vec_reverse >> am'.from_vec)
+                |> resultm.map \ (array x : array _) => x |> Some
+            |> resultm.map optionm'.box
+            |> resultm.box
+            |> leptos.log_format \ log =>
+                "use_transactions.render (9) / txns new_arc_memo / result: " ++# log
+                ++# " / loading: " ++# sm'.obj_to_string loading
+
+    := rpc_requests :
+        leptos.arc_memo (
+            resultm.result'
+                (optionm'.option' (array_base networking.request))
+                sm'.std_string
+            )
+        =
+        leptos.new_arc_memo \ () =>
+            txns
+            |> leptos.signal_get
+            |> resultm.unbox
+            |> resultm.map optionm'.unbox
+            |> \|
+                | Ok (Some txns) =>
+                    txns
+                    |> am'.to_vec
+                    |> am'.vec_map' \ { txn } =>
+                        {
+                            jsonrpc = "2.0" |> sm'.to_std_string
+                            id = "dontcare" |> sm'.to_std_string
+                            method = "EXPERIMENTAL_tx_status" |> sm'.to_std_string
+                            params = ;[
+                                txn.transaction_hash
+                                "bowen" |> sm'.to_std_string
+                            ]
+                        }
+                        |> model.near.rpc.rpc_input_box
+                        |> sm'.serialize
+                        |> resultm.map_error' sm'.format'
+                        |> resultm.map'' sm'.from_std_string
+                        |> resultm.map'' \ body =>
+                            ({
+                                url = "https://rpc.mainnet.near.org"
+                                request_type = networking.Post
+                                body
+                                json = !+
+                                auto_refresh = !-
+                            } : networking.request)
+                    |> am'.vec_collect_into
+                    |> resultm.try'
+                    |> am'.from_vec
+                    |> \ (array x : array _) => x
+                    |> Some
+                    |> Ok
+                | Error error => Error error
+                | _ => Ok None
+                |> resultm.map optionm'.box
+                |> resultm.box
+            |> leptos.log_format \ log => "use_transactions.render (10) / rpc_requests new_arc_memo / result: " ++# log
+
+    := rpc_requests' = leptos.new_arc_memo \ () =>
+        rpc_requests
+        |> leptos.signal_get
+        |> resultm.unbox
+        |> resultm.map optionm'.unbox
+        |> \|
+            | Ok (Some x) => x
+            | _ => ;[] |> am'.base
+        |> am'.to_vec
+        |> leptos.log_format \ log => "use_transactions.render (11) / rpc_requests' new_arc_memo / result: " ++# log
+
+    := rpc_responses :
+        leptos.arc_memo (am'.vec (
+            resultm.result'
+                (optionm'.option' model.near.rpc.rpc_response)
+                sm'.std_string
+            )
+        )
+        =
+        state_core.use_requests rpc_requests' model.near.rpc.rpc_response_unbox
+        |> leptos.log_format \ log => "use_transactions.render (12) / rpc_response func0 / result: " ++# log
+
+    { accounts_txns_requests txns rpc_requests rpc_responses }

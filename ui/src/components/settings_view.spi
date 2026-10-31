@@ -1,0 +1,249 @@
+:< rust.rust_operators
+:< rust
+:< sm'_operators
+:< leptos
+
+:= global_state_log_render () : _ (_ leptos.pre) =
+    leptos.log "settings_view.global_state_log_render ()"
+
+    := global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
+
+    := global_state_json = leptos.new_arc_memo \ () =>
+        leptos.log "settings_view.global_state_log_render () / global_state_json memo"
+
+        := global_state = global_state |> rust.clone
+        := json : resultm.result' sm'.std_string sm'.std_string =
+            !\($'"serde_json::to_string_pretty(&!global_state).map_err(|x| x.to_string())"')
+        ?= json |> resultm.unbox ?|
+        | Ok json => json |> sm'.from_std_string
+        | Error error => "Error: " ++# sm'.from_std_string error
+
+    global_state_json |> leptos.signal_get |> ui.text_block_pre.render \ () => ""
+
+:= render () =
+    print_static "<settings_view.render>"
+    leptos.log "settings_view.render ()"
+
+    := global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
+
+    := accounts =
+        leptos.new_arc_memo \ () =>
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_get
+            |> \ data =>
+                data.accounts
+                |> am'.vec_mapi \ (i : i32) account =>
+                    new_pair
+                        i
+                        (leptos.create_signal account)
+
+    := edit_count, set_edit_count = leptos.create_signal 0i32
+
+    := accounts_data =
+        leptos.new_arc_memo \ () =>
+            := edit_count = edit_count |> leptos.signal_get
+            accounts
+            |> leptos.signal_get
+            |> am'.vec_map' from_pair
+            |> am'.vec_map' \ i, x =>
+                (edit_count, i), x |> fst
+
+    := accounts_count =
+        leptos.new_arc_memo \ () =>
+            accounts_data |> leptos.signal_get |> am'.from_vec |> length : i32
+
+    := delete_button index =
+        := on_click () =
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_update \ data =>
+                := data = !data
+                := accounts = accounts |> leptos.signal_get
+                heap { data ?|
+                    accounts =
+                        accounts
+                        |> am'.vec_retain (from_pair >> \ i, _ => (i = index) |> ~~ \ x => x |> not)
+                        |> am'.vec_map' (from_pair >> snd >> fst >> leptos.signal_get)
+                }
+
+            set_edit_count |> leptos.signal_update ((+) 1)
+
+        ui.icon_button.render
+            (svg.cross.render (\ () => "h-5 w-5") [])
+            \ () => " pr-[7px] pl-[5px]"
+            [
+                leptos.on_click on_click
+                "aria-label=\"Delete\""
+            ]
+
+    := add_button () =
+        := on_click () =
+            leptos.signal_get_untracked global_state.core_state .data
+            |> leptos.signal_update \ data =>
+                := data = !data
+                := accounts = accounts |> leptos.signal_get
+                := accounts_count = accounts |> am'.from_vec |> length
+                heap { data ?|
+                    accounts =
+                        accounts
+                        |> am'.vec_push (
+                            new_pair
+                                accounts_count
+                                (new_pair !- ("" |> sm'.to_std_string) |> leptos.create_signal)
+                        )
+                        |> am'.vec_map' (from_pair >> snd >> fst >> leptos.signal_get)
+                }
+            set_edit_count |> leptos.signal_update ((+) 1)
+
+
+        ui.icon_button.render
+            (svg.plus.render (\ () => "h-5 w-5") [])
+            \ () => " bg-gray-300 hover:bg-gray-200"
+            [
+                leptos.on_click on_click
+                "aria-label=\"Add\""
+            ]
+
+    :>[
+        ui.accordion.render
+            \ props => { props ?|
+                title = \ () => "Accounts"
+                summary_class = \ () => "py-[7px]"
+                right_element = add_button () |> leptos.element_to_view |> Some
+            }
+            \ () =>
+                leptos.div [
+                    "class=\"flex flex-1 flex-col p-[8px] gap-[8px]\""
+                ] \ () =>
+                    leptos.for
+                        accounts_data
+                        \ pair =>
+                            := (a, b), _ = pair
+                            new_pair a b
+                        \ pair =>
+                            := (_, i), account = pair
+                            leptos.div [
+                                "class=\"flex gap-[8px] [align-items:center]\""
+                            ] \ () =>
+                                := i = ~~ i
+                                :>[
+                                    ui.toggle.render
+                                        \ () => "account-" ++# sm'.obj_to_string i
+                                        \ () =>
+                                            account
+                                            |> leptos.signal_get
+                                            |> from_pair
+                                            |> fst
+                                        \ _ =>
+                                            := data =
+                                                leptos.signal_get_untracked global_state.core_state .data
+                                                |> leptos.signal_get_untracked
+                                                |> \ data => !data
+
+                                            leptos.signal_get_untracked global_state.core_state .data
+                                            |> leptos.signal_set (heap { data ?|
+                                                accounts =
+                                                    data.accounts
+                                                    |> am'.vec_mapi \ i' pair =>
+                                                        ? (i' = i) |> \ x => ~~ not x
+                                                        ?> pair
+                                                        |:
+                                                            := enabled', account' = pair |> from_pair
+                                                            new_pair (not enabled') account'
+                                            })
+                                    |> leptos.element_to_view
+
+                                    ui.text_input.render
+                                        \ () => "flex-1"
+                                        [
+                                        ]
+                                        \ () =>
+                                            account |> leptos.signal_get |> from_pair |> snd
+
+                                        \ value =>
+                                            := data =
+                                                leptos.signal_get_untracked global_state.core_state .data
+                                                |> leptos.signal_get_untracked
+                                                |> \ data => !data
+
+                                            leptos.signal_get_untracked global_state.core_state .data
+                                            |> leptos.signal_set (heap { data ?|
+                                                accounts =
+                                                    data.accounts
+                                                    |> am'.vec_mapi \ i' pair =>
+                                                        ? (i' = i) |> \ x => ~~ not x
+                                                        ?> pair
+                                                        |:
+                                                            := enabled', _ = pair |> from_pair
+                                                            new_pair enabled' value
+                                            })
+                                    |> leptos.element_to_view
+
+                                    ? accounts_count |> leptos.signal_get = 1i32
+                                    ?> [] |> leptos.view_list_to_view
+                                    |: delete_button i |> leptos.element_to_view
+                                ]
+                            |> leptos.element_to_fragment
+                    |> leptos.view_to_fragment
+                |> leptos.element_to_fragment
+        |> leptos.element_to_view
+
+        ui.accordion.render
+            \ props => { props ?|
+                title = \ () => "View"
+                summary_class = \ () => "py-[7px]"
+            }
+            \ () =>
+                leptos.div [
+                    "class=\"flex flex-1 flex-col p-[11px] gap-[11px]\""
+                ] \ () =>
+                    :>[
+                        ui.grid_pair.render
+                            \ props => { props ?|
+                                class = \ () => "items-center p-0"
+                            }
+                            \ () => "Dark Mode" |> leptos.text_fragment
+                            \ () =>
+                                ui.toggle.render
+                                    \ () => "dark-mode"
+                                    \ () =>
+                                        leptos.signal_get_untracked global_state.core_state .dark_mode
+                                        |> leptos.signal_get
+                                    \ _ =>
+                                        leptos.signal_get_untracked global_state.core_state .dark_mode
+                                        |> leptos.signal_update not
+                                    |> leptos.element_to_fragment
+
+                        ui.grid_pair.render
+                            \ props => { props ?|
+                                class = \ () => "items-center p-0"
+                            }
+                            \ () => "Debug" |> leptos.text_fragment
+                            \ () =>
+                                ui.toggle.render
+                                    \ () => "debug"
+                                    \ () =>
+                                        leptos.signal_get_untracked global_state.core_state .debug
+                                        |> leptos.signal_get
+                                    \ _ =>
+                                        leptos.signal_get_untracked global_state.core_state .debug
+                                        |> leptos.signal_update not
+                                    |> leptos.element_to_fragment
+                    ]
+                |> leptos.element_to_fragment
+        |> leptos.element_to_view
+
+        ? leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get ?>
+            ui.accordion.render
+                \ props => { props ?|
+                    title = \ () => "Debug"
+                    summary_class = \ () => "py-[7px]"
+                }
+                \ () =>
+                    ui.grid_pair.render
+                        id
+                        \ () => "Global State" |> leptos.text_fragment
+                        \ () => global_state_log_render () |> leptos.element_to_fragment
+                    |> leptos.element_to_fragment
+            |> leptos.element_to_view
+        |: [] |> leptos.view_list_to_view
+    ]

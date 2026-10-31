@@ -1,0 +1,156 @@
+:< rust.rust_operators
+:< sm'_operators
+:< leptos
+
+:= render () =
+    print_static "<transactions_view.render>"
+    leptos.log "transactions_view.render (1)"
+
+    := global_state : state.global_state = leptos.use_context () |> optionm'.unwrap
+
+    := { accounts_txns_requests txns } = hooks.use_transactions.render global_state
+
+    := (settings_visible, set_settings_visible) = leptos.create_signal !-
+
+    := settings_button =
+        := on_click () =
+            set_settings_visible
+            |> leptos.signal_update not
+
+        ui.icon_button.render
+            (svg.settings.render (\ () => "h-5 w-5") [])
+            \ () =>
+                := class =
+                    ? settings_visible |> leptos.signal_get
+                    ?> ""
+                    |: "bg-gray-300 hover:bg-gray-200"
+                class ++# " hover:bg-gray-200"
+            [
+                leptos.on_click on_click
+                "aria-label=\"Settings\""
+            ]
+        |> leptos.element_to_view
+
+    :>[
+        ui.accordion.render
+            \ props => { props ?|
+                title = \ () => "Transactions"
+                summary_class = \ () => "py-[7px]"
+                right_element = Some settings_button
+            }
+            \ () => :>[
+                leptos.reactive_view \ () =>
+                    ? settings_visible |> leptos.signal_get
+                    ?>
+                        leptos.div [
+                            "class=\"px-[12px] py-[10px]\""
+                        ] \ () =>
+                            :>[
+                                ui.divider.render \ () =>
+                                    "Settings" |> leptos.text_fragment
+                                |> leptos.element_to_view
+
+                                ui.grid_pair.render
+                                    \ props => { props ?|
+                                        class = \ () => "items-center"
+                                    }
+                                    \ () => "Table View" |> leptos.text_fragment
+                                    \ () =>
+                                        ui.toggle.render
+                                            \ () => "table-view"
+                                            \ () =>
+                                                leptos.signal_get_untracked global_state.core_state .data
+                                                |> leptos.signal_get
+                                                |> \ data => data.transactions_view_type = state.Table
+                                            \ _ =>
+                                                leptos.signal_get_untracked global_state.core_state .data
+                                                |> leptos.signal_update \ data =>
+                                                    := data = !data
+                                                    heap {
+                                                        data ?|
+                                                            transactions_view_type =
+                                                                ? data.transactions_view_type = state.Table
+                                                                ?> state.Details
+                                                                |: state.Table
+                                                    }
+                                            |> leptos.element_to_fragment
+                                |> leptos.element_to_view
+                            ]
+                        |> leptos.element_to_view
+                    |: [] |> leptos.view_list_to_view
+
+                leptos.reactive_view \ () =>
+                    ?= accounts_txns_requests |> leptos.signal_get |> am'.from_vec ?|
+                    | (array ;[] : array _) =>
+                        "No account selected"
+                        |> ui.error_label.render
+                        |> leptos.element_to_view
+                    | _ =>
+                        txns
+                        |> leptos.signal_get
+                        |> resultm.unbox
+                        |> resultm.map optionm'.unbox
+                        |> \|
+                            | Ok (Some transactions) =>
+                                ?=
+                                    leptos.signal_get_untracked global_state.core_state .data
+                                    |> leptos.signal_get
+                                    |> \ data => data.transactions_view_type = state.Details
+                                ?|
+                                | !+ =>
+                                    leptos.div [
+                                        $'"class=\\\"grid flex-1 py-[10px] px-[12px] [gap:15px] \
+                                            sm:[grid-template-columns:repeat(auto-fill,minmax(500px,1fr))]\\\""'
+                                    ] \ () =>
+                                        transactions
+                                        |> am'.to_vec
+                                        |> am'.vec_map \ { account i txn } =>
+                                            !txn
+                                            |> transaction.render account (i |> convert.i64)
+                                            |> leptos.element_to_view
+                                        |> leptos.vec_to_view
+                                        |> leptos.view_to_fragment
+                                    |> leptos.element_to_view
+
+                                | !- =>
+                                    transactions
+                                    |> am'.to_vec
+                                    |> am'.vec_map (transaction.tr_render >> leptos.element_to_view)
+                                    |> leptos.vec_to_view
+                                    |> leptos.view_to_fragment
+                                    |> ui.table.render (
+                                        transaction.tr_head_render transactions
+                                        |> leptos.element_to_fragment
+                                    )
+                                    |> leptos.element_to_view
+                            | Error error =>
+                                error
+                                |> sm'.from_std_string
+                                |> ui.error_label.render
+                                |> leptos.element_to_view
+                            | _ =>
+                                ui.loading_panel.render ()
+                                |> leptos.element_to_view
+            ]
+        |> leptos.element_to_view
+
+        ? leptos.signal_get_untracked global_state.core_state .debug |> leptos.signal_get ?>
+            ui.accordion.render
+                \ props => { props ?|
+                    title = \ () => "Debug"
+                    summary_class = \ () => "py-[7px]"
+                }
+                \ () => :>[
+                    ui.grid_pair.render
+                        id
+                        \ () => "Transactions" |> leptos.text_fragment
+                        \ () =>
+                            txns
+                            |> leptos.signal_get
+                            |> sm'.format_pretty
+                            |> ui.text_block_pre.render \ () => "[max-height:70vh]"
+                            |> leptos.element_to_fragment
+                ]
+            |> leptos.element_to_view
+        |: [] |> leptos.view_list_to_view
+    ]

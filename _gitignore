@@ -1,0 +1,15 @@
+.vscode
+playwright-report/
+playwright-videos/
+test-results/
+node_modules/
+__pycache__/
+dist/
+deps/
+artifacts/
+bin/
+obj/
+target/
+dist_extension/
+tmp/
+.history/

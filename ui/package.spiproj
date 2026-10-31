@@ -1,0 +1,24 @@
+packageDir: ../deps/polyglot/deps/spiral/lib
+packages:
+    |core-
+    spiral-
+modules:
+    src/
+        model/
+            near/
+                rpc
+                nearblocks
+        state
+        hooks/
+            use_transactions
+        components/
+            settings_view
+            transaction
+            transactions_view
+            lists_view
+            dice_view
+            menu_tabs
+            content
+            home
+            app
+        dice_ui

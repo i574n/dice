@@ -1,0 +1,33 @@
+cargo-features = ["profile-rustflags", "edition2024"]
+
+[workspace]
+resolver = "2"
+members = [
+    "lib",
+    "contract",
+    "contract/tests",
+    "ui"
+]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2024"
+license-file = "LICENSE"
+repository = "https://github.com/i574n/dice"
+
+[workspace.dependencies]
+chrono = ">=0.4,<1"
+regex = "1.10"
+futures = ">=0.3,<1"
+
+[profile.dev]
+incremental = true
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
+rustflags = ["-C", "link-arg=-s"]

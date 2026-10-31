@@ -1,0 +1,40 @@
+:< rust.rust_operators
+:< rust
+:< leptos
+:< sm'_operators
+
+:= run_main () =
+    leptos.log "main"
+
+    !\($'"let _ = console_log::init_with_level(log::Level::Debug)"')
+    !\($'"console_error_panic_hook::set_once()"')
+
+    := body : optionm'.option' wasm.html_element = !\($'"leptos::prelude::document().body()"')
+    := body = body |> optionm'.unbox
+    := body_log = #?*body
+
+    leptos.log ("main / mount_to_body / body: " ++# body_log)
+
+    :~ mount () =
+        leptos.mount_to_body components.app.render
+
+    ?= body ?|
+    | Some body =>
+        body |> wasm.set_inner_html ""
+
+        mount ()
+    | _ =>
+        := fn : rust.box (rust.dyn' rust.fn_unit) = rust.box_fn mount
+        := fn_closure = fn |> wasm.closure_wrap
+        := fn = fn_closure |> wasm.closure_as_ref |> wasm.unchecked_ref
+
+        !\($'"leptos::prelude::document().add_event_listener_with_callback(\\\"DOMContentLoaded\\\", !fn).unwrap()"')
+
+        fn_closure |> wasm.closure_forget
+
+    0i32
+
+:= main () =
+    print_static "<dice_ui>"
+    run_main () |> ignore
+    print_static "</dice_ui>"

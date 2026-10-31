@@ -1,0 +1,101 @@
+:< leptos
+:< sm'_operators
+
+:| dice =
+    | Dice'
+
+:| menu_tab =
+    | Blank
+    | Dice : dice
+    | Lists
+    | Transactions
+    | Settings
+
+:= menu_tab_label = \|
+    | Blank => ""
+    | Dice _ => "Dice"
+    | Lists => "Lists"
+    | Transactions => "Transactions"
+    | Settings => "Settings"
+
+:= menu_tab_id = \|
+    | Blank => ""
+    | Dice _ => "dice"
+    | Lists => "lists"
+    | Transactions => "transactions"
+    | Settings => "settings"
+
+:= tabs () =
+    [
+        Dice Dice'
+        Lists
+        Transactions
+        Settings
+    ]
+
+:= render tab =
+    print_static "<menu_tabs.render>"
+    leptos.log "menu_tabs.render ()"
+
+    :~ url = leptos.use_url ()
+    :>[
+        leptos.div [
+            "class=\"hidden\""
+        ] \ () =>
+            :>[
+                leptos.label [
+                    "for=\"Tab\""
+                    "class=\"sr-only\""
+                ] \ () =>
+                    "Tab" |> leptos.text_fragment
+                |> leptos.element_to_view
+
+                leptos.select [
+                    "id=\"Tab\""
+                    "class=\"w-full rounded-md border-gray-200\""
+                ] \ () =>
+                    tabs ()
+                    |> listm.map \ tab' =>
+                        leptos.option'
+                            \ () => (tab |> leptos.signal_get) = tab'
+                            (tab' |> menu_tab_label)
+                        |> leptos.element_to_view
+                    |> leptos.view_list_to_fragment
+                |> leptos.element_to_view
+            ]
+
+        leptos.div [
+            "class=\"flex flex-1 [overflow-x:auto] [overflow-y:hidden]\""
+        ] \ () =>
+            leptos.div [
+                "class=\"flex flex-1 border-t border-gray-200\""
+            ] \ () =>
+                leptos.nav [
+                    $'"class=\\\"-mb-px flex [flex-flow:wrap] [flex-grow:1] [flex-shrink:0] gap-[3px] \
+                        [overflow-wrap:anywhere]\\\""'
+                    "aria-label=\"Tabs\""
+                ] \ () =>
+                    tabs ()
+                    |> listm.map \ tab' =>
+                        := id = tab' |> menu_tab_id
+                        := class = \ () => "h-5 w-5"
+                        ui.tab_link.render {
+                            href =
+                                \ () =>
+                                    := url = url |> leptos.signal_get
+                                    url ++# "#/" ++# id
+                            icon =
+                                ?= tab' ?|
+                                | Dice _ => svg.dice.render class [] |> leptos.element_to_fragment
+                                | Lists => svg.lists.render class [] |> leptos.element_to_fragment
+                                | Transactions => svg.transactions.render class [] |> leptos.element_to_fragment
+                                | Settings => svg.settings.render class [] |> leptos.element_to_fragment
+                                | _ => [] |> leptos.view_list_to_fragment
+                            label = tab' |> menu_tab_label
+                            select = \ () => (tab |> leptos.signal_get) = tab'
+                        }
+                        |> leptos.element_to_view
+                    |> leptos.view_list_to_fragment
+                |> leptos.element_to_fragment
+            |> leptos.element_to_fragment
+    ]
