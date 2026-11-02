@@ -2,10 +2,12 @@
 
 <!-- livebook:{"break_markdown":true} -->
 
-`#!import ../../../polyglot/lib/fsharp/Notebooks.livemd`
+`#!import ../../../spiral/lib/spiral/spiral_runtime.fs`
 
 ```fsharp
 ///- --test
+
+Formatter.ListExpansionLimit <- 100
 
 #r "nuget: Expecto, 11.0.0-alpha8"
 
@@ -34,15 +36,10 @@ let inline __throwsC log expected actual = __expect Expecto.Expect.throwsC log e
 let inline _throwsC expected actual = __throwsC true expected actual
 ```
 
-`#!import ../../../polyglot/lib/fsharp/Common.fs`
-
 ```fsharp
 #if !INTERACTIVE
-open Polyglot
 open Lib
 #endif
-
-open Common
 ```
 
 ## sixthPowerSequence
@@ -551,6 +548,6 @@ Expecto.Tests.runTestsWithCLIArgs [] [||] properties
 ```fsharp
 let main args =
     let result = rollProgressively (Some (printfn "%s")) rollDice true (System.Int32.MaxValue / 10)
-    trace Debug (fun () -> $"main / result: {result}") _locals
+    SpiralTrace.trace SpiralTrace.TraceLevel.Debug (fun () -> $"main / result: {result}") (fun () -> "")
     0
 ```

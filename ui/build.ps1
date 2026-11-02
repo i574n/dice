@@ -4,8 +4,8 @@ param(
 )
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
-. ../deps/polyglot/scripts/core.ps1
-. ../deps/polyglot/deps/spiral/lib/spiral/lib.ps1
+. ../deps/spiral/scripts/core.ps1
+. ../deps/spiral/lib/spiral/lib.ps1
 
 
 $projectName = "dice_ui"

@@ -2,7 +2,7 @@
   "name": "dice_ui",
   "version": "0.0.1",
   "manifest_version": 3,
-  "description": "polyglot",
+  "description": "dice",
   "permissions": ["debugger", "declarativeNetRequest", "notifications", "offscreen", "storage", "tabs"],
   "host_permissions": ["*://*/*"],
   "content_security_policy": {

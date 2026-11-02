@@ -7,8 +7,8 @@ param(
 )
 $ScriptDir | Set-Location
 $ErrorActionPreference = "Stop"
-. ../deps/polyglot/scripts/core.ps1
-. ../deps/polyglot/deps/spiral/lib/spiral/lib.ps1
+. ../deps/spiral/scripts/core.ps1
+. ../deps/spiral/lib/spiral/lib.ps1
 
 $ResolvedScriptDir = ResolveLink $ScriptDir
 $ResolvedScriptDir | Set-Location
@@ -17,7 +17,7 @@ Write-Output "dice/lib/build.ps1 / ScriptDir: $ScriptDir / ResolvedScriptDir: $R
 
 $projectName = "dice"
 
-$livebook = Join-Path $ResolvedScriptDir "../deps/polyglot/deps/spiral/apps/cells/spi/run_notebook.ps1"
+$livebook = Join-Path $ResolvedScriptDir "../deps/spiral/apps/cells/spi/run_notebook.ps1"
 $spi = Join-Path $ResolvedScriptDir "$projectName.spi"
 $ipynb = Join-Path $ResolvedScriptDir "$projectName.spi.ipynb"
 if (!$fast -and !$SkipNotebook) {

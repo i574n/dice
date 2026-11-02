@@ -5,13 +5,13 @@ param(
 )
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
-. ../../deps/polyglot/scripts/core.ps1
-. ../../deps/polyglot/deps/spiral/lib/spiral/lib.ps1
+. ../../deps/spiral/scripts/core.ps1
+. ../../deps/spiral/lib/spiral/lib.ps1
 
 
 $projectName = "dice_fsharp"
 
-$livebook = Join-Path $ScriptDir "../../deps/polyglot/deps/spiral/apps/cells/spi/run_notebook.ps1"
+$livebook = Join-Path $ScriptDir "../../deps/spiral/apps/cells/spi/run_notebook.ps1"
 $notebook = Join-Path $ScriptDir "$projectName.livemd"
 if (!$fast -and !$SkipNotebook) {
     $ipynb = Join-Path $ScriptDir "$projectName.livemd.ipynb"
@@ -21,7 +21,7 @@ if (!$fast -and !$SkipNotebook) {
 { pwsh -NoProfile -File $livebook --path $notebook --no-spi --fs-path "$ScriptDir/$projectName.fs" --export-only } | Invoke-Block
 
 $runtime = $fast -or $env:CI ? ($IsWindows ? "win-x64" : "linux-x64") : $null
-$modules = @(GetFsharpRuntimePaths) + "../../deps/polyglot/lib/fsharp/Common.fs"
+$modules = @(GetFsharpRuntimePaths)
 if (!(PublishFsharp "$projectName.fs" -Modules $modules -Runtime $runtime)) {
     throw "FSHARP-FAILED dice/lib/fsharp / dotnet publish"
 }

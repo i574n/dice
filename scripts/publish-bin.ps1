@@ -3,7 +3,7 @@ param(
 )
 Set-Location $ScriptDir
 $ErrorActionPreference = "Stop"
-. ../../deps/polyglot/scripts/core.ps1
+. ../../deps/spiral/scripts/core.ps1
 
 
 Set-Location ..
@@ -35,4 +35,4 @@ if ($Error.Count -gt 0) {
     exit 1
 }
 
-{ & (pwsh ../deps/polyglot/deps/spiral/scripts/dir-tree-html.ps1 | Select-Object -Last 1) --dir . --html index.html } | Invoke-Block
+{ & (pwsh ../deps/spiral/scripts/dir-tree-html.ps1 | Select-Object -Last 1) --dir . --html index.html } | Invoke-Block
