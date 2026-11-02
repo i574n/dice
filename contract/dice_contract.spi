@@ -1,7 +1,6 @@
 ///- --package ../dice
 
-:< rust
-:< rust.rust_operators
+:< rust_operators
 :< sm'_operators
 
 test dice_contract static =

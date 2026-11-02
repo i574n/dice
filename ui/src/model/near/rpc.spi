@@ -1,4 +1,4 @@
-:< rust.rust_operators
+:< rust_operators
 :< sm'_operators
 
 
@@ -89,7 +89,7 @@
         logs : array_base sm'.std_string
         metadata : metadata
         receipt_ids : array_base sm'.std_string
-        status : mapm.hash_map sm'.std_string sm'.std_string
+        status : map.hash_map sm'.std_string sm'.std_string
         tokens_burnt : optionm'.option' sm'.std_string
     }
 
@@ -109,7 +109,7 @@
 
 :== action_detail =
     {
-        actions : array_base (mapm.hash_map sm'.std_string transfer_detail)
+        actions : array_base (map.hash_map sm'.std_string transfer_detail)
         gas_price : sm'.std_string
         input_data_ids : array_base sm'.std_string
         output_data_receivers : array_base sm'.std_string
@@ -313,7 +313,7 @@
 := action_detail_unbox (x : action_detail') : action_detail =
     := actions =
         !\\(x, $'"$0.actions"')
-        |> am'.vec_map' (mapm.map' transfer_detail_unbox)
+        |> am'.vec_map' (map.map' transfer_detail_unbox)
         |> am'.from_vec
         |> \ (array x : array _) => x
     := gas_price = !\\(x, $'"$0.gas_price"')

@@ -1,4 +1,4 @@
-:< rust.rust_operators
+:< rust_operators
 
 
 :! block' = $'crate::model::near::nearblocks::Block'
