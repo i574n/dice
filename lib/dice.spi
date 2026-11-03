@@ -90,6 +90,27 @@ test roll_within_bounds_3 =
     roll_within_bounds 2000i32 [ 4; 1; 1; 2; 3 ]
     |> _assert_eq None
 
+:~ ^ faces (from : u8) : list u8 = ? from > 6 ?> [] |: from :: faces (from + 1)
+
+:~ ^ pair_results (firsts : list u8) (acc : list (option i32)) : list (option i32) =
+    ?= firsts ?|
+    | a :: rest => pair_results rest (listm.fold (\ acc b => roll_within_bounds 20i32 [ a; b ] :: acc) acc (faces 1))
+    | [] => acc
+
+:~ ^ occurrences (v : i32) (results : list (option i32)) (n : i32) : i32 =
+    ?= results ?|
+    | Some x :: rest => occurrences v rest (? x = v ?> n + 1 |: n)
+    | None :: rest => occurrences v rest n
+    | [] => n
+
+:~ ^ values_seen_once (v : i32) (results : list (option i32)) : bool =
+    ? v > 20i32 ?> !+ |: occurrences v results 0 = 1 && values_seen_once (v + 1) results
+
+test every_two_roll_sequence_maps_to_one_value_so_accepted_rolls_are_uniform =
+    := results = pair_results (faces 1) []
+    := rejected = listm.fold (\ n r => ?= r ?| Some _ => n | None => n + 1i32) 0i32 results
+    (values_seen_once 1i32 results, rejected) |> _assert_eq (!+, 16i32)
+
 /// ## calculate_dice_count
 := calculate_dice_count \* a {number} b {number}. (max : a) : b =
     := ^ body \* t {number}. (n : t) (p : a) : t =
