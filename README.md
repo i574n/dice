@@ -16,7 +16,7 @@ This is fair because the map from roll sequences to results is one-to-one. Every
 
 | Folder | What it is |
 | --- | --- |
-| `lib/` | the dice library in Spiral (`dice.spi`), plus an F# rendition in `lib/fsharp` |
+| `lib/` | the dice library in Spiral (`dice.spi`) |
 | `contract/` | the NEAR smart contract, compiled from `dice_contract.spi` to Rust and WASM (`dist/dice.wasm`); `contract/tests` runs it in the NEAR sandbox |
 | `ui/` | the rolls-history web UI, Rust compiled to WASM with trunk, with end-to-end tests in `ui/e2e` (Playwright) |
 

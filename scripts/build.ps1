@@ -17,8 +17,6 @@ if ($nearSandboxRunsHere) {
     { pwsh ../contract/tests/build.ps1 } | Invoke-Block -Retries 3
 }
 
-{ pwsh ../lib/fsharp/build.ps1 } | Invoke-Block
-
 { pwsh ../ui/build.ps1 -fast $($fast ?? '') } | Invoke-Block
 
 { pwsh ../scripts/outdated.ps1 } | Invoke-Block
