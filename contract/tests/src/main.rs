@@ -12,6 +12,7 @@ const MAX_RECEIPT_LOGS: usize = 100;
 const MAX_RECEIPT_LOG_BYTES: usize = 16 * 1024;
 const SEED_BYTES_PAST_STORE_CAPACITY: u8 = 150;
 const LARGEST_DICE_BOUND: u64 = 6u64.pow(24);
+const GENERATE_GAS_CEILING_TGAS: u64 = 3;
 const BOUNDS_THAT_TRACE_THE_MOST: [u64; 6] = [
     LARGEST_DICE_BOUND,
     (1 << 62) + 1,
@@ -43,7 +44,7 @@ fn print_usd(result: ExecutionFinalResult) {
         );
         println!(
             "  outcome_tokens_burnt_usd: {:#?}",
-            tokens_to_usd(outcome.tokens_burnt.as_near())
+            tokens_to_usd(outcome.tokens_burnt.as_yoctonear())
         );
     });
 }
@@ -181,6 +182,11 @@ async fn generate_random_number_within_bounds_that_trace_the_most(contract: &Con
             result.total_gas_burnt.as_gas()
         );
         assert_receipts_within_log_limits(&format!("generate_random_number max = {max}"), &result);
+        assert!(
+            result.total_gas_burnt.as_gas() <= Gas::from_tgas(GENERATE_GAS_CEILING_TGAS).as_gas(),
+            "generate_random_number max = {max} burnt {} gas, above {GENERATE_GAS_CEILING_TGAS} Tgas",
+            result.total_gas_burnt.as_gas()
+        );
         match result.into_result() {
             Ok(result) => match result.json::<u64>().ok() {
                 Some(n) => {
@@ -220,6 +226,24 @@ async fn generate_random_number_rejects_bounds_above_the_largest(contract: &Cont
     Ok(())
 }
 
+async fn generate_random_number_rejects_zero(contract: &Contract) -> anyhow::Result<()> {
+    let result = generate_random_number(contract, "key", 0).await?;
+    println!(
+        "\n\ngenerate_random_number(contract, max = 0): success {}, gas {}",
+        result.is_success(),
+        result.total_gas_burnt.as_gas()
+    );
+    match result.into_result() {
+        Ok(result) => panic!("generate_random_number max = 0 must fail: {result:#?}"),
+        Err(e) => {
+            let e = format!("{e:?}");
+            println!("rejected: {e}");
+            assert!(e.contains("max must be at least 1"), "generate_random_number max = 0: unexpected failure {e}");
+        }
+    }
+    Ok(())
+}
+
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     let contract_path = std::env::var("DICE_WASM").unwrap_or_else(|_| {
@@ -242,6 +266,7 @@ async fn main() -> anyhow::Result<()> {
     contribute_seed_borsh(&contract).await?;
     generate_random_number_within_bounds_that_trace_the_most(&contract).await?;
     generate_random_number_rejects_bounds_above_the_largest(&contract).await?;
+    generate_random_number_rejects_zero(&contract).await?;
 
     println!("\n\ndice contract tests: all passed");
     Ok(())
