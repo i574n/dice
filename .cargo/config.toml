@@ -1,2 +1,5 @@
 [target.'cfg(target_os = "linux")']
 rustflags = ["--cfg", "rustix_use_libc"]
+
+[target.wasm32-unknown-unknown]
+rustflags = ["--cfg", "near"]
