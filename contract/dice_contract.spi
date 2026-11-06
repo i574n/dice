@@ -268,3 +268,19 @@ test roll_within_bounds_2 =
     ? is_rust ()
     ?> main_native ()
     |: ()
+
+///> rust -d "near-sdk={version='=5.11.0',features=['unit-testing']}" -d near-token
+test generate_random_number_is_deterministic_under_a_mocked_context =
+    := mocked () : () =
+        $'near_sdk::testing_env!!(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; \
+            32]).block_timestamp(1_700_000_000_000_000_000).build())' : ()
+    := draw () : u64 =
+        mocked ()
+        2000
+        |> generate_random_number
+            ("" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut)
+            ("" |> sm'.to_std_string)
+            ("" |> sm'.to_std_string)
+    := first = draw ()
+    := second = draw ()
+    (first = second, first > 0) |> _assert_eq (!+, !+)

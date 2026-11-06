@@ -16,7 +16,7 @@ $livebook = Join-Path $ScriptDir "../deps/spiral/apps/cells/spi/run_notebook.ps1
 $spi = Join-Path $ScriptDir "$projectName.spi"
 $ipynb = Join-Path $ScriptDir "$projectName.spi.ipynb"
 if (!$fast -and !$SkipNotebook) {
-    { pwsh -NoProfile -File $livebook --path $spi --output-path $ipynb } | Invoke-Block -Retries $($fast -or !$env:CI ? 1 : 3)
+    { pwsh -NoProfile -File $livebook --path $spi --livemd --output-path $ipynb } | Invoke-Block -Retries $($fast -or !$env:CI ? 1 : 3)
 }
 
 $targetDir = GetTargetDir $projectName

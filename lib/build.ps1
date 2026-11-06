@@ -21,7 +21,7 @@ $livebook = Join-Path $ResolvedScriptDir "../deps/spiral/apps/cells/spi/run_note
 $spi = Join-Path $ResolvedScriptDir "$projectName.spi"
 $ipynb = Join-Path $ResolvedScriptDir "$projectName.spi.ipynb"
 if (!$fast -and !$SkipNotebook) {
-    { pwsh -NoProfile -File $livebook --path $spi --output-path $ipynb } | Invoke-Block -Retries 3
+    { pwsh -NoProfile -File $livebook --path $spi --livemd --output-path $ipynb } | Invoke-Block -Retries 3
 }
 
 if (!(BuildSpiral "$projectName.spi" "$projectName.fsx" "dice/lib" -Backend Fsharp)) {
