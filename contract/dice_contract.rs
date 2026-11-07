@@ -227,17 +227,22 @@ enum US4 {
 }
 #[derive(Clone)]
 enum US6 {
-    US6_One,
-    US6_Two,
-    US6_Three,
-    US6_Four,
-    US6_Five,
-    US6_Six,
+    US6_Ok(u64),
+    US6_Error(u64, u64),
 }
 #[derive(Clone)]
 enum US7 {
-    US7_Some(US6),
-    US7_None,
+    US7_One,
+    US7_Two,
+    US7_Three,
+    US7_Four,
+    US7_Five,
+    US7_Six,
+}
+#[derive(Clone)]
+enum US8 {
+    US8_Some(US7),
+    US8_None,
 }
 #[derive(Clone)]
 enum UH0 {
@@ -247,27 +252,27 @@ enum UH0 {
 #[derive(Clone)]
 enum UH1 {
     UH1_Nil,
-    UH1_Cons(US6, Rc<UH1>),
-}
-#[derive(Clone)]
-enum US8 {
-    US8_Some(Rc<UH1>),
-    US8_None,
+    UH1_Cons(US7, Rc<UH1>),
 }
 #[derive(Clone)]
 enum US9 {
-    US9_Some(u64),
+    US9_Some(Rc<UH1>),
     US9_None,
 }
-impl US6 {
+#[derive(Clone)]
+enum US10 {
+    US10_Some(u64),
+    US10_None,
+}
+impl US7 {
     fn tag(&self) -> i32 {
         match self {
-            US6::US6_One => 0,
-            US6::US6_Two => 1,
-            US6::US6_Three => 2,
-            US6::US6_Four => 3,
-            US6::US6_Five => 4,
-            US6::US6_Six => 5,
+            US7::US7_One => 0,
+            US7::US7_Two => 1,
+            US7::US7_Three => 2,
+            US7::US7_Four => 3,
+            US7::US7_Five => 4,
+            US7::US7_Six => 5,
         }
     }
 }
@@ -815,7 +820,7 @@ fn go_13(mut v0: u64, mut v1: i32, mut v2: u64) -> i32 {
         }
     }
 }
-fn draw_hashed_16(mut v0: Rc<RefCell<Vec<u8>>>, mut v1: i32) -> (US6, Rc<RefCell<Vec<u8>>>, i32) {
+fn draw_hashed_15(mut v0: Rc<RefCell<Vec<u8>>>, mut v1: i32) -> (US7, Rc<RefCell<Vec<u8>>>, i32) {
     loop {
         let mut v2: i32 = (v0.clone().borrow().len() as i32);
         let v3: bool = v1 >= v2;
@@ -827,47 +832,47 @@ fn draw_hashed_16(mut v0: Rc<RefCell<Vec<u8>>>, mut v1: i32) -> (US6, Rc<RefCell
         } else {
             let mut v9: u8 = v0.borrow()[v1 as usize];
             let mut v10: bool = v9 < 252u8;
-            let v31: US7 = if v10 {
+            let v31: US8 = if v10 {
                 let v11: u8 = v9.wrapping_rem(6u8);
                 let mut v12: i32 = (v11 as i32);
                 let v13: bool = 0i32 == v12;
-                let v28: US6 = if v13 {
-                    US6::US6_One
+                let v28: US7 = if v13 {
+                    US7::US7_One
                 } else {
                     let mut v15: bool = 1i32 == v12;
                     if v15 {
-                        US6::US6_Two
+                        US7::US7_Two
                     } else {
                         let v17: bool = 2i32 == v12;
                         if v17 {
-                            US6::US6_Three
+                            US7::US7_Three
                         } else {
                             let v19: bool = 3i32 == v12;
                             if v19 {
-                                US6::US6_Four
+                                US7::US7_Four
                             } else {
                                 let v21: bool = 4i32 == v12;
                                 if v21 {
-                                    US6::US6_Five
+                                    US7::US7_Five
                                 } else {
-                                    US6::US6_Six
+                                    US7::US7_Six
                                 }
                             }
                         }
                     }
                 };
-                US7::US7_Some(v28)
+                US8::US8_Some(v28)
             } else {
-                US7::US7_None
+                US8::US8_None
             };
             match v31 {
-                US7::US7_None => {
+                US8::US8_None => {
                     let v34: i32 = v1.wrapping_add(1i32);
                     v1 = v34;
                     continue;
                 }
-                US7::US7_Some(v32) => {
-                    let v32: US6 = v32;
+                US8::US8_Some(v32) => {
+                    let v32: US7 = v32;
                     let v33: i32 = v1.wrapping_add(1i32);
                     return (v32, v0, v33);
                 }
@@ -875,40 +880,49 @@ fn draw_hashed_16(mut v0: Rc<RefCell<Vec<u8>>>, mut v1: i32) -> (US6, Rc<RefCell
         }
     }
 }
-fn read_15(mut v0: i32, mut v1: u64, mut v2: u64, mut v3: Rc<RefCell<Vec<u8>>>, mut v4: i32) -> (u64, Rc<RefCell<Vec<u8>>>, i32) {
+fn roll_recycled_14(mut v0: u64, mut v1: u64, mut v2: u64, mut v3: Rc<RefCell<Vec<u8>>>, mut v4: i32) -> (u64, Rc<RefCell<Vec<u8>>>, i32) {
     loop {
-        let v5: bool = v0 <= 0i32;
-        if v5 {
-            return (v2, v3, v4);
+        let v5: u64 = v2.wrapping_div(v0);
+        let v6: u64 = v5.wrapping_mul(v0);
+        let v7: bool = v1 < v6;
+        let v14: US6 = if v7 {
+            let mut v8: u64 = v1.wrapping_rem(v0);
+            let mut v9: u64 = v8.wrapping_add(1u64);
+            US6::US6_Ok(v9)
         } else {
-            let (mut v6, mut v7, mut v8): (US6, Rc<RefCell<Vec<u8>>>, i32) = draw_hashed_16(v3, v4);
-            let mut v9: i32 = v0.wrapping_sub(1i32);
-            let mut v10: u64 = v1.wrapping_mul(6u64);
-            let v11: i32 = (v6.tag() as i32);
-            let mut v12: u64 = (v11 as u64);
-            let v13: u64 = v12.wrapping_mul(v1);
-            let v14: u64 = v2.wrapping_add(v13);
-            (v0, v1, v2, v3, v4) = (v9, v10, v14, v7, v8);
-            continue;
+            let v11: u64 = v1.wrapping_sub(v6);
+            let mut v12: u64 = v2.wrapping_sub(v6);
+            US6::US6_Error(v11, v12)
+        };
+        match v14 {
+            US6::US6_Error(v16, v17) => {
+                let v16: u64 = v16;
+                let v17: u64 = v17;
+                let (mut v18, mut v19, mut v20): (US7, Rc<RefCell<Vec<u8>>>, i32) = draw_hashed_15(v3, v4);
+                let v21: bool = v17 > 3074457345618258602u64;
+                let (mut v29, mut v30): (u64, u64) = if v21 {
+                    let v22: i32 = (v18.tag() as i32);
+                    let v23: u64 = (v22 as u64);
+                    (v23, 6u64)
+                } else {
+                    let v24: u64 = v16.wrapping_mul(6u64);
+                    let v25: i32 = (v18.tag() as i32);
+                    let v26: u64 = (v25 as u64);
+                    let v27: u64 = v24.wrapping_add(v26);
+                    let v28: u64 = v17.wrapping_mul(6u64);
+                    (v27, v28)
+                };
+                (v1, v2, v3, v4) = (v29, v30, v19, v20);
+                continue;
+            }
+            US6::US6_Ok(v15) => {
+                let mut v15: u64 = v15;
+                return (v15, v3, v4);
+            }
         }
     }
 }
-fn roll_fresh_14(mut v0: u64, mut v1: i32, mut v2: Rc<RefCell<Vec<u8>>>, mut v3: i32) -> (u64, Rc<RefCell<Vec<u8>>>, i32) {
-    loop {
-        let v4: u64 = 1u64;
-        let v5: u64 = 0u64;
-        let (mut v6, mut v7, mut v8): (u64, Rc<RefCell<Vec<u8>>>, i32) = read_15(v1, v4, v5, v2, v3);
-        let mut v9: bool = v6 < v0;
-        if v9 {
-            let mut v10: u64 = v6.wrapping_add(1u64);
-            return (v10, v7, v8);
-        } else {
-            (v2, v3) = (v7, v8);
-            continue;
-        }
-    }
-}
-fn method17(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<RefCell<Mut0>>, mut v7: Rc<RefCell<Mut1>>, mut v8: Rc<RefCell<Mut2>>, mut v9: Rc<RefCell<Mut3>>, mut v10: Rc<RefCell<Mut4>>, mut v11: Option<i64>, mut v12: Rc<str>, mut v13: u64, mut v14: u64) -> Rc<str> {
+fn method16(mut v0: Rc<RefCell<Mut0>>, mut v1: Rc<RefCell<Mut1>>, mut v2: Rc<RefCell<Mut2>>, mut v3: Rc<RefCell<Mut3>>, mut v4: Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: Rc<RefCell<Mut0>>, mut v7: Rc<RefCell<Mut1>>, mut v8: Rc<RefCell<Mut2>>, mut v9: Rc<RefCell<Mut3>>, mut v10: Rc<RefCell<Mut4>>, mut v11: Option<i64>, mut v12: Rc<str>, mut v13: u64, mut v14: u64) -> Rc<str> {
     let mut v15: bool = cfg!(target_arch = "wasm32");
     let v44: Rc<str> = if v15 {
         let v18: Rc<str> = format_real_12(v13);
@@ -1035,30 +1049,32 @@ fn closure7() -> Rc<dyn Fn(&mut Vec<u8>, std::string::String, std::string::Strin
             let mut v87: u64 = 1u64;
             go_13(v44, v86, v87)
         };
-        let v90: i32 = 0i32;
-        let (mut v91, mut v92, mut v93): (u64, Rc<RefCell<Vec<u8>>>, i32) = roll_fresh_14(v44, v89, v84.clone(), v90);
+        let v90: u64 = 0u64;
+        let v91: u64 = 1u64;
+        let v92: i32 = 0i32;
+        let (mut v93, mut v94, mut v95): (u64, Rc<RefCell<Vec<u8>>>, i32) = roll_recycled_14(v44, v90, v91, v84.clone(), v92);
         (v0).extend_from_slice(&(v84).borrow());
-        let v94: usize = (v0).len();
-        let v95: u64 = ((v94) as u64);
-        let v96: usize = ((100i32) as usize);
+        let v96: usize = (v0).len();
         let v97: u64 = ((v96) as u64);
-        let v98: bool = v95 > v97;
-        let v100: u64 = if v98 {
-            let v99: u64 = v95.wrapping_sub(v97);
-            v99
+        let v98: usize = ((100i32) as usize);
+        let v99: u64 = ((v98) as u64);
+        let v100: bool = v97 > v99;
+        let v102: u64 = if v100 {
+            let v101: u64 = v97.wrapping_sub(v99);
+            v101
         } else {
             0u64
         };
-        let v101: usize = ((v100) as usize);
-        let v102: Vec<u8> = (v0).drain(..v101).collect::<Vec<_>>();
-        let v103: bool = matches!(option_env!("SPIRAL_TRACE_FLOOR"), Some("Info" | "Warning" | "Critical"));
-        let mut v123: bool = if v103 {
+        let v103: usize = ((v102) as usize);
+        let v104: Vec<u8> = (v0).drain(..v103).collect::<Vec<_>>();
+        let v105: bool = matches!(option_env!("SPIRAL_TRACE_FLOOR"), Some("Info" | "Warning" | "Critical"));
+        let v125: bool = if v105 {
             true
         } else {
             { let _ = spiral_trace_hold(&v5); };
-            let (mut v106, mut v107, mut v108, mut v109, mut v110, mut v111): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
-            let mut v112: US0 = v110.borrow().l0.clone();
-            let v117: i32 = match v112 {
+            let (mut v108, mut v109, mut v110, mut v111, mut v112, mut v113): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
+            let v114: US0 = v112.borrow().l0.clone();
+            let v119: i32 = match v114 {
                 US0::US0_Critical => {
                     50i32
                 }
@@ -1075,93 +1091,93 @@ fn closure7() -> Rc<dyn Fn(&mut Vec<u8>, std::string::String, std::string::Strin
                     40i32
                 }
             };
-            let v118: bool = v108.borrow().l0;
-            let v119: bool = v118 == false;
-            let v121: bool = if v119 {
+            let mut v120: bool = v110.borrow().l0;
+            let v121: bool = v120 == false;
+            let mut v123: bool = if v121 {
                 false
             } else {
-                let mut v120: bool = 20i32 >= v117;
-                v120
+                let v122: bool = 20i32 >= v119;
+                v122
             };
-            let v122: bool = v121 == false;
-            v122
+            let v124: bool = v123 == false;
+            v124
         };
-        let v223: US2 = if v123 {
+        let v225: US2 = if v125 {
             US2::US2_None
         } else {
             { let _ = spiral_trace_hold(&v5); };
-            let (mut v127, mut v128, mut v129, mut v130, mut v131, mut v132): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
-            let v133: Rc<str> = Rc::<str>::from((v19).borrow().iter().flat_map(|b| [b >> 4, b & 15]).map(|n| char::from(b"0123456789abcdef"[n as usize])).collect::<String>());
-            let v134: Rc<str> = Rc::<str>::from((v51).borrow().iter().flat_map(|b| [b >> 4, b & 15]).map(|n| char::from(b"0123456789abcdef"[n as usize])).collect::<String>());
-            let v135: Rc<str> = format_real_12(v49);
-            let v136: Rc<str> = format_real_12(v48);
-            let v137: Rc<str> = format_real_12(v47);
-            let v138: Rc<str> = format_real_12(v45);
-            let v139: Rc<str> = format_real_12(v46);
-            let v183: Rc<str> = Rc::<str>::from((v84).borrow().iter().flat_map(|b| [b >> 4, b & 15]).map(|n| char::from(b"0123456789abcdef"[n as usize])).collect::<String>());
-            let v184: Rc<str> = string_concat(&["dice_contract.generate_random_number account_balance_high = ", &*v139, "; account_balance_low = ", &*v138, "; block_height = ", &*v137, "; block_timestamp = ", &*v136, "; epoch_height = ", &*v135, "; key = ", &*v16, "; predecessor = ", &*v50, "; proof = ", &*v18, "; seed = ", &*v134, "; seeds = ", &*v133, "; signer = ", &*v52, "; hash = ", &*v183]);
-            let v185: bool = &*v184 == "";
-            let v188: Rc<str> = if v185 {
-                let v186: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-                v186
+            let (mut v129, mut v130, mut v131, mut v132, mut v133, mut v134): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
+            let v135: Rc<str> = Rc::<str>::from((v19).borrow().iter().flat_map(|b| [b >> 4, b & 15]).map(|n| char::from(b"0123456789abcdef"[n as usize])).collect::<String>());
+            let v136: Rc<str> = Rc::<str>::from((v51).borrow().iter().flat_map(|b| [b >> 4, b & 15]).map(|n| char::from(b"0123456789abcdef"[n as usize])).collect::<String>());
+            let v137: Rc<str> = format_real_12(v49);
+            let v138: Rc<str> = format_real_12(v48);
+            let v139: Rc<str> = format_real_12(v47);
+            let v140: Rc<str> = format_real_12(v45);
+            let v141: Rc<str> = format_real_12(v46);
+            let v185: Rc<str> = Rc::<str>::from((v84).borrow().iter().flat_map(|b| [b >> 4, b & 15]).map(|n| char::from(b"0123456789abcdef"[n as usize])).collect::<String>());
+            let v186: Rc<str> = string_concat(&["dice_contract.generate_random_number account_balance_high = ", &*v141, "; account_balance_low = ", &*v140, "; block_height = ", &*v139, "; block_timestamp = ", &*v138, "; epoch_height = ", &*v137, "; key = ", &*v16, "; predecessor = ", &*v50, "; proof = ", &*v18, "; seed = ", &*v136, "; seeds = ", &*v135, "; signer = ", &*v52, "; hash = ", &*v185]);
+            let v187: bool = &*v186 == "";
+            let v190: Rc<str> = if v187 {
+                let v188: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                v188
             } else {
-                method17(v127.clone(), v128.clone(), v129.clone(), v130.clone(), v131.clone(), v132.clone(), v127.clone(), v128.clone(), v129.clone(), v130.clone(), v131.clone(), v132.clone(), v184, v3, v91)
+                method16(v129.clone(), v130.clone(), v131.clone(), v132.clone(), v133.clone(), v134.clone(), v129.clone(), v130.clone(), v131.clone(), v132.clone(), v133.clone(), v134.clone(), v186, v3, v93)
             };
             { let _ = spiral_trace_hold(&v5); };
-            let (mut v191, mut v192, mut v193, mut v194, mut v195, mut v196): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
-            let v197: i64 = v191.borrow().l0;
-            let v198: i64 = v197.wrapping_add(1i64);
-            v191.borrow_mut().l0 = v198;
-            let v199: Rc<dyn Fn(Rc<str>) -> ()> = closure6();
-            let v200: bool = cfg!(target_arch = "wasm32");
-            if v200 {
-                let v201: Rc<str> = v194.borrow().l0.clone();
-                let v202: bool = &*v201 == "";
-                let v209: Rc<str> = if v202 {
-                    v188.clone()
+            let (mut v193, mut v194, mut v195, mut v196, mut v197, mut v198): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
+            let v199: i64 = v193.borrow().l0;
+            let v200: i64 = v199.wrapping_add(1i64);
+            v193.borrow_mut().l0 = v200;
+            let v201: Rc<dyn Fn(Rc<str>) -> ()> = closure6();
+            let v202: bool = cfg!(target_arch = "wasm32");
+            if v202 {
+                let v203: Rc<str> = v196.borrow().l0.clone();
+                let v204: bool = &*v203 == "";
+                let v211: Rc<str> = if v204 {
+                    v190.clone()
                 } else {
-                    let v203: bool = &*v188 == "";
-                    if v203 {
-                        let v204: Rc<str> = v194.borrow().l0.clone();
-                        v204
+                    let v205: bool = &*v190 == "";
+                    if v205 {
+                        let v206: Rc<str> = v196.borrow().l0.clone();
+                        v206
                     } else {
-                        let v205: Rc<str> = v194.borrow().l0.clone();
-                        let v207: Rc<str> = string_concat(&[&*v205, "\n", &*v188]);
-                        v207
+                        let v207: Rc<str> = v196.borrow().l0.clone();
+                        let v209: Rc<str> = string_concat(&[&*v207, "\n", &*v190]);
+                        v209
                     }
                 };
-                let v211: usize = v209.len();
-                let v212: i32 = ((v211) as i32);
-                let v213: i32 = v212.wrapping_add(14999i32);
-                let v214: i32 = v213.wrapping_div(15000i32);
-                let v215: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-                let v216: bool = v188 != v215 ;
-                let v218: bool = if v216 {
-                    let v217: bool = v214 <= 1i32;
-                    v217
+                let v213: usize = v211.len();
+                let v214: i32 = ((v213) as i32);
+                let v215: i32 = v214.wrapping_add(14999i32);
+                let v216: i32 = v215.wrapping_div(15000i32);
+                let v217: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+                let v218: bool = v190 != v217 ;
+                let v220: bool = if v218 {
+                    let v219: bool = v216 <= 1i32;
+                    v219
                 } else {
                     false
                 };
-                if v218 {
-                    v194.borrow_mut().l0 = v209;
+                if v220 {
+                    v196.borrow_mut().l0 = v211;
                     ()
                 } else {
-                    v194.borrow_mut().l0 = v215;
-                    { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v209); };
+                    v196.borrow_mut().l0 = v217;
+                    { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v211); };
                     ()
                 }
             } else {
-                println!("{}", v188);
+                println!("{}", v190);
                 ()
             };
-            let mut v221: Rc<dyn Fn(Rc<str>) -> ()> = v192.borrow().l0.clone();
-            v221(v188);
-            US2::US2_Some(v191, v192, v193, v194, v195, v196)
+            let mut v223: Rc<dyn Fn(Rc<str>) -> ()> = v194.borrow().l0.clone();
+            v223(v190);
+            US2::US2_Some(v193, v194, v195, v196, v197, v198)
         };
         { let _ = spiral_trace_hold(&v5); };
-        let (mut v226, mut v227, mut v228, mut v229, mut v230, mut v231): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
-        let v232: US0 = v230.borrow().l0.clone();
-        let v237: i32 = match v232 {
+        let (mut v228, mut v229, mut v230, mut v231, mut v232, mut v233): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
+        let v234: US0 = v232.borrow().l0.clone();
+        let v239: i32 = match v234 {
             US0::US0_Critical => {
                 50i32
             }
@@ -1178,78 +1194,78 @@ fn closure7() -> Rc<dyn Fn(&mut Vec<u8>, std::string::String, std::string::Strin
                 40i32
             }
         };
-        let v238: bool = v228.borrow().l0;
-        let v239: bool = v238 == false;
-        let v241: bool = if v239 {
+        let v240: bool = v230.borrow().l0;
+        let v241: bool = v240 == false;
+        let v243: bool = if v241 {
             false
         } else {
-            let v240: bool = 50i32 >= v237;
-            v240
+            let v242: bool = 50i32 >= v239;
+            v242
         };
-        let v242: bool = v241 == false;
-        let v286: US2 = if v242 {
+        let v244: bool = v243 == false;
+        let v288: US2 = if v244 {
             US2::US2_None
         } else {
             { let _ = spiral_trace_hold(&v5); };
-            let (mut v246, mut v247, mut v248, mut v249, mut v250, mut v251): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
+            let (mut v248, mut v249, mut v250, mut v251, mut v252, mut v253): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
             { let _ = spiral_trace_hold(&v5); };
-            let (mut v254, mut v255, mut v256, mut v257, mut v258, mut v259): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
-            let v260: i64 = v254.borrow().l0;
-            let v261: i64 = v260.wrapping_add(1i64);
-            v254.borrow_mut().l0 = v261;
-            let v262: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
-            let v263: Rc<dyn Fn(Rc<str>) -> ()> = closure6();
-            let v264: bool = cfg!(target_arch = "wasm32");
-            if v264 {
-                let v265: Rc<str> = v257.borrow().l0.clone();
-                let v266: bool = &*v265 == "";
-                let v273: Rc<str> = if v266 {
-                    v262.clone()
+            let (mut v256, mut v257, mut v258, mut v259, mut v260, mut v261): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v7);
+            let v262: i64 = v256.borrow().l0;
+            let v263: i64 = v262.wrapping_add(1i64);
+            v256.borrow_mut().l0 = v263;
+            let v264: Rc<str> = { thread_local!{ static LIT: Rc<str> = Rc::<str>::from(""); } LIT.with(|lit| lit.clone()) };
+            let v265: Rc<dyn Fn(Rc<str>) -> ()> = closure6();
+            let v266: bool = cfg!(target_arch = "wasm32");
+            if v266 {
+                let v267: Rc<str> = v259.borrow().l0.clone();
+                let v268: bool = &*v267 == "";
+                let v275: Rc<str> = if v268 {
+                    v264.clone()
                 } else {
-                    let v267: bool = &*v262 == "";
-                    if v267 {
-                        let v268: Rc<str> = v257.borrow().l0.clone();
-                        v268
+                    let v269: bool = &*v264 == "";
+                    if v269 {
+                        let v270: Rc<str> = v259.borrow().l0.clone();
+                        v270
                     } else {
-                        let v269: Rc<str> = v257.borrow().l0.clone();
-                        let v271: Rc<str> = string_concat(&[&*v269, "\n", &*v262]);
-                        v271
+                        let v271: Rc<str> = v259.borrow().l0.clone();
+                        let v273: Rc<str> = string_concat(&[&*v271, "\n", &*v264]);
+                        v273
                     }
                 };
-                let v275: usize = v273.len();
-                let v276: i32 = ((v275) as i32);
-                let v277: i32 = v276.wrapping_add(14999i32);
-                let v278: i32 = v277.wrapping_div(15000i32);
-                let v279: bool = v262 != v262 ;
-                let v281: bool = if v279 {
-                    let v280: bool = v278 <= 1i32;
-                    v280
+                let v277: usize = v275.len();
+                let v278: i32 = ((v277) as i32);
+                let v279: i32 = v278.wrapping_add(14999i32);
+                let v280: i32 = v279.wrapping_div(15000i32);
+                let v281: bool = v264 != v264 ;
+                let v283: bool = if v281 {
+                    let v282: bool = v280 <= 1i32;
+                    v282
                 } else {
                     false
                 };
-                if v281 {
-                    v257.borrow_mut().l0 = v273;
+                if v283 {
+                    v259.borrow_mut().l0 = v275;
                     ()
                 } else {
-                    v257.borrow_mut().l0 = v262.clone();
-                    { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v273); };
+                    v259.borrow_mut().l0 = v264.clone();
+                    { #[cfg(target_arch = "wasm32")] spiral_trace_near_log(&v275); };
                     ()
                 }
             } else {
-                println!("{}", v262);
+                println!("{}", v264);
                 ()
             };
-            let mut v284: Rc<dyn Fn(Rc<str>) -> ()> = v255.borrow().l0.clone();
-            v284(v262);
-            US2::US2_Some(v254, v255, v256, v257, v258, v259)
+            let mut v286: Rc<dyn Fn(Rc<str>) -> ()> = v257.borrow().l0.clone();
+            v286(v264);
+            US2::US2_Some(v256, v257, v258, v259, v260, v261)
         };
-        v91
+        v93
     }); } CLOSURE.with(|closure| closure.clone())
 }
-fn method18(mut v0: Vec<u8>) -> Vec<u8> {
+fn method17(mut v0: Vec<u8>) -> Vec<u8> {
     v0
 }
-fn method19(mut v0: Rc<Vec<u8>>, mut v1: i32, mut v2: Rc<UH0>) -> Rc<UH0> {
+fn method18(mut v0: Rc<Vec<u8>>, mut v1: i32, mut v2: Rc<UH0>) -> Rc<UH0> {
     loop {
         let v3: bool = v1 < 0i32;
         if v3 {
@@ -1264,11 +1280,11 @@ fn method19(mut v0: Rc<Vec<u8>>, mut v1: i32, mut v2: Rc<UH0>) -> Rc<UH0> {
         }
     }
 }
-fn method21(mut v0: Rc<UH1>, mut v1: Rc<UH1>) -> Rc<UH1> {
+fn method20(mut v0: Rc<UH1>, mut v1: Rc<UH1>) -> Rc<UH1> {
     loop {
         match Rc::unwrap_or_clone(v0) {
             UH1::UH1_Cons(v2, v3) => {
-                let mut v2: US6 = v2;
+                let mut v2: US7 = v2;
                 let v3: Rc<UH1> = v3;
                 let v4: Rc<UH1> = Rc::new(UH1::UH1_Cons(v2, v1));
                 (v0, v1) = (v3, v4);
@@ -1280,7 +1296,7 @@ fn method21(mut v0: Rc<UH1>, mut v1: Rc<UH1>) -> Rc<UH1> {
         }
     }
 }
-fn go_20(mut v0: Rc<UH0>, mut v1: Rc<UH1>) -> US8 {
+fn go_19(mut v0: Rc<UH0>, mut v1: Rc<UH1>) -> US9 {
     loop {
         match Rc::unwrap_or_clone(v0) {
             UH0::UH0_Cons(v2, v3) => {
@@ -1293,45 +1309,45 @@ fn go_20(mut v0: Rc<UH0>, mut v1: Rc<UH1>) -> US8 {
                 } else {
                     false
                 };
-                let v27: US7 = if v6 {
+                let v27: US8 = if v6 {
                     let v7: u8 = v2.wrapping_sub(1u8);
                     let mut v8: i32 = (v7 as i32);
                     let mut v9: bool = 0i32 == v8;
-                    let v24: US6 = if v9 {
-                        US6::US6_One
+                    let v24: US7 = if v9 {
+                        US7::US7_One
                     } else {
                         let v11: bool = 1i32 == v8;
                         if v11 {
-                            US6::US6_Two
+                            US7::US7_Two
                         } else {
                             let v13: bool = 2i32 == v8;
                             if v13 {
-                                US6::US6_Three
+                                US7::US7_Three
                             } else {
                                 let mut v15: bool = 3i32 == v8;
                                 if v15 {
-                                    US6::US6_Four
+                                    US7::US7_Four
                                 } else {
                                     let v17: bool = 4i32 == v8;
                                     if v17 {
-                                        US6::US6_Five
+                                        US7::US7_Five
                                     } else {
-                                        US6::US6_Six
+                                        US7::US7_Six
                                     }
                                 }
                             }
                         }
                     };
-                    US7::US7_Some(v24)
+                    US8::US8_Some(v24)
                 } else {
-                    US7::US7_None
+                    US8::US8_None
                 };
                 match v27 {
-                    US7::US7_None => {
-                        return US8::US8_None;
+                    US8::US8_None => {
+                        return US9::US9_None;
                     }
-                    US7::US7_Some(v28) => {
-                        let v28: US6 = v28;
+                    US8::US8_Some(v28) => {
+                        let v28: US7 = v28;
                         let v29: Rc<UH1> = Rc::new(UH1::UH1_Cons(v28, v1));
                         (v0, v1) = (v3, v29);
                         continue;
@@ -1340,17 +1356,17 @@ fn go_20(mut v0: Rc<UH0>, mut v1: Rc<UH1>) -> US8 {
             }
             UH0::UH0_Nil => {
                 let v34: Rc<UH1> = { thread_local!{ static CASE: Rc<UH1> = Rc::new(UH1::UH1_Nil); } CASE.with(|case| case.clone()) };
-                let v35: Rc<UH1> = method21(v1, v34);
-                return US8::US8_Some(v35);
+                let v35: Rc<UH1> = method20(v1, v34);
+                return US9::US9_Some(v35);
             }
         }
     }
 }
-fn method22(mut v0: Rc<UH1>, mut v1: i32) -> i32 {
+fn method21(mut v0: Rc<UH1>, mut v1: i32) -> i32 {
     loop {
         match Rc::unwrap_or_clone(v0) {
             UH1::UH1_Cons(v2, v3) => {
-                let mut v2: US6 = v2;
+                let mut v2: US7 = v2;
                 let v3: Rc<UH1> = v3;
                 let v4: i32 = v1.wrapping_add(1i32);
                 (v0, v1) = (v3, v4);
@@ -1362,21 +1378,21 @@ fn method22(mut v0: Rc<UH1>, mut v1: i32) -> i32 {
         }
     }
 }
-fn go_23(mut v0: u64, mut v1: i32, mut v2: Rc<UH1>, mut v3: u64) -> US9 {
+fn go_22(mut v0: u64, mut v1: i32, mut v2: Rc<UH1>, mut v3: u64) -> US10 {
     loop {
         let v4: bool = v1 <= 0i32;
         if v4 {
             let v5: bool = v3 < v0;
             if v5 {
                 let v6: u64 = v3.wrapping_add(1u64);
-                return US9::US9_Some(v6);
+                return US10::US10_Some(v6);
             } else {
-                return US9::US9_None;
+                return US10::US10_None;
             }
         } else {
             match Rc::unwrap_or_clone(v2) {
                 UH1::UH1_Cons(v10, v11) => {
-                    let mut v10: US6 = v10;
+                    let mut v10: US7 = v10;
                     let v11: Rc<UH1> = v11;
                     let mut v12: i32 = (v10.tag() as i32);
                     let v13: u64 = (v12 as u64);
@@ -1391,7 +1407,7 @@ fn go_23(mut v0: u64, mut v1: i32, mut v2: Rc<UH1>, mut v3: u64) -> US9 {
                         v18
                     };
                     if v19 {
-                        return US9::US9_None;
+                        return US10::US10_None;
                     } else {
                         let v21: i32 = v1.wrapping_sub(1i32);
                         let v22: u64 = v3.wrapping_mul(6u64);
@@ -1401,13 +1417,13 @@ fn go_23(mut v0: u64, mut v1: i32, mut v2: Rc<UH1>, mut v3: u64) -> US9 {
                     }
                 }
                 UH1::UH1_Nil => {
-                    return US9::US9_None;
+                    return US10::US10_None;
                 }
             }
         }
     }
 }
-fn method24(mut v0: &Rc<RefCell<Mut0>>, mut v1: &Rc<RefCell<Mut1>>, mut v2: &Rc<RefCell<Mut2>>, mut v3: &Rc<RefCell<Mut3>>, mut v4: &Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: &Rc<RefCell<Mut0>>, mut v7: &Rc<RefCell<Mut1>>, mut v8: &Rc<RefCell<Mut2>>, mut v9: &Rc<RefCell<Mut3>>, mut v10: &Rc<RefCell<Mut4>>, mut v11: Option<i64>, mut v12: u64, mut v13: Rc<str>, mut v14: Rc<str>) -> Rc<str> {
+fn method23(mut v0: &Rc<RefCell<Mut0>>, mut v1: &Rc<RefCell<Mut1>>, mut v2: &Rc<RefCell<Mut2>>, mut v3: &Rc<RefCell<Mut3>>, mut v4: &Rc<RefCell<Mut4>>, mut v5: Option<i64>, mut v6: &Rc<RefCell<Mut0>>, mut v7: &Rc<RefCell<Mut1>>, mut v8: &Rc<RefCell<Mut2>>, mut v9: &Rc<RefCell<Mut3>>, mut v10: &Rc<RefCell<Mut4>>, mut v11: Option<i64>, mut v12: u64, mut v13: Rc<str>, mut v14: Rc<str>) -> Rc<str> {
     let mut v15: bool = cfg!(target_arch = "wasm32");
     let v44: Rc<str> = if v15 {
         let v16: Rc<str> = format_real_12(v12);
@@ -1432,14 +1448,14 @@ fn closure8() -> Rc<dyn Fn(u64, Vec<u8>) -> Option<u64>> {
         let (mut v6, mut v7, mut v8, mut v9, mut v10, mut v11): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v5);
         let mut v12: US0 = US0::US0_Debug;
         v10.borrow_mut().l0 = v12;
-        let v13: Vec<u8> = method18(v1.clone());
+        let v13: Vec<u8> = method17(v1.clone());
         let v14: Rc<RefCell<Vec<u8>>> = Rc::new(RefCell::new(v13));
         let mut v15: Rc<Vec<u8>> = Rc::new((v14).borrow().clone());
         let v16: usize = (v15).len();
         let v17: i32 = ((v16) as i32);
         let v18: i32 = v17.wrapping_sub(1i32);
         let v19: Rc<UH0> = { thread_local!{ static CASE: Rc<UH0> = Rc::new(UH0::UH0_Nil); } CASE.with(|case| case.clone()) };
-        let v20: Rc<UH0> = method19(v15, v18, v19);
+        let v20: Rc<UH0> = method18(v15, v18, v19);
         let v21: bool = v0 < 1u64;
         let v29: US4 = if v21 {
             let v22: US5 = US5::US5_EmptyRange;
@@ -1454,33 +1470,33 @@ fn closure8() -> Rc<dyn Fn(u64, Vec<u8>) -> Option<u64>> {
             }
         };
         let mut v30: Rc<UH1> = { thread_local!{ static CASE: Rc<UH1> = Rc::new(UH1::UH1_Nil); } CASE.with(|case| case.clone()) };
-        let v31: US8 = go_20(v20, v30);
-        let v41: US9 = match v29 {
+        let v31: US9 = go_19(v20, v30);
+        let v41: US10 = match v29 {
             US4::US4_Ok(v32) => {
                 let v32: u64 = v32;
                 match v31 {
-                    US8::US8_Some(v33) => {
+                    US9::US9_Some(v33) => {
                         let v33: Rc<UH1> = v33;
                         let v34: i32 = 0i32;
-                        let v35: i32 = method22(v33.clone(), v34);
+                        let v35: i32 = method21(v33.clone(), v34);
                         let v36: u64 = 0u64;
-                        go_23(v32, v35, v33, v36)
+                        go_22(v32, v35, v33, v36)
                     }
                     _ => {
-                        US9::US9_None
+                        US10::US10_None
                     }
                 }
             }
             _ => {
-                US9::US9_None
+                US10::US10_None
             }
         };
         let v46: Option<u64> = match v41 {
-            US9::US9_None => {
+            US10::US10_None => {
                 let v44: Option<u64> = None;
                 v44
             }
-            US9::US9_Some(v42) => {
+            US10::US10_Some(v42) => {
                 let v42: u64 = v42;
                 let v43: Option<u64> = Some(v42.clone());
                 v43
@@ -1528,7 +1544,7 @@ fn closure8() -> Rc<dyn Fn(u64, Vec<u8>) -> Option<u64>> {
             let (mut v71, mut v72, mut v73, mut v74, mut v75, mut v76): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v5);
             let v77: Rc<str> = Rc::<str>::from({ struct W<T>(T); trait D { fn s(&self) -> String; } impl<T: std::fmt::Debug> D for &W<T> { fn s(&self) -> String { format!("{:?}", self.0) } } trait P { fn s(&self) -> String; } impl<T> P for W<T> { fn s(&self) -> String { String::from("<Vec<u8>>") } } (&&W(&v1)).s() });
             let v78: Rc<str> = Rc::<str>::from(match &v46 { Some(v) => format!("Some {:?}", v), None => String::from("None") });
-            let v79: Rc<str> = method24(&v71, &v72, &v73, &v74, &v75, v76.clone(), &v71, &v72, &v73, &v74, &v75, v76.clone(), v0, v77, v78);
+            let v79: Rc<str> = method23(&v71, &v72, &v73, &v74, &v75, v76.clone(), &v71, &v72, &v73, &v74, &v75, v76.clone(), v0, v77, v78);
             { let _ = spiral_trace_hold(&v3); };
             let (mut v82, mut v83, mut v84, mut v85, mut v86, mut v87): (Rc<RefCell<Mut0>>, Rc<RefCell<Mut1>>, Rc<RefCell<Mut2>>, Rc<RefCell<Mut3>>, Rc<RefCell<Mut4>>, Option<i64>) = spiral_trace_hold(&v5);
             let v88: i64 = v82.borrow().l0;

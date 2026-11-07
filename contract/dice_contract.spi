@@ -6,11 +6,6 @@
 :< digest
 
 /// # dice_contract
-///> rust
-///> fsharp
-///> typescript
-///> python
-///> c
 test dice_contract static =
     :< testing
 
@@ -152,7 +147,15 @@ test dice_contract static =
 := sample_call (key : string) : call =
     { key = key; proof = ""; seeds = bytes.counting 4i32 }
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test entropy_bytes_follow_the_field_order_of_the_record =
     := ~key = "k"
     read_entropy (sample_fixture ()) (sample_call key)
@@ -163,7 +166,15 @@ test entropy_bytes_follow_the_field_order_of_the_record =
     |> sm'.slice 0i32 15i32
     |> _assert_eq "0e10e94fc9dfb460"
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test entropy_text_names_every_field_once =
     := ~key = "k"
     read_entropy (sample_fixture ()) (sample_call key)
@@ -218,7 +229,7 @@ test entropy_text_names_every_field_once =
 := draw \* c {digest_with}. (chain : c) (state : roll_state hashed) : roll_state rolled =
     ?= state ?|
     | Hashed (b, e, digest) =>
-        := value, _ = lib.dice.roll lib.dice.Fresh b (lib.dice.hashed chain digest)
+        := value, _ = lib.dice.roll lib.dice.Recycle b (lib.dice.hashed chain digest)
         Rolled (value, e, digest)
 
 := run_step \* from to c {read_entropy; fail_with; digest_with}.
@@ -255,11 +266,19 @@ test entropy_text_names_every_field_once =
     ?= state ?|
     | Rolled (value, _, _) => value
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test a_fixture_rolls_the_same_number_on_every_backend =
     := ~max = 2000u64
     (generate (sample_fixture ()) (sample_call "k") max |> rolled_value, generate (sample_fixture ()) (sample_call "k2") max |> rolled_value)
-    |> _assert_eq (371u64, 1879u64)
+    |> _assert_eq (1646u64, 1834u64)
 
 ///> rust
 ///> fsharp
@@ -362,7 +381,7 @@ test the_host_reads_the_chain_the_fixture_describes =
 test the_host_rolls_what_the_fixture_rolls =
     mocked_chain ()
     (generate host (sample_call "k") 2000u64 |> rolled_value, generate (sample_fixture ()) (sample_call "k") 2000u64 |> rolled_value)
-    |> _assert_eq (371u64, 371u64)
+    |> _assert_eq (1646u64, 1646u64)
 
 ///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
 test the_host_keccak_is_the_spiral_keccak =
@@ -383,7 +402,7 @@ test generate_random_number_appends_the_hash_to_the_seeds =
     := second = generate_random_number seeds key proof 2000u64
     := after_second : u64 = seeds |> am'.vec_ref_len |> convert.convert
     (first, after_first, second, after_second)
-    |> _assert_eq (1884u64, 64u64, 549u64, 100u64)
+    |> _assert_eq (762u64, 64u64, 1614u64, 100u64)
 
 ///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
 test the_host_glue_pins_its_gas =
@@ -397,7 +416,7 @@ test the_host_glue_pins_its_gas =
     := state = generate host (sample_call "k") 2000u64
     := after_roll = used ()
     (after_seed - start, after_hash - after_seed, after_roll - after_hash, length seed + length digest, rolled_value state)
-    |> _assert_eq (9192751602u64, 23628854763u64, 52413432801u64, 96i32, 371u64)
+    |> _assert_eq (9192751602u64, 23628854763u64, 52413432801u64, 96i32, 1646u64)
 
 /// ### main
 
