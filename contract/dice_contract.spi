@@ -339,9 +339,26 @@ test generate_random_number_is_deterministic_under_a_mocked_context =
         mocked ()
         2000
         |> generate_random_number
-            ("" |> sm'.byte_slice |> near.new_vector |> rust.to_ref_mut)
+            (empty_seeds () |> rust.to_ref_mut)
             ("" |> sm'.to_std_string)
             ("" |> sm'.to_std_string)
     := first = draw ()
     := second = draw ()
     (first = second, first > 0) |> _assert_eq (!+, !+)
+
+///> rust -d "near-sdk={version='=5.11.0',features=['unit-testing']}" -d near-token
+test generate_random_number_reports_its_gas_under_a_mocked_context =
+    := mocked () : () =
+        $'near_sdk::testing_env!!(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; \
+            32]).block_timestamp(1_700_000_000_000_000_000).build())' : ()
+    := used () : u64 = $'near_sdk::env::used_gas().as_gas()' : u64
+    mocked ()
+    := before = used ()
+    := _drawn =
+        2000
+        |> generate_random_number
+            (empty_seeds () |> rust.to_ref_mut)
+            ("" |> sm'.to_std_string)
+            ("" |> sm'.to_std_string)
+    := gas = used () - before
+    (gas > 0u64, gas < 300000000000000u64) |> _assert_eq (!+, !+)
