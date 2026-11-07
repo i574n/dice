@@ -51,12 +51,13 @@ if (!(BuildSpiral "$ScriptDir/$projectName.spi" "$ScriptDir/$projectName.rs" "di
 $cargoTargetDir = (cargo metadata --format-version 1 --no-deps | ConvertFrom-Json).target_directory
 $rustWasm = "$cargoTargetDir/wasm32-unknown-unknown/release/$projectName.wasm"
 if (!(Test-Path $rustWasm)) { throw "RUST-FAILED dice/contract / no $rustWasm" }
-$rustExports = @(Get-WasmExports $rustWasm)
+New-Item dist -ItemType Directory -Force | Out-Null
+$nearWasmFeatures = @('--enable-bulk-memory', '--enable-sign-ext', '--enable-mutable-globals', '--enable-nontrapping-float-to-int', '--enable-reference-types')
+{ wasm-opt -Oz @nearWasmFeatures --strip-debug --strip-producers $rustWasm -o dist/dice.wasm } | Invoke-Block
+$rustExports = @(Get-WasmExports (Join-Path $ScriptDir dist/dice.wasm))
 $contractMethods = @('new', 'migrate', 'contribute_seed', 'contribute_seed_borsh', 'generate_random_number', 'roll_within_bounds', 'roll_within_bounds_borsh')
 $missing = @($contractMethods | Where-Object { $_ -notin $rustExports })
 if ($missing) { throw "RUST-FAILED dice/contract / the wasm doesn't export $($missing -join ', ') (exports: $($rustExports -join ', '))" }
-New-Item dist -ItemType Directory -Force | Out-Null
-Copy-Item $rustWasm dist/dice.wasm -Force
 Write-Output "RUST-COMPILED dice/contract / dist/dice.wasm $((Get-Item dist/dice.wasm).Length) B / exports $($rustExports -join ', ')"
 
 if (!$fast -and !$SkipTests) {

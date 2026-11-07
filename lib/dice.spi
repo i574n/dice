@@ -1,81 +1,171 @@
 /// # dice (Dice)
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
+///> zig
+///> gleam
+///> pascal
+///> rust
 test dice_dice static =
     :< testing
 
 :< sm'_operators
+:< digest
 
-/// ## sixth_power_sequence
-:= sixth_power_sequence () =
-    stream.iterate_map ((*) 6) (\ x => ? x <= 0 ?> None |: Some x) 1
+/// ## face
+:| face =
+    | One
+    | Two
+    | Three
+    | Four
+    | Five
+    | Six
 
-test sixth_power_sequence =
-    sixth_power_sequence ()
-    |> stream.take_while (\ _ i => i <= 7i32)
-    |> stream.to_list
-    |> _assert_eq [ 1u64; 6; 36; 216; 1296; 7776; 46656; 279936 ]
+:= digit \* t {number}. (f : face) : t =
+    conv (!!!!UnionTag(f) : i32)
 
-/// ## accumulate_dice_rolls
-:= accumulate_dice_rolls
-    (rolls : list u8)
-    (power : i8)
-    acc
-    =
-    := ^ body \* a {number} b {number} c {number}.
-        (acc : a)
-        (power : b)
-        (rolls : list c)
-        : option (a * list c)
-        =
-        ?= rolls ?|
-        | _ ?& power < 0 =>
-            := result = acc + 1
-            trace Debug
-                \ () => "dice.accumulate_dice_rolls"
-                \ () => { power acc result }
-            Some (result, rolls)
-        | [] => None
-        | roll :: rest ?& roll > 1 =>
-            := coeff = sixth_power_sequence () |> stream.item power
-            := value = conv (roll - 1) * coeff
-            trace Debug
-                \ () => "dice.accumulate_dice_rolls"
-                \ () => { power acc roll value }
-            루프 (acc + value) (power - 1) rest
-        | roll :: rest =>
-            trace Debug
-                \ () => "dice.accumulate_dice_rolls"
-                \ () => { power acc roll }
-            루프 acc (power - 1) rest
-    :& := 루프 \* a {number} b {number} c {number}.
-        (acc : a)
-        (power : b)
-        (rolls : list c)
-        : option (a * list c)
-        =
-        ? var_is rolls |> not
-        ?> body acc power rolls
+:= pips (f : face) : u8 =
+    digit f + 1u8
+
+:= face_of_digit (d : i32) : face =
+    ?= d ?|
+    | 0 => One
+    | 1 => Two
+    | 2 => Three
+    | 3 => Four
+    | 4 => Five
+    | _ => Six
+
+:= face_of_pips (p : u8) : option face =
+    ? p >= 1u8 && p <= 6u8 ?> Some (face_of_digit (conv (p - 1u8))) |: None
+
+:= face_of_byte (b : u8) : option face =
+    ? b < 252u8 ?> Some (face_of_digit (conv (b % 6u8))) |: None
+
+test every_face_round_trips_through_its_pips =
+    := ~low = 0u8
+    (
+        listm.map (pips >> face_of_pips) [ One; Two; Three; Four; Five; Six ]
+        |> listm.map (optionm.map pips),
+        face_of_pips low,
+        face_of_pips (low + 7u8)
+    )
+    |> _assert_eq ([ Some 1u8; Some 2; Some 3; Some 4; Some 5; Some 6 ], None, None)
+
+:= face_counts () : array i32 =
+    := counts : array i32 = create 7
+    :~ ^ clear (i : i32) : () =
+        ? i < 7 ?>
+            set counts i 0
+            clear (i + 1)
+    clear 0
+    :~ ^ go (b : i32) : () =
+        ? b <= 255 ?>
+            := slot =
+                ?= face_of_byte (conv b) ?|
+                | Some f => digit f
+                | None => 6i32
+            set counts slot (index counts slot + 1)
+            go (b + 1)
+    go 0
+    counts
+
+test every_face_takes_the_same_share_of_the_bytes =
+    face_counts ()
+    |> _assert_eq (;[ 42i32; 42; 42; 42; 42; 42; 4 ] : array i32)
+
+/// ## bound
+:! bound t = t
+
+:| bound_error t =
+    | EmptyRange
+    | AboveLargest : t * t
+
+:= ^ largest_from \* t {number}. (p : t) : t =
+    ? p > (limit.max : t) / 6 ?> p |: largest_from (p * 6)
+
+:= largest_bound \* t {number}. () : t =
+    largest_from 1
+
+:= bound_of \* t {number}. (max : t) : result (bound t) (bound_error t) =
+    ? max < 1 ?> Error EmptyRange
+    |? max > largest_bound () ?> Error (AboveLargest (max, largest_bound ()))
+    |: Ok (bound max)
+
+:= bound_value \* t. ((bound max) : bound t) : t =
+    max
+
+:= bound_error_text \* t {number}. (e : bound_error t) : string =
+    ?= e ?|
+    | EmptyRange => "max must be at least 1"
+    | AboveLargest (max, largest) => "max: " ++# #?max ++# " is above the largest supported bound " ++# #?largest
+
+:= dice_count \* t {number}. (b : bound t) : i32 =
+    := max = bound_value b
+    :~ ^ go (count : i32) (reach : t) : i32 =
+        ? reach >= max ?> count |: go (count + 1) (reach * 6)
+    ? max = 1 ?> 1 |: go 0 1
+
+test largest_bound_is_the_largest_power_of_six_of_the_type =
+    ((largest_bound () : i32), (largest_bound () : u64), (largest_bound () : u8))
+    |> _assert_eq (362797056i32, 4738381338321616896u64, 216u8)
+
+test bound_of_rejects_empty_and_oversized_ranges =
+    := ~zero = 0u64
+    := ~over = 4738381338321616897u64
+    := text (r : result (bound u64) (bound_error u64)) =
+        ?= r ?|
+        | Ok b => #?(bound_value b)
+        | Error e => bound_error_text e
+    (text (bound_of zero), text (bound_of over), text (bound_of (zero + 2000u64)))
+    |> _assert_eq (
+        "max must be at least 1",
+        "max: 4738381338321616897 is above the largest supported bound 4738381338321616896",
+        "2000"
+    )
+
+:= count_of \* t {number}. (max : t) : i32 =
+    ?= bound_of max ?|
+    | Ok b => dice_count b
+    | Error _ => -1
+
+test dice_count_is_the_fewest_dice_that_reach_the_bound =
+    := ~one = 1i32
+    (count_of one, count_of (one * 36), count_of (one * 7777), count_of (one * 362797056), count_of 4738381338321616896u64)
+    |> _assert_eq (1i32, 2i32, 6i32, 11i32, 24i32)
+
+test a_raw_number_is_not_a_bound fails ETY-TermError "Unification failure" =
+    dice_count 36u64
+
+/// ## hand
+:= hand_value \* t {number}. (b : bound t) (count : i32) (hand : list face) : option t =
+    := max = bound_value b
+    :~ ^ go (left : i32) (faces : list face) (value : t) : option t =
+        ? left <= 0
+        ?> ? value < max ?> Some (value + 1) |: None
         |:
-            := acc = dyn acc
-            ~~ body acc power rolls
-    루프 acc power rolls
+            ?= faces ?|
+            | f :: rest =>
+                := d = digit f
+                ? d >= max || value > (max - 1 - d) / 6 ?> None |: go (left - 1) rest (value * 6 + d)
+            | [] => None
+    go count hand 0
 
-test accumulate_dice_rolls =
-    accumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 0 1000i32
-    |> _assert_eq (Some (1006, [ 5; 4; 3; 2 ]))
+:= faces_of_pips (rolls : list u8) : option (list face) =
+    :~ ^ go (rolls : list u8) (acc : list face) : option (list face) =
+        ?= rolls ?|
+        | r :: rest =>
+            ?= face_of_pips r ?|
+            | Some f => go rest (f :: acc)
+            | None => None
+        | [] => Some (listm.rev acc)
+    go rolls []
 
-test accumulate_dice_rolls_2 =
-    accumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 1 1000i32
-    |> _assert_eq (Some (1035, [ 4; 3; 2 ]))
-
-test accumulate_dice_rolls_3 =
-    accumulate_dice_rolls [ 6; 5; 4; 3; 2 ] 2 1000i32
-    |> _assert_eq (Some (1208, [ 3; 2 ]))
-
-/// ## roll_within_bounds
-:= roll_within_bounds max rolls =
-    := power = listm.length rolls - 1
-    ?= accumulate_dice_rolls rolls power 0 ?|
-    | Some (result, _) ?& result >= 1 && result <= max => Some result
+:= roll_within_bounds \* t {number}. (max : t) (rolls : list u8) : option t =
+    ?= bound_of max, faces_of_pips rolls ?|
+    | Ok b, Some hand => hand_value b (listm.length hand) hand
     | _ => None
 
 test roll_within_bounds =
@@ -88,6 +178,14 @@ test roll_within_bounds_2 =
 
 test roll_within_bounds_3 =
     roll_within_bounds 2000i32 [ 4; 1; 1; 2; 3 ]
+    |> _assert_eq None
+
+test roll_within_bounds_rejects_a_face_that_no_die_has =
+    (roll_within_bounds 2000i32 [ 1; 7; 1 ], roll_within_bounds 2000i32 [ 0; 1 ], roll_within_bounds 0i32 [ 1 ])
+    |> _assert_eq (None, None, None)
+
+test roll_within_bounds_never_overflows_a_long_hand =
+    roll_within_bounds 4738381338321616896u64 [ 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]
     |> _assert_eq None
 
 :~ ^ faces (from : u8) : list u8 = ? from > 6 ?> [] |: from :: faces (from + 1)
@@ -111,88 +209,174 @@ test every_two_roll_sequence_maps_to_one_value_so_accepted_rolls_are_uniform =
     := rejected = listm.fold (\ n r => ?= r ?| Some _ => n | None => n + 1i32) 0i32 results
     (values_seen_once 1i32 results, rejected) |> _assert_eq (!+, 16i32)
 
-/// ## calculate_dice_count
-:= calculate_dice_count \* a {number} b {number}. (max : a) : b =
-    := ^ body \* t {number}. (n : t) (p : a) : t =
-        := return () =
-            trace Debug
-                \ () => "dice.calculate_dice_count"
-                \ () => { max p n }
-            n
-        ? p < max ?>
-            ? p > (limit.max : a) / 6
-            ?>
-                failwith (
-                    "dice.calculate_dice_count / max: " ++# #?max ++# " is above the largest supported bound " ++# #?p
-                )
-            |: 루프 (n + 1) (p * 6)
-        |: return ()
-    :& := 루프 \* t {number}. (n : t) (p : a) : t =
-        ? var_is max |> not
-        ?> body n p
-        |:
-            := n = dyn n
-            := p = dyn p
-            ~~ body n p
-    ? max = 1
-    ?> 1
-    |: 루프 0 1
+/// ## sources
+:? draw_face s : s -> face * s
 
-test calculate_dice_count =
-    calculate_dice_count 36i32
+:! replay = { all : list face; rest : list face }
+
+:= replayed (faces : list face) : replay =
+    replay { all = faces; rest = faces }
+
+:+ draw_face replay =
+    \ (replay { all rest }) =>
+        ?= rest ?|
+        | f :: rest => f, replay { all = all; rest = rest }
+        | [] =>
+            ?= all ?|
+            | f :: rest => f, replay { all = all; rest = rest }
+            | [] => One, replay { all = all; rest = [] }
+
+:! system = ()
+
+:+ draw_face system =
+    \ s => face_of_digit (random' 0i32 6i32), s
+
+:! roller = () -> u8
+
+:~ ^ draw_rolled (roll : () -> u8) : face =
+    ?= face_of_pips (roll ()) ?|
+    | Some f => f
+    | None => draw_rolled roll
+
+:+ draw_face roller =
+    \ (roller roll) => draw_rolled roll, roller roll
+
+:! hash_faces h = { hasher : h; digest : array u8; at : i32 }
+
+:= hashed \* h. (hasher : h) (digest : array u8) : hash_faces h =
+    hash_faces { hasher = hasher; digest = digest; at = 0 }
+
+:~ ^ draw_hashed \* h {digest_with}. (hasher : h) (digest : array u8) (at : i32) : face * hash_faces h =
+    ? at >= length digest
+    ?> draw_hashed hasher (digest_with hasher digest) 0
+    |:
+        ?= face_of_byte (index digest at) ?|
+        | Some f => f, hash_faces { hasher = hasher; digest = digest; at = at + 1 }
+        | None => draw_hashed hasher digest (at + 1)
+
+:+ draw_face hash_faces h {digest_with} =
+    \ (hash_faces { hasher digest at }) => draw_hashed hasher digest at
+
+/// ## roll
+:| reroll =
+    | Fresh
+    | Slide
+
+:~ ^ roll_hand \* s {draw_face}. (count : i32) (hand : list face) (source : s) : list face * s =
+    ? count <= 0
+    ?> hand, source
+    |:
+        := f, source = draw_face source
+        roll_hand (count - 1) (f :: hand) source
+
+:~ ^ roll_kept \* t {number} s {draw_face}.
+    (policy : reroll)
+    (b : bound t)
+    (count : i32)
+    (hand : list face)
+    (source : s)
+    : t * s
+    =
+    ?= hand_value b count hand ?|
+    | Some value => value, source
+    | None =>
+        ?= policy ?|
+        | Fresh =>
+            := hand, source = roll_hand count [] source
+            roll_kept policy b count hand source
+        | Slide =>
+            := f, source = draw_face source
+            roll_kept policy b count (f :: hand) source
+
+:~ ^ roll_fresh \* t {number} s {draw_face}. (b : bound t) (count : i32) (source : s) : t * s =
+    :~ ^ read (left : i32) (place : t) (value : t) (source : s) : t * s =
+        ? left <= 0
+        ?> value, source
+        |:
+            := f, source = draw_face source
+            read (left - 1) (place * 6) (value + digit f * place) source
+    := value, source = read count 1 0 source
+    ? value < bound_value b ?> value + 1, source |: roll_fresh b count source
+
+:= roll \* t {number} s {draw_face}. (policy : reroll) (b : bound t) (source : s) : t * s =
+    := count = dice_count b
+    ?= policy ?|
+    | Fresh => roll_fresh b count source
+    | Slide =>
+        := hand, source = roll_hand count [] source
+        roll_kept policy b count hand source
+
+:= roll_value \* t {number} s {draw_face}. (policy : reroll) (max : t) (source : s) : t =
+    ?= bound_of max ?|
+    | Ok b => fst (roll policy b source)
+    | Error e => failwith (bound_error_text e)
+
+test a_replayed_hand_reads_its_newest_die_first =
+    roll_value Slide 2000i32 (replayed [ Five; Four; Four; Five; One ])
+    |> _assert_eq 995
+
+test sliding_keeps_the_newest_dice_after_a_rejection =
+    roll_value Slide 2000i32 (replayed [ Five; Four; Four; Five; Two; Two ])
+    |> _assert_eq 1678
+
+test the_largest_bound_accepts_the_highest_hand =
+    roll_value Fresh 4738381338321616896u64 (replayed [ Six ])
+    |> _assert_eq 4738381338321616896u64
+
+test a_single_die_bound_keeps_only_the_lowest_face =
+    roll_value Fresh 1i32 (replayed [ Six; Four; One ])
+    |> _assert_eq 1i32
+
+test fresh_rerolls_every_die_after_a_rejection =
+    roll_value Fresh 20i32 (replayed [ Six; Six; Two; One ])
     |> _assert_eq 2i32
 
-test calculate_dice_count_2 =
-    calculate_dice_count 7777i32
-    |> _assert_eq 6i32
+test a_source_without_draw_face_cannot_roll fails ETY-InstanceNotFound "draw_face" =
+    roll_value Fresh 6i32 (bound 6i32)
 
-test calculate_dice_count_3 =
-    calculate_dice_count 4738381338321616896u64
-    |> _assert_eq 24i32
+:~ ^ hashed_values (left : i32) (source : hash_faces keccak.spiral_keccak) (acc : list u64) : list u64 =
+    ? left <= 0
+    ?> listm.rev acc
+    |:
+        ?= bound_of 2000u64 ?|
+        | Ok b =>
+            := value, source = roll Fresh b source
+            hashed_values (left - 1) source (value :: acc)
+        | Error _ => acc
 
-test calculate_dice_count_4 =
-    calculate_dice_count 362797056i32
-    |> _assert_eq 11i32
+test a_keccak_stream_rolls_the_same_values_on_every_backend =
+    := ~seed_size = 3i32
+    := seed : array u8 = bytes.counting seed_size
+    hashed_values 6 (hashed keccak.spiral_keccak seed) []
+    |> _assert_eq [ 1295u64; 295; 1135; 1360; 1663; 1972 ]
 
-///> rust
-test calculate_dice_count_5 =
-    \ () =>
-        (calculate_dice_count 4738381338321616897u64 : i32)
-        |> ignore
-    |> _throws
-    |> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 4738381338321616896")
-    |> _assert_eq (Some !+)
-
-///> rust
-test calculate_dice_count_6 =
-    \ () =>
-        (calculate_dice_count (limit.max : i64) : i32)
-        |> ignore
-    |> _throws
-    |> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 4738381338321616896")
-    |> _assert_eq (Some !+)
+:~ ^ histogram_misses (policy : reroll) (max : i32) (draws : i32) (seen : list i32) : i32 =
+    ? draws <= 0
+    ?> listm'.init_series 1i32 max 1i32 |> listm.fold (\ misses v => ? listm.fold (\ found x => found || x = v) !- seen ?> misses |: misses + 1) 0i32
+    |:
+        := value = roll_value policy max system
+        ? value < 1 || value > max ?> -1i32 |: histogram_misses policy max (draws - 1) (value :: seen)
 
 ///> rust
-test calculate_dice_count_7 =
-    \ () =>
-        (calculate_dice_count 362797057i32 : i32)
-        |> ignore
-    |> _throws
-    |> optionm.map (sm'.format_exception >> sm'.contains "is above the largest supported bound 362797056")
-    |> _assert_eq (Some !+)
-
-/// ## roll_dice
-:~ roll_dice () : u8 =
-    random' 1 7
+///> fsharp
+///> typescript
+///> python
+///> lua
+test system_rolls_cover_every_value_and_stay_in_range =
+    := ~draws = 3000i32
+    (histogram_misses Fresh 10i32 draws [], histogram_misses Slide 10i32 draws [], histogram_misses Fresh 37i32 draws [])
+    |> _assert_eq (0i32, 0i32, 0i32)
 
 /// ## rotate_number
 := rotate_number \* t {number}. (max : i64) (n : t) : t =
     (conv n - 1 + max) % max + 1 |> conv
 
-/// ## rotate_numbers
 := rotate_numbers max items =
     items |> stream.map (rotate_number max)
 
+///> rust
+///> fsharp
+///> typescript
 test rotate_numbers =
     listm'.init_series -1 14 1i32
     |> stream.from_list
@@ -206,24 +390,12 @@ test rotate_numbers =
     := current_index = mut 0i64
     := acc = mut 1
     := len = mut -1
-    := last_item = mut None
     :~ ^ 루프 () =
-        \ () =>
-            := current_index = *current_index
-            := acc = *acc
-            := len = *len
-            := last_item = *last_item |> optionm'.box
-            trace Debug
-                \ () => "dice.create_sequential_roller / roll"
-                \ () => { current_index acc len last_item = #?*last_item }
-        |> \ x => x ()
         ?= s () |> stream.try_item *current_index ?|
         | Some item =>
             current_index <- *current_index + 1
-            last_item <- Some item
             item
         | None =>
-            trace Debug (\ () => "dice.create_sequential_roller / roll / None") id
             ? *len = -1
             ?> len <- *current_index
             acc <-
@@ -231,10 +403,12 @@ test rotate_numbers =
                 ?> 1
                 |: *acc + 1
             current_index <- *acc - 1
-            last_item <- None
             루프 ()
     루프
 
+///> rust
+///> fsharp
+///> typescript
 test create_sequential_roller =
     := sequential_roll = create_sequential_roller [ 1i32; 2; 3; 4 ]
 
@@ -243,108 +417,30 @@ test create_sequential_roller =
     4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2 ] : array i32)
 
 /// ## roll_progressively
-:= roll_progressively roll reroll max =
-    := power = (calculate_dice_count max) - 1
-    :~ ^ 루프 rolls size =
-        ? size < power + 1
-        ?> 루프 (roll () :: rolls) (size + 1)
-        |: accumulate_dice_rolls rolls power 0 |> \|
-            | Some (result, _) ?& result <= max => result
-            | _ ?& reroll => 루프 (listm.init power (\ _ => roll ())) power
-            | _ => 루프 (roll () :: rolls) (size + 1)
-    루프 [] 0
+:= roll_progressively (roll : () -> u8) (reroll : bool) max =
+    roll_value (? reroll ?> Fresh |: Slide) max (roller roll)
 
+///> rust
+///> fsharp
+///> typescript
 test roll_progressively =
-    roll_progressively roll_dice !- 1
-    |> _assert_eq 1i32
-
-test roll_progressively_2 =
-    := sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 1 ]
-
+    := sequential_roll = create_sequential_roller [ 5u8; 4; 4; 5; 1 ]
     roll_progressively sequential_roll !- 2000i32
     |> _assert_eq 995
 
-test roll_progressively_3 =
-    := sequential_roll = create_sequential_roller [ 5; 4; 4; 5; 2 ]
-
+///> rust
+///> fsharp
+///> typescript
+test roll_progressively_2 =
+    := sequential_roll = create_sequential_roller [ 5u8; 4; 4; 5; 2 ]
     roll_progressively sequential_roll !- 2000i32
     |> _assert_eq 1678
 
-test roll_progressively_4 =
-    := sequential_roll =
-        create_sequential_roller [ 6u8; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]
-
-    roll_progressively sequential_roll !- 4738381338321616896u64
-    |> _assert_eq 4738381338321616896u64
-
-test roll_progressively_5 =
-    := histogram (reroll : bool) : i32 =
-        := { level } = get_trace_state_or_init None
-        level <- Info
-        :~ ^ insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =
-            ?= rows ?|
-            | [] => [ row ]
-            | (k2, v2) :: rest =>
-                := k, v = row
-                ? k <= k2 ?> (k, v) :: (k2, v2) :: rest
-                |: (k2, v2) :: insert row rest
-        ~~ dyn listm'.init_series 1i32 10000 1
-        |> listm.map (\ _ => roll_progressively roll_dice reroll 10i32)
-        |> listm'.group_by id
-        |> listm.map (\ (k, v) => k, (listm.length v : i32))
-        |> listm.fold (\ acc row => insert row acc) []
-        |> listm.fold \ acc (k, v) =>
-                ? acc = "" ?> #?k ++# " = " ++# #?v |: acc ++# "; " ++# #?k ++# " = " ++# #?v
-            ""
-        |> console.write_line
-        0i32
-
-    histogram !-
-
-test roll_progressively_6 =
-    := histogram (reroll : bool) : i32 =
-        := { level } = get_trace_state_or_init None
-        level <- Info
-        :~ ^ insert (row : i32 * i32) (rows : list (i32 * i32)) : list (i32 * i32) =
-            ?= rows ?|
-            | [] => [ row ]
-            | (k2, v2) :: rest =>
-                := k, v = row
-                ? k <= k2 ?> (k, v) :: (k2, v2) :: rest
-                |: (k2, v2) :: insert row rest
-        ~~ dyn listm'.init_series 1i32 10000 1
-        |> listm.map (\ _ => roll_progressively roll_dice reroll 10i32)
-        |> listm'.group_by id
-        |> listm.map (\ (k, v) => k, (listm.length v : i32))
-        |> listm.fold (\ acc row => insert row acc) []
-        |> listm.fold \ acc (k, v) =>
-                ? acc = "" ?> #?k ++# " = " ++# #?v |: acc ++# "; " ++# #?k ++# " = " ++# #?v
-            ""
-        |> console.write_line
-        0i32
-
-    histogram !+
-
-test roll_progressively_7 =
-    := check_progress () : i32 =
-        := { level } = get_trace_state_or_init None
-        level <- Info
-        ~~ dyn listm'.init_series 1i32 100 1
-        |> listm.iter \ n =>
-            listm'.init_series 0i32 1 1
-            |> listm.iter \ reroll =>
-                ~~ dyn listm'.init_series 1i32 3500 1
-                |> listm.map \ _ => roll_progressively roll_dice (reroll = 1) n
-                |> listm'.group_by id
-                |> listm.length
-                |> __assert_eq Silent n
-        0i32
-
-    check_progress ()
-
 /// ## main
+///> _
+
 := main (_args : array_base string) =
-    := result = roll_progressively roll_dice !+ 4738381338321616896i64
+    := result = roll_value Fresh 4738381338321616896i64 system
     trace Debug
         \ () => "dice.main"
         \ () => { result }
@@ -381,25 +477,30 @@ test roll_progressively_7 =
         Fsharp = \ () => $'let rotate_numbers x = !rotate_numbers' x' : ()
         Rust = \ () => ()
         TypeScript = \ () => ()
+        C = \ () => ()
     } : ()
     backend_switch {
         Fsharp = \ () => $'let create_sequential_roller x = !create_sequential_roller' x' : ()
         Rust = \ () => ()
         TypeScript = \ () => ()
+        C = \ () => ()
     } : ()
     backend_switch {
         Fsharp = \ () => $'let roll_progressively x = !roll_progressively' x' : ()
         Rust = \ () => ()
         TypeScript = \ () => ()
+        C = \ () => ()
     } : ()
     backend_switch {
         Fsharp = \ () => $'let roll_within_bounds x = !roll_within_bounds' x' : ()
         Rust = \ () => ()
         TypeScript = \ () => ()
+        C = \ () => ()
     } : ()
     backend_switch {
         Fsharp = \ () => $'let main args = !main args' : ()
         Rust = \ () => main (;[] |> am'.base) |> ignore
         Python = \ () => main (;[] |> am'.base) |> ignore
         TypeScript = \ () => main (;[] |> am'.base) |> ignore
+        C = \ () => ()
     } : ()
