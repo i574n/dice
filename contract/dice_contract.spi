@@ -1,3 +1,4 @@
+///> zig
 ///- --package ../dice
 
 :< rust_operators
@@ -230,7 +231,6 @@ test roll_within_bounds_2 =
     |> _assert_eq' (optionm'.some' 1715)
 
 /// ### main
-///> _
 
 := main_native () : () =
     global """
