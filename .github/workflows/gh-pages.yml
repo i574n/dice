@@ -42,6 +42,11 @@ jobs:
         with:
           python-version: "3.12.10"
 
+      - if: runner.os == 'Linux'
+        run: |
+          curl -fsSL https://github.com/WebAssembly/binaryen/releases/download/version_133/binaryen-version_133-x86_64-linux.tar.gz | tar -xz -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/binaryen-version_133/bin" >> "$GITHUB_PATH"
+
       - run: pwsh scripts/workflow.ps1
 
       - uses: actions/upload-artifact@v7.0.2

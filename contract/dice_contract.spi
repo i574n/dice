@@ -3,116 +3,317 @@
 
 :< rust_operators
 :< sm'_operators
+:< digest
 
+/// # dice_contract
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> c
 test dice_contract static =
     :< testing
 
-/// ## dice_contract
-:== state =
+/// ## entropy
+:== entropy =
     {
-        version : u32
-        seeds : am'.vec u8
+        account_balance_high : u64
+        account_balance_low : u64
+        block_height : u64
+        block_timestamp : u64
+        epoch_height : u64
+        key : string
+        predecessor : string
+        proof : string
+        seed : array u8
+        seeds : array u8
+        signer : string
     }
 
-///> rust -c
-test state =
-    ()
-
-///> rust -c
-test state_2 =
-    trace Verbose (\ () => "") id
-
-:= empty_seeds () : am'.vec u8 =
-    $'std::vec::Vec::<u8>::new()'
-
-:= new () : state =
+:== call =
     {
-        version = 3
-        seeds = empty_seeds ()
+        key : string
+        proof : string
+        seeds : array u8
     }
 
-///> rust -c
-test new =
-    := state = new ()
-    trace Verbose (\ () => "dice_contract") \ () => { state = #?*state }
-    trace Verbose (\ () => "") id
+:= u64_text (x : u64) : string =
+    #?x
+
+:= part_bytes \* t. (x : t) : array u8 =
+    ~>
+        ?: t ?|
+        | u64 => bytes.le_u64 x
+        | string => bytes.utf8 x
+        | array u8 => x
+
+:= part_text \* t. (x : t) : string =
+    ~>
+        ?: t ?|
+        | u64 => u64_text x
+        | string => x
+        | array u8 => bytes.hex x
+
+:= entropy_bytes (e : entropy) : array u8 =
+    bytes.concat (
+        ~>
+            real_core::record_type_fold_back
+                (\ key => \* field. acc => (::) `(array u8) (part_bytes `field (e key)) acc)
+                `entropy
+                (Nil `(array u8))
+    )
+
+:= entropy_text (e : entropy) : string =
+    ~>
+        real_core::record_type_fold_back
+            (\ key => \* field. acc =>
+                (::) `(string * string) (sm'_real::symbol_to_string_real `(`key), part_text `field (e key)) acc
+            )
+            `entropy
+            (Nil `(string * string))
+    |> listm.fold (\ (first, acc) (name, value) => !-, acc ++# (? first ?> "" |: "; ") ++# name ++# " = " ++# value) (!+, "")
+    |> snd
+
+/// ## chain
+:? read_entropy c : c -> call -> entropy
+
+:? fail_with c : \* t. c -> string -> t
+
+:! host = ()
+
+:+ read_entropy host =
+    \ _ (call : call) =>
+        := low, high = near.host_account_balance_words ()
+        {
+            account_balance_high = high
+            account_balance_low = low
+            block_height = near.host_block_height ()
+            block_timestamp = near.host_block_timestamp ()
+            epoch_height = near.host_epoch_height ()
+            key = call.key
+            predecessor = near.host_predecessor ()
+            proof = call.proof
+            seed = near.host_random_seed ()
+            seeds = call.seeds
+            signer = near.host_signer ()
+        }
+
+:+ fail_with host =
+    \ _ text => near.panic text
+
+:+ digest_with host =
+    \ _ digest => near.host_keccak512 digest
+
+:! fixture =
+    {
+        account_balance : u64 * u64
+        block_height : u64
+        block_timestamp : u64
+        epoch_height : u64
+        predecessor : string
+        seed : array u8
+        signer : string
+    }
+
+:+ read_entropy fixture =
+    \ (fixture f) (call : call) =>
+        := low, high = f.account_balance
+        {
+            account_balance_high = high
+            account_balance_low = low
+            block_height = f.block_height
+            block_timestamp = f.block_timestamp
+            epoch_height = f.epoch_height
+            key = call.key
+            predecessor = f.predecessor
+            proof = call.proof
+            seed = f.seed
+            seeds = call.seeds
+            signer = f.signer
+        }
+
+:+ fail_with fixture =
+    \ _ text => failwith text
+
+:+ digest_with fixture =
+    \ _ digest => keccak.keccak512 digest |> keccak.digest_bytes
+
+:= sample_fixture () : fixture =
+    fixture {
+        account_balance = (7u64, 1u64)
+        block_height = 42u64
+        block_timestamp = 1700000000000000000u64
+        epoch_height = 3u64
+        predecessor = "alice.near"
+        seed = bytes.repeated 32i32 7u8
+        signer = "alice.near"
+    }
+
+:= sample_call (key : string) : call =
+    { key = key; proof = ""; seeds = bytes.counting 4i32 }
+
+///> zig
+test entropy_bytes_follow_the_field_order_of_the_record =
+    := ~key = "k"
+    read_entropy (sample_fixture ()) (sample_call key)
+    |> entropy_bytes
+    |> keccak.keccak512
+    |> keccak.digest_bytes
+    |> bytes.hex
+    |> sm'.slice 0i32 15i32
+    |> _assert_eq "0e10e94fc9dfb460"
+
+///> zig
+test entropy_text_names_every_field_once =
+    := ~key = "k"
+    read_entropy (sample_fixture ()) (sample_call key)
+    |> entropy_text
+    |> _assert_eq "account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near"
+
+/// ## phases
+:! requested = ()
+
+:! bounded = ()
+
+:! gathered = ()
+
+:! hashed = ()
+
+:! rolled = ()
+
+:| roll_state phase =
+    | Requested :: u64 * call -> roll_state requested
+    | Bounded :: lib.dice.bound u64 * call -> roll_state bounded
+    | Gathered :: lib.dice.bound u64 * entropy -> roll_state gathered
+    | Hashed :: lib.dice.bound u64 * entropy * array u8 -> roll_state hashed
+    | Rolled :: u64 * entropy * array u8 -> roll_state rolled
+
+:| roll_step from to =
+    | CheckBound :: roll_step requested bounded
+    | Gather :: roll_step bounded gathered
+    | Hash :: roll_step gathered hashed
+    | Draw :: roll_step hashed rolled
+
+:| ^ roll_plan from to =
+    | Step :: \* from to. roll_step from to -> roll_plan from to
+    | Then :: \* from to. (\? middle. roll_plan from middle * roll_plan middle to) -> roll_plan from to
+
+:= check_bound \* c {fail_with}. (chain : c) (state : roll_state requested) : roll_state bounded =
+    ?= state ?|
+    | Requested (max, call) =>
+        := b =
+            ?= lib.dice.bound_of max ?|
+            | Ok b => b
+            | Error e => fail_with chain ("dice_contract.generate_random_number / " ++# lib.dice.bound_error_text e)
+        Bounded (b, call)
+
+:= gather \* c {read_entropy}. (chain : c) (state : roll_state bounded) : roll_state gathered =
+    ?= state ?|
+    | Bounded (b, call) => Gathered (b, read_entropy chain call)
+
+:= hash \* c {digest_with}. (chain : c) (state : roll_state gathered) : roll_state hashed =
+    ?= state ?|
+    | Gathered (b, e) => Hashed (b, e, digest_with chain (entropy_bytes e))
+
+:= draw \* c {digest_with}. (chain : c) (state : roll_state hashed) : roll_state rolled =
+    ?= state ?|
+    | Hashed (b, e, digest) =>
+        := value, _ = lib.dice.roll lib.dice.Fresh b (lib.dice.hashed chain digest)
+        Rolled (value, e, digest)
+
+:= run_step \* from to c {read_entropy; fail_with; digest_with}.
+    (chain : c)
+    (step : roll_step from to)
+    (state : roll_state from)
+    : roll_state to
+    =
+    ?= step ?|
+    | CheckBound => check_bound chain state
+    | Gather => gather chain state
+    | Hash => hash chain state
+    | Draw => draw chain state
+
+:= ^ run \* from to c {read_entropy; fail_with; digest_with}.
+    (chain : c)
+    (plan : roll_plan from to)
+    (state : roll_state from)
+    : roll_state to
+    =
+    ?= plan ?|
+    | Step step => run_step chain step state
+    | Then pair =>
+        := \? middle. first, second = pair
+        run chain second (run chain first state)
+
+:= generate_plan () : roll_plan requested rolled =
+    Then (\? (Step CheckBound, Then (\? (Step Gather, Then (\? (Step Hash, Step Draw))))))
+
+:= generate \* c {read_entropy; fail_with; digest_with}. (chain : c) (call : call) (max : u64) : roll_state rolled =
+    run chain (generate_plan ()) (Requested (max, call))
+
+:= rolled_value (state : roll_state rolled) : u64 =
+    ?= state ?|
+    | Rolled (value, _, _) => value
+
+///> zig
+test a_fixture_rolls_the_same_number_on_every_backend =
+    := ~max = 2000u64
+    (generate (sample_fixture ()) (sample_call "k") max |> rolled_value, generate (sample_fixture ()) (sample_call "k2") max |> rolled_value)
+    |> _assert_eq (371u64, 1879u64)
+
+///> rust
+///> fsharp
+///> typescript
+///> python
+test the_bound_is_checked_before_anything_is_gathered =
+    := ~max = 0u64
+    \ () => generate (sample_fixture ()) (sample_call "k") max |> rolled_value |> ignore
+    |> _throws
+    |> optionm.map (sm'.format_exception >> sm'.contains "dice_contract.generate_random_number / max must be at least 1")
+    |> _assert_eq (Some !+)
+
+test a_plan_cannot_draw_before_hashing fails ETY-TermError "Unification failure" =
+    := plan : roll_plan requested rolled = Then (\? (Step CheckBound, Then (\? (Step Gather, Step Draw))))
+    0i32
+
+test a_plan_cannot_gather_before_the_bound_is_checked fails ETY-TermError "Unification failure" =
+    := plan : roll_plan requested rolled = Then (\? (Step Gather, Then (\? (Step CheckBound, Then (\? (Step Hash, Step Draw))))))
+    0i32
+
+test a_rolled_state_cannot_be_rolled_again fails ETY-TermError "Unification failure" =
+    := again (state : roll_state rolled) : roll_state rolled = draw (sample_fixture ()) state
+    0i32
+
+/// ## seeds
+:= new () : u32 * am'.vec u8 =
+    3u32, (([] : list u8) |> am'.new_vec)
 
 := max_seeds () : convert.unativeint =
     100i32 |> convert.convert
 
-:= hex (bytes : am'.vec u8) : string =
-    $'{ const D: &[u8; 16] = b"0123456789abcdef"; let b = &(!bytes); let mut s = std::string::String::with_capacity(b.len() * 2); for x in b.iter() { s.push(D[(*x >> 4) as usize] as char); s.push(D[(*x & 15) as usize] as char); } std::rc::Rc::<str>::from(s) }'
-
-///> rust -c
-test hex =
-    ;[ 0u8; 15; 16; 171; 255 ] |> am'.base |> am'.to_vec
-    |> hex
-    |> _assert_eq "000f10abff"
-
-:= append_seed (seeds : rust.ref (rust.mut' (am'.vec u8))) (seed : am'.vec u8) : am'.vec u8 =
-    := max = max_seeds ()
-    $'{ let s = &mut *(!seeds); s.extend_from_slice(&(!seed)); let excess = s.len().saturating_sub(!max); s.drain(..excess).collect::<std::vec::Vec<u8>>() }'
+:= trim_seeds (seeds : rust.ref (rust.mut' (am'.vec u8))) : am'.vec u8 =
+    := len : u64 = seeds |> am'.vec_ref_len |> convert.convert
+    := max : u64 = max_seeds () |> convert.convert
+    := excess = ? len > max ?> len - max |: 0u64
+    seeds |> am'.vec_drain_front (excess |> convert.convert)
 
 := contribute_seed (seeds : rust.ref (rust.mut' (am'.vec u8))) (seed : am'.vec u8) : () =
     := seed_len = seed |> am'.vec_len
-    := seed_excess = seed |> append_seed seeds
+    seeds |> am'.vec_extend_from_slice seed
+    := seed_excess = seeds |> trim_seeds
     trace Debug
         \ () => "dice_contract.contribute_seed"
-        \ () => { seed_len seed_excess = seed_excess |> hex }
-    trace Debug (\ () => "") (~~ id)
+        \ () => { seed_len seed_excess = seed_excess |> crypto.hex_of_vec }
+    trace_flush ()
 
-///> rust -c
-test contribute_seed =
-    := replicate n =
-        :~ ^ 루프 i acc =
-            ? i > n
-            ?> acc
-            |:
-                := i' = i % 10
-                := i' =
-                    ? i' = 0
-                    ?> i % limit.max
-                    |: i'
-                루프 (i + 1) (i' :: acc)
-        루프 1 []
-        |> listm.rev
-        |> listm'.box
-        |> listm'.to_array'
+///> rust
+test contribute_seed_keeps_the_newest_hundred_bytes =
+    := seeds = ([] : list u8) |> am'.new_vec |> rust.to_ref_mut
+    listm'.init_series 1i32 120 1 |> listm.map convert.u8 |> am'.new_vec |> contribute_seed seeds
+    ((seeds |> rust.len : u32), (seeds |> am'.vec_ref_len |> convert.convert : u64))
+    |> _assert_eq (100u32, 100u64)
 
-    := max_seeds : u32 = max_seeds () |> convert.convert
-    := seeds = empty_seeds () |> rust.to_ref_mut
-
-    conv max_seeds * 1.2f64
-    |> replicate
-    |> am'.map_base convert.u8
-    |> am'.to_vec
-    |> contribute_seed seeds
-
-    seeds
-    |> rust.len
-    |> _assert_eq max_seeds
-
-:= largest_bound () : u64 =
-    4738381338321616896u64
-
-:= hash_word (hash : am'.vec u8) (index : u64) : u64 =
-    $'(0..8usize).fold(0u64, |w, j| w | (u64::from((!hash)[(8 * (!index) as usize + j) % (!hash).len()]) << (8 * j)))'
-
-:= uniform_from_hash (max : u64) (hash : am'.vec u8) : u64 =
-    := last_accepted = limit.max - (limit.max - max + 1u64) % max
-    :~ ^ 루프 (hash : am'.vec u8) (index : u64) : u64 =
-        ? index >= 8u64
-        ?> 루프 (hash |> near.keccak512) 0u64
-        |:
-            := word = hash_word hash index
-            ? word <= last_accepted
-            ?> word % max + 1u64
-            |: 루프 hash (index + 1u64)
-    루프 hash 0u64
-
-:= fail (text : string) : u64 =
-    $'{ \#[cfg(target_arch = "wasm32")] near_sdk::env::panic_str(&*(!text)); \#[cfg(not(target_arch = "wasm32"))] std::panic::panic_any::<std::string::String>((!text).to_string()) }'
-
+/// ## generate_random_number
 := generate_random_number
     (seeds : rust.ref (rust.mut' (am'.vec u8)))
     (key : sm'.std_string)
@@ -120,85 +321,16 @@ test contribute_seed =
     (max : u64)
     : u64
     =
-    ? max = 0u64
-    ?> fail "dice_contract.generate_random_number / max must be at least 1"
-    |? max > largest_bound ()
-    ?>
-        fail (
-            "dice_contract.generate_random_number / max: " ++# #?max
-            ++# " is above the largest supported bound " ++# #?(largest_bound ())
-        )
-    |:
-        := seed = near.random_seed ()
-        := epoch_height = near.epoch_height ()
-        := block_height = near.block_height ()
-        := block_timestamp = near.block_timestamp ()
-        := account_balance = near.account_balance ()
-        := signer_account_id = near.signer_account_id ()
-        := predecessor_account_id = near.predecessor_account_id ()
-        := seeds_before : am'.vec u8 = $'(!seeds).clone()'
-        := entropy =
-            ;[
-                seed
-                seeds_before
-                epoch_height |> am'.to_le_bytes |> am'.to_vec'
-                block_height |> am'.to_le_bytes |> am'.to_vec'
-                block_timestamp |> am'.to_le_bytes |> am'.to_vec'
-                account_balance |> near.as_yoctonear |> am'.to_le_bytes |> am'.to_vec'
-                signer_account_id |> am'.as_bytes |> am'.to_vec''
-                predecessor_account_id |> am'.as_bytes |> am'.to_vec''
-                proof |> sm'.into_bytes
-                key |> sm'.into_bytes
-            ]
-            |> am'.base
-            |> am'.to_vec
-            |> rust.concat
-        := hash = entropy |> near.keccak512
-        hash |> append_seed seeds |> ignore
-        := result = hash |> uniform_from_hash max
+    := call = { key = key |> sm'.from_std_string; proof = proof |> sm'.from_std_string; seeds = seeds |> am'.vec_ref_to_array }
+    ?= generate host call max ?|
+    | Rolled (value, e, digest) =>
+        seeds |> am'.vec_extend_from_array digest
+        seeds |> trim_seeds |> ignore
         trace Debug
-            \ () => "dice_contract.generate_random_number"
-            \ () => {
-                max
-                result
-                key
-                proof
-                block_timestamp
-                block_height
-                epoch_height
-                account_balance = account_balance |> near.as_yoctonear |> sm'.format_debug
-                signer_account_id = signer_account_id |> sm'.to_string'
-                predecessor_account_id = predecessor_account_id |> sm'.to_string'
-                seed = seed |> hex
-                seeds = seeds_before |> hex
-                hash = hash |> hex
-            }
-        trace Debug (\ () => "") (~~ id)
-        result
-
-///> rust -c
-test uniform_from_hash =
-    := hash = ;[ 255u8; 255; 255; 255; 255; 255; 255; 255; 7; 0; 0; 0; 0; 0; 0; 0 ] |> am'.base |> am'.to_vec
-    hash
-    |> uniform_from_hash 6
-    |> _assert_eq 2
-
-///> rust -c
-test uniform_from_hash_2 =
-    := hash = ;[ 255u8; 255; 255; 255; 255; 255; 255; 255 ] |> am'.base |> am'.to_vec
-    hash
-    |> uniform_from_hash 1
-    |> _assert_eq 1
-
-///> rust -cd near-token
-test generate_random_number =
-    := seeds = empty_seeds () |> rust.to_ref_mut
-    2000
-    |> generate_random_number
-        seeds
-        ("" |> sm'.to_std_string)
-        ("" |> sm'.to_std_string)
-    |> _assert_gt 0
+            \ () => "dice_contract.generate_random_number " ++# entropy_text e ++# "; hash = " ++# bytes.hex digest
+            \ () => { max result = value }
+        trace_flush ()
+        value
 
 := roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
     := result =
@@ -211,39 +343,81 @@ test generate_random_number =
     trace Debug
         \ () => "dice_contract.roll_within_bounds"
         \ () => { max rolls = #?*rolls; result = #?*result }
-    trace Debug (\ () => "") (~~ id)
+    trace_flush ()
     result
 
-///> rust -c
-test roll_within_bounds =
-    := rolls = ;[ 1; 5; 4; 4; 5 ] |> am'.base |> am'.to_vec
+/// ## host
+:= mocked_chain () : () =
+    $'near_sdk::testing_env!!(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; 32]).block_height(42).block_timestamp(1_700_000_000_000_000_000).epoch_height(3).account_balance(near_sdk::NearToken::from_yoctonear((1u128 << 64) + 7)).signer_account_id("alice.near".parse().unwrap()).predecessor_account_id("alice.near".parse().unwrap()).build())' : ()
 
-    rolls
-    |> roll_within_bounds 2000
-    |> _assert_eq' (optionm'.some' 995)
+///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
+test the_host_reads_the_chain_the_fixture_describes =
+    mocked_chain ()
+    := host_entropy = read_entropy host (sample_call "k")
+    := fixture_entropy = read_entropy (sample_fixture ()) (sample_call "k")
+    (entropy_text host_entropy = entropy_text fixture_entropy, entropy_bytes host_entropy |> bytes.hex = (entropy_bytes fixture_entropy |> bytes.hex))
+    |> _assert_eq (!+, !+)
 
-///> rust -c
-test roll_within_bounds_2 =
-    := rolls = ;[ 2; 2; 6; 4; 5 ] |> am'.base |> am'.to_vec
+///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
+test the_host_rolls_what_the_fixture_rolls =
+    mocked_chain ()
+    (generate host (sample_call "k") 2000u64 |> rolled_value, generate (sample_fixture ()) (sample_call "k") 2000u64 |> rolled_value)
+    |> _assert_eq (371u64, 371u64)
 
-    rolls
-    |> roll_within_bounds 2000
-    |> _assert_eq' (optionm'.some' 1715)
+///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
+test the_host_keccak_is_the_spiral_keccak =
+    mocked_chain ()
+    := ~size = 150i32
+    := message = bytes.counting size
+    near.host_keccak512 message |> bytes.hex
+    |> _assert_eq (keccak.keccak512 message |> keccak.digest_bytes |> bytes.hex)
+
+///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
+test generate_random_number_appends_the_hash_to_the_seeds =
+    mocked_chain ()
+    := seeds = ([] : list u8) |> am'.new_vec |> rust.to_ref_mut
+    := key = "k" |> sm'.to_std_string
+    := proof = "" |> sm'.to_std_string
+    := first = generate_random_number seeds key proof 2000u64
+    := after_first : u64 = seeds |> am'.vec_ref_len |> convert.convert
+    := second = generate_random_number seeds key proof 2000u64
+    := after_second : u64 = seeds |> am'.vec_ref_len |> convert.convert
+    (first, after_first, second, after_second)
+    |> _assert_eq (1884u64, 64u64, 549u64, 100u64)
+
+///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
+test the_host_glue_pins_its_gas =
+    mocked_chain ()
+    := used () : u64 = $'near_sdk::env::used_gas().as_gas()' : u64
+    := start = used ()
+    := seed = near.host_random_seed ()
+    := after_seed = used ()
+    := digest = near.host_keccak512 (bytes.counting 150i32)
+    := after_hash = used ()
+    := state = generate host (sample_call "k") 2000u64
+    := after_roll = used ()
+    (after_seed - start, after_hash - after_seed, after_roll - after_hash, length seed + length digest, rolled_value state)
+    |> _assert_eq (9192751602u64, 23628854763u64, 52413432801u64, 96i32, 371u64)
 
 /// ### main
 
-:= main_native () : () =
+:= quiet () : () =
+    set_trace_level Debug
+
+:= state_struct () : () =
+    global """
+        #[near_sdk::near(contract_state)]
+        #[derive(near_sdk::PanicOnDefault)]
+        pub struct State((u32, Vec<u8>));
+        """
+
+:= legacy_state () : () =
     global """
         #[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]
         pub struct OldState {
             version: u32,
             seeds: near_sdk::store::vec::Vector<u8>,
         }
-        """
-    global """
-        #[near_sdk::near(contract_state)]
-        #[derive(near_sdk::PanicOnDefault)]
-        pub struct State((u32, Vec<u8>));
         """
     global """
         impl From<OldState> for State {
@@ -255,6 +429,8 @@ test roll_within_bounds_2 =
             }
         }
         """
+
+:= init_methods () : () =
     global """
         #[near_sdk::near]
         impl State {
@@ -274,15 +450,55 @@ test roll_within_bounds_2 =
                     .unwrap_or_else(|_| near_sdk::env::panic_str("dice_contract.migrate / the state is not the old layout"))
                     .into()
             }
+        }
+        """
+    export
+        "dice_contract_new"
+        ((\ () => := () = quiet () ;; new ()) : () -> u32 * am'.vec u8)
+
+:= seed_methods () : () =
+    global """
+        #[near_sdk::near]
+        impl State {
             pub fn contribute_seed(&mut self, seed: Vec<u8>) {
                 dice_contract_contribute_seed(&mut self.0.1, seed)
             }
             pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) {
                 self.contribute_seed(seed)
             }
+        }
+        """
+    export
+        "dice_contract_contribute_seed"
+        (
+            \ (seeds, seed) =>
+                := () = quiet ()
+                contribute_seed seeds seed
+            : rust.ref (rust.mut' (am'.vec u8)) * am'.vec u8 -> ()
+        )
+
+:= roll_methods () : () =
+    global """
+        #[near_sdk::near]
+        impl State {
             pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 {
                 dice_contract_generate_random_number(&mut self.0.1, key, proof, max)
             }
+        }
+        """
+    export
+        "dice_contract_generate_random_number"
+        (
+            \ (seeds, key, proof, max) =>
+                := () = quiet ()
+                generate_random_number seeds key proof max
+            : rust.ref (rust.mut' (am'.vec u8)) * sm'.std_string * sm'.std_string * u64 -> u64
+        )
+
+:= bound_methods () : () =
+    global """
+        #[near_sdk::near]
+        impl State {
             pub fn roll_within_bounds(max: u64, rolls: Vec<u8>) -> Option<u64> {
                 dice_contract_roll_within_bounds(max, rolls)
             }
@@ -295,26 +511,6 @@ test roll_within_bounds_2 =
             }
         }
         """
-    := quiet () : () = set_trace_level Debug
-    export
-        "dice_contract_new"
-        ((\ () => := () = quiet () ;; := x = new () ;; x.version, x.seeds) : () -> u32 * am'.vec u8)
-    export
-        "dice_contract_contribute_seed"
-        (
-            \ (seeds, seed) =>
-                := () = quiet ()
-                contribute_seed seeds seed
-            : rust.ref (rust.mut' (am'.vec u8)) * am'.vec u8 -> ()
-        )
-    export
-        "dice_contract_generate_random_number"
-        (
-            \ (seeds, key, proof, max) =>
-                := () = quiet ()
-                generate_random_number seeds key proof max
-            : rust.ref (rust.mut' (am'.vec u8)) * sm'.std_string * sm'.std_string * u64 -> u64
-        )
     export
         "dice_contract_roll_within_bounds"
         (
@@ -324,41 +520,16 @@ test roll_within_bounds_2 =
             : u64 * am'.vec u8 -> optionm'.option' u64
         )
 
+:= main_native () : () =
+    near.bump_allocator ()
+    state_struct ()
+    legacy_state ()
+    init_methods ()
+    seed_methods ()
+    roll_methods ()
+    bound_methods ()
 
 := main () =
     ? is_rust ()
     ?> main_native ()
     |: ()
-
-///> rust -d "near-sdk={version='=5.11.0',features=['unit-testing']}" -d near-token
-test generate_random_number_is_deterministic_under_a_mocked_context =
-    := mocked () : () =
-        $'near_sdk::testing_env!!(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; \
-            32]).block_timestamp(1_700_000_000_000_000_000).build())' : ()
-    := draw () : u64 =
-        mocked ()
-        2000
-        |> generate_random_number
-            (empty_seeds () |> rust.to_ref_mut)
-            ("" |> sm'.to_std_string)
-            ("" |> sm'.to_std_string)
-    := first = draw ()
-    := second = draw ()
-    (first = second, first > 0) |> _assert_eq (!+, !+)
-
-///> rust -d "near-sdk={version='=5.11.0',features=['unit-testing']}" -d near-token
-test generate_random_number_reports_its_gas_under_a_mocked_context =
-    := mocked () : () =
-        $'near_sdk::testing_env!!(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; \
-            32]).block_timestamp(1_700_000_000_000_000_000).build())' : ()
-    := used () : u64 = $'near_sdk::env::used_gas().as_gas()' : u64
-    mocked ()
-    := before = used ()
-    := _drawn =
-        2000
-        |> generate_random_number
-            (empty_seeds () |> rust.to_ref_mut)
-            ("" |> sm'.to_std_string)
-            ("" |> sm'.to_std_string)
-    := gas = used () - before
-    (gas > 0u64, gas < 300000000000000u64) |> _assert_eq (!+, !+)
