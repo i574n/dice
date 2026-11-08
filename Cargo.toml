@@ -6,7 +6,7 @@ members = [
     "lib",
     "contract",
     "contract/tests",
-    "ui"
+    "ui",
 ]
 
 [workspace.package]

@@ -17,7 +17,7 @@ Write-Output "dice/lib/build.ps1 / ScriptDir: $ScriptDir / ResolvedScriptDir: $R
 
 $projectName = "dice"
 
-$livebook = Join-Path $ResolvedScriptDir "../deps/spiral/apps/cells/spi/run_notebook.ps1"
+$livebook = Join-Path ($env:SPIRAL_CELLS_ROOT ? $env:SPIRAL_CELLS_ROOT : (Join-Path $ResolvedScriptDir "../deps/spiral/apps/cells")) "spi/run_notebook.ps1"
 $spi = Join-Path $ResolvedScriptDir "$projectName.spi"
 $ipynb = Join-Path $ResolvedScriptDir "$projectName.spi.ipynb"
 if (!$fast -and !$SkipNotebook) {

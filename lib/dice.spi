@@ -1,14 +1,4 @@
-///> zig
 /// # dice (Dice)
-///> fsharp
-///> typescript
-///> python
-///> lua
-///> c
-///> zig
-///> gleam
-///> pascal
-///> rust
 test dice_dice static =
     :< testing
 
@@ -45,7 +35,15 @@ test dice_dice static =
 := face_of_byte (b : u8) : option face =
     ? b < 252u8 ?> Some (face_of_digit (conv (b % 6u8))) |: None
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test every_face_round_trips_through_its_pips =
     := ~low = 0u8
     (
@@ -74,7 +72,15 @@ test every_face_round_trips_through_its_pips =
     go 0
     counts
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test every_face_takes_the_same_share_of_the_bytes =
     face_counts ()
     |> _assert_eq (;[ 42i32; 42; 42; 42; 42; 42; 4 ] : array i32)
@@ -111,12 +117,28 @@ test every_face_takes_the_same_share_of_the_bytes =
         ? reach >= max ?> count |: go (count + 1) (reach * 6)
     ? max = 1 ?> 1 |: go 0 1
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test largest_bound_is_the_largest_power_of_six_of_the_type =
     ((largest_bound () : i32), (largest_bound () : u64), (largest_bound () : u8))
     |> _assert_eq (362797056i32, 4738381338321616896u64, 216u8)
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test bound_of_rejects_empty_and_oversized_ranges =
     := ~zero = 0u64
     := ~over = 4738381338321616897u64
@@ -136,12 +158,21 @@ test bound_of_rejects_empty_and_oversized_ranges =
     | Ok b => dice_count b
     | Error _ => -1
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test dice_count_is_the_fewest_dice_that_reach_the_bound =
     := ~one = 1i32
     (count_of one, count_of (one * 36), count_of (one * 7777), count_of (one * 362797056), count_of 4738381338321616896u64)
     |> _assert_eq (1i32, 2i32, 6i32, 11i32, 24i32)
 
+///> zig
 test a_raw_number_is_not_a_bound fails ETY-TermError "Unification failure" =
     dice_count 36u64
 
@@ -174,27 +205,67 @@ test a_raw_number_is_not_a_bound fails ETY-TermError "Unification failure" =
     | Ok b, Some hand => hand_value b (listm.length hand) hand
     | _ => None
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test roll_within_bounds =
     roll_within_bounds 2000i32 [ 1; 5; 4; 4; 5 ]
     |> _assert_eq (Some 995)
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test roll_within_bounds_2 =
     roll_within_bounds 2000i32 [ 2; 2; 6; 4; 5 ]
     |> _assert_eq (Some 1715)
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test roll_within_bounds_3 =
     roll_within_bounds 2000i32 [ 4; 1; 1; 2; 3 ]
     |> _assert_eq None
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test roll_within_bounds_rejects_a_face_that_no_die_has =
     (roll_within_bounds 2000i32 [ 1; 7; 1 ], roll_within_bounds 2000i32 [ 0; 1 ], roll_within_bounds 0i32 [ 1 ])
     |> _assert_eq (None, None, None)
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test roll_within_bounds_never_overflows_a_long_hand =
     roll_within_bounds 4738381338321616896u64 [ 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]
     |> _assert_eq None
@@ -215,7 +286,15 @@ test roll_within_bounds_never_overflows_a_long_hand =
 :~ ^ values_seen_once (v : i32) (results : list (option i32)) : bool =
     ? v > 20i32 ?> !+ |: occurrences v results 0 = 1 && values_seen_once (v + 1) results
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test every_two_roll_sequence_maps_to_one_value_so_accepted_rolls_are_uniform =
     := results = pair_results (faces 1) []
     := rejected = listm.fold (\ n r => ?= r ?| Some _ => n | None => n + 1i32) 0i32 results
@@ -273,6 +352,7 @@ test every_two_roll_sequence_maps_to_one_value_so_accepted_rolls_are_uniform =
 :| reroll =
     | Fresh
     | Slide
+    | Recycle
 
 :~ ^ roll_hand \* s {draw_face}. (count : i32) (hand : list face) (source : s) : list face * s =
     ? count <= 0
@@ -281,24 +361,12 @@ test every_two_roll_sequence_maps_to_one_value_so_accepted_rolls_are_uniform =
         := f, source = draw_face source
         roll_hand (count - 1) (f :: hand) source
 
-:~ ^ roll_kept \* t {number} s {draw_face}.
-    (policy : reroll)
-    (b : bound t)
-    (count : i32)
-    (hand : list face)
-    (source : s)
-    : t * s
-    =
+:~ ^ roll_slid \* t {number} s {draw_face}. (b : bound t) (count : i32) (hand : list face) (source : s) : t * s =
     ?= hand_value b count hand ?|
     | Some value => value, source
     | None =>
-        ?= policy ?|
-        | Fresh =>
-            := hand, source = roll_hand count [] source
-            roll_kept policy b count hand source
-        | Slide =>
-            := f, source = draw_face source
-            roll_kept policy b count (f :: hand) source
+        := f, source = draw_face source
+        roll_slid b count (f :: hand) source
 
 :~ ^ roll_fresh \* t {number} s {draw_face}. (b : bound t) (count : i32) (source : s) : t * s =
     :~ ^ read (left : i32) (place : t) (value : t) (source : s) : t * s =
@@ -310,44 +378,108 @@ test every_two_roll_sequence_maps_to_one_value_so_accepted_rolls_are_uniform =
     := value, source = read count 1 0 source
     ? value < bound_value b ?> value + 1, source |: roll_fresh b count source
 
+:! pool t = { value : t; range : t }
+
+:= empty_pool \* t {number}. () : pool t =
+    pool { value = 0; range = 1 }
+
+:= settle \* t {number}. (b : bound t) ((pool { value range }) : pool t) : result t (pool t) =
+    := max = bound_value b
+    := whole = range / max * max
+    ? value < whole ?> Ok (value % max + 1) |: Error (pool { value = value - whole; range = range - whole })
+
+:= with_die \* t {number}. ((pool { value range }) : pool t) (f : face) : pool t =
+    ? range > (limit.max : t) / 6
+    ?> pool { value = digit f; range = 6 }
+    |: pool { value = value * 6 + digit f; range = range * 6 }
+
+:~ ^ roll_recycled \* t {number} s {draw_face}. (b : bound t) (p : pool t) (source : s) : t * s =
+    ?= settle b p ?|
+    | Ok value => value, source
+    | Error p =>
+        := f, source = draw_face source
+        roll_recycled b (with_die p f) source
+
 := roll \* t {number} s {draw_face}. (policy : reroll) (b : bound t) (source : s) : t * s =
     := count = dice_count b
     ?= policy ?|
+    | Recycle => roll_recycled b (empty_pool ()) source
     | Fresh => roll_fresh b count source
     | Slide =>
         := hand, source = roll_hand count [] source
-        roll_kept policy b count hand source
+        roll_slid b count hand source
 
 := roll_value \* t {number} s {draw_face}. (policy : reroll) (max : t) (source : s) : t =
     ?= bound_of max ?|
     | Ok b => fst (roll policy b source)
     | Error e => failwith (bound_error_text e)
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test a_replayed_hand_reads_its_newest_die_first =
     roll_value Slide 2000i32 (replayed [ Five; Four; Four; Five; One ])
     |> _assert_eq 995
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test sliding_keeps_the_newest_dice_after_a_rejection =
     roll_value Slide 2000i32 (replayed [ Five; Four; Four; Five; Two; Two ])
     |> _assert_eq 1678
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test the_largest_bound_accepts_the_highest_hand =
     roll_value Fresh 4738381338321616896u64 (replayed [ Six ])
     |> _assert_eq 4738381338321616896u64
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test a_single_die_bound_keeps_only_the_lowest_face =
     roll_value Fresh 1i32 (replayed [ Six; Four; One ])
     |> _assert_eq 1i32
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test fresh_rerolls_every_die_after_a_rejection =
     roll_value Fresh 20i32 (replayed [ Six; Six; Two; One ])
     |> _assert_eq 2i32
 
+///> zig
 test a_source_without_draw_face_cannot_roll fails ETY-InstanceNotFound "draw_face" =
     roll_value Fresh 6i32 (bound 6i32)
 
@@ -361,7 +493,15 @@ test a_source_without_draw_face_cannot_roll fails ETY-InstanceNotFound "draw_fac
             hashed_values (left - 1) source (value :: acc)
         | Error _ => acc
 
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
 ///> zig
+///> gleam
+///> pascal
 test a_keccak_stream_rolls_the_same_values_on_every_backend =
     := ~seed_size = 3i32
     := seed : array u8 = bytes.counting seed_size
@@ -384,6 +524,124 @@ test system_rolls_cover_every_value_and_stay_in_range =
     := ~draws = 3000i32
     (histogram_misses Fresh 10i32 draws [], histogram_misses Slide 10i32 draws [], histogram_misses Fresh 37i32 draws [])
     |> _assert_eq (0i32, 0i32, 0i32)
+
+:! counted s = { inner : s; drawn : i32 }
+
+:+ draw_face counted s {draw_face} =
+    \ (counted { inner drawn }) =>
+        := f, inner = draw_face inner
+        f, counted { inner = inner; drawn = drawn + 1 }
+
+:~ ^ recycled_outcome \* t {number}. (b : bound t) (p : pool t) (faces : list face) : option t =
+    ?= settle b p ?|
+    | Ok value => Some value
+    | Error p =>
+        ?= faces ?|
+        | f :: rest => recycled_outcome b (with_die p f) rest
+        | [] => None
+
+:= outcome_spread (max : i32) : i32 * i32 * i32 =
+    := counts : array i32 = create (max + 1)
+    :~ ^ clear (i : i32) : () =
+        ? i <= max ?>
+            set counts i 0
+            clear (i + 1)
+    clear 0
+    ?= bound_of max ?|
+    | Ok b =>
+        :~ ^ tally (sequence : i32) : () =
+            ? sequence < 216 ?>
+                := faces = [ face_of_digit (sequence / 36); face_of_digit (sequence / 6 % 6); face_of_digit (sequence % 6) ]
+                := slot =
+                    ?= recycled_outcome b (empty_pool ()) faces ?|
+                    | Some value => value
+                    | None => 0
+                set counts slot (index counts slot + 1)
+                tally (sequence + 1)
+        tally 0
+    | Error _ => ()
+    :~ ^ spread (i : i32) (low : i32) (high : i32) : i32 * i32 =
+        ? i > max ?> low, high |: spread (i + 1) (? index counts i < low ?> index counts i |: low) (? index counts i > high ?> index counts i |: high)
+    := low, high = spread 1 1000 0
+    low, high, index counts 0
+
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
+///> zig
+///> gleam
+///> pascal
+test recycling_is_exact_over_every_three_dice_sequence =
+    := ~five = 5i32
+    (outcome_spread five, outcome_spread (five + 2), outcome_spread (five * 4))
+    |> _assert_eq ((43i32, 43i32, 1i32), (30i32, 30i32, 6i32), (10i32, 10i32, 16i32))
+
+:~ ^ recycled_values (left : i32) (source : hash_faces keccak.spiral_keccak) (acc : list u64) : list u64 =
+    ? left <= 0
+    ?> listm.rev acc
+    |:
+        ?= bound_of 2000u64 ?|
+        | Ok b =>
+            := value, source = roll Recycle b source
+            recycled_values (left - 1) source (value :: acc)
+        | Error _ => acc
+
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
+///> zig
+///> gleam
+///> pascal
+test a_recycled_keccak_stream_rolls_the_same_values_on_every_backend =
+    := ~seed_size = 3i32
+    recycled_values 6 (hashed keccak.spiral_keccak (bytes.counting seed_size)) []
+    |> _assert_eq [ 321u64; 1537; 145; 1654; 1384; 761 ]
+
+:~ ^ faces_drawn (policy : reroll) (b : bound u64) (left : i32) (source : counted (hash_faces keccak.spiral_keccak)) : i32 =
+    ? left <= 0
+    ?> (\ (counted { inner drawn }) => drawn) source
+    |:
+        := _, source = roll policy b source
+        faces_drawn policy b (left - 1) source
+
+:= faces_for (policy : reroll) (max : u64) : i32 =
+    := source = counted { inner = hashed keccak.spiral_keccak (bytes.counting 3i32); drawn = 0 }
+    ?= bound_of max ?|
+    | Ok b => faces_drawn policy b 20 source
+    | Error _ => -1
+
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
+///> zig
+///> gleam
+///> pascal
+test recycling_draws_fewer_dice_than_rerolling =
+    := ~max = 2000u64
+    (faces_for Fresh max, faces_for Recycle max, faces_for Fresh 46657u64, faces_for Recycle 46657u64, faces_for Fresh 217u64, faces_for Recycle 217u64)
+    |> _assert_eq (320i32, 106i32, 994i32, 141i32, 568i32, 88i32)
+
+///> rust
+///> fsharp
+///> typescript
+///> python
+///> lua
+///> c
+///> zig
+///> gleam
+///> pascal
+test recycling_reaches_the_largest_bound_without_overflow =
+    roll_value Recycle 4738381338321616896u64 (replayed [ Six ])
+    |> _assert_eq 4738381338321616896u64
 
 /// ## rotate_number
 := rotate_number \* t {number}. (max : i64) (n : t) : t =
@@ -455,7 +713,6 @@ test roll_progressively_2 =
     |> _assert_eq 1678
 
 /// ## main
-
 := main (_args : array_base string) =
     := result = roll_value Fresh 4738381338321616896i64 system
     trace Debug
