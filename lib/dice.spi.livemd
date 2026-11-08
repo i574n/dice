@@ -1,0 +1,1288 @@
+# dice (Dice)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test static\n\n:< testing","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test static
+
+  :< testing
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":< sm'_operators\n:< digest","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :< sm'_operators
+  :< digest
+  """,
+  timeout: 300_000
+)
+```
+
+## face
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":| face =\n    | One\n    | Two\n    | Three\n    | Four\n    | Five\n    | Six\n\n:= digit \\* t {number}. (f : face) : t =\n    conv (!!!!UnionTag(f) : i32)\n\n:= pips (f : face) : u8 =\n    digit f + 1u8\n\n:= face_of_digit (d : i32) : face =\n    ?= d ?|\n    | 0 => One\n    | 1 => Two\n    | 2 => Three\n    | 3 => Four\n    | 4 => Five\n    | _ => Six\n\n:= face_of_pips (p : u8) : option face =\n    ? p >= 1u8 && p <= 6u8 ?> Some (face_of_digit (conv (p - 1u8))) |: None\n\n:= face_of_byte (b : u8) : option face =\n    ? b < 252u8 ?> Some (face_of_digit (conv (b % 6u8))) |: None","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :| face =
+      | One
+      | Two
+      | Three
+      | Four
+      | Five
+      | Six
+
+  := digit \* t {number}. (f : face) : t =
+      conv (!!!!UnionTag(f) : i32)
+
+  := pips (f : face) : u8 =
+      digit f + 1u8
+
+  := face_of_digit (d : i32) : face =
+      ?= d ?|
+      | 0 => One
+      | 1 => Two
+      | 2 => Three
+      | 3 => Four
+      | 4 => Five
+      | _ => Six
+
+  := face_of_pips (p : u8) : option face =
+      ? p >= 1u8 && p <= 6u8 ?> Some (face_of_digit (conv (p - 1u8))) |: None
+
+  := face_of_byte (b : u8) : option face =
+      ? b < 252u8 ?> Some (face_of_digit (conv (b % 6u8))) |: None
+  """,
+  timeout: 300_000
+)
+```
+
+#### every_face_round_trips_through_its_pips (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n:= ~low = 0u8\n(\n    listm.map (pips >> face_of_pips) [ One; Two; Three; Four; Five; Six ]\n    |> listm.map (optionm.map pips),\n    face_of_pips low,\n    face_of_pips (low + 7u8)\n)\n|> _assert_eq ([ Some 1u8; Some 2; Some 3; Some 4; Some 5; Some 6 ], None, None)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  := ~low = 0u8
+  (
+      listm.map (pips >> face_of_pips) [ One; Two; Three; Four; Five; Six ]
+      |> listm.map (optionm.map pips),
+      face_of_pips low,
+      face_of_pips (low + 7u8)
+  )
+  |> _assert_eq ([ Some 1u8; Some 2; Some 3; Some 4; Some 5; Some 6 ], None, None)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":= face_counts () : array i32 =\n    := counts : array i32 = create 7\n    :~ ^ clear (i : i32) : () =\n        ? i < 7 ?>\n            set counts i 0\n            clear (i + 1)\n    clear 0\n    :~ ^ go (b : i32) : () =\n        ? b <= 255 ?>\n            := slot =\n                ?= face_of_byte (conv b) ?|\n                | Some f => digit f\n                | None => 6i32\n            set counts slot (index counts slot + 1)\n            go (b + 1)\n    go 0\n    counts","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  := face_counts () : array i32 =
+      := counts : array i32 = create 7
+      :~ ^ clear (i : i32) : () =
+          ? i < 7 ?>
+              set counts i 0
+              clear (i + 1)
+      clear 0
+      :~ ^ go (b : i32) : () =
+          ? b <= 255 ?>
+              := slot =
+                  ?= face_of_byte (conv b) ?|
+                  | Some f => digit f
+                  | None => 6i32
+              set counts slot (index counts slot + 1)
+              go (b + 1)
+      go 0
+      counts
+  """,
+  timeout: 300_000
+)
+```
+
+#### every_face_takes_the_same_share_of_the_bytes (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\nface_counts ()\n|> _assert_eq (;[ 42i32; 42; 42; 42; 42; 42; 4 ] : array i32)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  face_counts ()
+  |> _assert_eq (;[ 42i32; 42; 42; 42; 42; 42; 4 ] : array i32)
+  """,
+  timeout: 300_000
+)
+```
+
+## bound
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":! bound t = t\n\n:| bound_error t =\n    | EmptyRange\n    | AboveLargest : t * t\n\n:= ^ largest_from \\* t {number}. (p : t) : t =\n    ? p > (limit.max : t) / 6 ?> p |: largest_from (p * 6)\n\n:= largest_bound \\* t {number}. () : t =\n    largest_from 1\n\n:= bound_of \\* t {number}. (max : t) : result (bound t) (bound_error t) =\n    ? max < 1 ?> Error EmptyRange\n    |? max > largest_bound () ?> Error (AboveLargest (max, largest_bound ()))\n    |: Ok (bound max)\n\n:= bound_value \\* t. ((bound max) : bound t) : t =\n    max\n\n:= bound_error_text \\* t {number}. (e : bound_error t) : string =\n    ?= e ?|\n    | EmptyRange => \"max must be at least 1\"\n    | AboveLargest (max, largest) => \"max: \" ++# #?max ++# \" is above the largest supported bound \" ++# #?largest\n\n:= dice_count \\* t {number}. (b : bound t) : i32 =\n    := max = bound_value b\n    :~ ^ go (count : i32) (reach : t) : i32 =\n        ? reach >= max ?> count |: go (count + 1) (reach * 6)\n    ? max = 1 ?> 1 |: go 0 1","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :! bound t = t
+
+  :| bound_error t =
+      | EmptyRange
+      | AboveLargest : t * t
+
+  := ^ largest_from \* t {number}. (p : t) : t =
+      ? p > (limit.max : t) / 6 ?> p |: largest_from (p * 6)
+
+  := largest_bound \* t {number}. () : t =
+      largest_from 1
+
+  := bound_of \* t {number}. (max : t) : result (bound t) (bound_error t) =
+      ? max < 1 ?> Error EmptyRange
+      |? max > largest_bound () ?> Error (AboveLargest (max, largest_bound ()))
+      |: Ok (bound max)
+
+  := bound_value \* t. ((bound max) : bound t) : t =
+      max
+
+  := bound_error_text \* t {number}. (e : bound_error t) : string =
+      ?= e ?|
+      | EmptyRange => "max must be at least 1"
+      | AboveLargest (max, largest) => "max: " ++# #?max ++# " is above the largest supported bound " ++# #?largest
+
+  := dice_count \* t {number}. (b : bound t) : i32 =
+      := max = bound_value b
+      :~ ^ go (count : i32) (reach : t) : i32 =
+          ? reach >= max ?> count |: go (count + 1) (reach * 6)
+      ? max = 1 ?> 1 |: go 0 1
+  """,
+  timeout: 300_000
+)
+```
+
+#### largest_bound_is_the_largest_power_of_six_of_the_type (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n((largest_bound () : i32), (largest_bound () : u64), (largest_bound () : u8))\n|> _assert_eq (362797056i32, 4738381338321616896u64, 216u8)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  ((largest_bound () : i32), (largest_bound () : u64), (largest_bound () : u8))
+  |> _assert_eq (362797056i32, 4738381338321616896u64, 216u8)
+  """,
+  timeout: 300_000
+)
+```
+
+#### bound_of_rejects_empty_and_oversized_ranges (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n:= ~zero = 0u64\n:= ~over = 4738381338321616897u64\n:= text (r : result (bound u64) (bound_error u64)) =\n    ?= r ?|\n    | Ok b => #?(bound_value b)\n    | Error e => bound_error_text e\n(text (bound_of zero), text (bound_of over), text (bound_of (zero + 2000u64)))\n|> _assert_eq (\n    \"max must be at least 1\",\n    \"max: 4738381338321616897 is above the largest supported bound 4738381338321616896\",\n    \"2000\"\n)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  := ~zero = 0u64
+  := ~over = 4738381338321616897u64
+  := text (r : result (bound u64) (bound_error u64)) =
+      ?= r ?|
+      | Ok b => #?(bound_value b)
+      | Error e => bound_error_text e
+  (text (bound_of zero), text (bound_of over), text (bound_of (zero + 2000u64)))
+  |> _assert_eq (
+      "max must be at least 1",
+      "max: 4738381338321616897 is above the largest supported bound 4738381338321616896",
+      "2000"
+  )
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":= count_of \\* t {number}. (max : t) : i32 =\n    ?= bound_of max ?|\n    | Ok b => dice_count b\n    | Error _ => -1","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  := count_of \* t {number}. (max : t) : i32 =
+      ?= bound_of max ?|
+      | Ok b => dice_count b
+      | Error _ => -1
+  """,
+  timeout: 300_000
+)
+```
+
+#### dice_count_is_the_fewest_dice_that_reach_the_bound (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n:= ~one = 1i32\n(count_of one, count_of (one * 36), count_of (one * 7777), count_of (one * 362797056), count_of 4738381338321616896u64)\n|> _assert_eq (1i32, 2i32, 6i32, 11i32, 24i32)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  := ~one = 1i32
+  (count_of one, count_of (one * 36), count_of (one * 7777), count_of (one * 362797056), count_of 4738381338321616896u64)
+  |> _assert_eq (1i32, 2i32, 6i32, 11i32, 24i32)
+  """,
+  timeout: 300_000
+)
+```
+
+#### a_raw_number_is_not_a_bound (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test --fails ETY-TermError \"Unification failure\"\n///> zig\n\ndice_count 36u64","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test --fails ETY-TermError "Unification failure"
+  ///> zig
+
+  dice_count 36u64
+  """,
+  timeout: 300_000
+)
+```
+
+## hand
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":= hand_value \\* t {number}. (b : bound t) (count : i32) (hand : list face) : option t =\n    := max = bound_value b\n    :~ ^ go (left : i32) (faces : list face) (value : t) : option t =\n        ? left <= 0\n        ?> ? value < max ?> Some (value + 1) |: None\n        |:\n            ?= faces ?|\n            | f :: rest =>\n                := d = digit f\n                ? d >= max || value > (max - 1 - d) / 6 ?> None |: go (left - 1) rest (value * 6 + d)\n            | [] => None\n    go count hand 0\n\n:= faces_of_pips (rolls : list u8) : option (list face) =\n    :~ ^ go (rolls : list u8) (acc : list face) : option (list face) =\n        ?= rolls ?|\n        | r :: rest =>\n            ?= face_of_pips r ?|\n            | Some f => go rest (f :: acc)\n            | None => None\n        | [] => Some (listm.rev acc)\n    go rolls []\n\n:= roll_within_bounds \\* t {number}. (max : t) (rolls : list u8) : option t =\n    ?= bound_of max, faces_of_pips rolls ?|\n    | Ok b, Some hand => hand_value b (listm.length hand) hand\n    | _ => None","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  := hand_value \* t {number}. (b : bound t) (count : i32) (hand : list face) : option t =
+      := max = bound_value b
+      :~ ^ go (left : i32) (faces : list face) (value : t) : option t =
+          ? left <= 0
+          ?> ? value < max ?> Some (value + 1) |: None
+          |:
+              ?= faces ?|
+              | f :: rest =>
+                  := d = digit f
+                  ? d >= max || value > (max - 1 - d) / 6 ?> None |: go (left - 1) rest (value * 6 + d)
+              | [] => None
+      go count hand 0
+
+  := faces_of_pips (rolls : list u8) : option (list face) =
+      :~ ^ go (rolls : list u8) (acc : list face) : option (list face) =
+          ?= rolls ?|
+          | r :: rest =>
+              ?= face_of_pips r ?|
+              | Some f => go rest (f :: acc)
+              | None => None
+          | [] => Some (listm.rev acc)
+      go rolls []
+
+  := roll_within_bounds \* t {number}. (max : t) (rolls : list u8) : option t =
+      ?= bound_of max, faces_of_pips rolls ?|
+      | Ok b, Some hand => hand_value b (listm.length hand) hand
+      | _ => None
+  """,
+  timeout: 300_000
+)
+```
+
+#### roll_within_bounds (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\nroll_within_bounds 2000i32 [ 1; 5; 4; 4; 5 ]\n|> _assert_eq (Some 995)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  roll_within_bounds 2000i32 [ 1; 5; 4; 4; 5 ]
+  |> _assert_eq (Some 995)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\nroll_within_bounds 2000i32 [ 2; 2; 6; 4; 5 ]\n|> _assert_eq (Some 1715)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  roll_within_bounds 2000i32 [ 2; 2; 6; 4; 5 ]
+  |> _assert_eq (Some 1715)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\nroll_within_bounds 2000i32 [ 4; 1; 1; 2; 3 ]\n|> _assert_eq None","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  roll_within_bounds 2000i32 [ 4; 1; 1; 2; 3 ]
+  |> _assert_eq None
+  """,
+  timeout: 300_000
+)
+```
+
+#### roll_within_bounds_rejects_a_face_that_no_die_has (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n(roll_within_bounds 2000i32 [ 1; 7; 1 ], roll_within_bounds 2000i32 [ 0; 1 ], roll_within_bounds 0i32 [ 1 ])\n|> _assert_eq (None, None, None)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  (roll_within_bounds 2000i32 [ 1; 7; 1 ], roll_within_bounds 2000i32 [ 0; 1 ], roll_within_bounds 0i32 [ 1 ])
+  |> _assert_eq (None, None, None)
+  """,
+  timeout: 300_000
+)
+```
+
+#### roll_within_bounds_never_overflows_a_long_hand (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\nroll_within_bounds 4738381338321616896u64 [ 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]\n|> _assert_eq None","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  roll_within_bounds 4738381338321616896u64 [ 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]
+  |> _assert_eq None
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":~ ^ faces (from : u8) : list u8 = ? from > 6 ?> [] |: from :: faces (from + 1)\n\n:~ ^ pair_results (firsts : list u8) (acc : list (option i32)) : list (option i32) =\n    ?= firsts ?|\n    | a :: rest => pair_results rest (listm.fold (\\ acc b => roll_within_bounds 20i32 [ a; b ] :: acc) acc (faces 1))\n    | [] => acc\n\n:~ ^ occurrences (v : i32) (results : list (option i32)) (n : i32) : i32 =\n    ?= results ?|\n    | Some x :: rest => occurrences v rest (? x = v ?> n + 1 |: n)\n    | None :: rest => occurrences v rest n\n    | [] => n\n\n:~ ^ values_seen_once (v : i32) (results : list (option i32)) : bool =\n    ? v > 20i32 ?> !+ |: occurrences v results 0 = 1 && values_seen_once (v + 1) results","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :~ ^ faces (from : u8) : list u8 = ? from > 6 ?> [] |: from :: faces (from + 1)
+
+  :~ ^ pair_results (firsts : list u8) (acc : list (option i32)) : list (option i32) =
+      ?= firsts ?|
+      | a :: rest => pair_results rest (listm.fold (\ acc b => roll_within_bounds 20i32 [ a; b ] :: acc) acc (faces 1))
+      | [] => acc
+
+  :~ ^ occurrences (v : i32) (results : list (option i32)) (n : i32) : i32 =
+      ?= results ?|
+      | Some x :: rest => occurrences v rest (? x = v ?> n + 1 |: n)
+      | None :: rest => occurrences v rest n
+      | [] => n
+
+  :~ ^ values_seen_once (v : i32) (results : list (option i32)) : bool =
+      ? v > 20i32 ?> !+ |: occurrences v results 0 = 1 && values_seen_once (v + 1) results
+  """,
+  timeout: 300_000
+)
+```
+
+#### every_two_roll_sequence_maps_to_one_value_so_accepted_rolls_are_uniform (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n:= results = pair_results (faces 1) []\n:= rejected = listm.fold (\\ n r => ?= r ?| Some _ => n | None => n + 1i32) 0i32 results\n(values_seen_once 1i32 results, rejected) |> _assert_eq (!+, 16i32)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  := results = pair_results (faces 1) []
+  := rejected = listm.fold (\ n r => ?= r ?| Some _ => n | None => n + 1i32) 0i32 results
+  (values_seen_once 1i32 results, rejected) |> _assert_eq (!+, 16i32)
+  """,
+  timeout: 300_000
+)
+```
+
+## sources
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":? draw_face s : s -> face * s\n\n:! replay = { all : list face; rest : list face }\n\n:= replayed (faces : list face) : replay =\n    replay { all = faces; rest = faces }\n\n:+ draw_face replay =\n    \\ (replay { all rest }) =>\n        ?= rest ?|\n        | f :: rest => f, replay { all = all; rest = rest }\n        | [] =>\n            ?= all ?|\n            | f :: rest => f, replay { all = all; rest = rest }\n            | [] => One, replay { all = all; rest = [] }\n\n:! system = ()\n\n:+ draw_face system =\n    \\ s => face_of_digit (random' 0i32 6i32), s\n\n:! roller = () -> u8\n\n:~ ^ draw_rolled (roll : () -> u8) : face =\n    ?= face_of_pips (roll ()) ?|\n    | Some f => f\n    | None => draw_rolled roll\n\n:+ draw_face roller =\n    \\ (roller roll) => draw_rolled roll, roller roll\n\n:! hash_faces h = { hasher : h; digest : array u8; at : i32 }\n\n:= hashed \\* h. (hasher : h) (digest : array u8) : hash_faces h =\n    hash_faces { hasher = hasher; digest = digest; at = 0 }\n\n:~ ^ draw_hashed \\* h {digest_with}. (hasher : h) (digest : array u8) (at : i32) : face * hash_faces h =\n    ? at >= length digest\n    ?> draw_hashed hasher (digest_with hasher digest) 0\n    |:\n        ?= face_of_byte (index digest at) ?|\n        | Some f => f, hash_faces { hasher = hasher; digest = digest; at = at + 1 }\n        | None => draw_hashed hasher digest (at + 1)\n\n:+ draw_face hash_faces h {digest_with} =\n    \\ (hash_faces { hasher digest at }) => draw_hashed hasher digest at","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :? draw_face s : s -> face * s
+
+  :! replay = { all : list face; rest : list face }
+
+  := replayed (faces : list face) : replay =
+      replay { all = faces; rest = faces }
+
+  :+ draw_face replay =
+      \ (replay { all rest }) =>
+          ?= rest ?|
+          | f :: rest => f, replay { all = all; rest = rest }
+          | [] =>
+              ?= all ?|
+              | f :: rest => f, replay { all = all; rest = rest }
+              | [] => One, replay { all = all; rest = [] }
+
+  :! system = ()
+
+  :+ draw_face system =
+      \ s => face_of_digit (random' 0i32 6i32), s
+
+  :! roller = () -> u8
+
+  :~ ^ draw_rolled (roll : () -> u8) : face =
+      ?= face_of_pips (roll ()) ?|
+      | Some f => f
+      | None => draw_rolled roll
+
+  :+ draw_face roller =
+      \ (roller roll) => draw_rolled roll, roller roll
+
+  :! hash_faces h = { hasher : h; digest : array u8; at : i32 }
+
+  := hashed \* h. (hasher : h) (digest : array u8) : hash_faces h =
+      hash_faces { hasher = hasher; digest = digest; at = 0 }
+
+  :~ ^ draw_hashed \* h {digest_with}. (hasher : h) (digest : array u8) (at : i32) : face * hash_faces h =
+      ? at >= length digest
+      ?> draw_hashed hasher (digest_with hasher digest) 0
+      |:
+          ?= face_of_byte (index digest at) ?|
+          | Some f => f, hash_faces { hasher = hasher; digest = digest; at = at + 1 }
+          | None => draw_hashed hasher digest (at + 1)
+
+  :+ draw_face hash_faces h {digest_with} =
+      \ (hash_faces { hasher digest at }) => draw_hashed hasher digest at
+  """,
+  timeout: 300_000
+)
+```
+
+## roll
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":| reroll =\n    | Fresh\n    | Slide\n    | Recycle\n\n:~ ^ roll_hand \\* s {draw_face}. (count : i32) (hand : list face) (source : s) : list face * s =\n    ? count <= 0\n    ?> hand, source\n    |:\n        := f, source = draw_face source\n        roll_hand (count - 1) (f :: hand) source\n\n:~ ^ roll_slid \\* t {number} s {draw_face}. (b : bound t) (count : i32) (hand : list face) (source : s) : t * s =\n    ?= hand_value b count hand ?|\n    | Some value => value, source\n    | None =>\n        := f, source = draw_face source\n        roll_slid b count (f :: hand) source\n\n:~ ^ roll_fresh \\* t {number} s {draw_face}. (b : bound t) (count : i32) (source : s) : t * s =\n    :~ ^ read (left : i32) (place : t) (value : t) (source : s) : t * s =\n        ? left <= 0\n        ?> value, source\n        |:\n            := f, source = draw_face source\n            read (left - 1) (place * 6) (value + digit f * place) source\n    := value, source = read count 1 0 source\n    ? value < bound_value b ?> value + 1, source |: roll_fresh b count source\n\n:! pool t = { value : t; range : t }\n\n:= empty_pool \\* t {number}. () : pool t =\n    pool { value = 0; range = 1 }\n\n:= settle \\* t {number}. (b : bound t) ((pool { value range }) : pool t) : result t (pool t) =\n    := max = bound_value b\n    := whole = range / max * max\n    ? value < whole ?> Ok (value % max + 1) |: Error (pool { value = value - whole; range = range - whole })\n\n:= with_die \\* t {number}. ((pool { value range }) : pool t) (f : face) : pool t =\n    ? range > (limit.max : t) / 6\n    ?> pool { value = digit f; range = 6 }\n    |: pool { value = value * 6 + digit f; range = range * 6 }\n\n:~ ^ roll_recycled \\* t {number} s {draw_face}. (b : bound t) (p : pool t) (source : s) : t * s =\n    ?= settle b p ?|\n    | Ok value => value, source\n    | Error p =>\n        := f, source = draw_face source\n        roll_recycled b (with_die p f) source\n\n:= roll \\* t {number} s {draw_face}. (policy : reroll) (b : bound t) (source : s) : t * s =\n    := count = dice_count b\n    ?= policy ?|\n    | Recycle => roll_recycled b (empty_pool ()) source\n    | Fresh => roll_fresh b count source\n    | Slide =>\n        := hand, source = roll_hand count [] source\n        roll_slid b count hand source\n\n:= roll_value \\* t {number} s {draw_face}. (policy : reroll) (max : t) (source : s) : t =\n    ?= bound_of max ?|\n    | Ok b => fst (roll policy b source)\n    | Error e => failwith (bound_error_text e)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :| reroll =
+      | Fresh
+      | Slide
+      | Recycle
+
+  :~ ^ roll_hand \* s {draw_face}. (count : i32) (hand : list face) (source : s) : list face * s =
+      ? count <= 0
+      ?> hand, source
+      |:
+          := f, source = draw_face source
+          roll_hand (count - 1) (f :: hand) source
+
+  :~ ^ roll_slid \* t {number} s {draw_face}. (b : bound t) (count : i32) (hand : list face) (source : s) : t * s =
+      ?= hand_value b count hand ?|
+      | Some value => value, source
+      | None =>
+          := f, source = draw_face source
+          roll_slid b count (f :: hand) source
+
+  :~ ^ roll_fresh \* t {number} s {draw_face}. (b : bound t) (count : i32) (source : s) : t * s =
+      :~ ^ read (left : i32) (place : t) (value : t) (source : s) : t * s =
+          ? left <= 0
+          ?> value, source
+          |:
+              := f, source = draw_face source
+              read (left - 1) (place * 6) (value + digit f * place) source
+      := value, source = read count 1 0 source
+      ? value < bound_value b ?> value + 1, source |: roll_fresh b count source
+
+  :! pool t = { value : t; range : t }
+
+  := empty_pool \* t {number}. () : pool t =
+      pool { value = 0; range = 1 }
+
+  := settle \* t {number}. (b : bound t) ((pool { value range }) : pool t) : result t (pool t) =
+      := max = bound_value b
+      := whole = range / max * max
+      ? value < whole ?> Ok (value % max + 1) |: Error (pool { value = value - whole; range = range - whole })
+
+  := with_die \* t {number}. ((pool { value range }) : pool t) (f : face) : pool t =
+      ? range > (limit.max : t) / 6
+      ?> pool { value = digit f; range = 6 }
+      |: pool { value = value * 6 + digit f; range = range * 6 }
+
+  :~ ^ roll_recycled \* t {number} s {draw_face}. (b : bound t) (p : pool t) (source : s) : t * s =
+      ?= settle b p ?|
+      | Ok value => value, source
+      | Error p =>
+          := f, source = draw_face source
+          roll_recycled b (with_die p f) source
+
+  := roll \* t {number} s {draw_face}. (policy : reroll) (b : bound t) (source : s) : t * s =
+      := count = dice_count b
+      ?= policy ?|
+      | Recycle => roll_recycled b (empty_pool ()) source
+      | Fresh => roll_fresh b count source
+      | Slide =>
+          := hand, source = roll_hand count [] source
+          roll_slid b count hand source
+
+  := roll_value \* t {number} s {draw_face}. (policy : reroll) (max : t) (source : s) : t =
+      ?= bound_of max ?|
+      | Ok b => fst (roll policy b source)
+      | Error e => failwith (bound_error_text e)
+  """,
+  timeout: 300_000
+)
+```
+
+#### a_replayed_hand_reads_its_newest_die_first (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\nroll_value Slide 2000i32 (replayed [ Five; Four; Four; Five; One ])\n|> _assert_eq 995","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  roll_value Slide 2000i32 (replayed [ Five; Four; Four; Five; One ])
+  |> _assert_eq 995
+  """,
+  timeout: 300_000
+)
+```
+
+#### sliding_keeps_the_newest_dice_after_a_rejection (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\nroll_value Slide 2000i32 (replayed [ Five; Four; Four; Five; Two; Two ])\n|> _assert_eq 1678","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  roll_value Slide 2000i32 (replayed [ Five; Four; Four; Five; Two; Two ])
+  |> _assert_eq 1678
+  """,
+  timeout: 300_000
+)
+```
+
+#### the_largest_bound_accepts_the_highest_hand (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\nroll_value Fresh 4738381338321616896u64 (replayed [ Six ])\n|> _assert_eq 4738381338321616896u64","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  roll_value Fresh 4738381338321616896u64 (replayed [ Six ])
+  |> _assert_eq 4738381338321616896u64
+  """,
+  timeout: 300_000
+)
+```
+
+#### a_single_die_bound_keeps_only_the_lowest_face (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\nroll_value Fresh 1i32 (replayed [ Six; Four; One ])\n|> _assert_eq 1i32","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  roll_value Fresh 1i32 (replayed [ Six; Four; One ])
+  |> _assert_eq 1i32
+  """,
+  timeout: 300_000
+)
+```
+
+#### fresh_rerolls_every_die_after_a_rejection (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\nroll_value Fresh 20i32 (replayed [ Six; Six; Two; One ])\n|> _assert_eq 2i32","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  roll_value Fresh 20i32 (replayed [ Six; Six; Two; One ])
+  |> _assert_eq 2i32
+  """,
+  timeout: 300_000
+)
+```
+
+#### a_source_without_draw_face_cannot_roll (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test --fails ETY-InstanceNotFound \"draw_face\"\n///> zig\n\nroll_value Fresh 6i32 (bound 6i32)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test --fails ETY-InstanceNotFound "draw_face"
+  ///> zig
+
+  roll_value Fresh 6i32 (bound 6i32)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":~ ^ hashed_values (left : i32) (source : hash_faces keccak.spiral_keccak) (acc : list u64) : list u64 =\n    ? left <= 0\n    ?> listm.rev acc\n    |:\n        ?= bound_of 2000u64 ?|\n        | Ok b =>\n            := value, source = roll Fresh b source\n            hashed_values (left - 1) source (value :: acc)\n        | Error _ => acc","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :~ ^ hashed_values (left : i32) (source : hash_faces keccak.spiral_keccak) (acc : list u64) : list u64 =
+      ? left <= 0
+      ?> listm.rev acc
+      |:
+          ?= bound_of 2000u64 ?|
+          | Ok b =>
+              := value, source = roll Fresh b source
+              hashed_values (left - 1) source (value :: acc)
+          | Error _ => acc
+  """,
+  timeout: 300_000
+)
+```
+
+#### a_keccak_stream_rolls_the_same_values_on_every_backend (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n:= ~seed_size = 3i32\n:= seed : array u8 = bytes.counting seed_size\nhashed_values 6 (hashed keccak.spiral_keccak seed) []\n|> _assert_eq [ 1295u64; 295; 1135; 1360; 1663; 1972 ]","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  := ~seed_size = 3i32
+  := seed : array u8 = bytes.counting seed_size
+  hashed_values 6 (hashed keccak.spiral_keccak seed) []
+  |> _assert_eq [ 1295u64; 295; 1135; 1360; 1663; 1972 ]
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":~ ^ histogram_misses (policy : reroll) (max : i32) (draws : i32) (seen : list i32) : i32 =\n    ? draws <= 0\n    ?> listm'.init_series 1i32 max 1i32 |> listm.fold (\\ misses v => ? listm.fold (\\ found x => found || x = v) !- seen ?> misses |: misses + 1) 0i32\n    |:\n        := value = roll_value policy max system\n        ? value < 1 || value > max ?> -1i32 |: histogram_misses policy max (draws - 1) (value :: seen)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :~ ^ histogram_misses (policy : reroll) (max : i32) (draws : i32) (seen : list i32) : i32 =
+      ? draws <= 0
+      ?> listm'.init_series 1i32 max 1i32 |> listm.fold (\ misses v => ? listm.fold (\ found x => found || x = v) !- seen ?> misses |: misses + 1) 0i32
+      |:
+          := value = roll_value policy max system
+          ? value < 1 || value > max ?> -1i32 |: histogram_misses policy max (draws - 1) (value :: seen)
+  """,
+  timeout: 300_000
+)
+```
+
+#### system_rolls_cover_every_value_and_stay_in_range (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n\n:= ~draws = 3000i32\n(histogram_misses Fresh 10i32 draws [], histogram_misses Slide 10i32 draws [], histogram_misses Fresh 37i32 draws [])\n|> _assert_eq (0i32, 0i32, 0i32)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+
+  := ~draws = 3000i32
+  (histogram_misses Fresh 10i32 draws [], histogram_misses Slide 10i32 draws [], histogram_misses Fresh 37i32 draws [])
+  |> _assert_eq (0i32, 0i32, 0i32)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":! counted s = { inner : s; drawn : i32 }\n\n:+ draw_face counted s {draw_face} =\n    \\ (counted { inner drawn }) =>\n        := f, inner = draw_face inner\n        f, counted { inner = inner; drawn = drawn + 1 }\n\n:~ ^ recycled_outcome \\* t {number}. (b : bound t) (p : pool t) (faces : list face) : option t =\n    ?= settle b p ?|\n    | Ok value => Some value\n    | Error p =>\n        ?= faces ?|\n        | f :: rest => recycled_outcome b (with_die p f) rest\n        | [] => None\n\n:= outcome_spread (max : i32) : i32 * i32 * i32 =\n    := counts : array i32 = create (max + 1)\n    :~ ^ clear (i : i32) : () =\n        ? i <= max ?>\n            set counts i 0\n            clear (i + 1)\n    clear 0\n    ?= bound_of max ?|\n    | Ok b =>\n        :~ ^ tally (sequence : i32) : () =\n            ? sequence < 216 ?>\n                := faces = [ face_of_digit (sequence / 36); face_of_digit (sequence / 6 % 6); face_of_digit (sequence % 6) ]\n                := slot =\n                    ?= recycled_outcome b (empty_pool ()) faces ?|\n                    | Some value => value\n                    | None => 0\n                set counts slot (index counts slot + 1)\n                tally (sequence + 1)\n        tally 0\n    | Error _ => ()\n    :~ ^ spread (i : i32) (low : i32) (high : i32) : i32 * i32 =\n        ? i > max ?> low, high |: spread (i + 1) (? index counts i < low ?> index counts i |: low) (? index counts i > high ?> index counts i |: high)\n    := low, high = spread 1 1000 0\n    low, high, index counts 0","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :! counted s = { inner : s; drawn : i32 }
+
+  :+ draw_face counted s {draw_face} =
+      \ (counted { inner drawn }) =>
+          := f, inner = draw_face inner
+          f, counted { inner = inner; drawn = drawn + 1 }
+
+  :~ ^ recycled_outcome \* t {number}. (b : bound t) (p : pool t) (faces : list face) : option t =
+      ?= settle b p ?|
+      | Ok value => Some value
+      | Error p =>
+          ?= faces ?|
+          | f :: rest => recycled_outcome b (with_die p f) rest
+          | [] => None
+
+  := outcome_spread (max : i32) : i32 * i32 * i32 =
+      := counts : array i32 = create (max + 1)
+      :~ ^ clear (i : i32) : () =
+          ? i <= max ?>
+              set counts i 0
+              clear (i + 1)
+      clear 0
+      ?= bound_of max ?|
+      | Ok b =>
+          :~ ^ tally (sequence : i32) : () =
+              ? sequence < 216 ?>
+                  := faces = [ face_of_digit (sequence / 36); face_of_digit (sequence / 6 % 6); face_of_digit (sequence % 6) ]
+                  := slot =
+                      ?= recycled_outcome b (empty_pool ()) faces ?|
+                      | Some value => value
+                      | None => 0
+                  set counts slot (index counts slot + 1)
+                  tally (sequence + 1)
+          tally 0
+      | Error _ => ()
+      :~ ^ spread (i : i32) (low : i32) (high : i32) : i32 * i32 =
+          ? i > max ?> low, high |: spread (i + 1) (? index counts i < low ?> index counts i |: low) (? index counts i > high ?> index counts i |: high)
+      := low, high = spread 1 1000 0
+      low, high, index counts 0
+  """,
+  timeout: 300_000
+)
+```
+
+#### recycling_is_exact_over_every_three_dice_sequence (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n:= ~five = 5i32\n(outcome_spread five, outcome_spread (five + 2), outcome_spread (five * 4))\n|> _assert_eq ((43i32, 43i32, 1i32), (30i32, 30i32, 6i32), (10i32, 10i32, 16i32))","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  := ~five = 5i32
+  (outcome_spread five, outcome_spread (five + 2), outcome_spread (five * 4))
+  |> _assert_eq ((43i32, 43i32, 1i32), (30i32, 30i32, 6i32), (10i32, 10i32, 16i32))
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":~ ^ recycled_values (left : i32) (source : hash_faces keccak.spiral_keccak) (acc : list u64) : list u64 =\n    ? left <= 0\n    ?> listm.rev acc\n    |:\n        ?= bound_of 2000u64 ?|\n        | Ok b =>\n            := value, source = roll Recycle b source\n            recycled_values (left - 1) source (value :: acc)\n        | Error _ => acc","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :~ ^ recycled_values (left : i32) (source : hash_faces keccak.spiral_keccak) (acc : list u64) : list u64 =
+      ? left <= 0
+      ?> listm.rev acc
+      |:
+          ?= bound_of 2000u64 ?|
+          | Ok b =>
+              := value, source = roll Recycle b source
+              recycled_values (left - 1) source (value :: acc)
+          | Error _ => acc
+  """,
+  timeout: 300_000
+)
+```
+
+#### a_recycled_keccak_stream_rolls_the_same_values_on_every_backend (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n:= ~seed_size = 3i32\nrecycled_values 6 (hashed keccak.spiral_keccak (bytes.counting seed_size)) []\n|> _assert_eq [ 321u64; 1537; 145; 1654; 1384; 761 ]","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  := ~seed_size = 3i32
+  recycled_values 6 (hashed keccak.spiral_keccak (bytes.counting seed_size)) []
+  |> _assert_eq [ 321u64; 1537; 145; 1654; 1384; 761 ]
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":~ ^ faces_drawn (policy : reroll) (b : bound u64) (left : i32) (source : counted (hash_faces keccak.spiral_keccak)) : i32 =\n    ? left <= 0\n    ?> (\\ (counted { inner drawn }) => drawn) source\n    |:\n        := _, source = roll policy b source\n        faces_drawn policy b (left - 1) source\n\n:= faces_for (policy : reroll) (max : u64) : i32 =\n    := source = counted { inner = hashed keccak.spiral_keccak (bytes.counting 3i32); drawn = 0 }\n    ?= bound_of max ?|\n    | Ok b => faces_drawn policy b 20 source\n    | Error _ => -1","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :~ ^ faces_drawn (policy : reroll) (b : bound u64) (left : i32) (source : counted (hash_faces keccak.spiral_keccak)) : i32 =
+      ? left <= 0
+      ?> (\ (counted { inner drawn }) => drawn) source
+      |:
+          := _, source = roll policy b source
+          faces_drawn policy b (left - 1) source
+
+  := faces_for (policy : reroll) (max : u64) : i32 =
+      := source = counted { inner = hashed keccak.spiral_keccak (bytes.counting 3i32); drawn = 0 }
+      ?= bound_of max ?|
+      | Ok b => faces_drawn policy b 20 source
+      | Error _ => -1
+  """,
+  timeout: 300_000
+)
+```
+
+#### recycling_draws_fewer_dice_than_rerolling (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n:= ~max = 2000u64\n(faces_for Fresh max, faces_for Recycle max, faces_for Fresh 46657u64, faces_for Recycle 46657u64, faces_for Fresh 217u64, faces_for Recycle 217u64)\n|> _assert_eq (320i32, 106i32, 994i32, 141i32, 568i32, 88i32)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  := ~max = 2000u64
+  (faces_for Fresh max, faces_for Recycle max, faces_for Fresh 46657u64, faces_for Recycle 46657u64, faces_for Fresh 217u64, faces_for Recycle 217u64)
+  |> _assert_eq (320i32, 106i32, 994i32, 141i32, 568i32, 88i32)
+  """,
+  timeout: 300_000
+)
+```
+
+#### recycling_reaches_the_largest_bound_without_overflow (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\nroll_value Recycle 4738381338321616896u64 (replayed [ Six ])\n|> _assert_eq 4738381338321616896u64","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  roll_value Recycle 4738381338321616896u64 (replayed [ Six ])
+  |> _assert_eq 4738381338321616896u64
+  """,
+  timeout: 300_000
+)
+```
+
+## rotate_number
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":= rotate_number \\* t {number}. (max : i64) (n : t) : t =\n    (conv n - 1 + max) % max + 1 |> conv\n\n:= rotate_numbers max items =\n    items |> stream.map (rotate_number max)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  := rotate_number \* t {number}. (max : i64) (n : t) : t =
+      (conv n - 1 + max) % max + 1 |> conv
+
+  := rotate_numbers max items =
+      items |> stream.map (rotate_number max)
+  """,
+  timeout: 300_000
+)
+```
+
+#### rotate_numbers (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n\nlistm'.init_series -1 14 1i32\n|> stream.from_list\n|> rotate_numbers 6\n|> stream.to_list\n|> _assert_eq [ 5; 6; 1; 2; 3; 4; 5; 6; 1; 2; 3; 4; 5; 6; 1; 2 ]","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+
+  listm'.init_series -1 14 1i32
+  |> stream.from_list
+  |> rotate_numbers 6
+  |> stream.to_list
+  |> _assert_eq [ 5; 6; 1; 2; 3; 4; 5; 6; 1; 2; 3; 4; 5; 6; 1; 2 ]
+  """,
+  timeout: 300_000
+)
+```
+
+## create_sequential_roller
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":= create_sequential_roller list =\n    := s = list |> listm.rev |> listm.append list |> stream.from_list |> stream.memoize\n    := current_index = mut 0i64\n    := acc = mut 1\n    := len = mut -1\n    :~ ^ 루프 () =\n        ?= s () |> stream.try_item *current_index ?|\n        | Some item =>\n            current_index <- *current_index + 1\n            item\n        | None =>\n            ? *len = -1\n            ?> len <- *current_index\n            acc <-\n                ? *acc >= *len\n                ?> 1\n                |: *acc + 1\n            current_index <- *acc - 1\n            루프 ()\n    루프","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  := create_sequential_roller list =
+      := s = list |> listm.rev |> listm.append list |> stream.from_list |> stream.memoize
+      := current_index = mut 0i64
+      := acc = mut 1
+      := len = mut -1
+      :~ ^ 루프 () =
+          ?= s () |> stream.try_item *current_index ?|
+          | Some item =>
+              current_index <- *current_index + 1
+              item
+          | None =>
+              ? *len = -1
+              ?> len <- *current_index
+              acc <-
+                  ? *acc >= *len
+                  ?> 1
+                  |: *acc + 1
+              current_index <- *acc - 1
+              루프 ()
+      루프
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n\n:= sequential_roll = create_sequential_roller [ 1i32; 2; 3; 4 ]\n\narraym.init 50i32 (ignore >> sequential_roll)\n|> _assert_eq (;[ 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;\n4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2 ] : array i32)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+
+  := sequential_roll = create_sequential_roller [ 1i32; 2; 3; 4 ]
+
+  arraym.init 50i32 (ignore >> sequential_roll)
+  |> _assert_eq (;[ 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2; 1; 3; 4; 4; 3; 2; 1; 4; 4; 3; 2; 1;
+  4; 3; 2; 1; 3; 2; 1; 2; 1; 1; 1; 2; 3; 4; 4; 3; 2; 1; 2; 3; 4; 4; 3; 2 ] : array i32)
+  """,
+  timeout: 300_000
+)
+```
+
+## roll_progressively
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":= roll_progressively (roll : () -> u8) (reroll : bool) max =\n    roll_value (? reroll ?> Fresh |: Slide) max (roller roll)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  := roll_progressively (roll : () -> u8) (reroll : bool) max =
+      roll_value (? reroll ?> Fresh |: Slide) max (roller roll)
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n\n:= sequential_roll = create_sequential_roller [ 5u8; 4; 4; 5; 1 ]\nroll_progressively sequential_roll !- 2000i32\n|> _assert_eq 995","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+
+  := sequential_roll = create_sequential_roller [ 5u8; 4; 4; 5; 1 ]
+  roll_progressively sequential_roll !- 2000i32
+  |> _assert_eq 995
+  """,
+  timeout: 300_000
+)
+```
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n\n:= sequential_roll = create_sequential_roller [ 5u8; 4; 4; 5; 2 ]\nroll_progressively sequential_roll !- 2000i32\n|> _assert_eq 1678","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+
+  := sequential_roll = create_sequential_roller [ 5u8; 4; 4; 5; 2 ]
+  roll_progressively sequential_roll !- 2000i32
+  |> _assert_eq 1678
+  """,
+  timeout: 300_000
+)
+```
+
+## main
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":= main (_args : array_base string) =\n    := result = roll_value Fresh 4738381338321616896i64 system\n    trace Debug\n        \\ () => \"dice.main\"\n        \\ () => { result }\n    0i32\n\n:= main () =\n    := rotate_numbers' : i64 -> stream.stream u8 -> stream.stream u8 =\n        rotate_numbers\n\n    := create_sequential_roller' :\n        list u8\n        -> (() -> u8)\n        =\n        create_sequential_roller\n\n    := roll_progressively' :\n        (() -> u8)\n        -> bool\n        -> u64\n        -> u64\n        =\n        roll_progressively\n\n    := roll_within_bounds' :\n        u64\n        -> list u8\n        -> optionm'.option' u64\n        =\n        \\ a b =>\n            roll_within_bounds a b\n            |> optionm'.box\n\n    backend_switch {\n        Fsharp = \\ () => $'let rotate_numbers x = !rotate_numbers' x' : ()\n        Rust = \\ () => ()\n        TypeScript = \\ () => ()\n        C = \\ () => ()\n    } : ()\n    backend_switch {\n        Fsharp = \\ () => $'let create_sequential_roller x = !create_sequential_roller' x' : ()\n        Rust = \\ () => ()\n        TypeScript = \\ () => ()\n        C = \\ () => ()\n    } : ()\n    backend_switch {\n        Fsharp = \\ () => $'let roll_progressively x = !roll_progressively' x' : ()\n        Rust = \\ () => ()\n        TypeScript = \\ () => ()\n        C = \\ () => ()\n    } : ()\n    backend_switch {\n        Fsharp = \\ () => $'let roll_within_bounds x = !roll_within_bounds' x' : ()\n        Rust = \\ () => ()\n        TypeScript = \\ () => ()\n        C = \\ () => ()\n    } : ()\n    backend_switch {\n        Fsharp = \\ () => $'let main args = !main args' : ()\n        Rust = \\ () => main (;[] |> am'.base) |> ignore\n        Python = \\ () => main (;[] |> am'.base) |> ignore\n        TypeScript = \\ () => main (;[] |> am'.base) |> ignore\n        C = \\ () => ()\n    } : ()","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  := main (_args : array_base string) =
+      := result = roll_value Fresh 4738381338321616896i64 system
+      trace Debug
+          \ () => "dice.main"
+          \ () => { result }
+      0i32
+
+  := main () =
+      := rotate_numbers' : i64 -> stream.stream u8 -> stream.stream u8 =
+          rotate_numbers
+
+      := create_sequential_roller' :
+          list u8
+          -> (() -> u8)
+          =
+          create_sequential_roller
+
+      := roll_progressively' :
+          (() -> u8)
+          -> bool
+          -> u64
+          -> u64
+          =
+          roll_progressively
+
+      := roll_within_bounds' :
+          u64
+          -> list u8
+          -> optionm'.option' u64
+          =
+          \ a b =>
+              roll_within_bounds a b
+              |> optionm'.box
+
+      backend_switch {
+          Fsharp = \ () => $'let rotate_numbers x = !rotate_numbers' x' : ()
+          Rust = \ () => ()
+          TypeScript = \ () => ()
+          C = \ () => ()
+      } : ()
+      backend_switch {
+          Fsharp = \ () => $'let create_sequential_roller x = !create_sequential_roller' x' : ()
+          Rust = \ () => ()
+          TypeScript = \ () => ()
+          C = \ () => ()
+      } : ()
+      backend_switch {
+          Fsharp = \ () => $'let roll_progressively x = !roll_progressively' x' : ()
+          Rust = \ () => ()
+          TypeScript = \ () => ()
+          C = \ () => ()
+      } : ()
+      backend_switch {
+          Fsharp = \ () => $'let roll_within_bounds x = !roll_within_bounds' x' : ()
+          Rust = \ () => ()
+          TypeScript = \ () => ()
+          C = \ () => ()
+      } : ()
+      backend_switch {
+          Fsharp = \ () => $'let main args = !main args' : ()
+          Rust = \ () => main (;[] |> am'.base) |> ignore
+          Python = \ () => main (;[] |> am'.base) |> ignore
+          TypeScript = \ () => main (;[] |> am'.base) |> ignore
+          C = \ () => ()
+      } : ()
+  """,
+  timeout: 300_000
+)
+```

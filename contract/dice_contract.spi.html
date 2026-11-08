@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dice_contract.spi</title>
+<style>
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { background-color: #1e1e1e; color: #d4d4d4; margin: 0; font: 15px/1.6 system-ui, sans-serif; overflow-wrap: anywhere; }
+main { max-width: 960px; margin: 0 auto; padding: 12px; }
+pre { background-color: #252526; padding: 10px; border-radius: 4px; overflow-x: auto; font: 13px/1.5 ui-monospace, Consolas, monospace; }
+pre.output { background-color: #181818; color: #bbb; border-left: 3px solid #444; }
+.plot { background-color: #fff; margin: 6px 0; } .plot svg { max-width: 100%; height: auto; display: block; }
+.badge { display: inline-block; font-size: 12px; padding: 0 6px; border-radius: 3px; margin-bottom: 4px; }
+.badge.passed { background-color: #23452a; color: #9fdc9f; }
+.badge.failed { background-color: #4a2323; color: #f0a0a0; }
+.badge.other { background-color: #333; color: #bbb; }
+a { color: #4fc1ff; }
+.tok-comment { color: #6a9955; }
+.tok-escaped_char { color: #d7ba7d; }
+.tok-escaped_var { color: #d7ba7d; }
+.tok-keyword { color: #c586c0; }
+.tok-number { color: #b5cea8; }
+.tok-number_suffix { color: #b5cea8; }
+.tok-operator { color: #d4d4d4; }
+.tok-parenthesis { color: #ffd700; }
+.tok-string { color: #ce9178; }
+.tok-symbol { color: #4fc1ff; }
+.tok-type_variable { color: #4ec9b0; }
+.tok-unary_operator { color: #d4d4d4; }
+.tok-unescaped_char { color: #ce9178; }
+.tok-variable { color: #9cdcfe; }
+@media (max-width: 600px) { main { padding: 6px; } pre { font-size: 12px; } }
+</style>
+</head>
+<body>
+<main>
+<pre class="code"><code>///- --package ../dice
+
+<span class="tok-keyword">:&lt;</span> <span class="tok-variable">rust_operators</span>
+<span class="tok-keyword">:&lt;</span> <span class="tok-variable">sm'_operators</span>
+<span class="tok-keyword">:&lt;</span> <span class="tok-variable">digest</span></code></pre>
+
+<h1>dice_contract</h1>
+
+<span class="badge other">test dice_contract: prelude</span>
+<pre class="code"><code>///- --test static
+
+<span class="tok-keyword">:&lt;</span> <span class="tok-variable">testing</span></code></pre>
+
+<h2>entropy</h2>
+
+<pre class="code"><code><span class="tok-keyword">:==</span> <span class="tok-variable">entropy</span> <span class="tok-operator">=</span>
+    <span class="tok-parenthesis">{</span>
+        <span class="tok-variable">account_balance_high</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span>
+        <span class="tok-variable">account_balance_low</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span>
+        <span class="tok-variable">block_height</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span>
+        <span class="tok-variable">block_timestamp</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span>
+        <span class="tok-variable">epoch_height</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span>
+        <span class="tok-variable">key</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span>
+        <span class="tok-variable">predecessor</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span>
+        <span class="tok-variable">proof</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span>
+        <span class="tok-variable">seed</span> <span class="tok-operator">:</span> <span class="tok-variable">array</span> <span class="tok-variable">u8</span>
+        <span class="tok-variable">seeds</span> <span class="tok-operator">:</span> <span class="tok-variable">array</span> <span class="tok-variable">u8</span>
+        <span class="tok-variable">signer</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span>
+    <span class="tok-parenthesis">}</span>
+
+<span class="tok-keyword">:==</span> <span class="tok-variable">call</span> <span class="tok-operator">=</span>
+    <span class="tok-parenthesis">{</span>
+        <span class="tok-variable">key</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span>
+        <span class="tok-variable">proof</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span>
+        <span class="tok-variable">seeds</span> <span class="tok-operator">:</span> <span class="tok-variable">array</span> <span class="tok-variable">u8</span>
+    <span class="tok-parenthesis">}</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">u64_text</span> <span class="tok-parenthesis">(</span><span class="tok-variable">x</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span> <span class="tok-operator">=</span>
+    <span class="tok-unary_operator">#?</span><span class="tok-variable">x</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">part_bytes</span> <span class="tok-keyword">\*</span> <span class="tok-variable">t</span><span class="tok-operator">.</span> <span class="tok-parenthesis">(</span><span class="tok-variable">x</span> <span class="tok-operator">:</span> <span class="tok-variable">t</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">array</span> <span class="tok-variable">u8</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">~&gt;</span>
+        <span class="tok-keyword">?:</span> <span class="tok-variable">t</span> <span class="tok-keyword">?|</span>
+        <span class="tok-operator">|</span> <span class="tok-variable">u64</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.le_u64</span> <span class="tok-variable">x</span>
+        <span class="tok-operator">|</span> <span class="tok-variable">string</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.utf8</span> <span class="tok-variable">x</span>
+        <span class="tok-operator">|</span> <span class="tok-variable">array</span> <span class="tok-variable">u8</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">x</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">part_text</span> <span class="tok-keyword">\*</span> <span class="tok-variable">t</span><span class="tok-operator">.</span> <span class="tok-parenthesis">(</span><span class="tok-variable">x</span> <span class="tok-operator">:</span> <span class="tok-variable">t</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">~&gt;</span>
+        <span class="tok-keyword">?:</span> <span class="tok-variable">t</span> <span class="tok-keyword">?|</span>
+        <span class="tok-operator">|</span> <span class="tok-variable">u64</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">u64_text</span> <span class="tok-variable">x</span>
+        <span class="tok-operator">|</span> <span class="tok-variable">string</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">x</span>
+        <span class="tok-operator">|</span> <span class="tok-variable">array</span> <span class="tok-variable">u8</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.hex</span> <span class="tok-variable">x</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">entropy_bytes</span> <span class="tok-parenthesis">(</span><span class="tok-variable">e</span> <span class="tok-operator">:</span> <span class="tok-variable">entropy</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">array</span> <span class="tok-variable">u8</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">bytes</span><span class="tok-symbol">.concat</span> <span class="tok-parenthesis">(</span>
+        <span class="tok-keyword">~&gt;</span>
+            <span class="tok-variable">real_core</span><span class="tok-symbol">::record_type_fold_back</span>
+                <span class="tok-parenthesis">(</span><span class="tok-keyword">\</span> <span class="tok-variable">key</span> <span class="tok-operator">=&gt;</span> <span class="tok-keyword">\*</span> <span class="tok-variable">field</span><span class="tok-operator">.</span> <span class="tok-variable">acc</span> <span class="tok-operator">=&gt;</span> <span class="tok-parenthesis">(</span><span class="tok-operator">::</span><span class="tok-parenthesis">)</span> <span class="tok-unary_operator">`</span><span class="tok-parenthesis">(</span><span class="tok-variable">array</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">part_bytes</span> <span class="tok-unary_operator">`</span><span class="tok-variable">field</span> <span class="tok-parenthesis">(</span><span class="tok-variable">e</span> <span class="tok-variable">key</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-variable">acc</span><span class="tok-parenthesis">)</span>
+                <span class="tok-unary_operator">`</span><span class="tok-variable">entropy</span>
+                <span class="tok-parenthesis">(</span><span class="tok-variable">Nil</span> <span class="tok-unary_operator">`</span><span class="tok-parenthesis">(</span><span class="tok-variable">array</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span>
+    <span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">entropy_text</span> <span class="tok-parenthesis">(</span><span class="tok-variable">e</span> <span class="tok-operator">:</span> <span class="tok-variable">entropy</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">~&gt;</span>
+        <span class="tok-variable">real_core</span><span class="tok-symbol">::record_type_fold_back</span>
+            <span class="tok-parenthesis">(</span><span class="tok-keyword">\</span> <span class="tok-variable">key</span> <span class="tok-operator">=&gt;</span> <span class="tok-keyword">\*</span> <span class="tok-variable">field</span><span class="tok-operator">.</span> <span class="tok-variable">acc</span> <span class="tok-operator">=&gt;</span>
+                <span class="tok-parenthesis">(</span><span class="tok-operator">::</span><span class="tok-parenthesis">)</span> <span class="tok-unary_operator">`</span><span class="tok-parenthesis">(</span><span class="tok-variable">string</span> <span class="tok-operator">*</span> <span class="tok-variable">string</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sm'_real</span><span class="tok-symbol">::symbol_to_string_real</span> <span class="tok-unary_operator">`</span><span class="tok-parenthesis">(</span><span class="tok-unary_operator">`</span><span class="tok-variable">key</span><span class="tok-parenthesis">)</span><span class="tok-operator">,</span> <span class="tok-variable">part_text</span> <span class="tok-unary_operator">`</span><span class="tok-variable">field</span> <span class="tok-parenthesis">(</span><span class="tok-variable">e</span> <span class="tok-variable">key</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-variable">acc</span>
+            <span class="tok-parenthesis">)</span>
+            <span class="tok-unary_operator">`</span><span class="tok-variable">entropy</span>
+            <span class="tok-parenthesis">(</span><span class="tok-variable">Nil</span> <span class="tok-unary_operator">`</span><span class="tok-parenthesis">(</span><span class="tok-variable">string</span> <span class="tok-operator">*</span> <span class="tok-variable">string</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span>
+    <span class="tok-operator">|&gt;</span> <span class="tok-variable">listm</span><span class="tok-symbol">.fold</span> <span class="tok-parenthesis">(</span><span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-variable">first</span><span class="tok-operator">,</span> <span class="tok-variable">acc</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">name</span><span class="tok-operator">,</span> <span class="tok-variable">value</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-number">!-</span><span class="tok-operator">,</span> <span class="tok-variable">acc</span> <span class="tok-operator">++#</span> <span class="tok-parenthesis">(</span><span class="tok-keyword">?</span> <span class="tok-variable">first</span> <span class="tok-keyword">?&gt;</span> <span class="tok-string">&quot;</span><span class="tok-string">&quot;</span> <span class="tok-keyword">|:</span> <span class="tok-string">&quot;</span><span class="tok-string">; </span><span class="tok-string">&quot;</span><span class="tok-parenthesis">)</span> <span class="tok-operator">++#</span> <span class="tok-variable">name</span> <span class="tok-operator">++#</span> <span class="tok-string">&quot;</span><span class="tok-string"> = </span><span class="tok-string">&quot;</span> <span class="tok-operator">++#</span> <span class="tok-variable">value</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-number">!+</span><span class="tok-operator">,</span> <span class="tok-string">&quot;</span><span class="tok-string">&quot;</span><span class="tok-parenthesis">)</span>
+    <span class="tok-operator">|&gt;</span> <span class="tok-variable">snd</span></code></pre>
+
+<h2>chain</h2>
+
+<pre class="code"><code><span class="tok-keyword">:?</span> <span class="tok-variable">read_entropy</span> <span class="tok-variable">c</span> <span class="tok-operator">:</span> <span class="tok-variable">c</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">call</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">entropy</span>
+
+<span class="tok-keyword">:?</span> <span class="tok-variable">fail_with</span> <span class="tok-variable">c</span> <span class="tok-operator">:</span> <span class="tok-keyword">\*</span> <span class="tok-variable">t</span><span class="tok-operator">.</span> <span class="tok-variable">c</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">string</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">t</span>
+
+<span class="tok-keyword">:!</span> <span class="tok-variable">host</span> <span class="tok-operator">=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:+</span> <span class="tok-variable">read_entropy</span> <span class="tok-variable">host</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">\</span> <span class="tok-keyword">_</span> <span class="tok-parenthesis">(</span><span class="tok-variable">call</span> <span class="tok-operator">:</span> <span class="tok-variable">call</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span>
+        <span class="tok-keyword">:=</span> <span class="tok-variable">low</span><span class="tok-operator">,</span> <span class="tok-variable">high</span> <span class="tok-operator">=</span> <span class="tok-variable">near</span><span class="tok-symbol">.host_account_balance_words</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+        <span class="tok-parenthesis">{</span>
+            <span class="tok-variable">account_balance_high</span> <span class="tok-operator">=</span> <span class="tok-variable">high</span>
+            <span class="tok-variable">account_balance_low</span> <span class="tok-operator">=</span> <span class="tok-variable">low</span>
+            <span class="tok-variable">block_height</span> <span class="tok-operator">=</span> <span class="tok-variable">near</span><span class="tok-symbol">.host_block_height</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+            <span class="tok-variable">block_timestamp</span> <span class="tok-operator">=</span> <span class="tok-variable">near</span><span class="tok-symbol">.host_block_timestamp</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+            <span class="tok-variable">epoch_height</span> <span class="tok-operator">=</span> <span class="tok-variable">near</span><span class="tok-symbol">.host_epoch_height</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+            <span class="tok-variable">key</span> <span class="tok-operator">=</span> <span class="tok-variable">call</span><span class="tok-symbol">.key</span>
+            <span class="tok-variable">predecessor</span> <span class="tok-operator">=</span> <span class="tok-variable">near</span><span class="tok-symbol">.host_predecessor</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+            <span class="tok-variable">proof</span> <span class="tok-operator">=</span> <span class="tok-variable">call</span><span class="tok-symbol">.proof</span>
+            <span class="tok-variable">seed</span> <span class="tok-operator">=</span> <span class="tok-variable">near</span><span class="tok-symbol">.host_random_seed</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+            <span class="tok-variable">seeds</span> <span class="tok-operator">=</span> <span class="tok-variable">call</span><span class="tok-symbol">.seeds</span>
+            <span class="tok-variable">signer</span> <span class="tok-operator">=</span> <span class="tok-variable">near</span><span class="tok-symbol">.host_signer</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+        <span class="tok-parenthesis">}</span>
+
+<span class="tok-keyword">:+</span> <span class="tok-variable">fail_with</span> <span class="tok-variable">host</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">\</span> <span class="tok-keyword">_</span> <span class="tok-variable">text</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">near</span><span class="tok-symbol">.panic</span> <span class="tok-variable">text</span>
+
+<span class="tok-keyword">:+</span> <span class="tok-variable">digest_with</span> <span class="tok-variable">host</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">\</span> <span class="tok-keyword">_</span> <span class="tok-variable">digest</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">near</span><span class="tok-symbol">.host_keccak512</span> <span class="tok-variable">digest</span>
+
+<span class="tok-keyword">:!</span> <span class="tok-variable">fixture</span> <span class="tok-operator">=</span>
+    <span class="tok-parenthesis">{</span>
+        <span class="tok-variable">account_balance</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span> <span class="tok-operator">*</span> <span class="tok-variable">u64</span>
+        <span class="tok-variable">block_height</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span>
+        <span class="tok-variable">block_timestamp</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span>
+        <span class="tok-variable">epoch_height</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span>
+        <span class="tok-variable">predecessor</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span>
+        <span class="tok-variable">seed</span> <span class="tok-operator">:</span> <span class="tok-variable">array</span> <span class="tok-variable">u8</span>
+        <span class="tok-variable">signer</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span>
+    <span class="tok-parenthesis">}</span>
+
+<span class="tok-keyword">:+</span> <span class="tok-variable">read_entropy</span> <span class="tok-variable">fixture</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-variable">fixture</span> <span class="tok-variable">f</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">call</span> <span class="tok-operator">:</span> <span class="tok-variable">call</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span>
+        <span class="tok-keyword">:=</span> <span class="tok-variable">low</span><span class="tok-operator">,</span> <span class="tok-variable">high</span> <span class="tok-operator">=</span> <span class="tok-variable">f</span><span class="tok-symbol">.account_balance</span>
+        <span class="tok-parenthesis">{</span>
+            <span class="tok-variable">account_balance_high</span> <span class="tok-operator">=</span> <span class="tok-variable">high</span>
+            <span class="tok-variable">account_balance_low</span> <span class="tok-operator">=</span> <span class="tok-variable">low</span>
+            <span class="tok-variable">block_height</span> <span class="tok-operator">=</span> <span class="tok-variable">f</span><span class="tok-symbol">.block_height</span>
+            <span class="tok-variable">block_timestamp</span> <span class="tok-operator">=</span> <span class="tok-variable">f</span><span class="tok-symbol">.block_timestamp</span>
+            <span class="tok-variable">epoch_height</span> <span class="tok-operator">=</span> <span class="tok-variable">f</span><span class="tok-symbol">.epoch_height</span>
+            <span class="tok-variable">key</span> <span class="tok-operator">=</span> <span class="tok-variable">call</span><span class="tok-symbol">.key</span>
+            <span class="tok-variable">predecessor</span> <span class="tok-operator">=</span> <span class="tok-variable">f</span><span class="tok-symbol">.predecessor</span>
+            <span class="tok-variable">proof</span> <span class="tok-operator">=</span> <span class="tok-variable">call</span><span class="tok-symbol">.proof</span>
+            <span class="tok-variable">seed</span> <span class="tok-operator">=</span> <span class="tok-variable">f</span><span class="tok-symbol">.seed</span>
+            <span class="tok-variable">seeds</span> <span class="tok-operator">=</span> <span class="tok-variable">call</span><span class="tok-symbol">.seeds</span>
+            <span class="tok-variable">signer</span> <span class="tok-operator">=</span> <span class="tok-variable">f</span><span class="tok-symbol">.signer</span>
+        <span class="tok-parenthesis">}</span>
+
+<span class="tok-keyword">:+</span> <span class="tok-variable">fail_with</span> <span class="tok-variable">fixture</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">\</span> <span class="tok-keyword">_</span> <span class="tok-variable">text</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">failwith</span> <span class="tok-variable">text</span>
+
+<span class="tok-keyword">:+</span> <span class="tok-variable">digest_with</span> <span class="tok-variable">fixture</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">\</span> <span class="tok-keyword">_</span> <span class="tok-variable">digest</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">keccak</span><span class="tok-symbol">.keccak512</span> <span class="tok-variable">digest</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">keccak</span><span class="tok-symbol">.digest_bytes</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">sample_fixture</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">fixture</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">fixture</span> <span class="tok-parenthesis">{</span>
+        <span class="tok-variable">account_balance</span> <span class="tok-operator">=</span> <span class="tok-parenthesis">(</span><span class="tok-number">7</span><span class="tok-number_suffix">u64</span><span class="tok-operator">,</span> <span class="tok-number">1</span><span class="tok-number_suffix">u64</span><span class="tok-parenthesis">)</span>
+        <span class="tok-variable">block_height</span> <span class="tok-operator">=</span> <span class="tok-number">42</span><span class="tok-number_suffix">u64</span>
+        <span class="tok-variable">block_timestamp</span> <span class="tok-operator">=</span> <span class="tok-number">1700000000000000000</span><span class="tok-number_suffix">u64</span>
+        <span class="tok-variable">epoch_height</span> <span class="tok-operator">=</span> <span class="tok-number">3</span><span class="tok-number_suffix">u64</span>
+        <span class="tok-variable">predecessor</span> <span class="tok-operator">=</span> <span class="tok-string">&quot;</span><span class="tok-string">alice.near</span><span class="tok-string">&quot;</span>
+        <span class="tok-variable">seed</span> <span class="tok-operator">=</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.repeated</span> <span class="tok-number">32</span><span class="tok-number_suffix">i32</span> <span class="tok-number">7</span><span class="tok-number_suffix">u8</span>
+        <span class="tok-variable">signer</span> <span class="tok-operator">=</span> <span class="tok-string">&quot;</span><span class="tok-string">alice.near</span><span class="tok-string">&quot;</span>
+    <span class="tok-parenthesis">}</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">sample_call</span> <span class="tok-parenthesis">(</span><span class="tok-variable">key</span> <span class="tok-operator">:</span> <span class="tok-variable">string</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">call</span> <span class="tok-operator">=</span>
+    <span class="tok-parenthesis">{</span> <span class="tok-variable">key</span> <span class="tok-operator">=</span> <span class="tok-variable">key</span><span class="tok-operator">;</span> <span class="tok-variable">proof</span> <span class="tok-operator">=</span> <span class="tok-string">&quot;</span><span class="tok-string">&quot;</span><span class="tok-operator">;</span> <span class="tok-variable">seeds</span> <span class="tok-operator">=</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.counting</span> <span class="tok-number">4</span><span class="tok-number_suffix">i32</span> <span class="tok-parenthesis">}</span></code></pre>
+
+<h4>entropy_bytes_follow_the_field_order_of_the_record (test)</h4>
+
+<span class="badge passed">test entropy_bytes_follow_the_field_order_of_the_record: passed</span>
+<pre class="code"><code>///- --test
+///&gt; rust
+///&gt; fsharp
+///&gt; typescript
+///&gt; python
+///&gt; lua
+///&gt; c
+///&gt; zig
+///&gt; gleam
+///&gt; pascal
+
+<span class="tok-keyword">:=</span> <span class="tok-unary_operator">~</span><span class="tok-variable">key</span> <span class="tok-operator">=</span> <span class="tok-string">&quot;</span><span class="tok-string">k</span><span class="tok-string">&quot;</span>
+<span class="tok-variable">read_entropy</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_fixture</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_call</span> <span class="tok-variable">key</span><span class="tok-parenthesis">)</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">entropy_bytes</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">keccak</span><span class="tok-symbol">.keccak512</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">keccak</span><span class="tok-symbol">.digest_bytes</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.hex</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">sm'</span><span class="tok-symbol">.slice</span> <span class="tok-number">0</span><span class="tok-number_suffix">i32</span> <span class="tok-number">15</span><span class="tok-number_suffix">i32</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">_assert_eq</span> <span class="tok-string">&quot;</span><span class="tok-string">0e10e94fc9dfb460</span><span class="tok-string">&quot;</span></code></pre>
+<pre class="output">.rs (rust)
+__assert_eq { expected = 0e10e94fc9dfb460 }
+.fsx (fsharp)
+__assert_eq { expected = 0e10e94fc9dfb460 }
+.ts (typescript)
+__assert_eq { expected = 0e10e94fc9dfb460 }
+.py (python)
+__assert_eq { expected = 0e10e94fc9dfb460 }
+.lua (lua)
+__assert_eq { expected = 0e10e94fc9dfb460 }
+.c (c)
+__assert_eq { expected = 0e10e94fc9dfb460 }
+.zig (zig)
+__assert_eq { expected = 0e10e94fc9dfb460 }
+.gleam (gleam)
+__assert_eq { expected = 0e10e94fc9dfb460 }
+pascal: unavailable on this machine (`dcc32` was not found (nor fpc))</pre>
+<pre class="output">0</pre>
+
+<h4>entropy_text_names_every_field_once (test)</h4>
+
+<span class="badge passed">test entropy_text_names_every_field_once: passed</span>
+<pre class="code"><code>///- --test
+///&gt; rust
+///&gt; fsharp
+///&gt; typescript
+///&gt; python
+///&gt; lua
+///&gt; c
+///&gt; zig
+///&gt; gleam
+///&gt; pascal
+
+<span class="tok-keyword">:=</span> <span class="tok-unary_operator">~</span><span class="tok-variable">key</span> <span class="tok-operator">=</span> <span class="tok-string">&quot;</span><span class="tok-string">k</span><span class="tok-string">&quot;</span>
+<span class="tok-variable">read_entropy</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_fixture</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_call</span> <span class="tok-variable">key</span><span class="tok-parenthesis">)</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">entropy_text</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">_assert_eq</span> <span class="tok-string">&quot;</span><span class="tok-string">account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near</span><span class="tok-string">&quot;</span></code></pre>
+<pre class="output">.rs (rust)
+__assert_eq { expected = account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near }
+.fsx (fsharp)
+__assert_eq { expected = account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near }
+.ts (typescript)
+__assert_eq { expected = account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near }
+.py (python)
+__assert_eq { expected = account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near }
+.lua (lua)
+__assert_eq { expected = account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near }
+.c (c)
+__assert_eq { expected = account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near }
+.zig (zig)
+__assert_eq { expected = account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near }
+.gleam (gleam)
+__assert_eq { expected = account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near }
+pascal: unavailable on this machine (`dcc32` was not found (nor fpc))</pre>
+<pre class="output">0</pre>
+
+<h2>phases</h2>
+
+<pre class="code"><code><span class="tok-keyword">:!</span> <span class="tok-variable">requested</span> <span class="tok-operator">=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:!</span> <span class="tok-variable">bounded</span> <span class="tok-operator">=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:!</span> <span class="tok-variable">gathered</span> <span class="tok-operator">=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:!</span> <span class="tok-variable">hashed</span> <span class="tok-operator">=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:!</span> <span class="tok-variable">rolled</span> <span class="tok-operator">=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:|</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">phase</span> <span class="tok-operator">=</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Requested</span> <span class="tok-operator">::</span> <span class="tok-variable">u64</span> <span class="tok-operator">*</span> <span class="tok-variable">call</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">requested</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Bounded</span> <span class="tok-operator">::</span> <span class="tok-variable">lib</span><span class="tok-symbol">.dice</span><span class="tok-symbol">.bound</span> <span class="tok-variable">u64</span> <span class="tok-operator">*</span> <span class="tok-variable">call</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">bounded</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Gathered</span> <span class="tok-operator">::</span> <span class="tok-variable">lib</span><span class="tok-symbol">.dice</span><span class="tok-symbol">.bound</span> <span class="tok-variable">u64</span> <span class="tok-operator">*</span> <span class="tok-variable">entropy</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">gathered</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Hashed</span> <span class="tok-operator">::</span> <span class="tok-variable">lib</span><span class="tok-symbol">.dice</span><span class="tok-symbol">.bound</span> <span class="tok-variable">u64</span> <span class="tok-operator">*</span> <span class="tok-variable">entropy</span> <span class="tok-operator">*</span> <span class="tok-variable">array</span> <span class="tok-variable">u8</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">hashed</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Rolled</span> <span class="tok-operator">::</span> <span class="tok-variable">u64</span> <span class="tok-operator">*</span> <span class="tok-variable">entropy</span> <span class="tok-operator">*</span> <span class="tok-variable">array</span> <span class="tok-variable">u8</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">rolled</span>
+
+<span class="tok-keyword">:|</span> <span class="tok-variable">roll_step</span> <span class="tok-variable">from</span> <span class="tok-variable">to</span> <span class="tok-operator">=</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">CheckBound</span> <span class="tok-operator">::</span> <span class="tok-variable">roll_step</span> <span class="tok-variable">requested</span> <span class="tok-variable">bounded</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Gather</span> <span class="tok-operator">::</span> <span class="tok-variable">roll_step</span> <span class="tok-variable">bounded</span> <span class="tok-variable">gathered</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Hash</span> <span class="tok-operator">::</span> <span class="tok-variable">roll_step</span> <span class="tok-variable">gathered</span> <span class="tok-variable">hashed</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Draw</span> <span class="tok-operator">::</span> <span class="tok-variable">roll_step</span> <span class="tok-variable">hashed</span> <span class="tok-variable">rolled</span>
+
+<span class="tok-keyword">:|</span> <span class="tok-keyword">^</span> <span class="tok-variable">roll_plan</span> <span class="tok-variable">from</span> <span class="tok-variable">to</span> <span class="tok-operator">=</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Step</span> <span class="tok-operator">::</span> <span class="tok-keyword">\*</span> <span class="tok-variable">from</span> <span class="tok-variable">to</span><span class="tok-operator">.</span> <span class="tok-variable">roll_step</span> <span class="tok-variable">from</span> <span class="tok-variable">to</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">roll_plan</span> <span class="tok-variable">from</span> <span class="tok-variable">to</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Then</span> <span class="tok-operator">::</span> <span class="tok-keyword">\*</span> <span class="tok-variable">from</span> <span class="tok-variable">to</span><span class="tok-operator">.</span> <span class="tok-parenthesis">(</span><span class="tok-keyword">\?</span> <span class="tok-variable">middle</span><span class="tok-operator">.</span> <span class="tok-variable">roll_plan</span> <span class="tok-variable">from</span> <span class="tok-variable">middle</span> <span class="tok-operator">*</span> <span class="tok-variable">roll_plan</span> <span class="tok-variable">middle</span> <span class="tok-variable">to</span><span class="tok-parenthesis">)</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">roll_plan</span> <span class="tok-variable">from</span> <span class="tok-variable">to</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">check_bound</span> <span class="tok-keyword">\*</span> <span class="tok-variable">c</span> <span class="tok-parenthesis">{</span><span class="tok-variable">fail_with</span><span class="tok-parenthesis">}</span><span class="tok-operator">.</span> <span class="tok-parenthesis">(</span><span class="tok-variable">chain</span> <span class="tok-operator">:</span> <span class="tok-variable">c</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">state</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">requested</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">bounded</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">?=</span> <span class="tok-variable">state</span> <span class="tok-keyword">?|</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Requested</span> <span class="tok-parenthesis">(</span><span class="tok-variable">max</span><span class="tok-operator">,</span> <span class="tok-variable">call</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span>
+        <span class="tok-keyword">:=</span> <span class="tok-variable">b</span> <span class="tok-operator">=</span>
+            <span class="tok-keyword">?=</span> <span class="tok-variable">lib</span><span class="tok-symbol">.dice</span><span class="tok-symbol">.bound_of</span> <span class="tok-variable">max</span> <span class="tok-keyword">?|</span>
+            <span class="tok-operator">|</span> <span class="tok-variable">Ok</span> <span class="tok-variable">b</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">b</span>
+            <span class="tok-operator">|</span> <span class="tok-variable">Error</span> <span class="tok-variable">e</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">fail_with</span> <span class="tok-variable">chain</span> <span class="tok-parenthesis">(</span><span class="tok-string">&quot;</span><span class="tok-string">dice_contract.generate_random_number / </span><span class="tok-string">&quot;</span> <span class="tok-operator">++#</span> <span class="tok-variable">lib</span><span class="tok-symbol">.dice</span><span class="tok-symbol">.bound_error_text</span> <span class="tok-variable">e</span><span class="tok-parenthesis">)</span>
+        <span class="tok-variable">Bounded</span> <span class="tok-parenthesis">(</span><span class="tok-variable">b</span><span class="tok-operator">,</span> <span class="tok-variable">call</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">gather</span> <span class="tok-keyword">\*</span> <span class="tok-variable">c</span> <span class="tok-parenthesis">{</span><span class="tok-variable">read_entropy</span><span class="tok-parenthesis">}</span><span class="tok-operator">.</span> <span class="tok-parenthesis">(</span><span class="tok-variable">chain</span> <span class="tok-operator">:</span> <span class="tok-variable">c</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">state</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">bounded</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">gathered</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">?=</span> <span class="tok-variable">state</span> <span class="tok-keyword">?|</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Bounded</span> <span class="tok-parenthesis">(</span><span class="tok-variable">b</span><span class="tok-operator">,</span> <span class="tok-variable">call</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">Gathered</span> <span class="tok-parenthesis">(</span><span class="tok-variable">b</span><span class="tok-operator">,</span> <span class="tok-variable">read_entropy</span> <span class="tok-variable">chain</span> <span class="tok-variable">call</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">hash</span> <span class="tok-keyword">\*</span> <span class="tok-variable">c</span> <span class="tok-parenthesis">{</span><span class="tok-variable">digest_with</span><span class="tok-parenthesis">}</span><span class="tok-operator">.</span> <span class="tok-parenthesis">(</span><span class="tok-variable">chain</span> <span class="tok-operator">:</span> <span class="tok-variable">c</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">state</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">gathered</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">hashed</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">?=</span> <span class="tok-variable">state</span> <span class="tok-keyword">?|</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Gathered</span> <span class="tok-parenthesis">(</span><span class="tok-variable">b</span><span class="tok-operator">,</span> <span class="tok-variable">e</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">Hashed</span> <span class="tok-parenthesis">(</span><span class="tok-variable">b</span><span class="tok-operator">,</span> <span class="tok-variable">e</span><span class="tok-operator">,</span> <span class="tok-variable">digest_with</span> <span class="tok-variable">chain</span> <span class="tok-parenthesis">(</span><span class="tok-variable">entropy_bytes</span> <span class="tok-variable">e</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">draw</span> <span class="tok-keyword">\*</span> <span class="tok-variable">c</span> <span class="tok-parenthesis">{</span><span class="tok-variable">digest_with</span><span class="tok-parenthesis">}</span><span class="tok-operator">.</span> <span class="tok-parenthesis">(</span><span class="tok-variable">chain</span> <span class="tok-operator">:</span> <span class="tok-variable">c</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">state</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">hashed</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">rolled</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">?=</span> <span class="tok-variable">state</span> <span class="tok-keyword">?|</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Hashed</span> <span class="tok-parenthesis">(</span><span class="tok-variable">b</span><span class="tok-operator">,</span> <span class="tok-variable">e</span><span class="tok-operator">,</span> <span class="tok-variable">digest</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span>
+        <span class="tok-keyword">:=</span> <span class="tok-variable">value</span><span class="tok-operator">,</span> <span class="tok-keyword">_</span> <span class="tok-operator">=</span> <span class="tok-variable">lib</span><span class="tok-symbol">.dice</span><span class="tok-symbol">.roll</span> <span class="tok-variable">lib</span><span class="tok-symbol">.dice</span><span class="tok-symbol">.Recycle</span> <span class="tok-variable">b</span> <span class="tok-parenthesis">(</span><span class="tok-variable">lib</span><span class="tok-symbol">.dice</span><span class="tok-symbol">.hashed</span> <span class="tok-variable">chain</span> <span class="tok-variable">digest</span><span class="tok-parenthesis">)</span>
+        <span class="tok-variable">Rolled</span> <span class="tok-parenthesis">(</span><span class="tok-variable">value</span><span class="tok-operator">,</span> <span class="tok-variable">e</span><span class="tok-operator">,</span> <span class="tok-variable">digest</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">run_step</span> <span class="tok-keyword">\*</span> <span class="tok-variable">from</span> <span class="tok-variable">to</span> <span class="tok-variable">c</span> <span class="tok-parenthesis">{</span><span class="tok-variable">read_entropy</span><span class="tok-operator">;</span> <span class="tok-variable">fail_with</span><span class="tok-operator">;</span> <span class="tok-variable">digest_with</span><span class="tok-parenthesis">}</span><span class="tok-operator">.</span>
+    <span class="tok-parenthesis">(</span><span class="tok-variable">chain</span> <span class="tok-operator">:</span> <span class="tok-variable">c</span><span class="tok-parenthesis">)</span>
+    <span class="tok-parenthesis">(</span><span class="tok-variable">step</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_step</span> <span class="tok-variable">from</span> <span class="tok-variable">to</span><span class="tok-parenthesis">)</span>
+    <span class="tok-parenthesis">(</span><span class="tok-variable">state</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">from</span><span class="tok-parenthesis">)</span>
+    <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">to</span>
+    <span class="tok-operator">=</span>
+    <span class="tok-keyword">?=</span> <span class="tok-variable">step</span> <span class="tok-keyword">?|</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">CheckBound</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">check_bound</span> <span class="tok-variable">chain</span> <span class="tok-variable">state</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Gather</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">gather</span> <span class="tok-variable">chain</span> <span class="tok-variable">state</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Hash</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">hash</span> <span class="tok-variable">chain</span> <span class="tok-variable">state</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Draw</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">draw</span> <span class="tok-variable">chain</span> <span class="tok-variable">state</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-keyword">^</span> <span class="tok-variable">run</span> <span class="tok-keyword">\*</span> <span class="tok-variable">from</span> <span class="tok-variable">to</span> <span class="tok-variable">c</span> <span class="tok-parenthesis">{</span><span class="tok-variable">read_entropy</span><span class="tok-operator">;</span> <span class="tok-variable">fail_with</span><span class="tok-operator">;</span> <span class="tok-variable">digest_with</span><span class="tok-parenthesis">}</span><span class="tok-operator">.</span>
+    <span class="tok-parenthesis">(</span><span class="tok-variable">chain</span> <span class="tok-operator">:</span> <span class="tok-variable">c</span><span class="tok-parenthesis">)</span>
+    <span class="tok-parenthesis">(</span><span class="tok-variable">plan</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_plan</span> <span class="tok-variable">from</span> <span class="tok-variable">to</span><span class="tok-parenthesis">)</span>
+    <span class="tok-parenthesis">(</span><span class="tok-variable">state</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">from</span><span class="tok-parenthesis">)</span>
+    <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">to</span>
+    <span class="tok-operator">=</span>
+    <span class="tok-keyword">?=</span> <span class="tok-variable">plan</span> <span class="tok-keyword">?|</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Step</span> <span class="tok-variable">step</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">run_step</span> <span class="tok-variable">chain</span> <span class="tok-variable">step</span> <span class="tok-variable">state</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Then</span> <span class="tok-variable">pair</span> <span class="tok-operator">=&gt;</span>
+        <span class="tok-keyword">:=</span> <span class="tok-keyword">\?</span> <span class="tok-variable">middle</span><span class="tok-operator">.</span> <span class="tok-variable">first</span><span class="tok-operator">,</span> <span class="tok-variable">second</span> <span class="tok-operator">=</span> <span class="tok-variable">pair</span>
+        <span class="tok-variable">run</span> <span class="tok-variable">chain</span> <span class="tok-variable">second</span> <span class="tok-parenthesis">(</span><span class="tok-variable">run</span> <span class="tok-variable">chain</span> <span class="tok-variable">first</span> <span class="tok-variable">state</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">generate_plan</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_plan</span> <span class="tok-variable">requested</span> <span class="tok-variable">rolled</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">Then</span> <span class="tok-parenthesis">(</span><span class="tok-keyword">\?</span> <span class="tok-parenthesis">(</span><span class="tok-variable">Step</span> <span class="tok-variable">CheckBound</span><span class="tok-operator">,</span> <span class="tok-variable">Then</span> <span class="tok-parenthesis">(</span><span class="tok-keyword">\?</span> <span class="tok-parenthesis">(</span><span class="tok-variable">Step</span> <span class="tok-variable">Gather</span><span class="tok-operator">,</span> <span class="tok-variable">Then</span> <span class="tok-parenthesis">(</span><span class="tok-keyword">\?</span> <span class="tok-parenthesis">(</span><span class="tok-variable">Step</span> <span class="tok-variable">Hash</span><span class="tok-operator">,</span> <span class="tok-variable">Step</span> <span class="tok-variable">Draw</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">generate</span> <span class="tok-keyword">\*</span> <span class="tok-variable">c</span> <span class="tok-parenthesis">{</span><span class="tok-variable">read_entropy</span><span class="tok-operator">;</span> <span class="tok-variable">fail_with</span><span class="tok-operator">;</span> <span class="tok-variable">digest_with</span><span class="tok-parenthesis">}</span><span class="tok-operator">.</span> <span class="tok-parenthesis">(</span><span class="tok-variable">chain</span> <span class="tok-operator">:</span> <span class="tok-variable">c</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">call</span> <span class="tok-operator">:</span> <span class="tok-variable">call</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">max</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">rolled</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">run</span> <span class="tok-variable">chain</span> <span class="tok-parenthesis">(</span><span class="tok-variable">generate_plan</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">Requested</span> <span class="tok-parenthesis">(</span><span class="tok-variable">max</span><span class="tok-operator">,</span> <span class="tok-variable">call</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">rolled_value</span> <span class="tok-parenthesis">(</span><span class="tok-variable">state</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">rolled</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">?=</span> <span class="tok-variable">state</span> <span class="tok-keyword">?|</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Rolled</span> <span class="tok-parenthesis">(</span><span class="tok-variable">value</span><span class="tok-operator">,</span> <span class="tok-keyword">_</span><span class="tok-operator">,</span> <span class="tok-keyword">_</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">value</span></code></pre>
+
+<h4>a_fixture_rolls_the_same_number_on_every_backend (test)</h4>
+
+<span class="badge passed">test a_fixture_rolls_the_same_number_on_every_backend: passed</span>
+<pre class="code"><code>///- --test
+///&gt; rust
+///&gt; fsharp
+///&gt; typescript
+///&gt; python
+///&gt; lua
+///&gt; c
+///&gt; zig
+///&gt; gleam
+///&gt; pascal
+
+<span class="tok-keyword">:=</span> <span class="tok-unary_operator">~</span><span class="tok-variable">max</span> <span class="tok-operator">=</span> <span class="tok-number">2000</span><span class="tok-number_suffix">u64</span>
+<span class="tok-parenthesis">(</span><span class="tok-variable">generate</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_fixture</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_call</span> <span class="tok-string">&quot;</span><span class="tok-string">k</span><span class="tok-string">&quot;</span><span class="tok-parenthesis">)</span> <span class="tok-variable">max</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">rolled_value</span><span class="tok-operator">,</span> <span class="tok-variable">generate</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_fixture</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_call</span> <span class="tok-string">&quot;</span><span class="tok-string">k2</span><span class="tok-string">&quot;</span><span class="tok-parenthesis">)</span> <span class="tok-variable">max</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">rolled_value</span><span class="tok-parenthesis">)</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">_assert_eq</span> <span class="tok-parenthesis">(</span><span class="tok-number">1646</span><span class="tok-number_suffix">u64</span><span class="tok-operator">,</span> <span class="tok-number">1834</span><span class="tok-number_suffix">u64</span><span class="tok-parenthesis">)</span></code></pre>
+<pre class="output">.rs (rust)
+__assert_eq { expected = (1646, 1834) }
+.fsx (fsharp)
+__assert_eq { expected = (1646, 1834) }
+.ts (typescript)
+__assert_eq { expected = (1646, 1834) }
+.py (python)
+__assert_eq { expected = (1646, 1834) }
+.lua (lua)
+__assert_eq { expected = (1646, 1834) }
+.c (c)
+__assert_eq { expected = (1646, 1834) }
+.zig (zig)
+__assert_eq { expected = (1646, 1834) }
+.gleam (gleam)
+__assert_eq { expected = (1646, 1834) }
+pascal: unavailable on this machine (`dcc32` was not found (nor fpc))</pre>
+<pre class="output">0</pre>
+
+<h4>the_bound_is_checked_before_anything_is_gathered (test)</h4>
+
+<span class="badge passed">test the_bound_is_checked_before_anything_is_gathered: passed</span>
+<pre class="code"><code>///- --test
+///&gt; rust
+///&gt; fsharp
+///&gt; typescript
+///&gt; python
+
+<span class="tok-keyword">:=</span> <span class="tok-unary_operator">~</span><span class="tok-variable">max</span> <span class="tok-operator">=</span> <span class="tok-number">0</span><span class="tok-number_suffix">u64</span>
+<span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-variable">generate</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_fixture</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_call</span> <span class="tok-string">&quot;</span><span class="tok-string">k</span><span class="tok-string">&quot;</span><span class="tok-parenthesis">)</span> <span class="tok-variable">max</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">rolled_value</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">ignore</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">_throws</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">optionm</span><span class="tok-symbol">.map</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sm'</span><span class="tok-symbol">.format_exception</span> <span class="tok-operator">&gt;&gt;</span> <span class="tok-variable">sm'</span><span class="tok-symbol">.contains</span> <span class="tok-string">&quot;</span><span class="tok-string">dice_contract.generate_random_number / max must be at least 1</span><span class="tok-string">&quot;</span><span class="tok-parenthesis">)</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">_assert_eq</span> <span class="tok-parenthesis">(</span><span class="tok-variable">Some</span> <span class="tok-number">!+</span><span class="tok-parenthesis">)</span></code></pre>
+<pre class="output">.rs (rust)
+__assert_eq { expected = Some(true) }
+.fsx (fsharp)
+__assert_eq { expected = Some(true) }
+.ts (typescript)
+__assert_eq { expected = Some(true) }
+.py (python)
+__assert_eq { expected = Some(true) }</pre>
+<pre class="output">0</pre>
+
+<h4>a_plan_cannot_draw_before_hashing (test)</h4>
+
+<span class="badge passed">test a_plan_cannot_draw_before_hashing: passed</span>
+<pre class="code"><code>///- --test --fails ETY-TermError &quot;Unification failure&quot;
+///&gt; zig
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">plan</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_plan</span> <span class="tok-variable">requested</span> <span class="tok-variable">rolled</span> <span class="tok-operator">=</span> <span class="tok-variable">Then</span> <span class="tok-parenthesis">(</span><span class="tok-keyword">\?</span> <span class="tok-parenthesis">(</span><span class="tok-variable">Step</span> <span class="tok-variable">CheckBound</span><span class="tok-operator">,</span> <span class="tok-variable">Then</span> <span class="tok-parenthesis">(</span><span class="tok-keyword">\?</span> <span class="tok-parenthesis">(</span><span class="tok-variable">Step</span> <span class="tok-variable">Gather</span><span class="tok-operator">,</span> <span class="tok-variable">Step</span> <span class="tok-variable">Draw</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span>
+<span class="tok-number">0</span><span class="tok-number_suffix">i32</span></code></pre>
+<pre class="output">failed to compile as expected (ETY-TermError &quot;Unification failure&quot;): FatalError: File main has a type error somewhere in its path. /home/runner/work/dice/dice/contract/dice_contract.spi:295:99 (main.spi:226:99): ETY-TermError: Unification failure. Got:      roll_step gathered rolled Expected: roll_step hashed rolled In the definition: spiral_cells_test.
+</pre>
+
+<h4>a_plan_cannot_gather_before_the_bound_is_checked (test)</h4>
+
+<span class="badge passed">test a_plan_cannot_gather_before_the_bound_is_checked: passed</span>
+<pre class="code"><code>///- --test --fails ETY-TermError &quot;Unification failure&quot;
+///&gt; zig
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">plan</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_plan</span> <span class="tok-variable">requested</span> <span class="tok-variable">rolled</span> <span class="tok-operator">=</span> <span class="tok-variable">Then</span> <span class="tok-parenthesis">(</span><span class="tok-keyword">\?</span> <span class="tok-parenthesis">(</span><span class="tok-variable">Step</span> <span class="tok-variable">Gather</span><span class="tok-operator">,</span> <span class="tok-variable">Then</span> <span class="tok-parenthesis">(</span><span class="tok-keyword">\?</span> <span class="tok-parenthesis">(</span><span class="tok-variable">Step</span> <span class="tok-variable">CheckBound</span><span class="tok-operator">,</span> <span class="tok-variable">Then</span> <span class="tok-parenthesis">(</span><span class="tok-keyword">\?</span> <span class="tok-parenthesis">(</span><span class="tok-variable">Step</span> <span class="tok-variable">Hash</span><span class="tok-operator">,</span> <span class="tok-variable">Step</span> <span class="tok-variable">Draw</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span>
+<span class="tok-number">0</span><span class="tok-number_suffix">i32</span></code></pre>
+<pre class="output">failed to compile as expected (ETY-TermError &quot;Unification failure&quot;): FatalError: File main has a type error somewhere in its path. /home/runner/work/dice/dice/contract/dice_contract.spi:300:59 (main.spi:226:59): ETY-TermError: Unification failure. Got:      roll_step requested gathered Expected: roll_step bounded gathered In the definition: spiral_cells_test. /home/runner/work/dice/dice/contract/dice_contract.spi:300:82 (main.spi:226:82): ETY-TermError: Unification failure. Got:      roll_step gathered bounded Expected: roll_step requested bounded In the definition: spiral_cells_test. /home/runner/work/dice/dice/contract/dice_contract.spi:300:109 (main.spi:226:109): ETY-TermError: Unification failure. Got:      roll_step bounded hashed Expected: roll_step gathered hashed In the definition: spiral_cells_test.
+</pre>
+
+<h4>a_rolled_state_cannot_be_rolled_again (test)</h4>
+
+<span class="badge passed">test a_rolled_state_cannot_be_rolled_again: passed</span>
+<pre class="code"><code>///- --test --fails ETY-TermError &quot;Unification failure&quot;
+///&gt; zig
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">again</span> <span class="tok-parenthesis">(</span><span class="tok-variable">state</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">rolled</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">roll_state</span> <span class="tok-variable">rolled</span> <span class="tok-operator">=</span> <span class="tok-variable">draw</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_fixture</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-variable">state</span>
+<span class="tok-number">0</span><span class="tok-number_suffix">i32</span></code></pre>
+<pre class="output">failed to compile as expected (ETY-TermError &quot;Unification failure&quot;): FatalError: File main has a type error somewhere in its path. /home/runner/work/dice/dice/contract/dice_contract.spi:305:89 (main.spi:226:89): ETY-TermError: Unification failure. Got:      roll_state hashed Expected: roll_state rolled In the definition: spiral_cells_test.
+</pre>
+
+<h2>seeds</h2>
+
+<pre class="code"><code><span class="tok-keyword">:=</span> <span class="tok-variable">new</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">u32</span> <span class="tok-operator">*</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span> <span class="tok-operator">=</span>
+    <span class="tok-number">3</span><span class="tok-number_suffix">u32</span><span class="tok-operator">,</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">(</span><span class="tok-parenthesis">[</span><span class="tok-parenthesis">]</span> <span class="tok-operator">:</span> <span class="tok-variable">list</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.new_vec</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">max_seeds</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">convert</span><span class="tok-symbol">.unativeint</span> <span class="tok-operator">=</span>
+    <span class="tok-number">100</span><span class="tok-number_suffix">i32</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">convert</span><span class="tok-symbol">.convert</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">trim_seeds</span> <span class="tok-parenthesis">(</span><span class="tok-variable">seeds</span> <span class="tok-operator">:</span> <span class="tok-variable">rust</span><span class="tok-symbol">.ref</span> <span class="tok-parenthesis">(</span><span class="tok-variable">rust</span><span class="tok-symbol">.mut'</span> <span class="tok-parenthesis">(</span><span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">:=</span> <span class="tok-variable">len</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span> <span class="tok-operator">=</span> <span class="tok-variable">seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec_ref_len</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">convert</span><span class="tok-symbol">.convert</span>
+    <span class="tok-keyword">:=</span> <span class="tok-variable">max</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span> <span class="tok-operator">=</span> <span class="tok-variable">max_seeds</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">convert</span><span class="tok-symbol">.convert</span>
+    <span class="tok-keyword">:=</span> <span class="tok-variable">excess</span> <span class="tok-operator">=</span> <span class="tok-keyword">?</span> <span class="tok-variable">len</span> <span class="tok-operator">&gt;</span> <span class="tok-variable">max</span> <span class="tok-keyword">?&gt;</span> <span class="tok-variable">len</span> <span class="tok-operator">-</span> <span class="tok-variable">max</span> <span class="tok-keyword">|:</span> <span class="tok-number">0</span><span class="tok-number_suffix">u64</span>
+    <span class="tok-variable">seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec_drain_front</span> <span class="tok-parenthesis">(</span><span class="tok-variable">excess</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">convert</span><span class="tok-symbol">.convert</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">contribute_seed</span> <span class="tok-parenthesis">(</span><span class="tok-variable">seeds</span> <span class="tok-operator">:</span> <span class="tok-variable">rust</span><span class="tok-symbol">.ref</span> <span class="tok-parenthesis">(</span><span class="tok-variable">rust</span><span class="tok-symbol">.mut'</span> <span class="tok-parenthesis">(</span><span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">seed</span> <span class="tok-operator">:</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">:=</span> <span class="tok-variable">seed_len</span> <span class="tok-operator">=</span> <span class="tok-variable">seed</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec_len</span>
+    <span class="tok-variable">seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec_extend_from_slice</span> <span class="tok-variable">seed</span>
+    <span class="tok-keyword">:=</span> <span class="tok-variable">seed_excess</span> <span class="tok-operator">=</span> <span class="tok-variable">seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">trim_seeds</span>
+    <span class="tok-variable">trace</span> <span class="tok-variable">Debug</span>
+        <span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-string">&quot;</span><span class="tok-string">dice_contract.contribute_seed</span><span class="tok-string">&quot;</span>
+        <span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-parenthesis">{</span> <span class="tok-variable">seed_len</span> <span class="tok-variable">seed_excess</span> <span class="tok-operator">=</span> <span class="tok-variable">seed_excess</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">crypto</span><span class="tok-symbol">.hex_of_vec</span> <span class="tok-parenthesis">}</span>
+    <span class="tok-variable">trace_flush</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span></code></pre>
+
+<h4>contribute_seed_keeps_the_newest_hundred_bytes (test)</h4>
+
+<span class="badge passed">test contribute_seed_keeps_the_newest_hundred_bytes: passed</span>
+<pre class="code"><code>///- --test
+///&gt; rust
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">seeds</span> <span class="tok-operator">=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">[</span><span class="tok-parenthesis">]</span> <span class="tok-operator">:</span> <span class="tok-variable">list</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.new_vec</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">rust</span><span class="tok-symbol">.to_ref_mut</span>
+<span class="tok-variable">listm'</span><span class="tok-symbol">.init_series</span> <span class="tok-number">1</span><span class="tok-number_suffix">i32</span> <span class="tok-number">120</span> <span class="tok-number">1</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">listm</span><span class="tok-symbol">.map</span> <span class="tok-variable">convert</span><span class="tok-symbol">.u8</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.new_vec</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">contribute_seed</span> <span class="tok-variable">seeds</span>
+<span class="tok-parenthesis">(</span><span class="tok-parenthesis">(</span><span class="tok-variable">seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">rust</span><span class="tok-symbol">.len</span> <span class="tok-operator">:</span> <span class="tok-variable">u32</span><span class="tok-parenthesis">)</span><span class="tok-operator">,</span> <span class="tok-parenthesis">(</span><span class="tok-variable">seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec_ref_len</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">convert</span><span class="tok-symbol">.convert</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">_assert_eq</span> <span class="tok-parenthesis">(</span><span class="tok-number">100</span><span class="tok-number_suffix">u32</span><span class="tok-operator">,</span> <span class="tok-number">100</span><span class="tok-number_suffix">u64</span><span class="tok-parenthesis">)</span></code></pre>
+<pre class="output">21:58:19 1[94md[0m dice_contract.contribute_seed / { seed_len = 120; seed_excess = 0102030405060708090a0b0c0d0e0f1011121314 }
+
+__assert_eq { expected = (100, 100) }</pre>
+<pre class="output">0</pre>
+
+<h2>generate_random_number</h2>
+
+<pre class="code"><code><span class="tok-keyword">:=</span> <span class="tok-variable">generate_random_number</span>
+    <span class="tok-parenthesis">(</span><span class="tok-variable">seeds</span> <span class="tok-operator">:</span> <span class="tok-variable">rust</span><span class="tok-symbol">.ref</span> <span class="tok-parenthesis">(</span><span class="tok-variable">rust</span><span class="tok-symbol">.mut'</span> <span class="tok-parenthesis">(</span><span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span>
+    <span class="tok-parenthesis">(</span><span class="tok-variable">key</span> <span class="tok-operator">:</span> <span class="tok-variable">sm'</span><span class="tok-symbol">.std_string</span><span class="tok-parenthesis">)</span>
+    <span class="tok-parenthesis">(</span><span class="tok-variable">proof</span> <span class="tok-operator">:</span> <span class="tok-variable">sm'</span><span class="tok-symbol">.std_string</span><span class="tok-parenthesis">)</span>
+    <span class="tok-parenthesis">(</span><span class="tok-variable">max</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span><span class="tok-parenthesis">)</span>
+    <span class="tok-operator">:</span> <span class="tok-variable">u64</span>
+    <span class="tok-operator">=</span>
+    <span class="tok-keyword">:=</span> <span class="tok-variable">call</span> <span class="tok-operator">=</span> <span class="tok-parenthesis">{</span> <span class="tok-variable">key</span> <span class="tok-operator">=</span> <span class="tok-variable">key</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">sm'</span><span class="tok-symbol">.from_std_string</span><span class="tok-operator">;</span> <span class="tok-variable">proof</span> <span class="tok-operator">=</span> <span class="tok-variable">proof</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">sm'</span><span class="tok-symbol">.from_std_string</span><span class="tok-operator">;</span> <span class="tok-variable">seeds</span> <span class="tok-operator">=</span> <span class="tok-variable">seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec_ref_to_array</span> <span class="tok-parenthesis">}</span>
+    <span class="tok-keyword">?=</span> <span class="tok-variable">generate</span> <span class="tok-variable">host</span> <span class="tok-variable">call</span> <span class="tok-variable">max</span> <span class="tok-keyword">?|</span>
+    <span class="tok-operator">|</span> <span class="tok-variable">Rolled</span> <span class="tok-parenthesis">(</span><span class="tok-variable">value</span><span class="tok-operator">,</span> <span class="tok-variable">e</span><span class="tok-operator">,</span> <span class="tok-variable">digest</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span>
+        <span class="tok-variable">seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec_extend_from_array</span> <span class="tok-variable">digest</span>
+        <span class="tok-variable">seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">trim_seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">ignore</span>
+        <span class="tok-variable">trace</span> <span class="tok-variable">Debug</span>
+            <span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-string">&quot;</span><span class="tok-string">dice_contract.generate_random_number </span><span class="tok-string">&quot;</span> <span class="tok-operator">++#</span> <span class="tok-variable">entropy_text</span> <span class="tok-variable">e</span> <span class="tok-operator">++#</span> <span class="tok-string">&quot;</span><span class="tok-string">; hash = </span><span class="tok-string">&quot;</span> <span class="tok-operator">++#</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.hex</span> <span class="tok-variable">digest</span>
+            <span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-parenthesis">{</span> <span class="tok-variable">max</span> <span class="tok-variable">result</span> <span class="tok-operator">=</span> <span class="tok-variable">value</span> <span class="tok-parenthesis">}</span>
+        <span class="tok-variable">trace_flush</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+        <span class="tok-variable">value</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">roll_within_bounds</span> <span class="tok-parenthesis">(</span><span class="tok-variable">max</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">rolls</span> <span class="tok-operator">:</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">optionm'</span><span class="tok-symbol">.option'</span> <span class="tok-variable">u64</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">:=</span> <span class="tok-variable">result</span> <span class="tok-operator">=</span>
+        <span class="tok-variable">rolls</span>
+        <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.from_vec_base</span>
+        <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.to_list_base'</span>
+        <span class="tok-operator">|&gt;</span> <span class="tok-variable">listm'</span><span class="tok-symbol">.unbox</span>
+        <span class="tok-operator">|&gt;</span> <span class="tok-variable">lib</span><span class="tok-symbol">.dice</span><span class="tok-symbol">.roll_within_bounds</span> <span class="tok-variable">max</span>
+        <span class="tok-operator">|&gt;</span> <span class="tok-variable">optionm'</span><span class="tok-symbol">.box</span>
+    <span class="tok-variable">trace</span> <span class="tok-variable">Debug</span>
+        <span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-string">&quot;</span><span class="tok-string">dice_contract.roll_within_bounds</span><span class="tok-string">&quot;</span>
+        <span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-parenthesis">{</span> <span class="tok-variable">max</span> <span class="tok-variable">rolls</span> <span class="tok-operator">=</span> <span class="tok-unary_operator">#?*</span><span class="tok-variable">rolls</span><span class="tok-operator">;</span> <span class="tok-variable">result</span> <span class="tok-operator">=</span> <span class="tok-unary_operator">#?*</span><span class="tok-variable">result</span> <span class="tok-parenthesis">}</span>
+    <span class="tok-variable">trace_flush</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+    <span class="tok-variable">result</span></code></pre>
+
+<h2>host</h2>
+
+<pre class="code"><code><span class="tok-keyword">:=</span> <span class="tok-variable">mocked_chain</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span>
+    <span class="tok-string">$'</span><span class="tok-string">near_sdk::testing_env</span><span class="tok-unescaped_char">!!</span><span class="tok-string">(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; 32]).block_height(42).block_timestamp(1_700_000_000_000_000_000).epoch_height(3).account_balance(near_sdk::NearToken::from_yoctonear((1u128 &lt;&lt; 64) + 7)).signer_account_id(&quot;alice.near&quot;.parse().unwrap()).predecessor_account_id(&quot;alice.near&quot;.parse().unwrap()).build())</span><span class="tok-string">'</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span></code></pre>
+
+<h4>the_host_reads_the_chain_the_fixture_describes (test)</h4>
+
+<span class="badge passed">test the_host_reads_the_chain_the_fixture_describes: passed</span>
+<pre class="code"><code>///- --test
+///&gt; rust -d &quot;near-sdk={version='=5.30.1',features=['unit-testing']}&quot; -d near-token
+
+<span class="tok-variable">mocked_chain</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">host_entropy</span> <span class="tok-operator">=</span> <span class="tok-variable">read_entropy</span> <span class="tok-variable">host</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_call</span> <span class="tok-string">&quot;</span><span class="tok-string">k</span><span class="tok-string">&quot;</span><span class="tok-parenthesis">)</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">fixture_entropy</span> <span class="tok-operator">=</span> <span class="tok-variable">read_entropy</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_fixture</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_call</span> <span class="tok-string">&quot;</span><span class="tok-string">k</span><span class="tok-string">&quot;</span><span class="tok-parenthesis">)</span>
+<span class="tok-parenthesis">(</span><span class="tok-variable">entropy_text</span> <span class="tok-variable">host_entropy</span> <span class="tok-operator">=</span> <span class="tok-variable">entropy_text</span> <span class="tok-variable">fixture_entropy</span><span class="tok-operator">,</span> <span class="tok-variable">entropy_bytes</span> <span class="tok-variable">host_entropy</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.hex</span> <span class="tok-operator">=</span> <span class="tok-parenthesis">(</span><span class="tok-variable">entropy_bytes</span> <span class="tok-variable">fixture_entropy</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.hex</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">_assert_eq</span> <span class="tok-parenthesis">(</span><span class="tok-number">!+</span><span class="tok-operator">,</span> <span class="tok-number">!+</span><span class="tok-parenthesis">)</span></code></pre>
+<pre class="output">__assert_eq { expected = (true, true) }</pre>
+
+<h4>the_host_rolls_what_the_fixture_rolls (test)</h4>
+
+<span class="badge passed">test the_host_rolls_what_the_fixture_rolls: passed</span>
+<pre class="code"><code>///- --test
+///&gt; rust -d &quot;near-sdk={version='=5.30.1',features=['unit-testing']}&quot; -d near-token
+
+<span class="tok-variable">mocked_chain</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+<span class="tok-parenthesis">(</span><span class="tok-variable">generate</span> <span class="tok-variable">host</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_call</span> <span class="tok-string">&quot;</span><span class="tok-string">k</span><span class="tok-string">&quot;</span><span class="tok-parenthesis">)</span> <span class="tok-number">2000</span><span class="tok-number_suffix">u64</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">rolled_value</span><span class="tok-operator">,</span> <span class="tok-variable">generate</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_fixture</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_call</span> <span class="tok-string">&quot;</span><span class="tok-string">k</span><span class="tok-string">&quot;</span><span class="tok-parenthesis">)</span> <span class="tok-number">2000</span><span class="tok-number_suffix">u64</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">rolled_value</span><span class="tok-parenthesis">)</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">_assert_eq</span> <span class="tok-parenthesis">(</span><span class="tok-number">1646</span><span class="tok-number_suffix">u64</span><span class="tok-operator">,</span> <span class="tok-number">1646</span><span class="tok-number_suffix">u64</span><span class="tok-parenthesis">)</span></code></pre>
+<pre class="output">__assert_eq { expected = (1646, 1646) }</pre>
+
+<h4>the_host_keccak_is_the_spiral_keccak (test)</h4>
+
+<span class="badge passed">test the_host_keccak_is_the_spiral_keccak: passed</span>
+<pre class="code"><code>///- --test
+///&gt; rust -d &quot;near-sdk={version='=5.30.1',features=['unit-testing']}&quot; -d near-token
+
+<span class="tok-variable">mocked_chain</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+<span class="tok-keyword">:=</span> <span class="tok-unary_operator">~</span><span class="tok-variable">size</span> <span class="tok-operator">=</span> <span class="tok-number">150</span><span class="tok-number_suffix">i32</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">message</span> <span class="tok-operator">=</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.counting</span> <span class="tok-variable">size</span>
+<span class="tok-variable">near</span><span class="tok-symbol">.host_keccak512</span> <span class="tok-variable">message</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.hex</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">_assert_eq</span> <span class="tok-parenthesis">(</span><span class="tok-variable">keccak</span><span class="tok-symbol">.keccak512</span> <span class="tok-variable">message</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">keccak</span><span class="tok-symbol">.digest_bytes</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">bytes</span><span class="tok-symbol">.hex</span><span class="tok-parenthesis">)</span></code></pre>
+<pre class="output">__assert_eq { expected = 7bcdbadf9edc379a1de2a1421817b825120112e6f46fdf30a838d423fee413c5f8cedd3730bf140c78cb83b9bb411690ad70ddf288d73858f9408338f1845595 }</pre>
+
+<h4>generate_random_number_appends_the_hash_to_the_seeds (test)</h4>
+
+<span class="badge passed">test generate_random_number_appends_the_hash_to_the_seeds: passed</span>
+<pre class="code"><code>///- --test
+///&gt; rust -d &quot;near-sdk={version='=5.30.1',features=['unit-testing']}&quot; -d near-token
+
+<span class="tok-variable">mocked_chain</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">seeds</span> <span class="tok-operator">=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">[</span><span class="tok-parenthesis">]</span> <span class="tok-operator">:</span> <span class="tok-variable">list</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.new_vec</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">rust</span><span class="tok-symbol">.to_ref_mut</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">key</span> <span class="tok-operator">=</span> <span class="tok-string">&quot;</span><span class="tok-string">k</span><span class="tok-string">&quot;</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">sm'</span><span class="tok-symbol">.to_std_string</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">proof</span> <span class="tok-operator">=</span> <span class="tok-string">&quot;</span><span class="tok-string">&quot;</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">sm'</span><span class="tok-symbol">.to_std_string</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">first</span> <span class="tok-operator">=</span> <span class="tok-variable">generate_random_number</span> <span class="tok-variable">seeds</span> <span class="tok-variable">key</span> <span class="tok-variable">proof</span> <span class="tok-number">2000</span><span class="tok-number_suffix">u64</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">after_first</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span> <span class="tok-operator">=</span> <span class="tok-variable">seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec_ref_len</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">convert</span><span class="tok-symbol">.convert</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">second</span> <span class="tok-operator">=</span> <span class="tok-variable">generate_random_number</span> <span class="tok-variable">seeds</span> <span class="tok-variable">key</span> <span class="tok-variable">proof</span> <span class="tok-number">2000</span><span class="tok-number_suffix">u64</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">after_second</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span> <span class="tok-operator">=</span> <span class="tok-variable">seeds</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec_ref_len</span> <span class="tok-operator">|&gt;</span> <span class="tok-variable">convert</span><span class="tok-symbol">.convert</span>
+<span class="tok-parenthesis">(</span><span class="tok-variable">first</span><span class="tok-operator">,</span> <span class="tok-variable">after_first</span><span class="tok-operator">,</span> <span class="tok-variable">second</span><span class="tok-operator">,</span> <span class="tok-variable">after_second</span><span class="tok-parenthesis">)</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">_assert_eq</span> <span class="tok-parenthesis">(</span><span class="tok-number">762</span><span class="tok-number_suffix">u64</span><span class="tok-operator">,</span> <span class="tok-number">64</span><span class="tok-number_suffix">u64</span><span class="tok-operator">,</span> <span class="tok-number">1614</span><span class="tok-number_suffix">u64</span><span class="tok-operator">,</span> <span class="tok-number">100</span><span class="tok-number_suffix">u64</span><span class="tok-parenthesis">)</span></code></pre>
+<pre class="output">21:59:44 1[94md[0m dice_contract.generate_random_number account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = ; signer = alice.near; hash = e0d870d6e57fe3f90875bc51c47c58a2e39bbd51ca92fe26d145d57f9ef1eedde73122bd024c7640ef39e50b530f29f164680d0a9ed0d6a484413ec56c008b45 / { max = 2000; result = 762 }
+
+21:59:44 3[94md[0m dice_contract.generate_random_number account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = e0d870d6e57fe3f90875bc51c47c58a2e39bbd51ca92fe26d145d57f9ef1eedde73122bd024c7640ef39e50b530f29f164680d0a9ed0d6a484413ec56c008b45; signer = alice.near; hash = 29fe6cd5b668f7176ce4ca33a04e96dc322bb1503c7bb29b28a031f22429109d57bd1a70a30b744b852e6e26fa5cf01c919e460fb64c427c4dc7ab93c99c18e1 / { max = 2000; result = 1614 }
+
+__assert_eq { expected = (762, 64, 1614, 100) }</pre>
+
+<h4>the_host_glue_pins_its_gas (test)</h4>
+
+<span class="badge passed">test the_host_glue_pins_its_gas: passed</span>
+<pre class="code"><code>///- --test
+///&gt; rust -d &quot;near-sdk={version='=5.30.1',features=['unit-testing']}&quot; -d near-token
+
+<span class="tok-variable">mocked_chain</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">used</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span> <span class="tok-operator">=</span> <span class="tok-string">$'</span><span class="tok-string">near_sdk::env::used_gas().as_gas()</span><span class="tok-string">'</span> <span class="tok-operator">:</span> <span class="tok-variable">u64</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">start</span> <span class="tok-operator">=</span> <span class="tok-variable">used</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">seed</span> <span class="tok-operator">=</span> <span class="tok-variable">near</span><span class="tok-symbol">.host_random_seed</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">after_seed</span> <span class="tok-operator">=</span> <span class="tok-variable">used</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">digest</span> <span class="tok-operator">=</span> <span class="tok-variable">near</span><span class="tok-symbol">.host_keccak512</span> <span class="tok-parenthesis">(</span><span class="tok-variable">bytes</span><span class="tok-symbol">.counting</span> <span class="tok-number">150</span><span class="tok-number_suffix">i32</span><span class="tok-parenthesis">)</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">after_hash</span> <span class="tok-operator">=</span> <span class="tok-variable">used</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">state</span> <span class="tok-operator">=</span> <span class="tok-variable">generate</span> <span class="tok-variable">host</span> <span class="tok-parenthesis">(</span><span class="tok-variable">sample_call</span> <span class="tok-string">&quot;</span><span class="tok-string">k</span><span class="tok-string">&quot;</span><span class="tok-parenthesis">)</span> <span class="tok-number">2000</span><span class="tok-number_suffix">u64</span>
+<span class="tok-keyword">:=</span> <span class="tok-variable">after_roll</span> <span class="tok-operator">=</span> <span class="tok-variable">used</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+<span class="tok-parenthesis">(</span><span class="tok-variable">after_seed</span> <span class="tok-operator">-</span> <span class="tok-variable">start</span><span class="tok-operator">,</span> <span class="tok-variable">after_hash</span> <span class="tok-operator">-</span> <span class="tok-variable">after_seed</span><span class="tok-operator">,</span> <span class="tok-variable">after_roll</span> <span class="tok-operator">-</span> <span class="tok-variable">after_hash</span><span class="tok-operator">,</span> <span class="tok-variable">length</span> <span class="tok-variable">seed</span> <span class="tok-operator">+</span> <span class="tok-variable">length</span> <span class="tok-variable">digest</span><span class="tok-operator">,</span> <span class="tok-variable">rolled_value</span> <span class="tok-variable">state</span><span class="tok-parenthesis">)</span>
+<span class="tok-operator">|&gt;</span> <span class="tok-variable">_assert_eq</span> <span class="tok-parenthesis">(</span><span class="tok-number">9192751602</span><span class="tok-number_suffix">u64</span><span class="tok-operator">,</span> <span class="tok-number">23628854763</span><span class="tok-number_suffix">u64</span><span class="tok-operator">,</span> <span class="tok-number">52413432801</span><span class="tok-number_suffix">u64</span><span class="tok-operator">,</span> <span class="tok-number">96</span><span class="tok-number_suffix">i32</span><span class="tok-operator">,</span> <span class="tok-number">1646</span><span class="tok-number_suffix">u64</span><span class="tok-parenthesis">)</span></code></pre>
+<pre class="output">__assert_eq { expected = (9192751602, 23628854763, 52413432801, 96, 1646) }</pre>
+
+<h3>main</h3>
+
+<pre class="code"><code><span class="tok-keyword">:=</span> <span class="tok-variable">quiet</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">set_trace_level</span> <span class="tok-variable">Debug</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">state_struct</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">global</span> <span class="tok-string">&quot;&quot;&quot;</span><span class="tok-string"></span>
+<span class="tok-string">        #[near_sdk::near(contract_state)]</span>
+<span class="tok-string">        #[derive(near_sdk::PanicOnDefault)]</span>
+<span class="tok-string">        pub struct State((u32, Vec&lt;u8&gt;));</span>
+<span class="tok-string">        </span><span class="tok-string">&quot;&quot;&quot;</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">legacy_state</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">global</span> <span class="tok-string">&quot;&quot;&quot;</span><span class="tok-string"></span>
+<span class="tok-string">        #[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]</span>
+<span class="tok-string">        pub struct OldState {</span>
+<span class="tok-string">            version: u32,</span>
+<span class="tok-string">            seeds: near_sdk::store::vec::Vector&lt;u8&gt;,</span>
+<span class="tok-string">        }</span>
+<span class="tok-string">        </span><span class="tok-string">&quot;&quot;&quot;</span>
+    <span class="tok-variable">global</span> <span class="tok-string">&quot;&quot;&quot;</span><span class="tok-string"></span>
+<span class="tok-string">        impl From&lt;OldState&gt; for State {</span>
+<span class="tok-string">            fn from(mut old_state: OldState) -&gt; Self {</span>
+<span class="tok-string">                let seeds = old_state.seeds.iter().copied().collect();</span>
+<span class="tok-string">                old_state.seeds.clear();</span>
+<span class="tok-string">                old_state.seeds.flush();</span>
+<span class="tok-string">                Self((old_state.version + 1, seeds))</span>
+<span class="tok-string">            }</span>
+<span class="tok-string">        }</span>
+<span class="tok-string">        </span><span class="tok-string">&quot;&quot;&quot;</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">init_methods</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">global</span> <span class="tok-string">&quot;&quot;&quot;</span><span class="tok-string"></span>
+<span class="tok-string">        #[near_sdk::near]</span>
+<span class="tok-string">        impl State {</span>
+<span class="tok-string">            #[init]</span>
+<span class="tok-string">            pub fn new() -&gt; Self {</span>
+<span class="tok-string">                Self(dice_contract_new())</span>
+<span class="tok-string">            }</span>
+<span class="tok-string">            #[private]</span>
+<span class="tok-string">            #[init(ignore_state)]</span>
+<span class="tok-string">            pub fn migrate() -&gt; Self {</span>
+<span class="tok-string">                let raw = near_sdk::env::storage_read(b&quot;STATE&quot;)</span>
+<span class="tok-string">                    .unwrap_or_else(|| near_sdk::env::panic_str(&quot;dice_contract.migrate / no state to migrate&quot;));</span>
+<span class="tok-string">                if raw.len() &gt;= 4 &amp;&amp; u32::from_le_bytes([raw[0], raw[1], raw[2], raw[3]]) &gt;= 3 {</span>
+<span class="tok-string">                    near_sdk::env::panic_str(&quot;dice_contract.migrate / the state is already migrated&quot;)</span>
+<span class="tok-string">                }</span>
+<span class="tok-string">                borsh::from_slice::&lt;OldState&gt;(&amp;raw)</span>
+<span class="tok-string">                    .unwrap_or_else(|_| near_sdk::env::panic_str(&quot;dice_contract.migrate / the state is not the old layout&quot;))</span>
+<span class="tok-string">                    .into()</span>
+<span class="tok-string">            }</span>
+<span class="tok-string">        }</span>
+<span class="tok-string">        </span><span class="tok-string">&quot;&quot;&quot;</span>
+    <span class="tok-variable">export</span>
+        <span class="tok-string">&quot;</span><span class="tok-string">dice_contract_new</span><span class="tok-string">&quot;</span>
+        <span class="tok-parenthesis">(</span><span class="tok-parenthesis">(</span><span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span> <span class="tok-keyword">:=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span> <span class="tok-variable">quiet</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-keyword">;;</span> <span class="tok-variable">new</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">u32</span> <span class="tok-operator">*</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">seed_methods</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">global</span> <span class="tok-string">&quot;&quot;&quot;</span><span class="tok-string"></span>
+<span class="tok-string">        #[near_sdk::near]</span>
+<span class="tok-string">        impl State {</span>
+<span class="tok-string">            pub fn contribute_seed(&amp;mut self, seed: Vec&lt;u8&gt;) {</span>
+<span class="tok-string">                dice_contract_contribute_seed(&amp;mut self.0.1, seed)</span>
+<span class="tok-string">            }</span>
+<span class="tok-string">            pub fn contribute_seed_borsh(&amp;mut self, #[serializer(borsh)] seed: Vec&lt;u8&gt;) {</span>
+<span class="tok-string">                self.contribute_seed(seed)</span>
+<span class="tok-string">            }</span>
+<span class="tok-string">        }</span>
+<span class="tok-string">        </span><span class="tok-string">&quot;&quot;&quot;</span>
+    <span class="tok-variable">export</span>
+        <span class="tok-string">&quot;</span><span class="tok-string">dice_contract_contribute_seed</span><span class="tok-string">&quot;</span>
+        <span class="tok-parenthesis">(</span>
+            <span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-variable">seeds</span><span class="tok-operator">,</span> <span class="tok-variable">seed</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span>
+                <span class="tok-keyword">:=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span> <span class="tok-variable">quiet</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+                <span class="tok-variable">contribute_seed</span> <span class="tok-variable">seeds</span> <span class="tok-variable">seed</span>
+            <span class="tok-operator">:</span> <span class="tok-variable">rust</span><span class="tok-symbol">.ref</span> <span class="tok-parenthesis">(</span><span class="tok-variable">rust</span><span class="tok-symbol">.mut'</span> <span class="tok-parenthesis">(</span><span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-operator">*</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span> <span class="tok-operator">-&gt;</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+        <span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">roll_methods</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">global</span> <span class="tok-string">&quot;&quot;&quot;</span><span class="tok-string"></span>
+<span class="tok-string">        #[near_sdk::near]</span>
+<span class="tok-string">        impl State {</span>
+<span class="tok-string">            pub fn generate_random_number(&amp;mut self, key: String, proof: String, max: u64) -&gt; u64 {</span>
+<span class="tok-string">                dice_contract_generate_random_number(&amp;mut self.0.1, key, proof, max)</span>
+<span class="tok-string">            }</span>
+<span class="tok-string">        }</span>
+<span class="tok-string">        </span><span class="tok-string">&quot;&quot;&quot;</span>
+    <span class="tok-variable">export</span>
+        <span class="tok-string">&quot;</span><span class="tok-string">dice_contract_generate_random_number</span><span class="tok-string">&quot;</span>
+        <span class="tok-parenthesis">(</span>
+            <span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-variable">seeds</span><span class="tok-operator">,</span> <span class="tok-variable">key</span><span class="tok-operator">,</span> <span class="tok-variable">proof</span><span class="tok-operator">,</span> <span class="tok-variable">max</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span>
+                <span class="tok-keyword">:=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span> <span class="tok-variable">quiet</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+                <span class="tok-variable">generate_random_number</span> <span class="tok-variable">seeds</span> <span class="tok-variable">key</span> <span class="tok-variable">proof</span> <span class="tok-variable">max</span>
+            <span class="tok-operator">:</span> <span class="tok-variable">rust</span><span class="tok-symbol">.ref</span> <span class="tok-parenthesis">(</span><span class="tok-variable">rust</span><span class="tok-symbol">.mut'</span> <span class="tok-parenthesis">(</span><span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span><span class="tok-parenthesis">)</span><span class="tok-parenthesis">)</span> <span class="tok-operator">*</span> <span class="tok-variable">sm'</span><span class="tok-symbol">.std_string</span> <span class="tok-operator">*</span> <span class="tok-variable">sm'</span><span class="tok-symbol">.std_string</span> <span class="tok-operator">*</span> <span class="tok-variable">u64</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">u64</span>
+        <span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">bound_methods</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">global</span> <span class="tok-string">&quot;&quot;&quot;</span><span class="tok-string"></span>
+<span class="tok-string">        #[near_sdk::near]</span>
+<span class="tok-string">        impl State {</span>
+<span class="tok-string">            pub fn roll_within_bounds(max: u64, rolls: Vec&lt;u8&gt;) -&gt; Option&lt;u64&gt; {</span>
+<span class="tok-string">                dice_contract_roll_within_bounds(max, rolls)</span>
+<span class="tok-string">            }</span>
+<span class="tok-string">            #[result_serializer(borsh)]</span>
+<span class="tok-string">            pub fn roll_within_bounds_borsh(</span>
+<span class="tok-string">                #[serializer(borsh)] max: u64,</span>
+<span class="tok-string">                #[serializer(borsh)] rolls: Vec&lt;u8&gt;,</span>
+<span class="tok-string">            ) -&gt; Option&lt;u64&gt; {</span>
+<span class="tok-string">                Self::roll_within_bounds(max, rolls)</span>
+<span class="tok-string">            }</span>
+<span class="tok-string">        }</span>
+<span class="tok-string">        </span><span class="tok-string">&quot;&quot;&quot;</span>
+    <span class="tok-variable">export</span>
+        <span class="tok-string">&quot;</span><span class="tok-string">dice_contract_roll_within_bounds</span><span class="tok-string">&quot;</span>
+        <span class="tok-parenthesis">(</span>
+            <span class="tok-keyword">\</span> <span class="tok-parenthesis">(</span><span class="tok-variable">max</span><span class="tok-operator">,</span> <span class="tok-variable">rolls</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=&gt;</span>
+                <span class="tok-keyword">:=</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span> <span class="tok-variable">quiet</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+                <span class="tok-variable">roll_within_bounds</span> <span class="tok-variable">max</span> <span class="tok-variable">rolls</span>
+            <span class="tok-operator">:</span> <span class="tok-variable">u64</span> <span class="tok-operator">*</span> <span class="tok-variable">am'</span><span class="tok-symbol">.vec</span> <span class="tok-variable">u8</span> <span class="tok-operator">-&gt;</span> <span class="tok-variable">optionm'</span><span class="tok-symbol">.option'</span> <span class="tok-variable">u64</span>
+        <span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">main_native</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span>
+    <span class="tok-variable">near</span><span class="tok-symbol">.bump_allocator</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+    <span class="tok-variable">state_struct</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+    <span class="tok-variable">legacy_state</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+    <span class="tok-variable">init_methods</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+    <span class="tok-variable">seed_methods</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+    <span class="tok-variable">roll_methods</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+    <span class="tok-variable">bound_methods</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+
+<span class="tok-keyword">:=</span> <span class="tok-variable">main</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span> <span class="tok-operator">=</span>
+    <span class="tok-keyword">?</span> <span class="tok-variable">is_rust</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+    <span class="tok-keyword">?&gt;</span> <span class="tok-variable">main_native</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span>
+    <span class="tok-keyword">|:</span> <span class="tok-parenthesis">(</span><span class="tok-parenthesis">)</span></code></pre>
+
+</main>
+</body>
+</html>

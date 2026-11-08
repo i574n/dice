@@ -1,0 +1,668 @@
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --package ../dice\n\n:< rust_operators\n:< sm'_operators\n:< digest","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --package ../dice
+
+  :< rust_operators
+  :< sm'_operators
+  :< digest
+  """,
+  timeout: 300_000
+)
+```
+
+# dice_contract
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test static\n\n:< testing","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test static
+
+  :< testing
+  """,
+  timeout: 300_000
+)
+```
+
+## entropy
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":== entropy =\n    {\n        account_balance_high : u64\n        account_balance_low : u64\n        block_height : u64\n        block_timestamp : u64\n        epoch_height : u64\n        key : string\n        predecessor : string\n        proof : string\n        seed : array u8\n        seeds : array u8\n        signer : string\n    }\n\n:== call =\n    {\n        key : string\n        proof : string\n        seeds : array u8\n    }\n\n:= u64_text (x : u64) : string =\n    #?x\n\n:= part_bytes \\* t. (x : t) : array u8 =\n    ~>\n        ?: t ?|\n        | u64 => bytes.le_u64 x\n        | string => bytes.utf8 x\n        | array u8 => x\n\n:= part_text \\* t. (x : t) : string =\n    ~>\n        ?: t ?|\n        | u64 => u64_text x\n        | string => x\n        | array u8 => bytes.hex x\n\n:= entropy_bytes (e : entropy) : array u8 =\n    bytes.concat (\n        ~>\n            real_core::record_type_fold_back\n                (\\ key => \\* field. acc => (::) `(array u8) (part_bytes `field (e key)) acc)\n                `entropy\n                (Nil `(array u8))\n    )\n\n:= entropy_text (e : entropy) : string =\n    ~>\n        real_core::record_type_fold_back\n            (\\ key => \\* field. acc =>\n                (::) `(string * string) (sm'_real::symbol_to_string_real `(`key), part_text `field (e key)) acc\n            )\n            `entropy\n            (Nil `(string * string))\n    |> listm.fold (\\ (first, acc) (name, value) => !-, acc ++# (? first ?> \"\" |: \"; \") ++# name ++# \" = \" ++# value) (!+, \"\")\n    |> snd","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :== entropy =
+      {
+          account_balance_high : u64
+          account_balance_low : u64
+          block_height : u64
+          block_timestamp : u64
+          epoch_height : u64
+          key : string
+          predecessor : string
+          proof : string
+          seed : array u8
+          seeds : array u8
+          signer : string
+      }
+
+  :== call =
+      {
+          key : string
+          proof : string
+          seeds : array u8
+      }
+
+  := u64_text (x : u64) : string =
+      #?x
+
+  := part_bytes \* t. (x : t) : array u8 =
+      ~>
+          ?: t ?|
+          | u64 => bytes.le_u64 x
+          | string => bytes.utf8 x
+          | array u8 => x
+
+  := part_text \* t. (x : t) : string =
+      ~>
+          ?: t ?|
+          | u64 => u64_text x
+          | string => x
+          | array u8 => bytes.hex x
+
+  := entropy_bytes (e : entropy) : array u8 =
+      bytes.concat (
+          ~>
+              real_core::record_type_fold_back
+                  (\ key => \* field. acc => (::) `(array u8) (part_bytes `field (e key)) acc)
+                  `entropy
+                  (Nil `(array u8))
+      )
+
+  := entropy_text (e : entropy) : string =
+      ~>
+          real_core::record_type_fold_back
+              (\ key => \* field. acc =>
+                  (::) `(string * string) (sm'_real::symbol_to_string_real `(`key), part_text `field (e key)) acc
+              )
+              `entropy
+              (Nil `(string * string))
+      |> listm.fold (\ (first, acc) (name, value) => !-, acc ++# (? first ?> "" |: "; ") ++# name ++# " = " ++# value) (!+, "")
+      |> snd
+  """,
+  timeout: 300_000
+)
+```
+
+## chain
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":? read_entropy c : c -> call -> entropy\n\n:? fail_with c : \\* t. c -> string -> t\n\n:! host = ()\n\n:+ read_entropy host =\n    \\ _ (call : call) =>\n        := low, high = near.host_account_balance_words ()\n        {\n            account_balance_high = high\n            account_balance_low = low\n            block_height = near.host_block_height ()\n            block_timestamp = near.host_block_timestamp ()\n            epoch_height = near.host_epoch_height ()\n            key = call.key\n            predecessor = near.host_predecessor ()\n            proof = call.proof\n            seed = near.host_random_seed ()\n            seeds = call.seeds\n            signer = near.host_signer ()\n        }\n\n:+ fail_with host =\n    \\ _ text => near.panic text\n\n:+ digest_with host =\n    \\ _ digest => near.host_keccak512 digest\n\n:! fixture =\n    {\n        account_balance : u64 * u64\n        block_height : u64\n        block_timestamp : u64\n        epoch_height : u64\n        predecessor : string\n        seed : array u8\n        signer : string\n    }\n\n:+ read_entropy fixture =\n    \\ (fixture f) (call : call) =>\n        := low, high = f.account_balance\n        {\n            account_balance_high = high\n            account_balance_low = low\n            block_height = f.block_height\n            block_timestamp = f.block_timestamp\n            epoch_height = f.epoch_height\n            key = call.key\n            predecessor = f.predecessor\n            proof = call.proof\n            seed = f.seed\n            seeds = call.seeds\n            signer = f.signer\n        }\n\n:+ fail_with fixture =\n    \\ _ text => failwith text\n\n:+ digest_with fixture =\n    \\ _ digest => keccak.keccak512 digest |> keccak.digest_bytes\n\n:= sample_fixture () : fixture =\n    fixture {\n        account_balance = (7u64, 1u64)\n        block_height = 42u64\n        block_timestamp = 1700000000000000000u64\n        epoch_height = 3u64\n        predecessor = \"alice.near\"\n        seed = bytes.repeated 32i32 7u8\n        signer = \"alice.near\"\n    }\n\n:= sample_call (key : string) : call =\n    { key = key; proof = \"\"; seeds = bytes.counting 4i32 }","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :? read_entropy c : c -> call -> entropy
+
+  :? fail_with c : \* t. c -> string -> t
+
+  :! host = ()
+
+  :+ read_entropy host =
+      \ _ (call : call) =>
+          := low, high = near.host_account_balance_words ()
+          {
+              account_balance_high = high
+              account_balance_low = low
+              block_height = near.host_block_height ()
+              block_timestamp = near.host_block_timestamp ()
+              epoch_height = near.host_epoch_height ()
+              key = call.key
+              predecessor = near.host_predecessor ()
+              proof = call.proof
+              seed = near.host_random_seed ()
+              seeds = call.seeds
+              signer = near.host_signer ()
+          }
+
+  :+ fail_with host =
+      \ _ text => near.panic text
+
+  :+ digest_with host =
+      \ _ digest => near.host_keccak512 digest
+
+  :! fixture =
+      {
+          account_balance : u64 * u64
+          block_height : u64
+          block_timestamp : u64
+          epoch_height : u64
+          predecessor : string
+          seed : array u8
+          signer : string
+      }
+
+  :+ read_entropy fixture =
+      \ (fixture f) (call : call) =>
+          := low, high = f.account_balance
+          {
+              account_balance_high = high
+              account_balance_low = low
+              block_height = f.block_height
+              block_timestamp = f.block_timestamp
+              epoch_height = f.epoch_height
+              key = call.key
+              predecessor = f.predecessor
+              proof = call.proof
+              seed = f.seed
+              seeds = call.seeds
+              signer = f.signer
+          }
+
+  :+ fail_with fixture =
+      \ _ text => failwith text
+
+  :+ digest_with fixture =
+      \ _ digest => keccak.keccak512 digest |> keccak.digest_bytes
+
+  := sample_fixture () : fixture =
+      fixture {
+          account_balance = (7u64, 1u64)
+          block_height = 42u64
+          block_timestamp = 1700000000000000000u64
+          epoch_height = 3u64
+          predecessor = "alice.near"
+          seed = bytes.repeated 32i32 7u8
+          signer = "alice.near"
+      }
+
+  := sample_call (key : string) : call =
+      { key = key; proof = ""; seeds = bytes.counting 4i32 }
+  """,
+  timeout: 300_000
+)
+```
+
+#### entropy_bytes_follow_the_field_order_of_the_record (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n:= ~key = \"k\"\nread_entropy (sample_fixture ()) (sample_call key)\n|> entropy_bytes\n|> keccak.keccak512\n|> keccak.digest_bytes\n|> bytes.hex\n|> sm'.slice 0i32 15i32\n|> _assert_eq \"0e10e94fc9dfb460\"","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  := ~key = "k"
+  read_entropy (sample_fixture ()) (sample_call key)
+  |> entropy_bytes
+  |> keccak.keccak512
+  |> keccak.digest_bytes
+  |> bytes.hex
+  |> sm'.slice 0i32 15i32
+  |> _assert_eq "0e10e94fc9dfb460"
+  """,
+  timeout: 300_000
+)
+```
+
+#### entropy_text_names_every_field_once (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n:= ~key = \"k\"\nread_entropy (sample_fixture ()) (sample_call key)\n|> entropy_text\n|> _assert_eq \"account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near\"","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  := ~key = "k"
+  read_entropy (sample_fixture ()) (sample_call key)
+  |> entropy_text
+  |> _assert_eq "account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near"
+  """,
+  timeout: 300_000
+)
+```
+
+## phases
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":! requested = ()\n\n:! bounded = ()\n\n:! gathered = ()\n\n:! hashed = ()\n\n:! rolled = ()\n\n:| roll_state phase =\n    | Requested :: u64 * call -> roll_state requested\n    | Bounded :: lib.dice.bound u64 * call -> roll_state bounded\n    | Gathered :: lib.dice.bound u64 * entropy -> roll_state gathered\n    | Hashed :: lib.dice.bound u64 * entropy * array u8 -> roll_state hashed\n    | Rolled :: u64 * entropy * array u8 -> roll_state rolled\n\n:| roll_step from to =\n    | CheckBound :: roll_step requested bounded\n    | Gather :: roll_step bounded gathered\n    | Hash :: roll_step gathered hashed\n    | Draw :: roll_step hashed rolled\n\n:| ^ roll_plan from to =\n    | Step :: \\* from to. roll_step from to -> roll_plan from to\n    | Then :: \\* from to. (\\? middle. roll_plan from middle * roll_plan middle to) -> roll_plan from to\n\n:= check_bound \\* c {fail_with}. (chain : c) (state : roll_state requested) : roll_state bounded =\n    ?= state ?|\n    | Requested (max, call) =>\n        := b =\n            ?= lib.dice.bound_of max ?|\n            | Ok b => b\n            | Error e => fail_with chain (\"dice_contract.generate_random_number / \" ++# lib.dice.bound_error_text e)\n        Bounded (b, call)\n\n:= gather \\* c {read_entropy}. (chain : c) (state : roll_state bounded) : roll_state gathered =\n    ?= state ?|\n    | Bounded (b, call) => Gathered (b, read_entropy chain call)\n\n:= hash \\* c {digest_with}. (chain : c) (state : roll_state gathered) : roll_state hashed =\n    ?= state ?|\n    | Gathered (b, e) => Hashed (b, e, digest_with chain (entropy_bytes e))\n\n:= draw \\* c {digest_with}. (chain : c) (state : roll_state hashed) : roll_state rolled =\n    ?= state ?|\n    | Hashed (b, e, digest) =>\n        := value, _ = lib.dice.roll lib.dice.Recycle b (lib.dice.hashed chain digest)\n        Rolled (value, e, digest)\n\n:= run_step \\* from to c {read_entropy; fail_with; digest_with}.\n    (chain : c)\n    (step : roll_step from to)\n    (state : roll_state from)\n    : roll_state to\n    =\n    ?= step ?|\n    | CheckBound => check_bound chain state\n    | Gather => gather chain state\n    | Hash => hash chain state\n    | Draw => draw chain state\n\n:= ^ run \\* from to c {read_entropy; fail_with; digest_with}.\n    (chain : c)\n    (plan : roll_plan from to)\n    (state : roll_state from)\n    : roll_state to\n    =\n    ?= plan ?|\n    | Step step => run_step chain step state\n    | Then pair =>\n        := \\? middle. first, second = pair\n        run chain second (run chain first state)\n\n:= generate_plan () : roll_plan requested rolled =\n    Then (\\? (Step CheckBound, Then (\\? (Step Gather, Then (\\? (Step Hash, Step Draw))))))\n\n:= generate \\* c {read_entropy; fail_with; digest_with}. (chain : c) (call : call) (max : u64) : roll_state rolled =\n    run chain (generate_plan ()) (Requested (max, call))\n\n:= rolled_value (state : roll_state rolled) : u64 =\n    ?= state ?|\n    | Rolled (value, _, _) => value","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  :! requested = ()
+
+  :! bounded = ()
+
+  :! gathered = ()
+
+  :! hashed = ()
+
+  :! rolled = ()
+
+  :| roll_state phase =
+      | Requested :: u64 * call -> roll_state requested
+      | Bounded :: lib.dice.bound u64 * call -> roll_state bounded
+      | Gathered :: lib.dice.bound u64 * entropy -> roll_state gathered
+      | Hashed :: lib.dice.bound u64 * entropy * array u8 -> roll_state hashed
+      | Rolled :: u64 * entropy * array u8 -> roll_state rolled
+
+  :| roll_step from to =
+      | CheckBound :: roll_step requested bounded
+      | Gather :: roll_step bounded gathered
+      | Hash :: roll_step gathered hashed
+      | Draw :: roll_step hashed rolled
+
+  :| ^ roll_plan from to =
+      | Step :: \* from to. roll_step from to -> roll_plan from to
+      | Then :: \* from to. (\? middle. roll_plan from middle * roll_plan middle to) -> roll_plan from to
+
+  := check_bound \* c {fail_with}. (chain : c) (state : roll_state requested) : roll_state bounded =
+      ?= state ?|
+      | Requested (max, call) =>
+          := b =
+              ?= lib.dice.bound_of max ?|
+              | Ok b => b
+              | Error e => fail_with chain ("dice_contract.generate_random_number / " ++# lib.dice.bound_error_text e)
+          Bounded (b, call)
+
+  := gather \* c {read_entropy}. (chain : c) (state : roll_state bounded) : roll_state gathered =
+      ?= state ?|
+      | Bounded (b, call) => Gathered (b, read_entropy chain call)
+
+  := hash \* c {digest_with}. (chain : c) (state : roll_state gathered) : roll_state hashed =
+      ?= state ?|
+      | Gathered (b, e) => Hashed (b, e, digest_with chain (entropy_bytes e))
+
+  := draw \* c {digest_with}. (chain : c) (state : roll_state hashed) : roll_state rolled =
+      ?= state ?|
+      | Hashed (b, e, digest) =>
+          := value, _ = lib.dice.roll lib.dice.Recycle b (lib.dice.hashed chain digest)
+          Rolled (value, e, digest)
+
+  := run_step \* from to c {read_entropy; fail_with; digest_with}.
+      (chain : c)
+      (step : roll_step from to)
+      (state : roll_state from)
+      : roll_state to
+      =
+      ?= step ?|
+      | CheckBound => check_bound chain state
+      | Gather => gather chain state
+      | Hash => hash chain state
+      | Draw => draw chain state
+
+  := ^ run \* from to c {read_entropy; fail_with; digest_with}.
+      (chain : c)
+      (plan : roll_plan from to)
+      (state : roll_state from)
+      : roll_state to
+      =
+      ?= plan ?|
+      | Step step => run_step chain step state
+      | Then pair =>
+          := \? middle. first, second = pair
+          run chain second (run chain first state)
+
+  := generate_plan () : roll_plan requested rolled =
+      Then (\? (Step CheckBound, Then (\? (Step Gather, Then (\? (Step Hash, Step Draw))))))
+
+  := generate \* c {read_entropy; fail_with; digest_with}. (chain : c) (call : call) (max : u64) : roll_state rolled =
+      run chain (generate_plan ()) (Requested (max, call))
+
+  := rolled_value (state : roll_state rolled) : u64 =
+      ?= state ?|
+      | Rolled (value, _, _) => value
+  """,
+  timeout: 300_000
+)
+```
+
+#### a_fixture_rolls_the_same_number_on_every_backend (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n///> lua\n///> c\n///> zig\n///> gleam\n///> pascal\n\n:= ~max = 2000u64\n(generate (sample_fixture ()) (sample_call \"k\") max |> rolled_value, generate (sample_fixture ()) (sample_call \"k2\") max |> rolled_value)\n|> _assert_eq (1646u64, 1834u64)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+  ///> lua
+  ///> c
+  ///> zig
+  ///> gleam
+  ///> pascal
+
+  := ~max = 2000u64
+  (generate (sample_fixture ()) (sample_call "k") max |> rolled_value, generate (sample_fixture ()) (sample_call "k2") max |> rolled_value)
+  |> _assert_eq (1646u64, 1834u64)
+  """,
+  timeout: 300_000
+)
+```
+
+#### the_bound_is_checked_before_anything_is_gathered (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n///> fsharp\n///> typescript\n///> python\n\n:= ~max = 0u64\n\\ () => generate (sample_fixture ()) (sample_call \"k\") max |> rolled_value |> ignore\n|> _throws\n|> optionm.map (sm'.format_exception >> sm'.contains \"dice_contract.generate_random_number / max must be at least 1\")\n|> _assert_eq (Some !+)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+  ///> fsharp
+  ///> typescript
+  ///> python
+
+  := ~max = 0u64
+  \ () => generate (sample_fixture ()) (sample_call "k") max |> rolled_value |> ignore
+  |> _throws
+  |> optionm.map (sm'.format_exception >> sm'.contains "dice_contract.generate_random_number / max must be at least 1")
+  |> _assert_eq (Some !+)
+  """,
+  timeout: 300_000
+)
+```
+
+#### a_plan_cannot_draw_before_hashing (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test --fails ETY-TermError \"Unification failure\"\n///> zig\n\n:= plan : roll_plan requested rolled = Then (\\? (Step CheckBound, Then (\\? (Step Gather, Step Draw))))\n0i32","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test --fails ETY-TermError "Unification failure"
+  ///> zig
+
+  := plan : roll_plan requested rolled = Then (\? (Step CheckBound, Then (\? (Step Gather, Step Draw))))
+  0i32
+  """,
+  timeout: 300_000
+)
+```
+
+#### a_plan_cannot_gather_before_the_bound_is_checked (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test --fails ETY-TermError \"Unification failure\"\n///> zig\n\n:= plan : roll_plan requested rolled = Then (\\? (Step Gather, Then (\\? (Step CheckBound, Then (\\? (Step Hash, Step Draw))))))\n0i32","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test --fails ETY-TermError "Unification failure"
+  ///> zig
+
+  := plan : roll_plan requested rolled = Then (\? (Step Gather, Then (\? (Step CheckBound, Then (\? (Step Hash, Step Draw))))))
+  0i32
+  """,
+  timeout: 300_000
+)
+```
+
+#### a_rolled_state_cannot_be_rolled_again (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test --fails ETY-TermError \"Unification failure\"\n///> zig\n\n:= again (state : roll_state rolled) : roll_state rolled = draw (sample_fixture ()) state\n0i32","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test --fails ETY-TermError "Unification failure"
+  ///> zig
+
+  := again (state : roll_state rolled) : roll_state rolled = draw (sample_fixture ()) state
+  0i32
+  """,
+  timeout: 300_000
+)
+```
+
+## seeds
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":= new () : u32 * am'.vec u8 =\n    3u32, (([] : list u8) |> am'.new_vec)\n\n:= max_seeds () : convert.unativeint =\n    100i32 |> convert.convert\n\n:= trim_seeds (seeds : rust.ref (rust.mut' (am'.vec u8))) : am'.vec u8 =\n    := len : u64 = seeds |> am'.vec_ref_len |> convert.convert\n    := max : u64 = max_seeds () |> convert.convert\n    := excess = ? len > max ?> len - max |: 0u64\n    seeds |> am'.vec_drain_front (excess |> convert.convert)\n\n:= contribute_seed (seeds : rust.ref (rust.mut' (am'.vec u8))) (seed : am'.vec u8) : () =\n    := seed_len = seed |> am'.vec_len\n    seeds |> am'.vec_extend_from_slice seed\n    := seed_excess = seeds |> trim_seeds\n    trace Debug\n        \\ () => \"dice_contract.contribute_seed\"\n        \\ () => { seed_len seed_excess = seed_excess |> crypto.hex_of_vec }\n    trace_flush ()","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  := new () : u32 * am'.vec u8 =
+      3u32, (([] : list u8) |> am'.new_vec)
+
+  := max_seeds () : convert.unativeint =
+      100i32 |> convert.convert
+
+  := trim_seeds (seeds : rust.ref (rust.mut' (am'.vec u8))) : am'.vec u8 =
+      := len : u64 = seeds |> am'.vec_ref_len |> convert.convert
+      := max : u64 = max_seeds () |> convert.convert
+      := excess = ? len > max ?> len - max |: 0u64
+      seeds |> am'.vec_drain_front (excess |> convert.convert)
+
+  := contribute_seed (seeds : rust.ref (rust.mut' (am'.vec u8))) (seed : am'.vec u8) : () =
+      := seed_len = seed |> am'.vec_len
+      seeds |> am'.vec_extend_from_slice seed
+      := seed_excess = seeds |> trim_seeds
+      trace Debug
+          \ () => "dice_contract.contribute_seed"
+          \ () => { seed_len seed_excess = seed_excess |> crypto.hex_of_vec }
+      trace_flush ()
+  """,
+  timeout: 300_000
+)
+```
+
+#### contribute_seed_keeps_the_newest_hundred_bytes (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust\n\n:= seeds = ([] : list u8) |> am'.new_vec |> rust.to_ref_mut\nlistm'.init_series 1i32 120 1 |> listm.map convert.u8 |> am'.new_vec |> contribute_seed seeds\n((seeds |> rust.len : u32), (seeds |> am'.vec_ref_len |> convert.convert : u64))\n|> _assert_eq (100u32, 100u64)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust
+
+  := seeds = ([] : list u8) |> am'.new_vec |> rust.to_ref_mut
+  listm'.init_series 1i32 120 1 |> listm.map convert.u8 |> am'.new_vec |> contribute_seed seeds
+  ((seeds |> rust.len : u32), (seeds |> am'.vec_ref_len |> convert.convert : u64))
+  |> _assert_eq (100u32, 100u64)
+  """,
+  timeout: 300_000
+)
+```
+
+## generate_random_number
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":= generate_random_number\n    (seeds : rust.ref (rust.mut' (am'.vec u8)))\n    (key : sm'.std_string)\n    (proof : sm'.std_string)\n    (max : u64)\n    : u64\n    =\n    := call = { key = key |> sm'.from_std_string; proof = proof |> sm'.from_std_string; seeds = seeds |> am'.vec_ref_to_array }\n    ?= generate host call max ?|\n    | Rolled (value, e, digest) =>\n        seeds |> am'.vec_extend_from_array digest\n        seeds |> trim_seeds |> ignore\n        trace Debug\n            \\ () => \"dice_contract.generate_random_number \" ++# entropy_text e ++# \"; hash = \" ++# bytes.hex digest\n            \\ () => { max result = value }\n        trace_flush ()\n        value\n\n:= roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =\n    := result =\n        rolls\n        |> am'.from_vec_base\n        |> am'.to_list_base'\n        |> listm'.unbox\n        |> lib.dice.roll_within_bounds max\n        |> optionm'.box\n    trace Debug\n        \\ () => \"dice_contract.roll_within_bounds\"\n        \\ () => { max rolls = #?*rolls; result = #?*result }\n    trace_flush ()\n    result","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  := generate_random_number
+      (seeds : rust.ref (rust.mut' (am'.vec u8)))
+      (key : sm'.std_string)
+      (proof : sm'.std_string)
+      (max : u64)
+      : u64
+      =
+      := call = { key = key |> sm'.from_std_string; proof = proof |> sm'.from_std_string; seeds = seeds |> am'.vec_ref_to_array }
+      ?= generate host call max ?|
+      | Rolled (value, e, digest) =>
+          seeds |> am'.vec_extend_from_array digest
+          seeds |> trim_seeds |> ignore
+          trace Debug
+              \ () => "dice_contract.generate_random_number " ++# entropy_text e ++# "; hash = " ++# bytes.hex digest
+              \ () => { max result = value }
+          trace_flush ()
+          value
+
+  := roll_within_bounds (max : u64) (rolls : am'.vec u8) : optionm'.option' u64 =
+      := result =
+          rolls
+          |> am'.from_vec_base
+          |> am'.to_list_base'
+          |> listm'.unbox
+          |> lib.dice.roll_within_bounds max
+          |> optionm'.box
+      trace Debug
+          \ () => "dice_contract.roll_within_bounds"
+          \ () => { max rolls = #?*rolls; result = #?*result }
+      trace_flush ()
+      result
+  """,
+  timeout: 300_000
+)
+```
+
+## host
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":= mocked_chain () : () =\n    $'near_sdk::testing_env!!(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; 32]).block_height(42).block_timestamp(1_700_000_000_000_000_000).epoch_height(3).account_balance(near_sdk::NearToken::from_yoctonear((1u128 << 64) + 7)).signer_account_id(\"alice.near\".parse().unwrap()).predecessor_account_id(\"alice.near\".parse().unwrap()).build())' : ()","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  := mocked_chain () : () =
+      $'near_sdk::testing_env!!(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; 32]).block_height(42).block_timestamp(1_700_000_000_000_000_000).epoch_height(3).account_balance(near_sdk::NearToken::from_yoctonear((1u128 << 64) + 7)).signer_account_id("alice.near".parse().unwrap()).predecessor_account_id("alice.near".parse().unwrap()).build())' : ()
+  """,
+  timeout: 300_000
+)
+```
+
+#### the_host_reads_the_chain_the_fixture_describes (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -d \"near-sdk={version='=5.30.1',features=['unit-testing']}\" -d near-token\n\nmocked_chain ()\n:= host_entropy = read_entropy host (sample_call \"k\")\n:= fixture_entropy = read_entropy (sample_fixture ()) (sample_call \"k\")\n(entropy_text host_entropy = entropy_text fixture_entropy, entropy_bytes host_entropy |> bytes.hex = (entropy_bytes fixture_entropy |> bytes.hex))\n|> _assert_eq (!+, !+)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
+
+  mocked_chain ()
+  := host_entropy = read_entropy host (sample_call "k")
+  := fixture_entropy = read_entropy (sample_fixture ()) (sample_call "k")
+  (entropy_text host_entropy = entropy_text fixture_entropy, entropy_bytes host_entropy |> bytes.hex = (entropy_bytes fixture_entropy |> bytes.hex))
+  |> _assert_eq (!+, !+)
+  """,
+  timeout: 300_000
+)
+```
+
+#### the_host_rolls_what_the_fixture_rolls (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -d \"near-sdk={version='=5.30.1',features=['unit-testing']}\" -d near-token\n\nmocked_chain ()\n(generate host (sample_call \"k\") 2000u64 |> rolled_value, generate (sample_fixture ()) (sample_call \"k\") 2000u64 |> rolled_value)\n|> _assert_eq (1646u64, 1646u64)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
+
+  mocked_chain ()
+  (generate host (sample_call "k") 2000u64 |> rolled_value, generate (sample_fixture ()) (sample_call "k") 2000u64 |> rolled_value)
+  |> _assert_eq (1646u64, 1646u64)
+  """,
+  timeout: 300_000
+)
+```
+
+#### the_host_keccak_is_the_spiral_keccak (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -d \"near-sdk={version='=5.30.1',features=['unit-testing']}\" -d near-token\n\nmocked_chain ()\n:= ~size = 150i32\n:= message = bytes.counting size\nnear.host_keccak512 message |> bytes.hex\n|> _assert_eq (keccak.keccak512 message |> keccak.digest_bytes |> bytes.hex)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
+
+  mocked_chain ()
+  := ~size = 150i32
+  := message = bytes.counting size
+  near.host_keccak512 message |> bytes.hex
+  |> _assert_eq (keccak.keccak512 message |> keccak.digest_bytes |> bytes.hex)
+  """,
+  timeout: 300_000
+)
+```
+
+#### generate_random_number_appends_the_hash_to_the_seeds (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -d \"near-sdk={version='=5.30.1',features=['unit-testing']}\" -d near-token\n\nmocked_chain ()\n:= seeds = ([] : list u8) |> am'.new_vec |> rust.to_ref_mut\n:= key = \"k\" |> sm'.to_std_string\n:= proof = \"\" |> sm'.to_std_string\n:= first = generate_random_number seeds key proof 2000u64\n:= after_first : u64 = seeds |> am'.vec_ref_len |> convert.convert\n:= second = generate_random_number seeds key proof 2000u64\n:= after_second : u64 = seeds |> am'.vec_ref_len |> convert.convert\n(first, after_first, second, after_second)\n|> _assert_eq (762u64, 64u64, 1614u64, 100u64)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
+
+  mocked_chain ()
+  := seeds = ([] : list u8) |> am'.new_vec |> rust.to_ref_mut
+  := key = "k" |> sm'.to_std_string
+  := proof = "" |> sm'.to_std_string
+  := first = generate_random_number seeds key proof 2000u64
+  := after_first : u64 = seeds |> am'.vec_ref_len |> convert.convert
+  := second = generate_random_number seeds key proof 2000u64
+  := after_second : u64 = seeds |> am'.vec_ref_len |> convert.convert
+  (first, after_first, second, after_second)
+  |> _assert_eq (762u64, 64u64, 1614u64, 100u64)
+  """,
+  timeout: 300_000
+)
+```
+
+#### the_host_glue_pins_its_gas (test)
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":"///- --test\n///> rust -d \"near-sdk={version='=5.30.1',features=['unit-testing']}\" -d near-token\n\nmocked_chain ()\n:= used () : u64 = $'near_sdk::env::used_gas().as_gas()' : u64\n:= start = used ()\n:= seed = near.host_random_seed ()\n:= after_seed = used ()\n:= digest = near.host_keccak512 (bytes.counting 150i32)\n:= after_hash = used ()\n:= state = generate host (sample_call \"k\") 2000u64\n:= after_roll = used ()\n(after_seed - start, after_hash - after_seed, after_roll - after_hash, length seed + length digest, rolled_value state)\n|> _assert_eq (9192751602u64, 23628854763u64, 52413432801u64, 96i32, 1646u64)","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ~S"""
+  ///- --test
+  ///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
+
+  mocked_chain ()
+  := used () : u64 = $'near_sdk::env::used_gas().as_gas()' : u64
+  := start = used ()
+  := seed = near.host_random_seed ()
+  := after_seed = used ()
+  := digest = near.host_keccak512 (bytes.counting 150i32)
+  := after_hash = used ()
+  := state = generate host (sample_call "k") 2000u64
+  := after_roll = used ()
+  (after_seed - start, after_hash - after_seed, after_roll - after_hash, length seed + length digest, rolled_value state)
+  |> _assert_eq (9192751602u64, 23628854763u64, 52413432801u64, 96i32, 1646u64)
+  """,
+  timeout: 300_000
+)
+```
+
+### main
+
+<!-- livebook:{"chunks":null,"kind":"Elixir.Spiral.Cells.SmartCell","attrs":{"timeout":300,"source":":= quiet () : () =\n    set_trace_level Debug\n\n:= state_struct () : () =\n    global \"\"\"\n        #[near_sdk::near(contract_state)]\n        #[derive(near_sdk::PanicOnDefault)]\n        pub struct State((u32, Vec<u8>));\n        \"\"\"\n\n:= legacy_state () : () =\n    global \"\"\"\n        #[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]\n        pub struct OldState {\n            version: u32,\n            seeds: near_sdk::store::vec::Vector<u8>,\n        }\n        \"\"\"\n    global \"\"\"\n        impl From<OldState> for State {\n            fn from(mut old_state: OldState) -> Self {\n                let seeds = old_state.seeds.iter().copied().collect();\n                old_state.seeds.clear();\n                old_state.seeds.flush();\n                Self((old_state.version + 1, seeds))\n            }\n        }\n        \"\"\"\n\n:= init_methods () : () =\n    global \"\"\"\n        #[near_sdk::near]\n        impl State {\n            #[init]\n            pub fn new() -> Self {\n                Self(dice_contract_new())\n            }\n            #[private]\n            #[init(ignore_state)]\n            pub fn migrate() -> Self {\n                let raw = near_sdk::env::storage_read(b\"STATE\")\n                    .unwrap_or_else(|| near_sdk::env::panic_str(\"dice_contract.migrate / no state to migrate\"));\n                if raw.len() >= 4 && u32::from_le_bytes([raw[0], raw[1], raw[2], raw[3]]) >= 3 {\n                    near_sdk::env::panic_str(\"dice_contract.migrate / the state is already migrated\")\n                }\n                borsh::from_slice::<OldState>(&raw)\n                    .unwrap_or_else(|_| near_sdk::env::panic_str(\"dice_contract.migrate / the state is not the old layout\"))\n                    .into()\n            }\n        }\n        \"\"\"\n    export\n        \"dice_contract_new\"\n        ((\\ () => := () = quiet () ;; new ()) : () -> u32 * am'.vec u8)\n\n:= seed_methods () : () =\n    global \"\"\"\n        #[near_sdk::near]\n        impl State {\n            pub fn contribute_seed(&mut self, seed: Vec<u8>) {\n                dice_contract_contribute_seed(&mut self.0.1, seed)\n            }\n            pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) {\n                self.contribute_seed(seed)\n            }\n        }\n        \"\"\"\n    export\n        \"dice_contract_contribute_seed\"\n        (\n            \\ (seeds, seed) =>\n                := () = quiet ()\n                contribute_seed seeds seed\n            : rust.ref (rust.mut' (am'.vec u8)) * am'.vec u8 -> ()\n        )\n\n:= roll_methods () : () =\n    global \"\"\"\n        #[near_sdk::near]\n        impl State {\n            pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 {\n                dice_contract_generate_random_number(&mut self.0.1, key, proof, max)\n            }\n        }\n        \"\"\"\n    export\n        \"dice_contract_generate_random_number\"\n        (\n            \\ (seeds, key, proof, max) =>\n                := () = quiet ()\n                generate_random_number seeds key proof max\n            : rust.ref (rust.mut' (am'.vec u8)) * sm'.std_string * sm'.std_string * u64 -> u64\n        )\n\n:= bound_methods () : () =\n    global \"\"\"\n        #[near_sdk::near]\n        impl State {\n            pub fn roll_within_bounds(max: u64, rolls: Vec<u8>) -> Option<u64> {\n                dice_contract_roll_within_bounds(max, rolls)\n            }\n            #[result_serializer(borsh)]\n            pub fn roll_within_bounds_borsh(\n                #[serializer(borsh)] max: u64,\n                #[serializer(borsh)] rolls: Vec<u8>,\n            ) -> Option<u64> {\n                Self::roll_within_bounds(max, rolls)\n            }\n        }\n        \"\"\"\n    export\n        \"dice_contract_roll_within_bounds\"\n        (\n            \\ (max, rolls) =>\n                := () = quiet ()\n                roll_within_bounds max rolls\n            : u64 * am'.vec u8 -> optionm'.option' u64\n        )\n\n:= main_native () : () =\n    near.bump_allocator ()\n    state_struct ()\n    legacy_state ()\n    init_methods ()\n    seed_methods ()\n    roll_methods ()\n    bound_methods ()\n\n:= main () =\n    ? is_rust ()\n    ?> main_native ()\n    |: ()","print_code":false},"livebook_object":"smart_cell"} -->
+
+```elixir
+Spiral.Cells.eval!(
+  ":= quiet () : () =\n    set_trace_level Debug\n\n:= state_struct () : () =\n    global \"\"\"\n        #[near_sdk::near(contract_state)]\n        #[derive(near_sdk::PanicOnDefault)]\n        pub struct State((u32, Vec<u8>));\n        \"\"\"\n\n:= legacy_state () : () =\n    global \"\"\"\n        #[derive(near_sdk::PanicOnDefault, borsh::BorshDeserialize, borsh::BorshSerialize)]\n        pub struct OldState {\n            version: u32,\n            seeds: near_sdk::store::vec::Vector<u8>,\n        }\n        \"\"\"\n    global \"\"\"\n        impl From<OldState> for State {\n            fn from(mut old_state: OldState) -> Self {\n                let seeds = old_state.seeds.iter().copied().collect();\n                old_state.seeds.clear();\n                old_state.seeds.flush();\n                Self((old_state.version + 1, seeds))\n            }\n        }\n        \"\"\"\n\n:= init_methods () : () =\n    global \"\"\"\n        #[near_sdk::near]\n        impl State {\n            #[init]\n            pub fn new() -> Self {\n                Self(dice_contract_new())\n            }\n            #[private]\n            #[init(ignore_state)]\n            pub fn migrate() -> Self {\n                let raw = near_sdk::env::storage_read(b\"STATE\")\n                    .unwrap_or_else(|| near_sdk::env::panic_str(\"dice_contract.migrate / no state to migrate\"));\n                if raw.len() >= 4 && u32::from_le_bytes([raw[0], raw[1], raw[2], raw[3]]) >= 3 {\n                    near_sdk::env::panic_str(\"dice_contract.migrate / the state is already migrated\")\n                }\n                borsh::from_slice::<OldState>(&raw)\n                    .unwrap_or_else(|_| near_sdk::env::panic_str(\"dice_contract.migrate / the state is not the old layout\"))\n                    .into()\n            }\n        }\n        \"\"\"\n    export\n        \"dice_contract_new\"\n        ((\\ () => := () = quiet () ;; new ()) : () -> u32 * am'.vec u8)\n\n:= seed_methods () : () =\n    global \"\"\"\n        #[near_sdk::near]\n        impl State {\n            pub fn contribute_seed(&mut self, seed: Vec<u8>) {\n                dice_contract_contribute_seed(&mut self.0.1, seed)\n            }\n            pub fn contribute_seed_borsh(&mut self, #[serializer(borsh)] seed: Vec<u8>) {\n                self.contribute_seed(seed)\n            }\n        }\n        \"\"\"\n    export\n        \"dice_contract_contribute_seed\"\n        (\n            \\ (seeds, seed) =>\n                := () = quiet ()\n                contribute_seed seeds seed\n            : rust.ref (rust.mut' (am'.vec u8)) * am'.vec u8 -> ()\n        )\n\n:= roll_methods () : () =\n    global \"\"\"\n        #[near_sdk::near]\n        impl State {\n            pub fn generate_random_number(&mut self, key: String, proof: String, max: u64) -> u64 {\n                dice_contract_generate_random_number(&mut self.0.1, key, proof, max)\n            }\n        }\n        \"\"\"\n    export\n        \"dice_contract_generate_random_number\"\n        (\n            \\ (seeds, key, proof, max) =>\n                := () = quiet ()\n                generate_random_number seeds key proof max\n            : rust.ref (rust.mut' (am'.vec u8)) * sm'.std_string * sm'.std_string * u64 -> u64\n        )\n\n:= bound_methods () : () =\n    global \"\"\"\n        #[near_sdk::near]\n        impl State {\n            pub fn roll_within_bounds(max: u64, rolls: Vec<u8>) -> Option<u64> {\n                dice_contract_roll_within_bounds(max, rolls)\n            }\n            #[result_serializer(borsh)]\n            pub fn roll_within_bounds_borsh(\n                #[serializer(borsh)] max: u64,\n                #[serializer(borsh)] rolls: Vec<u8>,\n            ) -> Option<u64> {\n                Self::roll_within_bounds(max, rolls)\n            }\n        }\n        \"\"\"\n    export\n        \"dice_contract_roll_within_bounds\"\n        (\n            \\ (max, rolls) =>\n                := () = quiet ()\n                roll_within_bounds max rolls\n            : u64 * am'.vec u8 -> optionm'.option' u64\n        )\n\n:= main_native () : () =\n    near.bump_allocator ()\n    state_struct ()\n    legacy_state ()\n    init_methods ()\n    seed_methods ()\n    roll_methods ()\n    bound_methods ()\n\n:= main () =\n    ? is_rust ()\n    ?> main_native ()\n    |: ()",
+  timeout: 300_000
+)
+```

@@ -1,0 +1,17 @@
+cargo-features = ["edition2024"]
+
+[package]
+name = "dice_contract"
+version.workspace = true
+edition = "2021"
+license-file.workspace = true
+repository.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+path = "dice_contract.rs"
+
+[dependencies]
+borsh = "1.5"
+near-sdk = { version = "5.30.1", default-features = false }
+near-token = ">=0.3,<1"
