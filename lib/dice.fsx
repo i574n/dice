@@ -24,6 +24,7 @@ and [<Struct>] US1 =
 and [<Struct>] US2 =
     | US2_Fresh
     | US2_Slide
+    | US2_Recycle
 and [<Struct>] US4 =
     | US4_EmptyRange
     | US4_AboveLargest of f1_0 : uint64 * f1_1 : uint64
@@ -41,37 +42,40 @@ and [<Struct>] US5 =
 and [<Struct>] US6 =
     | US6_Some of f0_0 : US5
     | US6_None
+and [<Struct>] US7 =
+    | US7_Ok of f0_0 : uint64
+    | US7_Error of f1_0 : uint64 * f1_1 : uint64
 and UH2 =
     | UH2_Nil
     | UH2_Cons of US5 * UH2
-and [<Struct>] US7 =
-    | US7_Some of f0_0 : uint64
-    | US7_None
 and [<Struct>] US8 =
-    | US8_Some of f0_0 : UH2
+    | US8_Some of f0_0 : uint64
     | US8_None
 and [<Struct>] US9 =
-    | US9_Verbose
-    | US9_Debug
-    | US9_Info
-    | US9_Warning
-    | US9_Critical
+    | US9_Some of f0_0 : UH2
+    | US9_None
+and [<Struct>] US10 =
+    | US10_Verbose
+    | US10_Debug
+    | US10_Info
+    | US10_Warning
+    | US10_Critical
 and Mut3 = {mutable l0 : (string -> unit)}
 and Mut4 = {mutable l0 : bool}
-and Mut5 = {mutable l0 : US9}
-and [<Struct>] US10 =
-    | US10_Some of f0_0 : US9
-    | US10_None
+and Mut5 = {mutable l0 : US10}
 and [<Struct>] US11 =
-    | US11_Some of f0_0 : int64
+    | US11_Some of f0_0 : US10
     | US11_None
 and [<Struct>] US12 =
-    | US12_Some of f0_0 : string
+    | US12_Some of f0_0 : int64
     | US12_None
-and Mut6 = {mutable l0 : int32; mutable l1 : US10}
 and [<Struct>] US13 =
-    | US13_Some of f0_0 : Mut1 * f0_1 : Mut3 * f0_2 : Mut4 * f0_3 : Mut2 * f0_4 : Mut5 * f0_5 : int64 option
+    | US13_Some of f0_0 : string
     | US13_None
+and Mut6 = {mutable l0 : int32; mutable l1 : US11}
+and [<Struct>] US14 =
+    | US14_Some of f0_0 : Mut1 * f0_1 : Mut3 * f0_2 : Mut4 * f0_3 : Mut2 * f0_4 : Mut5 * f0_5 : int64 option
+    | US14_None
 let rec closure2 (v0 : UH0) () : UH0 =
     v0
 and method0 (v0 : int64, v1 : UH0, v2 : UH0) : UH0 =
@@ -288,7 +292,39 @@ and roll_fresh_11 (v0 : uint64, v1 : int32, v2 : (unit -> uint8)) : struct (uint
         struct (v8, v6)
     else
         roll_fresh_11(v0, v1, v6)
-and roll_hand_14 (v0 : int32, v1 : UH2, v2 : (unit -> uint8)) : struct (UH2 * (unit -> uint8)) =
+and roll_recycled_14 (v0 : uint64, v1 : uint64, v2 : uint64, v3 : (unit -> uint8)) : struct (uint64 * (unit -> uint8)) =
+    let v4 : uint64 = v2 / v0
+    let v5 : uint64 = v4 * v0
+    let v6 : bool = v1 < v5
+    let v13 : US7 =
+        if v6 then
+            let v7 : uint64 = v1 % v0
+            let v8 : uint64 = v7 + 1UL
+            US7_Ok(v8)
+        else
+            let v10 : uint64 = v1 - v5
+            let v11 : uint64 = v2 - v5
+            US7_Error(v10, v11)
+    match v13 with
+    | US7_Error(v15, v16) -> (* Error *)
+        let v17 : US5 = draw_rolled_13(v3)
+        let v18 : bool = v16 > 3074457345618258602UL
+        let struct (v26 : uint64, v27 : uint64) =
+            if v18 then
+                let v19 : int32 = (match v17 with | US5_One -> 0 | US5_Two -> 1 | US5_Three -> 2 | US5_Four -> 3 | US5_Five -> 4 | US5_Six -> 5)
+                let v20 : uint64 = uint64 v19
+                struct (v20, 6UL)
+            else
+                let v21 : uint64 = v15 * 6UL
+                let v22 : int32 = (match v17 with | US5_One -> 0 | US5_Two -> 1 | US5_Three -> 2 | US5_Four -> 3 | US5_Five -> 4 | US5_Six -> 5)
+                let v23 : uint64 = uint64 v22
+                let v24 : uint64 = v21 + v23
+                let v25 : uint64 = v16 * 6UL
+                struct (v24, v25)
+        roll_recycled_14(v0, v26, v27, v3)
+    | US7_Ok(v14) -> (* Ok *)
+        struct (v14, v3)
+and roll_hand_15 (v0 : int32, v1 : UH2, v2 : (unit -> uint8)) : struct (UH2 * (unit -> uint8)) =
     let v3 : bool = v0 <= 0
     if v3 then
         struct (v1, v2)
@@ -296,16 +332,16 @@ and roll_hand_14 (v0 : int32, v1 : UH2, v2 : (unit -> uint8)) : struct (UH2 * (u
         let v4 : US5 = draw_rolled_13(v2)
         let v5 : int32 = v0 - 1
         let v6 : UH2 = UH2_Cons(v4, v1)
-        roll_hand_14(v5, v6, v2)
-and go_16 (v0 : uint64, v1 : int32, v2 : UH2, v3 : uint64) : US7 =
+        roll_hand_15(v5, v6, v2)
+and go_17 (v0 : uint64, v1 : int32, v2 : UH2, v3 : uint64) : US8 =
     let v4 : bool = v1 <= 0
     if v4 then
         let v5 : bool = v3 < v0
         if v5 then
             let v6 : uint64 = v3 + 1UL
-            US7_Some(v6)
+            US8_Some(v6)
         else
-            US7_None
+            US8_None
     else
         match v2 with
         | UH2_Cons(v10, v11) -> (* Cons *)
@@ -322,30 +358,24 @@ and go_16 (v0 : uint64, v1 : int32, v2 : UH2, v3 : uint64) : US7 =
                     let v18 : bool = v3 > v17
                     v18
             if v19 then
-                US7_None
+                US8_None
             else
                 let v21 : int32 = v1 - 1
                 let v22 : uint64 = v3 * 6UL
                 let v23 : uint64 = v22 + v13
-                go_16(v0, v21, v11, v23)
+                go_17(v0, v21, v11, v23)
         | UH2_Nil -> (* Nil *)
-            US7_None
-and roll_kept_15 (v0 : US2, v1 : uint64, v2 : int32, v3 : UH2, v4 : (unit -> uint8)) : struct (uint64 * (unit -> uint8)) =
-    let v5 : uint64 = 0UL
-    let v6 : US7 = go_16(v1, v2, v3, v5)
-    match v6 with
-    | US7_None -> (* None *)
-        match v0 with
-        | US2_Fresh -> (* Fresh *)
-            let v8 : UH2 = UH2_Nil
-            let struct (v9 : UH2, v10 : (unit -> uint8)) = roll_hand_14(v2, v8, v4)
-            roll_kept_15(v0, v1, v2, v9, v10)
-        | US2_Slide -> (* Slide *)
-            let v13 : US5 = draw_rolled_13(v4)
-            let v14 : UH2 = UH2_Cons(v13, v3)
-            roll_kept_15(v0, v1, v2, v14, v4)
-    | US7_Some(v7) -> (* Some *)
-        struct (v7, v4)
+            US8_None
+and roll_slid_16 (v0 : uint64, v1 : int32, v2 : UH2, v3 : (unit -> uint8)) : struct (uint64 * (unit -> uint8)) =
+    let v4 : uint64 = 0UL
+    let v5 : US8 = go_17(v0, v1, v2, v4)
+    match v5 with
+    | US8_None -> (* None *)
+        let v7 : US5 = draw_rolled_13(v3)
+        let v8 : UH2 = UH2_Cons(v7, v2)
+        roll_slid_16(v0, v1, v8, v3)
+    | US8_Some(v6) -> (* Some *)
+        struct (v6, v3)
 and closure10 (v0 : (unit -> uint8), v1 : bool) (v2 : uint64) : uint64 =
     let v5 : US2 =
         if v1 then
@@ -365,20 +395,20 @@ and closure10 (v0 : (unit -> uint8), v1 : bool) (v2 : uint64) : uint64 =
             else
                 US3_Ok(v2)
     match v14 with
-    | US3_Error(v32) -> (* Error *)
-        let v42 : string =
-            match v32 with
-            | US4_AboveLargest(v34, v35) -> (* AboveLargest *)
-                let v36 : string = format_real_7(v34)
-                let v37 : string = ("max: " + v36)
-                let v38 : string = (v37 + " is above the largest supported bound ")
-                let v39 : string = format_real_7(v35)
-                let v40 : string = (v38 + v39)
-                v40
+    | US3_Error(v38) -> (* Error *)
+        let v48 : string =
+            match v38 with
+            | US4_AboveLargest(v40, v41) -> (* AboveLargest *)
+                let v42 : string = format_real_7(v40)
+                let v43 : string = ("max: " + v42)
+                let v44 : string = (v43 + " is above the largest supported bound ")
+                let v45 : string = format_real_7(v41)
+                let v46 : string = (v44 + v45)
+                v46
             | US4_EmptyRange -> (* EmptyRange *)
-                let v33 : string = "max must be at least 1"
-                v33
-        failwith<uint64> v42
+                let v39 : string = "max must be at least 1"
+                v39
+        failwith<uint64> v48
     | US3_Ok(v15) -> (* Ok *)
         let v16 : bool = v15 = 1UL
         let v20 : int32 =
@@ -388,27 +418,31 @@ and closure10 (v0 : (unit -> uint8), v1 : bool) (v2 : uint64) : uint64 =
                 let v17 : int32 = 0
                 let v18 : uint64 = 1UL
                 go_10(v15, v17, v18)
-        let struct (v30 : uint64, v31 : (unit -> uint8)) =
+        let struct (v36 : uint64, v37 : (unit -> uint8)) =
             match v5 with
             | US2_Fresh -> (* Fresh *)
                 roll_fresh_11(v15, v20, v0)
+            | US2_Recycle -> (* Recycle *)
+                let v21 : uint64 = 0UL
+                let v22 : uint64 = 1UL
+                roll_recycled_14(v15, v21, v22, v0)
             | US2_Slide -> (* Slide *)
-                let v23 : UH2 = UH2_Nil
-                let struct (v24 : UH2, v25 : (unit -> uint8)) = roll_hand_14(v20, v23, v0)
-                roll_kept_15(v5, v15, v20, v24, v25)
-        v30
+                let v27 : UH2 = UH2_Nil
+                let struct (v28 : UH2, v29 : (unit -> uint8)) = roll_hand_15(v20, v27, v0)
+                roll_slid_16(v15, v20, v28, v29)
+        v36
 and closure9 (v0 : (unit -> uint8)) (v1 : bool) : (uint64 -> uint64) =
     closure10(v0, v1)
 and closure8 () (v0 : (unit -> uint8)) : (bool -> (uint64 -> uint64)) =
     closure9(v0)
-and method18 (v0 : UH2, v1 : UH2) : UH2 =
+and method19 (v0 : UH2, v1 : UH2) : UH2 =
     match v0 with
     | UH2_Cons(v2, v3) -> (* Cons *)
         let v4 : UH2 = UH2_Cons(v2, v1)
-        method18(v3, v4)
+        method19(v3, v4)
     | UH2_Nil -> (* Nil *)
         v1
-and go_17 (v0 : UH1, v1 : UH2) : US8 =
+and go_18 (v0 : UH1, v1 : UH2) : US9 =
     match v0 with
     | UH1_Cons(v2, v3) -> (* Cons *)
         let v4 : bool = v2 >= 1uy
@@ -449,19 +483,19 @@ and go_17 (v0 : UH1, v1 : UH2) : US8 =
                 US6_None
         match v27 with
         | US6_None -> (* None *)
-            US8_None
+            US9_None
         | US6_Some(v28) -> (* Some *)
             let v29 : UH2 = UH2_Cons(v28, v1)
-            go_17(v3, v29)
+            go_18(v3, v29)
     | UH1_Nil -> (* Nil *)
         let v34 : UH2 = UH2_Nil
-        let v35 : UH2 = method18(v1, v34)
-        US8_Some(v35)
-and method19 (v0 : UH2, v1 : int32) : int32 =
+        let v35 : UH2 = method19(v1, v34)
+        US9_Some(v35)
+and method20 (v0 : UH2, v1 : int32) : int32 =
     match v0 with
     | UH2_Cons(v2, v3) -> (* Cons *)
         let v4 : int32 = v1 + 1
-        method19(v3, v4)
+        method20(v3, v4)
     | UH2_Nil -> (* Nil *)
         v1
 and closure12 (v0 : uint64) (v1 : UH1) : uint64 option =
@@ -478,38 +512,38 @@ and closure12 (v0 : uint64) (v1 : UH1) : uint64 option =
             else
                 US3_Ok(v0)
     let v11 : UH2 = UH2_Nil
-    let v12 : US8 = go_17(v1, v11)
-    let v22 : US7 =
+    let v12 : US9 = go_18(v1, v11)
+    let v22 : US8 =
         match v10 with
         | US3_Ok(v13) -> (* Ok *)
             match v12 with
-            | US8_Some(v14) -> (* Some *)
+            | US9_Some(v14) -> (* Some *)
                 let v15 : int32 = 0
-                let v16 : int32 = method19(v14, v15)
+                let v16 : int32 = method20(v14, v15)
                 let v17 : uint64 = 0UL
-                go_16(v13, v16, v14, v17)
+                go_17(v13, v16, v14, v17)
             | _ ->
-                US7_None
+                US8_None
         | _ ->
-            US7_None
+            US8_None
     match v22 with
-    | US7_None -> (* None *)
+    | US8_None -> (* None *)
         let v25 : uint64 option = None
         v25
-    | US7_Some(v23) -> (* Some *)
+    | US8_Some(v23) -> (* Some *)
         let v24 : uint64 option = Some v23 
         v24
 and roll_within_bounds__c11 () (v0 : uint64) : (UH1 -> uint64 option) =
     closure12(v0)
-and go_20 (v0 : int32, v1 : int64) : int32 =
+and go_21 (v0 : int32, v1 : int64) : int32 =
     let v2 : bool = v1 >= 4738381338321616896L
     if v2 then
         v0
     else
         let v3 : int32 = v0 + 1
         let v4 : int64 = v1 * 6L
-        go_20(v3, v4)
-and read_22 (v0 : int32, v1 : int64, v2 : int64) : int64 =
+        go_21(v3, v4)
+and read_23 (v0 : int32, v1 : int64, v2 : int64) : int64 =
     let v3 : bool = v0 <= 0
     if v3 then
         v2
@@ -545,43 +579,43 @@ and read_22 (v0 : int32, v1 : int64, v2 : int64) : int64 =
         let v26 : int64 = int64 v25
         let v27 : int64 = v26 * v1
         let v28 : int64 = v2 + v27
-        read_22(v23, v24, v28)
-and roll_fresh_21 (v0 : int64, v1 : int32) : int64 =
+        read_23(v23, v24, v28)
+and roll_fresh_22 (v0 : int64, v1 : int32) : int64 =
     let v2 : int64 = 1L
     let v3 : int64 = 0L
-    let v4 : int64 = read_22(v1, v2, v3)
+    let v4 : int64 = read_23(v1, v2, v3)
     let v5 : bool = v4 < v0
     if v5 then
         let v6 : int64 = v4 + 1L
         v6
     else
-        roll_fresh_21(v0, v1)
-and closure14 () (v0 : string) : US12 =
-    US12_Some(v0)
-and method26 () : (string -> US12) =
+        roll_fresh_22(v0, v1)
+and closure14 () (v0 : string) : US13 =
+    US13_Some(v0)
+and method27 () : (string -> US13) =
     closure14()
-and get_environment_variable_25 (v0 : string) : string =
+and get_environment_variable_26 (v0 : string) : string =
     let v1 : (string -> string) = System.Environment.GetEnvironmentVariable
     let v2 : string = v1 v0
     let v3 : (string -> string option) = Option.ofObj
     let v4 : string option = v3 v2
-    let v5 : (string -> US12) = method26()
-    let v6 : US12 option = v4 |> Option.map v5 
-    let v7 : US12 = US12_None
-    let v8 : US12 = v6 |> Option.defaultValue v7 
+    let v5 : (string -> US13) = method27()
+    let v6 : US13 option = v4 |> Option.map v5 
+    let v7 : US13 = US13_None
+    let v8 : US13 = v6 |> Option.defaultValue v7 
     match v8 with
-    | US12_None -> (* None *)
+    | US13_None -> (* None *)
         let v10 : string = ""
         v10
-    | US12_Some(v9) -> (* Some *)
+    | US13_Some(v9) -> (* Some *)
         v9
-and method27 (v0 : Mut6) : bool =
+and method28 (v0 : Mut6) : bool =
     let v1 : int32 = v0.l0
     let v2 : bool = v1 > 0
     v2
-and method24 () : struct (US10 * US11) =
+and method25 () : struct (US11 * US12) =
     let v0 : string = "TRACE_LEVEL"
-    let v1 : string = get_environment_variable_25(v0)
+    let v1 : string = get_environment_variable_26(v0)
     
     
     
@@ -602,109 +636,109 @@ and method24 () : struct (US10 * US11) =
     let v14 : string = "Verbose"
     let v15 : (unit -> string) = v14.ToLower
     let v16 : string = v15 ()
-    let v17 : struct (string * US9) list = []
-    let v18 : US9 = US9_Critical
-    let v19 : struct (string * US9) list = struct (v4, v18) :: v17 
-    let v20 : US9 = US9_Warning
-    let v21 : struct (string * US9) list = struct (v7, v20) :: v19 
-    let v22 : US9 = US9_Info
-    let v23 : struct (string * US9) list = struct (v10, v22) :: v21 
-    let v24 : US9 = US9_Debug
-    let v25 : struct (string * US9) list = struct (v13, v24) :: v23 
-    let v26 : US9 = US9_Verbose
-    let v27 : struct (string * US9) list = struct (v16, v26) :: v25 
-    let v28 : US9 = US9_Critical
-    let v29 : struct (string * US9) list = struct (v2, v28) :: v27 
-    let v30 : US9 = US9_Warning
-    let v31 : struct (string * US9) list = struct (v5, v30) :: v29 
-    let v32 : US9 = US9_Info
-    let v33 : struct (string * US9) list = struct (v8, v32) :: v31 
-    let v34 : US9 = US9_Debug
-    let v35 : struct (string * US9) list = struct (v11, v34) :: v33 
-    let v36 : US9 = US9_Verbose
-    let v37 : struct (string * US9) list = struct (v14, v36) :: v35 
-    let v38 : (struct (string * US9) list -> (struct (string * US9) [])) = List.toArray
-    let v39 : (struct (string * US9) []) = v38 v37
+    let v17 : struct (string * US10) list = []
+    let v18 : US10 = US10_Critical
+    let v19 : struct (string * US10) list = struct (v4, v18) :: v17 
+    let v20 : US10 = US10_Warning
+    let v21 : struct (string * US10) list = struct (v7, v20) :: v19 
+    let v22 : US10 = US10_Info
+    let v23 : struct (string * US10) list = struct (v10, v22) :: v21 
+    let v24 : US10 = US10_Debug
+    let v25 : struct (string * US10) list = struct (v13, v24) :: v23 
+    let v26 : US10 = US10_Verbose
+    let v27 : struct (string * US10) list = struct (v16, v26) :: v25 
+    let v28 : US10 = US10_Critical
+    let v29 : struct (string * US10) list = struct (v2, v28) :: v27 
+    let v30 : US10 = US10_Warning
+    let v31 : struct (string * US10) list = struct (v5, v30) :: v29 
+    let v32 : US10 = US10_Info
+    let v33 : struct (string * US10) list = struct (v8, v32) :: v31 
+    let v34 : US10 = US10_Debug
+    let v35 : struct (string * US10) list = struct (v11, v34) :: v33 
+    let v36 : US10 = US10_Verbose
+    let v37 : struct (string * US10) list = struct (v14, v36) :: v35 
+    let v38 : (struct (string * US10) list -> (struct (string * US10) [])) = List.toArray
+    let v39 : (struct (string * US10) []) = v38 v37
     let v40 : int32 = v39.Length
-    let v41 : US10 = US10_None
+    let v41 : US11 = US11_None
     let v42 : Mut6 = {l0 = v40; l1 = v41} : Mut6
-    while method27(v42) do
+    while method28(v42) do
         let v44 : int32 = v42.l0
         let v45 : int32 = v44 - 1
-        let v46 : US10 = v42.l1
-        let struct (v47 : string, v48 : US9) = v39.[int v45]
-        let v55 : US10 =
+        let v46 : US11 = v42.l1
+        let struct (v47 : string, v48 : US10) = v39.[int v45]
+        let v55 : US11 =
             match v46 with
-            | US10_None -> (* None *)
+            | US11_None -> (* None *)
                 let v50 : bool = v47 = v1 
                 if v50 then
-                    US10_Some(v48)
+                    US11_Some(v48)
                 else
-                    US10_None
-            | US10_Some(v49) -> (* Some *)
+                    US11_None
+            | US11_Some(v49) -> (* Some *)
                 v46
         v42.l0 <- v45
         v42.l1 <- v55
         ()
-    let v56 : US10 = v42.l1
+    let v56 : US11 = v42.l1
     let v57 : string = "AUTOMATION"
-    let v58 : string = get_environment_variable_25(v57)
+    let v58 : string = get_environment_variable_26(v57)
     let v59 : string = "True"
     let v60 : bool = v58 <> v59 
-    let v67 : US11 =
+    let v67 : US12 =
         if v60 then
-            US11_None
+            US12_None
         else
             let v62 : System.DateTime = System.DateTime.Now
             let v63 : int64 = v62.Ticks
             let v64 : int64 = v63 - 621355968000000000L
             let v65 : int64 = v64 / 10L
-            US11_Some(v65)
+            US12_Some(v65)
     struct (v56, v67)
 and closure15 () (v0 : string) : unit =
     ()
-and new_trace_state_23 (v0 : US9) : struct (Mut1 * Mut3 * Mut4 * Mut2 * Mut5 * int64 option) =
-    let struct (v1 : US10, v2 : US11) = method24()
+and new_trace_state_24 (v0 : US10) : struct (Mut1 * Mut3 * Mut4 * Mut2 * Mut5 * int64 option) =
+    let struct (v1 : US11, v2 : US12) = method25()
     let v3 : Mut1 = {l0 = 1L} : Mut1
     let v4 : (string -> unit) = closure15()
     let v5 : Mut3 = {l0 = v4} : Mut3
     let v6 : Mut4 = {l0 = true} : Mut4
     let v7 : string = ""
     let v8 : Mut2 = {l0 = v7} : Mut2
-    let v11 : US9 =
+    let v11 : US10 =
         match v1 with
-        | US10_None -> (* None *)
+        | US11_None -> (* None *)
             v0
-        | US10_Some(v9) -> (* Some *)
+        | US11_Some(v9) -> (* Some *)
             v9
     let v12 : Mut5 = {l0 = v11} : Mut5
     let v17 : int64 option =
         match v2 with
-        | US11_None -> (* None *)
+        | US12_None -> (* None *)
             let v15 : int64 option = None
             v15
-        | US11_Some(v13) -> (* Some *)
+        | US12_Some(v13) -> (* Some *)
             let v14 : int64 option = Some v13 
             v14
     struct (v3, v5, v6, v8, v12, v17)
-and closure16 () (v0 : int64) : US11 =
-    US11_Some(v0)
-and method30 () : (int64 -> US11) =
+and closure16 () (v0 : int64) : US12 =
+    US12_Some(v0)
+and method31 () : (int64 -> US12) =
     closure16()
-and method31 () : string =
+and method32 () : string =
     let v0 : string = "HH:mm:ss"
     v0
-and time_29 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut2, v4 : Mut5, v5 : int64 option) : string =
-    let v6 : (int64 -> US11) = method30()
-    let v7 : US11 option = v5 |> Option.map v6 
-    let v8 : US11 = US11_None
-    let v9 : US11 = v7 |> Option.defaultValue v8 
+and time_30 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut2, v4 : Mut5, v5 : int64 option) : string =
+    let v6 : (int64 -> US12) = method31()
+    let v7 : US12 option = v5 |> Option.map v6 
+    let v8 : US12 = US12_None
+    let v9 : US12 = v7 |> Option.defaultValue v8 
     let v29 : System.DateTime =
         match v9 with
-        | US11_None -> (* None *)
+        | US12_None -> (* None *)
             let v27 : System.DateTime = System.DateTime.Now
             v27
-        | US11_Some(v10) -> (* Some *)
+        | US12_Some(v10) -> (* Some *)
             let v11 : System.DateTime = System.DateTime.Now
             let v12 : int64 = v11.Ticks
             let v13 : int64 = v12 - 621355968000000000L
@@ -722,7 +756,7 @@ and time_29 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut2, v4 : Mut5, v5 : int64 o
             let v25 : int32 = v24 v17
             let v26 : System.DateTime = System.DateTime (1, 1, 1, v19, v21, v23, v25)
             v26
-    let v30 : string = method31()
+    let v30 : string = method32()
     let v31 : bool = v30 = ""
     let v33 : string =
         if v31 then
@@ -732,20 +766,20 @@ and time_29 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut2, v4 : Mut5, v5 : int64 o
             v30
     let v34 : (string -> string) = v29.ToString
     v34 v33
-and format_real_32 (v0 : int64) : string =
+and format_real_33 (v0 : int64) : string =
     let v1 : string = method8()
     let v2 : Mut2 = {l0 = v1} : Mut2
     let v3 : string = $"{v0}"
     method9(v2, v3)
     let v4 : string = v2.l0
     v4
-and level_str_33 () : string =
+and level_str_34 () : string =
     let v0 : string = "\u001b[94m"
     let v1 : string = (v0 + "d")
     let v2 : string = "\u001b[0m"
     let v3 : string = (v1 + v2)
     v3
-and method35 (v0 : string, v1 : int32, v2 : int32) : int32 =
+and method36 (v0 : string, v1 : int32, v2 : int32) : int32 =
     let v3 : bool = v2 >= v1
     if v3 then
         v1
@@ -768,10 +802,10 @@ and method35 (v0 : string, v1 : int32, v2 : int32) : int32 =
                         v8
         if v11 then
             let v12 : int32 = v2 + 1
-            method35(v0, v1, v12)
+            method36(v0, v1, v12)
         else
             v2
-and method36 (v0 : string, v1 : int32) : int32 =
+and method37 (v0 : string, v1 : int32) : int32 =
     let v2 : bool = v1 <= 0
     if v2 then
         -1
@@ -786,65 +820,65 @@ and method36 (v0 : string, v1 : int32) : int32 =
                 let v6 : bool = v4 = '/'
                 v6
         if v7 then
-            method36(v0, v3)
+            method37(v0, v3)
         else
             v3
-and method34 (v0 : string) : string =
+and method35 (v0 : string) : string =
     let v1 : int32 = (System.Text.Encoding.UTF8.GetByteCount(v0))
     let v2 : int32 = 0
-    let v3 : int32 = method35(v0, v1, v2)
+    let v3 : int32 = method36(v0, v1, v2)
     let v4 : int32 = v1 - 1
     let v5 : string = (spiralStringSlice v0 (int v3) (int v4))
     let v6 : int32 = (System.Text.Encoding.UTF8.GetByteCount(v5))
-    let v7 : int32 = method36(v5, v6)
+    let v7 : int32 = method37(v5, v6)
     let v8 : string = (spiralStringSlice v5 (int 0) (int v7))
     v8
-and method28 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut2, v4 : Mut5, v5 : int64 option, v6 : Mut1, v7 : Mut3, v8 : Mut4, v9 : Mut2, v10 : Mut5, v11 : int64 option, v12 : int64) : string =
+and method29 (v0 : Mut1, v1 : Mut3, v2 : Mut4, v3 : Mut2, v4 : Mut5, v5 : int64 option, v6 : Mut1, v7 : Mut3, v8 : Mut4, v9 : Mut2, v10 : Mut5, v11 : int64 option, v12 : int64) : string =
     let v13 : int64 = v0.l0
-    let v14 : string = time_29(v6, v7, v8, v9, v10, v11)
+    let v14 : string = time_30(v6, v7, v8, v9, v10, v11)
     let v15 : string = (v14 + " ")
-    let v16 : string = format_real_32(v13)
+    let v16 : string = format_real_33(v13)
     let v17 : string = (v15 + v16)
-    let v18 : string = level_str_33()
+    let v18 : string = level_str_34()
     let v19 : string = (v17 + v18)
     let v20 : string = (v19 + " ")
     let v21 : string = (v20 + "dice.main")
     let v22 : string = (v21 + " / ")
-    let v23 : string = format_real_32(v12)
+    let v23 : string = format_real_33(v12)
     let v24 : string = ("result = " + v23)
     let v25 : string = ("{ " + v24)
     let v26 : string = (v25 + " }")
     let v27 : string = (v22 + v26)
-    method34(v27)
+    method35(v27)
 and closure17 () (v0 : string) : unit =
     let v1 : (string -> unit) = System.Console.WriteLine
     v1 v0
 and closure13 () (v0 : (string [])) : int32 =
     let v1 : int32 = 0
     let v2 : int64 = 1L
-    let v3 : int32 = go_20(v1, v2)
+    let v3 : int32 = go_21(v1, v2)
     let v4 : int64 = 4738381338321616896L
-    let v5 : int64 = roll_fresh_21(v4, v3)
+    let v5 : int64 = roll_fresh_22(v4, v3)
     let v6 : bool = TraceState.trace_state.IsNone
     if v6 then
-        let v7 : US9 = US9_Verbose
-        let struct (v8 : Mut1, v9 : Mut3, v10 : Mut4, v11 : Mut2, v12 : Mut5, v13 : int64 option) = new_trace_state_23(v7)
+        let v7 : US10 = US10_Verbose
+        let struct (v8 : Mut1, v9 : Mut3, v10 : Mut4, v11 : Mut2, v12 : Mut5, v13 : int64 option) = new_trace_state_24(v7)
         let v14 : struct (Mut1 * Mut3 * Mut4 * Mut2 * Mut5 * int64 option) option = Some struct (v8, v9, v10, v11, v12, v13) 
         TraceState.trace_state <- v14 
         ()
     let struct (v15 : Mut1, v16 : Mut3, v17 : Mut4, v18 : Mut2, v19 : Mut5, v20 : int64 option) = TraceState.trace_state.Value
-    let v21 : US9 = v19.l0
+    let v21 : US10 = v19.l0
     let v26 : int32 =
         match v21 with
-        | US9_Critical -> (* Critical *)
+        | US10_Critical -> (* Critical *)
             50
-        | US9_Debug -> (* Debug *)
+        | US10_Debug -> (* Debug *)
             20
-        | US9_Info -> (* Info *)
+        | US10_Info -> (* Info *)
             30
-        | US9_Verbose -> (* Verbose *)
+        | US10_Verbose -> (* Verbose *)
             10
-        | US9_Warning -> (* Warning *)
+        | US10_Warning -> (* Warning *)
             40
     let v27 : bool = v17.l0
     let v28 : bool = v27 = false
@@ -855,23 +889,23 @@ and closure13 () (v0 : (string [])) : int32 =
             let v29 : bool = 20 >= v26
             v29
     let v31 : bool = v30 = false
-    let v69 : US13 =
+    let v69 : US14 =
         if v31 then
-            US13_None
+            US14_None
         else
             let v33 : bool = TraceState.trace_state.IsNone
             if v33 then
-                let v34 : US9 = US9_Verbose
-                let struct (v35 : Mut1, v36 : Mut3, v37 : Mut4, v38 : Mut2, v39 : Mut5, v40 : int64 option) = new_trace_state_23(v34)
+                let v34 : US10 = US10_Verbose
+                let struct (v35 : Mut1, v36 : Mut3, v37 : Mut4, v38 : Mut2, v39 : Mut5, v40 : int64 option) = new_trace_state_24(v34)
                 let v41 : struct (Mut1 * Mut3 * Mut4 * Mut2 * Mut5 * int64 option) option = Some struct (v35, v36, v37, v38, v39, v40) 
                 TraceState.trace_state <- v41 
                 ()
             let struct (v42 : Mut1, v43 : Mut3, v44 : Mut4, v45 : Mut2, v46 : Mut5, v47 : int64 option) = TraceState.trace_state.Value
-            let v48 : string = method28(v42, v43, v44, v45, v46, v47, v42, v43, v44, v45, v46, v47, v5)
+            let v48 : string = method29(v42, v43, v44, v45, v46, v47, v42, v43, v44, v45, v46, v47, v5)
             let v49 : bool = TraceState.trace_state.IsNone
             if v49 then
-                let v50 : US9 = US9_Verbose
-                let struct (v51 : Mut1, v52 : Mut3, v53 : Mut4, v54 : Mut2, v55 : Mut5, v56 : int64 option) = new_trace_state_23(v50)
+                let v50 : US10 = US10_Verbose
+                let struct (v51 : Mut1, v52 : Mut3, v53 : Mut4, v54 : Mut2, v55 : Mut5, v56 : int64 option) = new_trace_state_24(v50)
                 let v57 : struct (Mut1 * Mut3 * Mut4 * Mut2 * Mut5 * int64 option) option = Some struct (v51, v52, v53, v54, v55, v56) 
                 TraceState.trace_state <- v57 
                 ()
@@ -883,7 +917,7 @@ and closure13 () (v0 : (string [])) : int32 =
             v66 v48
             let v67 : (string -> unit) = v59.l0
             v67 v48
-            US13_Some(v58, v59, v60, v61, v62, v63)
+            US14_Some(v58, v59, v60, v61, v62, v63)
     0
 let v0 : (int64 -> (UH0 -> UH0)) = closure0()
 let rotate_numbers x = v0 x
