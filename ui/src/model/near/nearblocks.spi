@@ -79,7 +79,20 @@
     !\($'"crate::model::near::nearblocks::OutcomesAgg { transaction_fee: !transaction_fee }"')
 
 := txn_box
-    ({ receipt_id predecessor_account_id receiver_account_id transaction_hash included_in_block_hash block_timestamp block actions actions_agg outcomes outcomes_agg logs } : txn)
+    ({
+        receipt_id
+        predecessor_account_id
+        receiver_account_id
+        transaction_hash
+        included_in_block_hash
+        block_timestamp
+        block
+        actions
+        actions_agg
+        outcomes
+        outcomes_agg
+        logs
+    } : txn)
     : txn'
     =
     := block = block |> block_box

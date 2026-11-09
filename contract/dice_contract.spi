@@ -65,7 +65,9 @@ test dice_contract static =
             )
             `entropy
             (Nil `(string * string))
-    |> listm.fold (\ (first, acc) (name, value) => !-, acc ++# (? first ?> "" |: "; ") ++# name ++# " = " ++# value) (!+, "")
+    |> listm.fold \ (first, acc) (name, value) =>
+            !-, acc ++# (? first ?> "" |: "; ") ++# name ++# " = " ++# value
+        (!+, "")
     |> snd
 
 /// ## chain
@@ -276,7 +278,10 @@ test entropy_text_names_every_field_once =
 ///> pascal
 test a_fixture_rolls_the_same_number_on_every_backend =
     := ~max = 2000u64
-    (generate (sample_fixture ()) (sample_call "k") max |> rolled_value, generate (sample_fixture ()) (sample_call "k2") max |> rolled_value)
+    (
+        generate (sample_fixture ()) (sample_call "k") max |> rolled_value,
+        generate (sample_fixture ()) (sample_call "k2") max |> rolled_value
+    )
     |> _assert_eq (1646u64, 1834u64)
 
 ///> rust
@@ -287,21 +292,24 @@ test the_bound_is_checked_before_anything_is_gathered =
     := ~max = 0u64
     \ () => generate (sample_fixture ()) (sample_call "k") max |> rolled_value |> ignore
     |> _throws
-    |> optionm.map (sm'.format_exception >> sm'.contains "dice_contract.generate_random_number / max must be at least 1")
+    |> optionm.map (
+           sm'.format_exception >> sm'.contains "dice_contract.generate_random_number / max must be at least 1"
+       )
     |> _assert_eq (Some !+)
 
 ///> zig
-test a_plan_cannot_draw_before_hashing fails ETY-TermError "Unification failure" =
+test a_plan_cannot_draw_before_hashing fails ETY - TermError "Unification failure" =
     := plan : roll_plan requested rolled = Then (\? (Step CheckBound, Then (\? (Step Gather, Step Draw))))
     0i32
 
 ///> zig
-test a_plan_cannot_gather_before_the_bound_is_checked fails ETY-TermError "Unification failure" =
-    := plan : roll_plan requested rolled = Then (\? (Step Gather, Then (\? (Step CheckBound, Then (\? (Step Hash, Step Draw))))))
+test a_plan_cannot_gather_before_the_bound_is_checked fails ETY - TermError "Unification failure" =
+    := plan : roll_plan requested rolled =
+        Then (\? (Step Gather, Then (\? (Step CheckBound, Then (\? (Step Hash, Step Draw))))))
     0i32
 
 ///> zig
-test a_rolled_state_cannot_be_rolled_again fails ETY-TermError "Unification failure" =
+test a_rolled_state_cannot_be_rolled_again fails ETY - TermError "Unification failure" =
     := again (state : roll_state rolled) : roll_state rolled = draw (sample_fixture ()) state
     0i32
 
@@ -342,7 +350,12 @@ test contribute_seed_keeps_the_newest_hundred_bytes =
     (max : u64)
     : u64
     =
-    := call = { key = key |> sm'.from_std_string; proof = proof |> sm'.from_std_string; seeds = seeds |> am'.vec_ref_to_array }
+    := call =
+        {
+            key = key |> sm'.from_std_string
+            proof = proof |> sm'.from_std_string
+            seeds = seeds |> am'.vec_ref_to_array
+        }
     ?= generate host call max ?|
     | Rolled (value, e, digest) =>
         seeds |> am'.vec_extend_from_array digest
@@ -369,20 +382,27 @@ test contribute_seed_keeps_the_newest_hundred_bytes =
 
 /// ## host
 := mocked_chain () : () =
-    $'near_sdk::testing_env!!(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; 32]).block_height(42).block_timestamp(1_700_000_000_000_000_000).epoch_height(3).account_balance(near_sdk::NearToken::from_yoctonear((1u128 << 64) + 7)).signer_account_id("alice.near".parse().unwrap()).predecessor_account_id("alice.near".parse().unwrap()).build())' : ()
+    $'near_sdk::testing_env!!(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; 32]).block_height(42).block_timestamp(1_700_000_000_000_000_000).epoch_height(3).account_balance(near_sdk::NearToken::from_yoctonear((1u128 << 64) + 7)).signer_account_id("alice.near".parse().unwrap()).predecessor_account_id("alice.near".parse().unwrap()).build())'
+    : ()
 
 ///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
 test the_host_reads_the_chain_the_fixture_describes =
     mocked_chain ()
     := host_entropy = read_entropy host (sample_call "k")
     := fixture_entropy = read_entropy (sample_fixture ()) (sample_call "k")
-    (entropy_text host_entropy = entropy_text fixture_entropy, entropy_bytes host_entropy |> bytes.hex = (entropy_bytes fixture_entropy |> bytes.hex))
+    (
+        entropy_text host_entropy = entropy_text fixture_entropy,
+        entropy_bytes host_entropy |> bytes.hex = (entropy_bytes fixture_entropy |> bytes.hex)
+    )
     |> _assert_eq (!+, !+)
 
 ///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
 test the_host_rolls_what_the_fixture_rolls =
     mocked_chain ()
-    (generate host (sample_call "k") 2000u64 |> rolled_value, generate (sample_fixture ()) (sample_call "k") 2000u64 |> rolled_value)
+    (
+        generate host (sample_call "k") 2000u64 |> rolled_value,
+        generate (sample_fixture ()) (sample_call "k") 2000u64 |> rolled_value
+    )
     |> _assert_eq (1646u64, 1646u64)
 
 ///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token
@@ -417,7 +437,13 @@ test the_host_glue_pins_its_gas =
     := after_hash = used ()
     := state = generate host (sample_call "k") 2000u64
     := after_roll = used ()
-    (after_seed - start, after_hash - after_seed, after_roll - after_hash, length seed + length digest, rolled_value state)
+    (
+        after_seed - start,
+        after_hash - after_seed,
+        after_roll - after_hash,
+        length seed + length digest,
+        rolled_value state
+    )
     |> _assert_eq (9192751602u64, 23628854763u64, 52413432801u64, 96i32, 1646u64)
 
 /// ### main

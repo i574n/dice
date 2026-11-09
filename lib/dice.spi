@@ -99,8 +99,10 @@ test every_face_takes_the_same_share_of_the_bytes =
     largest_from 1
 
 := bound_of \* t {number}. (max : t) : result (bound t) (bound_error t) =
-    ? max < 1 ?> Error EmptyRange
-    |? max > largest_bound () ?> Error (AboveLargest (max, largest_bound ()))
+    ? max < 1
+    ?> Error EmptyRange
+    |? max > largest_bound ()
+    ?> Error (AboveLargest (max, largest_bound ()))
     |: Ok (bound max)
 
 := bound_value \* t. ((bound max) : bound t) : t =
@@ -169,11 +171,17 @@ test bound_of_rejects_empty_and_oversized_ranges =
 ///> pascal
 test dice_count_is_the_fewest_dice_that_reach_the_bound =
     := ~one = 1i32
-    (count_of one, count_of (one * 36), count_of (one * 7777), count_of (one * 362797056), count_of 4738381338321616896u64)
+    (
+        count_of one,
+        count_of (one * 36),
+        count_of (one * 7777),
+        count_of (one * 362797056),
+        count_of 4738381338321616896u64
+    )
     |> _assert_eq (1i32, 2i32, 6i32, 11i32, 24i32)
 
 ///> zig
-test a_raw_number_is_not_a_bound fails ETY-TermError "Unification failure" =
+test a_raw_number_is_not_a_bound fails ETY - TermError "Unification failure" =
     dice_count 36u64
 
 /// ## hand
@@ -267,7 +275,8 @@ test roll_within_bounds_rejects_a_face_that_no_die_has =
 ///> gleam
 ///> pascal
 test roll_within_bounds_never_overflows_a_long_hand =
-    roll_within_bounds 4738381338321616896u64 [ 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]
+    roll_within_bounds 4738381338321616896u64
+        [ 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6; 6 ]
     |> _assert_eq None
 
 :~ ^ faces (from : u8) : list u8 = ? from > 6 ?> [] |: from :: faces (from + 1)
@@ -480,7 +489,7 @@ test fresh_rerolls_every_die_after_a_rejection =
     |> _assert_eq 2i32
 
 ///> zig
-test a_source_without_draw_face_cannot_roll fails ETY-InstanceNotFound "draw_face" =
+test a_source_without_draw_face_cannot_roll fails ETY - InstanceNotFound "draw_face" =
     roll_value Fresh 6i32 (bound 6i32)
 
 :~ ^ hashed_values (left : i32) (source : hash_faces keccak.spiral_keccak) (acc : list u64) : list u64 =
@@ -509,8 +518,9 @@ test a_keccak_stream_rolls_the_same_values_on_every_backend =
     |> _assert_eq [ 1295u64; 295; 1135; 1360; 1663; 1972 ]
 
 :~ ^ histogram_misses (policy : reroll) (max : i32) (draws : i32) (seen : list i32) : i32 =
-    ? draws <= 0
-    ?> listm'.init_series 1i32 max 1i32 |> listm.fold (\ misses v => ? listm.fold (\ found x => found || x = v) !- seen ?> misses |: misses + 1) 0i32
+    ? draws <= 0 ?>
+        listm'.init_series 1i32 max 1i32
+        |> listm.fold (\ misses v => ? listm.fold (\ found x => found || x = v) !- seen ?> misses |: misses + 1) 0i32
     |:
         := value = roll_value policy max system
         ? value < 1 || value > max ?> -1i32 |: histogram_misses policy max (draws - 1) (value :: seen)
@@ -522,7 +532,11 @@ test a_keccak_stream_rolls_the_same_values_on_every_backend =
 ///> lua
 test system_rolls_cover_every_value_and_stay_in_range =
     := ~draws = 3000i32
-    (histogram_misses Fresh 10i32 draws [], histogram_misses Slide 10i32 draws [], histogram_misses Fresh 37i32 draws [])
+    (
+        histogram_misses Fresh 10i32 draws [],
+        histogram_misses Slide 10i32 draws [],
+        histogram_misses Fresh 37i32 draws []
+    )
     |> _assert_eq (0i32, 0i32, 0i32)
 
 :! counted s = { inner : s; drawn : i32 }
@@ -551,7 +565,8 @@ test system_rolls_cover_every_value_and_stay_in_range =
     | Ok b =>
         :~ ^ tally (sequence : i32) : () =
             ? sequence < 216 ?>
-                := faces = [ face_of_digit (sequence / 36); face_of_digit (sequence / 6 % 6); face_of_digit (sequence % 6) ]
+                := faces =
+                    [ face_of_digit (sequence / 36); face_of_digit (sequence / 6 % 6); face_of_digit (sequence % 6) ]
                 := slot =
                     ?= recycled_outcome b (empty_pool ()) faces ?|
                     | Some value => value
@@ -561,7 +576,13 @@ test system_rolls_cover_every_value_and_stay_in_range =
         tally 0
     | Error _ => ()
     :~ ^ spread (i : i32) (low : i32) (high : i32) : i32 * i32 =
-        ? i > max ?> low, high |: spread (i + 1) (? index counts i < low ?> index counts i |: low) (? index counts i > high ?> index counts i |: high)
+        ? i > max
+        ?> low, high
+        |:
+            spread
+                (i + 1)
+                (? index counts i < low ?> index counts i |: low)
+                (? index counts i > high ?> index counts i |: high)
     := low, high = spread 1 1000 0
     low, high, index counts 0
 
@@ -603,7 +624,10 @@ test a_recycled_keccak_stream_rolls_the_same_values_on_every_backend =
     recycled_values 6 (hashed keccak.spiral_keccak (bytes.counting seed_size)) []
     |> _assert_eq [ 321u64; 1537; 145; 1654; 1384; 761 ]
 
-:~ ^ faces_drawn (policy : reroll) (b : bound u64) (left : i32) (source : counted (hash_faces keccak.spiral_keccak)) : i32 =
+:~ ^ faces_drawn
+    (policy : reroll) (b : bound u64) (left : i32) (source : counted (hash_faces keccak.spiral_keccak))
+    : i32
+    =
     ? left <= 0
     ?> (\ (counted { inner drawn }) => drawn) source
     |:
@@ -627,7 +651,14 @@ test a_recycled_keccak_stream_rolls_the_same_values_on_every_backend =
 ///> pascal
 test recycling_draws_fewer_dice_than_rerolling =
     := ~max = 2000u64
-    (faces_for Fresh max, faces_for Recycle max, faces_for Fresh 46657u64, faces_for Recycle 46657u64, faces_for Fresh 217u64, faces_for Recycle 217u64)
+    (
+        faces_for Fresh max,
+        faces_for Recycle max,
+        faces_for Fresh 46657u64,
+        faces_for Recycle 46657u64,
+        faces_for Fresh 217u64,
+        faces_for Recycle 217u64
+    )
     |> _assert_eq (320i32, 106i32, 994i32, 141i32, 568i32, 88i32)
 
 ///> rust
