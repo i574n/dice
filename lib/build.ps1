@@ -22,6 +22,16 @@ $spi = Join-Path $ResolvedScriptDir "$projectName.spi"
 $ipynb = Join-Path $ResolvedScriptDir "$projectName.spi.ipynb"
 if (!$fast -and !$SkipNotebook) {
     { pwsh -NoProfile -File $livebook --path $spi --livemd --output-path $ipynb } | Invoke-Block -Retries 3
+    $cells = Split-Path (Split-Path $livebook -Parent) -Parent
+    $mix = if ($IsWindows) { Join-Path (Split-Path (Get-Command mix).Source -Parent) 'mix.bat' } else { (Get-Command mix).Source }
+    $env:SPIRAL_CELLS_DICE_ROOT = (Resolve-Path (Join-Path $ResolvedScriptDir '..')).Path
+    Push-Location $cells
+    try { $roundTrip = @(& $mix test test/spiral/document_test.exs --only dice_corpus 2>&1 | ForEach-Object { "$_" }); $roundTripExit = $LASTEXITCODE }
+    finally { Pop-Location }
+    $roundTrip | Select-Object -Last 4 | ForEach-Object { Write-Output "dice/lib/build.ps1 / document round trip / $_" }
+    if ($roundTripExit -ne 0 -or -not ($roundTrip -match '\b[1-9]\d* tests?, 0 failures')) {
+        throw "CELLS-FAILED dice/lib / the document round trip over this checkout exited $roundTripExit or ran no test"
+    }
 }
 
 if (!(BuildSpiral "$projectName.spi" "$projectName.fsx" "dice/lib" -Backend Fsharp)) {
@@ -50,7 +60,7 @@ $targetDir = GetTargetDir $projectName
 if (!(BuildSpiral "$projectName.spi" "$projectName.rs" "dice/lib")) {
     throw "RUST-FAILED dice/lib / compile"
 }
-{ cargo +nightly-2026-11-05 build --release -p dice_lib } | Invoke-Block
+{ cargo build --release -p dice_lib } | Invoke-Block
 $cargoTarget = (cargo metadata --format-version 1 --no-deps | ConvertFrom-Json).target_directory
 $rustOutput = & "$cargoTarget/release/$projectName$(_exe)" 2>&1 | ForEach-Object { "$_" }
 Assert-DiceRun "RUST" "Rust" $rustOutput $LASTEXITCODE

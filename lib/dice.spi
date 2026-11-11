@@ -779,31 +779,31 @@ test roll_progressively_2 =
             |> optionm'.box
 
     backend_switch {
-        Fsharp = \ () => $'let rotate_numbers x = !rotate_numbers' x' : ()
+        Fsharp = \ () => export "rotate_numbers" rotate_numbers'
         Rust = \ () => ()
         TypeScript = \ () => ()
         C = \ () => ()
     } : ()
     backend_switch {
-        Fsharp = \ () => $'let create_sequential_roller x = !create_sequential_roller' x' : ()
+        Fsharp = \ () => export "create_sequential_roller" create_sequential_roller'
         Rust = \ () => ()
         TypeScript = \ () => ()
         C = \ () => ()
     } : ()
     backend_switch {
-        Fsharp = \ () => $'let roll_progressively x = !roll_progressively' x' : ()
+        Fsharp = \ () => export "roll_progressively" roll_progressively'
         Rust = \ () => ()
         TypeScript = \ () => ()
         C = \ () => ()
     } : ()
     backend_switch {
-        Fsharp = \ () => $'let roll_within_bounds x = !roll_within_bounds' x' : ()
+        Fsharp = \ () => export "roll_within_bounds" roll_within_bounds'
         Rust = \ () => ()
         TypeScript = \ () => ()
         C = \ () => ()
     } : ()
     backend_switch {
-        Fsharp = \ () => $'let main args = !main args' : ()
+        Fsharp = \ () => export "main" main
         Rust = \ () => main (;[] |> am'.base) |> ignore
         Python = \ () => main (;[] |> am'.base) |> ignore
         TypeScript = \ () => main (;[] |> am'.base) |> ignore

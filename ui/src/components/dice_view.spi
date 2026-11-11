@@ -265,43 +265,37 @@
                                         ] \ () =>
                                             :>[
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
-                                                        text-gray-900 dark:text-white\\\""'
+                                                    leptos.class "whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
                                                 ] \ () =>
                                                     "Block Timestamp" |> leptos.text_fragment
                                                 |> leptos.element_to_view
 
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
-                                                        text-gray-900 dark:text-white\\\""'
+                                                    leptos.class "whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
                                                 ] \ () =>
                                                     "Predecessor" |> leptos.text_fragment
                                                 |> leptos.element_to_view
 
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
-                                                        text-gray-900 dark:text-white\\\""'
+                                                    leptos.class "whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
                                                 ] \ () =>
                                                     "Receiver" |> leptos.text_fragment
                                                 |> leptos.element_to_view
 
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
-                                                        text-gray-900 dark:text-white\\\""'
+                                                    leptos.class "whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
                                                 ] \ () =>
                                                     "Fee" |> leptos.text_fragment
                                                 |> leptos.element_to_view
 
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
-                                                        text-gray-900 dark:text-white\\\""'
+                                                    leptos.class "whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
                                                 ] \ () =>
                                                     "Result" |> leptos.text_fragment
                                                 |> leptos.element_to_view
 
                                                 leptos.th [
-                                                    $'"class=\\\"whitespace-nowrap px-4 py-2 font-medium \
-                                                        text-gray-900 dark:text-white\\\""'
+                                                    leptos.class "whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
                                                 ] \ () =>
                                                     "Status" |> leptos.text_fragment
                                                 |> leptos.element_to_view
@@ -322,8 +316,7 @@
                                             ] \ () =>
                                                 :>[
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
-                                                            dark:text-gray-500\\\""'
+                                                        leptos.class "whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500"
                                                     ] \ () =>
                                                         txn.block_timestamp
                                                         |> sm'.from_std_string
@@ -334,8 +327,7 @@
                                                     |> leptos.element_to_view
 
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
-                                                            dark:text-gray-500\\\""'
+                                                        leptos.class "whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500"
                                                     ] \ () =>
                                                         txn.predecessor_account_id
                                                         |> to_string
@@ -343,8 +335,7 @@
                                                     |> leptos.element_to_view
 
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
-                                                            dark:text-gray-500\\\""'
+                                                        leptos.class "whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500"
                                                     ] \ () =>
                                                         txn.receiver_account_id
                                                         |> to_string
@@ -352,8 +343,7 @@
                                                     |> leptos.element_to_view
 
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
-                                                            dark:text-gray-500\\\""'
+                                                        leptos.class "whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500"
                                                     ] \ () =>
                                                         txn.outcomes_agg.transaction_fee
                                                         |> sm'.obj_to_string
@@ -361,8 +351,7 @@
                                                     |> leptos.element_to_view
 
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
-                                                            dark:text-gray-500\\\""'
+                                                        leptos.class "whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500"
                                                     ] \ () =>
                                                         ?= txn.logs ?|
                                                         | ;[] => "" |> leptos.text_fragment
@@ -381,8 +370,7 @@
                                                     |> leptos.element_to_view
 
                                                     leptos.td [
-                                                        $'"class=\\\"whitespace-nowrap px-4 py-2 text-gray-700 \
-                                                            dark:text-gray-500\\\""'
+                                                        leptos.class "whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-500"
                                                     ] \ () =>
                                                         ? txn.outcomes.status
                                                         ?> "Ok"

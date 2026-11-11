@@ -100,7 +100,7 @@
             )
         )
         =
-        state_core.use_requests txns_requests model.near.nearblocks.root_unbox
+        state_core.use_requests_with txns_requests model.near.nearblocks.decode_root id
         |> leptos.log_format \ log => "use_transactions.render (7) / root func0 / result: " ++# log
 
     := txns :

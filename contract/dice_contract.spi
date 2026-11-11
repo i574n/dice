@@ -180,7 +180,12 @@ test entropy_text_names_every_field_once =
     := ~key = "k"
     read_entropy (sample_fixture ()) (sample_call key)
     |> entropy_text
-    |> _assert_eq "account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = 1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = 0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = alice.near"
+    |> _assert_eq (
+        "account_balance_high = 1; account_balance_low = 7; block_height = 42; block_timestamp = "
+        ^^ "1700000000000000000; epoch_height = 3; key = k; predecessor = alice.near; proof = ; seed = "
+        ^^ "0707070707070707070707070707070707070707070707070707070707070707; seeds = 00010203; signer = "
+        ^^ "alice.near"
+    )
 
 /// ## phases
 :! requested = ()
@@ -293,8 +298,8 @@ test the_bound_is_checked_before_anything_is_gathered =
     \ () => generate (sample_fixture ()) (sample_call "k") max |> rolled_value |> ignore
     |> _throws
     |> optionm.map (
-           sm'.format_exception >> sm'.contains "dice_contract.generate_random_number / max must be at least 1"
-       )
+        sm'.format_exception >> sm'.contains "dice_contract.generate_random_number / max must be at least 1"
+    )
     |> _assert_eq (Some !+)
 
 ///> zig
@@ -382,7 +387,10 @@ test contribute_seed_keeps_the_newest_hundred_bytes =
 
 /// ## host
 := mocked_chain () : () =
-    $'near_sdk::testing_env!!(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; 32]).block_height(42).block_timestamp(1_700_000_000_000_000_000).epoch_height(3).account_balance(near_sdk::NearToken::from_yoctonear((1u128 << 64) + 7)).signer_account_id("alice.near".parse().unwrap()).predecessor_account_id("alice.near".parse().unwrap()).build())'
+    $'near_sdk::testing_env!!(near_sdk::test_utils::VMContextBuilder::new().random_seed([7u8; \
+        32]).block_height(42).block_timestamp(1_700_000_000_000_000_000).epoch_height(3).account_balance(near_sdk::Nea\
+        rToken::from_yoctonear((1u128 << 64) + 7)).signer_account_id("alice.near".parse().unwrap()).predecessor_accoun\
+        t_id("alice.near".parse().unwrap()).build())'
     : ()
 
 ///> rust -d "near-sdk={version='=5.30.1',features=['unit-testing']}" -d near-token

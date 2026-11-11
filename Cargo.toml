@@ -16,9 +16,11 @@ license-file = "LICENSE"
 repository = "https://github.com/i574n/dice"
 
 [workspace.dependencies]
-chrono = ">=0.4,<1"
+chrono = "0.4"
 regex = "1.10"
-futures = ">=0.3,<1"
+borsh = "1.5"
+serde_json = { version = "1.0", features = ["arbitrary_precision"] }
+futures = "0.3"
 
 [profile.dev]
 incremental = true

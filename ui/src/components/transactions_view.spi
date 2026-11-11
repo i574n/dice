@@ -99,8 +99,7 @@
                                 ?|
                                 | !+ =>
                                     leptos.div [
-                                        $'"class=\\\"grid flex-1 py-[10px] px-[12px] [gap:15px] \
-                                            sm:[grid-template-columns:repeat(auto-fill,minmax(500px,1fr))]\\\""'
+                                        leptos.class "grid flex-1 py-[10px] px-[12px] [gap:15px] sm:[grid-template-columns:repeat(auto-fill,minmax(500px,1fr))]"
                                     ] \ () =>
                                         transactions
                                         |> am'.to_vec

@@ -919,14 +919,14 @@ and closure13 () (v0 : (string [])) : int32 =
             v67 v48
             US14_Some(v58, v59, v60, v61, v62, v63)
     0
-let v0 : (int64 -> (UH0 -> UH0)) = closure0()
-let rotate_numbers x = v0 x
-let v1 : (UH1 -> (unit -> uint8)) = closure3()
-let create_sequential_roller x = v1 x
-let v2 : ((unit -> uint8) -> (bool -> (uint64 -> uint64))) = closure8()
-let roll_progressively x = v2 x
-let v3 : (uint64 -> (UH1 -> uint64 option)) = roll_within_bounds__c11()
-let roll_within_bounds x = v3 x
-let v4 : ((string []) -> int32) = closure13()
-let main args = v4 args
+let rotate_numbers (v0 : int64) : (UH0 -> UH0) =
+    closure0 () v0
+let create_sequential_roller (v0 : UH1) : (unit -> uint8) =
+    closure3 () v0
+let roll_progressively (v0 : (unit -> uint8)) : (bool -> (uint64 -> uint64)) =
+    closure8 () v0
+let roll_within_bounds (v0 : uint64) : (UH1 -> uint64 option) =
+    roll_within_bounds__c11 () v0
+let main (v0 : (string [])) : int32 =
+    closure13 () v0
 ()

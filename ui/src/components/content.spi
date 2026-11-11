@@ -88,9 +88,7 @@
         "class=\"flex flex-1 max-[100px]:[overflow-x:auto]\""
     ] \ () =>
         leptos.div [
-            $'"class=\\\"flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] \
-                [height:100vh] [max-height:100dvh] [max-height:-webkit-fill-available] max-[60px]:[min-height:600px] \
-                bg-gray-50 text-gray-700 text-sm\\\""'
+            leptos.class "flex flex-1 flex-col [width:100vw] [max-width:100vw] max-[100px]:[min-width:800px] [height:100vh] [max-height:100dvh] [max-height:-webkit-fill-available] max-[60px]:[min-height:600px] bg-gray-50 text-gray-700 text-sm"
         ] \ () =>
             :>[
                 leptos.main [
